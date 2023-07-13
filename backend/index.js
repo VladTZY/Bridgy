@@ -18,6 +18,9 @@ app.use(express.urlencoded({ extended: false }));
 const userRouter = require("./routes/userRoutes");
 app.use("/api/user", userRouter);
 
+const eventRouter = require("./routes/eventRoutes");
+app.use("/api/event", eventRouter);
+
 app.get("/ping", (req, res) => {
   res.send("pong");
 });
