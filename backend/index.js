@@ -15,6 +15,9 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+const userRouter = require("./routes/userRoutes");
+app.use("/api/user", userRouter);
+
 app.get("/ping", (req, res) => {
   res.send("pong");
 });

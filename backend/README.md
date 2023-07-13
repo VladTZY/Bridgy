@@ -11,3 +11,7 @@
 - PUBLISHED - published event not full
 - FULL - event full
 - FINISHED - event finished
+
+!!! SEC RISK
+--- role needs to be separate
+--- pass needs to be hashed on client side
