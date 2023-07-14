@@ -21,6 +21,9 @@ app.use("/api/user", userRouter);
 const eventRouter = require("./routes/eventRoutes");
 app.use("/api/event", eventRouter);
 
+const superAdminRouter = require("./routes/superAdminRoutes");
+app.use("/api/super_admin", superAdminRouter);
+
 app.get("/ping", (req, res) => {
   res.send("pong");
 });
