@@ -14,8 +14,13 @@ const UserModel = require("./models/UserModel")(sequelize);
 const SchoolModel = require("./models/SchoolModel")(sequelize);
 const OrganizationModel = require("./models/OrganizationModel")(sequelize);
 const EventModel = require("./models/EventModel")(sequelize);
+const LocationModel = require("./models/LocationModel")(sequelize);
 
 const UserToEvent = require("./models/UserToEvent")(sequelize);
+
+LocationModel.hasOne(SchoolModel);
+LocationModel.hasOne(OrganizationModel);
+LocationModel.hasOne(EventModel);
 
 UserModel.hasOne(SchoolModel, { foreignKey: "adminId" });
 SchoolModel.belongsTo(UserModel, { foreignKey: "adminId" });
@@ -42,4 +47,5 @@ module.exports = {
   SchoolModel,
   OrganizationModel,
   EventModel,
+  LocationModel,
 };

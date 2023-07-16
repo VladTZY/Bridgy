@@ -1,4 +1,8 @@
-const { UserModel, SchoolModel } = require("../database/sequelize");
+const {
+  UserModel,
+  SchoolModel,
+  LocationModel,
+} = require("../database/sequelize");
 
 const validator = require("validator");
 const bcrypt = require("bcrypt");
@@ -8,7 +12,10 @@ const createSchool = async (req, res) => {
     schoolName,
     schoolEmail,
     schoolPhoneNumber,
-    schoolLocation,
+    schoolCountry,
+    schoolCity,
+    schoolLatitude,
+    schoolLongitude,
     username,
     email,
     phoneNumber,
@@ -45,15 +52,22 @@ const createSchool = async (req, res) => {
     role: "SCHOOL",
   });
 
+  const location = await LocationModel.create({
+    country: schoolCountry,
+    city: schoolCity,
+    latitude: schoolLatitude,
+    longitude: schoolLongitude,
+  });
+
   const school = await SchoolModel.create({
     name: schoolName,
     email: schoolEmail,
     phoneNumber: schoolPhoneNumber,
-    location: schoolLocation,
+    locationId: location.id,
     adminId: user.id,
   });
 
-  res.status(200).json({ message: "School created" });
+  res.status(200).json(school);
 
   try {
   } catch (error) {
