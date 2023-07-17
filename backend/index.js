@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: false }));
 const userRouter = require("./routes/userRoutes");
 app.use("/api/user", userRouter);
 
-const eventRouter = require("./routes/eventRoutes");
-app.use("/api/event", eventRouter);
+const organizationRouter = require("./routes/organizationRoutes");
+app.use("/api/organization", organizationRouter);
 
 const adminRouter = require("./routes/adminRoutes");
 app.use("/api/admin", adminRouter);
