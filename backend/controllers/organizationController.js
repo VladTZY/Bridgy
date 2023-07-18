@@ -40,7 +40,7 @@ const createEvent = async (req, res) => {
       hours: hours,
       time: time,
       capacity: capacity,
-      status: "CREATED",
+      status: "PUBLISHED",
       locationId: location.id,
       organizationId: organization.id,
     });

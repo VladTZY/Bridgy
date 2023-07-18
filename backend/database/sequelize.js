@@ -48,4 +48,5 @@ module.exports = {
   OrganizationModel,
   EventModel,
   LocationModel,
+  UserToEvent,
 };

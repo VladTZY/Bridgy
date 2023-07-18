@@ -18,6 +18,9 @@ app.use(express.urlencoded({ extended: false }));
 const userRouter = require("./routes/userRoutes");
 app.use("/api/user", userRouter);
 
+const studentRouter = require("./routes/studentRoutes");
+app.use("/api/student", studentRouter);
+
 const organizationRouter = require("./routes/organizationRoutes");
 app.use("/api/organization", organizationRouter);
 
