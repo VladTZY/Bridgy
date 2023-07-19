@@ -23,3 +23,4 @@
 --- pass needs to be hashed on client side
 
 !!!!! Check overflow on event capacity
+!!!! MORE VALIDATORS ON JOINING EVENT

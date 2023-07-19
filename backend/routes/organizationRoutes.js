@@ -7,8 +7,12 @@ const { requireOrganization } = require("../middlewares/requireOrganization");
 router.use(requireAuth);
 router.use(requireOrganization);
 
-const { createEvent } = require("../controllers/organizationController");
+const {
+  createEvent,
+  confirmStudent,
+} = require("../controllers/organizationController");
 
 router.post("/create_event", createEvent);
+router.post("/confirm_student", confirmStudent);
 
 module.exports = router;

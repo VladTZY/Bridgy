@@ -2,6 +2,7 @@ const {
   EventModel,
   LocationModel,
   OrganizationModel,
+  UserToEvent,
 } = require("../database/sequelize");
 
 const createEvent = async (req, res) => {
@@ -51,4 +52,40 @@ const createEvent = async (req, res) => {
   }
 };
 
-module.exports = { createEvent };
+const confirmStudent = async (req, res) => {
+  const eventId = req.query.event;
+  const studentId = req.query.student;
+
+  try {
+    const event = await EventModel.findOne({
+      where: {
+        id: eventId,
+      },
+      include: OrganizationModel,
+    });
+
+    if (event.organization.adminId != req.user.id)
+      throw Error("Not admin for this event");
+
+    const userToEvent = await UserToEvent.findOne({
+      where: {
+        userId: studentId,
+        eventId: eventId,
+      },
+    });
+
+    if (!userToEvent) throw Error("Student didn t apply");
+
+    if (userToEvent.status != "REQUESTED")
+      throw Error("Student application is not requested");
+
+    userToEvent.status = "JOINED";
+    await userToEvent.save();
+
+    res.status(200).json(userToEvent);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+module.exports = { createEvent, confirmStudent };
