@@ -21,6 +21,9 @@ app.use("/api/user", userRouter);
 const studentRouter = require("./routes/studentRoutes");
 app.use("/api/student", studentRouter);
 
+const schoolRouter = require("./routes/schoolRoutes");
+app.use("/api/school", schoolRouter);
+
 const organizationRouter = require("./routes/organizationRoutes");
 app.use("/api/organization", organizationRouter);
 

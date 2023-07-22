@@ -35,6 +35,8 @@ const createEvent = async (req, res) => {
       },
     });
 
+    if (organization) throw Error("User is not admin of any organization");
+
     const event = await EventModel.create({
       name: name,
       description: description,

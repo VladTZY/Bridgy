@@ -16,6 +16,7 @@
 
 - REQUESTED - requested to join
 - JOINED - accepteed
+- REJECTED - rejected
 - FINISHED - finished
 
 !!! SEC RISK
