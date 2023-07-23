@@ -14,4 +14,16 @@ const getEvents = async (req, res) => {
   }
 };
 
-module.exports = { getEvents };
+const getEventById = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const event = await EventModel.findByPk(id);
+
+    res.status(200).json(event);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+module.exports = { getEvents, getEventById };
