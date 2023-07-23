@@ -18,6 +18,9 @@ app.use(express.urlencoded({ extended: false }));
 const userRouter = require("./routes/userRoutes");
 app.use("/api/user", userRouter);
 
+const eventRouter = require("./routes/eventRoutes");
+app.use("/api/events", eventRouter);
+
 const studentRouter = require("./routes/studentRoutes");
 app.use("/api/student", studentRouter);
 
