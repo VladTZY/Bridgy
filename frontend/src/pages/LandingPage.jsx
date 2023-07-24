@@ -1,4 +1,3 @@
-import BridgyLogo from "../assets/bridgyLogo.jpg";
 import { Card } from "../components/Card";
 
 export const LandingPage = () => {
@@ -7,7 +6,7 @@ export const LandingPage = () => {
       <nav className="bg-cyan-500">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a className="flex items-center">
-            <img src={BridgyLogo} className="h-8 mr-3" />
+            <img src="" className="h-8 mr-3" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Bridgy
             </span>
