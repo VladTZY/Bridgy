@@ -15,6 +15,9 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+const tokenRouter = require("./routes/tokenRoutes");
+app.use("/api/token", tokenRouter);
+
 const userRouter = require("./routes/userRoutes");
 app.use("/api/user", userRouter);
 
