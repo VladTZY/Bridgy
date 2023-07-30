@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
   const role = useSelector((state) => state.auth.role);
@@ -14,19 +15,19 @@ export const Navbar = () => {
           { 
             STUDENT:
                <div className="flex gap-10 items-center bg-cyan-500">
-                <div><h1>Dashboard</h1></div>
-                <div><h1> Find Opportunities</h1></div>
-                <div><h1> Find a Group</h1></div>
+                <div><Link to="/student/dashboard">Dashboard</Link></div>
+                <div><Link to="/student/find_opportunities"> Find Opportunities</Link></div>
+                <div><Link to="/student/find_group"> Find a Group</Link></div>
               </div>,
             ORGANIZATION:
             <div className="flex gap-10 items-center bg-cyan-500">
-              <div><h1>My Opportunities</h1></div>
-              <div><h1>Post an Opportunity</h1></div>
+              <div><Link to="/organization/my_opportunities">My Opportunities</Link></div>
+              <div><Link to="/organization/post_opportunity">Post an Opportunity</Link></div>
             </div>,
             SCHOOL:
             <div className="flex gap-10 items-center bg-cyan-500">
-              <div><h1>My Students</h1></div>
-              <div><h1>Notifications</h1></div>
+              <div><Link to="/school/my_students">My Students</Link></div>
+              <div><Link to="/school/notifications">Notifications</Link></div>
             </div>,
           }[role]
         }
