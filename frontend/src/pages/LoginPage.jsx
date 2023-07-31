@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/authSlice";
+import { Link } from "react-router-dom";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");

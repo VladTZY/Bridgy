@@ -2,17 +2,20 @@ import { useSelector } from "react-redux";
 import { LoginPage } from "./pages/LoginPage";
 import { HomePage } from "./pages/HomePage";
 import { Navbar } from "./components/Navbar";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const role = useSelector((state) => state.auth.role);
 
   if (!isLoggedIn) return <LoginPage />;
 
   return (
     <div>
       <Routes>
-        <Route path="/" element={<div> <Navbar/> <HomePage/></div>} />
+        <Route path="/student" element={<div> <Navbar/> <HomePage/></div>} />
+        <Route path="/organization" element={<div> <Navbar/> <HomePage/></div>} />
+        <Route path="/school" element={<div> <Navbar/> <HomePage/></div>} />
       </Routes>
     </div>
   );
@@ -20,22 +23,9 @@ function App() {
 
 function WrappedApp() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <App />
-    </HashRouter>
-  )
-}
-
-function BasicApp() {
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-
-  if (!isLoggedIn) return <LoginPage />;
-
-  return (
-    <div>
-      <Navbar />
-      <HomePage />
-    </div>
+    </BrowserRouter>
   )
 }
 
