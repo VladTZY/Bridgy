@@ -11,7 +11,6 @@ export const LoginPage = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(password, email);
     dispatch(login({ email, password })).then((res) => {
       setEmail("");
       setPassword("");
