@@ -14,7 +14,6 @@ function App() {
   return (
     <div>
       <Routes>
-<<<<<<< HEAD
         <Route path="/" element={!isLoggedIn ? <Navigate to="/login" /> : {
           STUDENT: <Navigate to="/student" />,
           ORGANIZATION: <Navigate to="/organization" />,
@@ -26,12 +25,6 @@ function App() {
         <Route path="/school" element={(role == "SCHOOL") ? <div> <Navbar/> <HomePage/></div> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
         <Route path="/student/find_opportunities" element={(role == "STUDENT") ? <FindOpportunitiesPage/> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
         <Route path="*" element={ <NotFoundPage /> } />
-=======
-        <Route path="/" element={<HomePage />} />
-        <Route path="/student" element={<div> <Navbar/> <HomePage/></div>} />
-        <Route path="/organization" element={<div> <Navbar/> <HomePage/></div>} />
-        <Route path="/school" element={<div> <Navbar/> <HomePage/></div>} />
->>>>>>> refs/remotes/origin/main
       </Routes>
     </div>
   );
