@@ -20,9 +20,9 @@ function App() {
           SCHOOL: <Navigate to="/school" />,
         }[role] } />
         <Route path="/login" element={!isLoggedIn ? <LoginPage /> : <Navigate to="/" /> } />
-        <Route path="/student" element={(role == "STUDENT") ? <div> <Navbar/> <HomePage/></div> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
-        <Route path="/organization" element={(role == "ORGANIZATION") ? <div> <Navbar/> <HomePage/></div> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
-        <Route path="/school" element={(role == "SCHOOL") ? <div> <Navbar/> <HomePage/></div> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
+        <Route path="/student" element={(role == "STUDENT") ? <div> <HomePage/></div> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
+        <Route path="/organization" element={(role == "ORGANIZATION") ? <div>  <HomePage/></div> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
+        <Route path="/school" element={(role == "SCHOOL") ? <div>  <HomePage/></div> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
         <Route path="/student/find_opportunities" element={(role == "STUDENT") ? <FindOpportunitiesPage/> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
         <Route path="*" element={ <NotFoundPage /> } />
       </Routes>
@@ -33,6 +33,7 @@ function App() {
 function WrappedApp() {
   return (
     <BrowserRouter>
+      <Navbar />
       <App />
     </BrowserRouter>
   )

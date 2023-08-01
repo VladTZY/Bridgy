@@ -7,9 +7,10 @@ export const Navbar = () => {
   return (
     <div className="flex gap-10 items-center bg-cyan-500">
       <div>
-        <h1>Bridgy</h1>
+        <div><Link to="/">Bridgy</Link></div>
       </div>
 
+      {role != '' ? 
       <div>    
         {
           { 
@@ -31,11 +32,10 @@ export const Navbar = () => {
             </div>,
           }[role]
         }
+        <div><Link to="/profile/?????">Profile</Link></div>
       </div>
+: <div><Link to="/login">Login</Link></div>}
 
-      <div>
-         <h1>profile</h1>
-      </div>
     </div>
   );
 };
