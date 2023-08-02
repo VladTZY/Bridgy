@@ -1,10 +1,44 @@
-const { UserModel } = require("../database/sequelize");
+const {
+  UserModel,
+  SchoolModel,
+  OrganizationModel,
+} = require("../database/sequelize");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 
-const createToken = (id, username, role) => {
-  return jwt.sign({ id, username, role }, process.env.SECRET, {
+const getInstutionId = async (user) => {
+  let institutionId = null;
+
+  if (user.role == "STUDENT") {
+    institutionId = user.schoolId;
+  }
+
+  if (user.role == "SCHOOL") {
+    const school = await SchoolModel.findOne({
+      where: {
+        adminId: user.id,
+      },
+    });
+
+    institutionId = school.id;
+  }
+
+  if (user.role == "ORGANIZATION") {
+    const organization = await OrganizationModel.findOne({
+      where: {
+        adminId: user.id,
+      },
+    });
+
+    institutionId = organization.id;
+  }
+
+  return institutionId;
+};
+
+const createToken = (id, username, role, institutionId) => {
+  return jwt.sign({ id, username, role, institutionId }, process.env.SECRET, {
     expiresIn: "3d",
   });
 };
@@ -43,7 +77,8 @@ const signupUser = async (req, res) => {
       role: role,
     });
 
-    const token = createToken(user.id, user.username, user.role);
+    const institutionId = await getInstutionId(user);
+    const token = createToken(user.id, user.username, user.role, institutionId);
 
     res.status(200).json({ token: token });
   } catch (error) {
@@ -67,7 +102,8 @@ const loginUser = async (req, res) => {
 
     if (!match) throw Error("Incorect password");
 
-    const token = createToken(user.id, user.username, user.role);
+    const institutionId = await getInstutionId(user);
+    const token = createToken(user.id, user.username, user.role, institutionId);
 
     res.status(200).json({ token: token });
   } catch (error) {
@@ -82,12 +118,14 @@ const getProfileInfo = async (req, res) => {
     if (!id) throw Error("Id required");
 
     const user = await UserModel.findByPk(id);
+    const institutionId = await getInstutionId(user);
 
     const userInfo = {
       username: user.username,
       email: user.email,
       phoneNumber: user.phoneNumber,
       role: user.role,
+      institutionId: institutionId,
     };
 
     res.status(200).json(userInfo);

@@ -22,6 +22,7 @@ const initialState = {
   username: "",
   role: "",
   jwt: "",
+  institutionId: null,
   isLoggedIn: false,
   loading: false,
   error: null,
@@ -35,6 +36,7 @@ export const authSlice = createSlice({
       state.username = "";
       state.role = "";
       state.jwt = "";
+      state.institutionId = null;
       state.isLoggedIn = false;
       state.loading = false;
       state.error = null;
@@ -46,6 +48,7 @@ export const authSlice = createSlice({
         state.username = action.payload.username;
         state.role = action.payload.role;
         state.jwt = action.payload.token;
+        state.institutionId = action.payload.institutionId;
         state.isLoggedIn = true;
         state.loading = false;
         state.error = null;
@@ -57,6 +60,7 @@ export const authSlice = createSlice({
         state.username = "";
         state.role = "";
         state.jwt = "";
+        state.institutionId = null;
         state.isLoggedIn = false;
         state.loading = false;
         state.error = "Login failed";
