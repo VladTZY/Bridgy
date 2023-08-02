@@ -1,6 +1,8 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
-export const ProfilePage = (id) => {
+export const ProfilePage = () => {
+  let { id } = useParams();
   const name = "Name"
   const email = "Email"
   const school = "School"
@@ -14,6 +16,7 @@ export const ProfilePage = (id) => {
         <h1>{email}</h1>
         <h1>{school}</h1>
         <h1>{username}</h1>
+        <h1>{id}</h1>
       </div>
     </div>
   );
