@@ -79,4 +79,25 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { loginUser, signupUser };
+const getProfileInfo = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    if (!id) throw Error("Id required");
+
+    const user = await UserModel.findByPk(id);
+
+    const userInfo = {
+      username: user.username,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      role: user.role,
+    };
+
+    res.status(200).json(userInfo);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+module.exports = { loginUser, signupUser, getProfileInfo };
