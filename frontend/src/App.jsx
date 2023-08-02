@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { ErrorPage } from "./pages/ErrorPage";
 import { FindOpportunitiesPage } from "./pages/FindOpportunitiesPage";
+import { ProfilePage } from "./pages/ProfilePage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -24,6 +25,7 @@ function App() {
         <Route path="/organization" element={(role == "ORGANIZATION") ? <div>  <HomePage/></div> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
         <Route path="/school" element={(role == "SCHOOL") ? <div>  <HomePage/></div> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
         <Route path="/student/find_opportunities" element={(role == "STUDENT") ? <FindOpportunitiesPage/> : (isLoggedIn ? <ErrorPage /> : <Navigate to="/login" />) } />
+        <Route path="/profile/?????" element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" /> } />
         <Route path="*" element={ <NotFoundPage /> } />
       </Routes>
     </div>

@@ -11,7 +11,7 @@ export const Navbar = () => {
       </div>
 
       {role != '' ? 
-      <div>    
+      <div className="flex gap-10 items-center bg-cyan-500">    
         {
           { 
             STUDENT:
