@@ -3,8 +3,10 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 
-const createToken = (id) => {
-  return jwt.sign({ id }, process.env.SECRET, { expiresIn: "3d" });
+const createToken = (id, username, role) => {
+  return jwt.sign({ id, username, role }, process.env.SECRET, {
+    expiresIn: "3d",
+  });
 };
 
 const signupUser = async (req, res) => {
@@ -41,11 +43,9 @@ const signupUser = async (req, res) => {
       role: role,
     });
 
-    const token = createToken(user.id);
+    const token = createToken(user.id, user.username, user.role);
 
-    res
-      .status(200)
-      .json({ username: user.username, role: user.role, token: token });
+    res.status(200).json({ token: token });
   } catch (error) {
     res.status(500).json(error.message);
   }
@@ -67,13 +67,9 @@ const loginUser = async (req, res) => {
 
     if (!match) throw Error("Incorect password");
 
-    const token = createToken(user.id);
+    const token = createToken(user.id, user.username, user.role);
 
-    res.status(200).json({
-      username: user.username,
-      role: user.role,
-      token: token,
-    });
+    res.status(200).json({ token: token });
   } catch (error) {
     res.status(500).json(error.message);
   }
