@@ -21,7 +21,8 @@ const getInstutionId = async (user) => {
       },
     });
 
-    institutionId = school.id;
+    if (!school) institutionId = null;
+    else institutionId = school.id;
   }
 
   if (user.role == "ORGANIZATION") {
@@ -31,7 +32,8 @@ const getInstutionId = async (user) => {
       },
     });
 
-    institutionId = organization.id;
+    if (!organization) institutionId = null;
+    else institutionId = organization.id;
   }
 
   return institutionId;
