@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ProfilePage = () => {
+export const ProfilePage = (id) => {
   const name = "Name"
   const email = "Email"
   const school = "School"
