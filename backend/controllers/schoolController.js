@@ -68,6 +68,7 @@ const getStudents = async (req, res) => {
     });
 
     const students = await UserModel.findAll({
+      attributes: { exclude: ["password", "role"] },
       where: {
         schoolId: school.id,
         role: "STUDENT",

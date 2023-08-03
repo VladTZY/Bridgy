@@ -9,6 +9,7 @@ import { FindOpportunitiesPage } from "./pages/FindOpportunitiesPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { OrganizationMyOportunitiesPage } from "./pages/OrganizationMyOportunitiesPage";
 import { PostOpportunitiesPage } from "./pages/PostOpportunitiesPage";
+import { SchoolStudentsMyPage } from "./pages/SchoolMyStudentsPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -100,6 +101,18 @@ function App() {
           element={
             role == "ORGANIZATION" ? (
               <PostOpportunitiesPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/school/my_students"
+          element={
+            role == "SCHOOL" ? (
+              <SchoolStudentsMyPage />
             ) : isLoggedIn ? (
               <ErrorPage />
             ) : (
