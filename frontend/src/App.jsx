@@ -8,6 +8,7 @@ import { ErrorPage } from "./pages/ErrorPage";
 import { FindOpportunitiesPage } from "./pages/FindOpportunitiesPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { OrganizationMyOportunitiesPage } from "./pages/OrganizationMyOportunitiesPage";
+import { PostOpportunitiesPage } from "./pages/PostOpportunitiesPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -87,6 +88,18 @@ function App() {
           element={
             role == "ORGANIZATION" ? (
               <OrganizationMyOportunitiesPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/organization/post_opportunities"
+          element={
+            role == "ORGANIZATION" ? (
+              <PostOpportunitiesPage />
             ) : isLoggedIn ? (
               <ErrorPage />
             ) : (
