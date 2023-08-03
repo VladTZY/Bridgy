@@ -19,6 +19,7 @@ export const login = createAsyncThunk(
 );
 
 const initialState = {
+  id: "",
   username: "",
   role: "",
   jwt: "",
@@ -33,6 +34,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state, action) => {
+      state.id = "";
       state.username = "";
       state.role = "";
       state.jwt = "";
@@ -45,6 +47,7 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(login.fulfilled, (state, action) => {
+        state.id = action.payload.id;
         state.username = action.payload.username;
         state.role = action.payload.role;
         state.jwt = action.payload.token;
@@ -57,6 +60,7 @@ export const authSlice = createSlice({
         state.loading = true;
       })
       .addCase(login.rejected, (state, action) => {
+        state.id = "";
         state.username = "";
         state.role = "";
         state.jwt = "";

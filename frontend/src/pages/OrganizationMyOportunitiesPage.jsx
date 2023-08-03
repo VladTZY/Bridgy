@@ -28,7 +28,13 @@ export const OrganizationMyOportunitiesPage = () => {
   return (
     <div>
       {events.map((event) => {
-        return <Card name={event.name} description={event.description} />;
+        return (
+          <Card
+            key={event.id}
+            name={event.name}
+            description={event.description}
+          />
+        );
       })}
     </div>
   );
