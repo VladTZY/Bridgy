@@ -21,9 +21,12 @@ export const SchoolStudentsMyPage = () => {
     <div>
       {students.map((student) => {
         return (
-          <div className="bg-cyan-500">
+          <div key={student.id} className="bg-cyan-500 mt-5">
             <h1>{student.username}</h1>
             <p>{student.id}</p>
+            <a href={`http://127.0.0.1:5173/profile/${student.id}`}>
+              View profile
+            </a>
           </div>
         );
       })}
