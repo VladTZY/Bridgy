@@ -7,8 +7,12 @@ const { requireSchool } = require("../middlewares/requireSchool");
 router.use(requireAuth);
 router.use(requireSchool);
 
-const { createOneStudent } = require("../controllers/schoolController");
+const {
+  createOneStudent,
+  getStudents,
+} = require("../controllers/schoolController");
 
 router.post("/create_one_student", createOneStudent);
+router.get("/students", getStudents);
 
 module.exports = router;

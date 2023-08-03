@@ -59,4 +59,25 @@ const createOneStudent = async (req, res) => {
   }
 };
 
-module.exports = { createOneStudent };
+const getStudents = async (req, res) => {
+  try {
+    const school = await SchoolModel.findOne({
+      where: {
+        adminId: req.user.id,
+      },
+    });
+
+    const students = await UserModel.findAll({
+      where: {
+        schoolId: school.id,
+        role: "STUDENT",
+      },
+    });
+
+    res.status(200).json(students);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+module.exports = { createOneStudent, getStudents };
