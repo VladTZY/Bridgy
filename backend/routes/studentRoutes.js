@@ -10,9 +10,11 @@ router.use(requireStudent);
 const {
   joinEvent,
   getOngoingEvents,
+  getRequestedEvents,
 } = require("../controllers/studentController");
 
 router.get("/ongoing_events", getOngoingEvents);
+router.get("/requested_events", getRequestedEvents);
 router.post("/join_event/:id", joinEvent);
 
 module.exports = router;

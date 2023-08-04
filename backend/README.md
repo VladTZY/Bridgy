@@ -25,3 +25,5 @@
 
 !!!!! Check overflow on event capacity
 !!!! MORE VALIDATORS ON JOINING EVENT
+!! add some dtos
+!! look on dtos for student get events, smth easy
