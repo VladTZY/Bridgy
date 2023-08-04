@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { logout } from "../store/authSlice";
+import { logout } from "../../store/authSlice";
 
 export const HomePage = () => {
   const dispatch = useDispatch();

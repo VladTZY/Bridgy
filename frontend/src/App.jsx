@@ -1,16 +1,17 @@
 import { useSelector } from "react-redux";
-import { LoginPage } from "./pages/LoginPage";
-import { HomePage } from "./pages/HomePage";
+import { LoginPage } from "./pages/MiscPages/LoginPage";
+import { HomePage } from "./pages/MiscPages/HomePage";
 import { Navbar } from "./components/Navbar";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import { NotFoundPage } from "./pages/NotFoundPage";
-import { ErrorPage } from "./pages/ErrorPage";
-import { FindOpportunitiesPage } from "./pages/FindOpportunitiesPage";
-import { ProfilePage } from "./pages/ProfilePage";
-import { OrganizationMyOportunitiesPage } from "./pages/OrganizationMyOportunitiesPage";
-import { PostOpportunitiesPage } from "./pages/PostOpportunitiesPage";
-import { SchoolStudentsMyPage } from "./pages/SchoolMyStudentsPage";
-import { AddStudent } from "./pages/AddStudent";
+import { NotFoundPage } from "./pages/MiscPages/NotFoundPage";
+import { ErrorPage } from "./pages/MiscPages/ErrorPage";
+import { FindOpportunitiesPage } from "./pages/StudentPages/FindOpportunitiesPage";
+import { ProfilePage } from "./pages/MiscPages/ProfilePage";
+import { OrganizationMyOportunitiesPage } from "./pages/OrganizationPages/OrganizationMyOportunitiesPage";
+import { PostOpportunitiesPage } from "./pages/OrganizationPages/PostOpportunitiesPage";
+import { SchoolStudentsMyPage } from "./pages/SchoolPages/SchoolMyStudentsPage";
+import { AddStudent } from "./pages/SchoolPages/AddStudent";
+import { StudentDashboardPage } from "./pages/StudentPages/StudentDashboardPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -78,6 +79,18 @@ function App() {
           element={
             role == "STUDENT" ? (
               <FindOpportunitiesPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/student/dashboard"
+          element={
+            role == "STUDENT" ? (
+              <StudentDashboardPage />
             ) : isLoggedIn ? (
               <ErrorPage />
             ) : (

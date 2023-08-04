@@ -7,8 +7,12 @@ const { requireStudent } = require("../middlewares/requireStudent");
 router.use(requireAuth);
 router.use(requireStudent);
 
-const { joinEvent } = require("../controllers/studentController");
+const {
+  joinEvent,
+  getOngoingEvents,
+} = require("../controllers/studentController");
 
+router.get("/ongoing_events", getOngoingEvents);
 router.post("/join_event/:id", joinEvent);
 
 module.exports = router;

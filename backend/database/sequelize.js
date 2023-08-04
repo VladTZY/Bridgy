@@ -41,6 +41,11 @@ UserModel.belongsTo(SchoolModel);
 EventModel.belongsToMany(UserModel, { through: UserToEvent });
 UserModel.belongsToMany(EventModel, { through: UserToEvent });
 
+EventModel.hasMany(UserToEvent);
+UserToEvent.belongsTo(EventModel);
+UserModel.hasMany(UserToEvent);
+UserToEvent.belongsTo(UserModel);
+
 module.exports = {
   sequelize,
   UserModel,

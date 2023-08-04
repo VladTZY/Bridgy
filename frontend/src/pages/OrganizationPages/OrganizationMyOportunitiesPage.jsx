@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { Card } from "../components/Card";
+import { Card } from "../../components/Card";
 
 export const OrganizationMyOportunitiesPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../store/authSlice";
+import { login } from "../../store/authSlice";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");

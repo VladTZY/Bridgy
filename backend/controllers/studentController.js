@@ -1,5 +1,25 @@
 const { EventModel, UserToEvent } = require("../database/sequelize");
 
+const getOngoingEvents = async (req, res) => {
+  try {
+    const events = await UserToEvent.findAll({
+      where: {
+        status: "JOINED",
+      },
+      include: {
+        model: EventModel,
+        where: {
+          status: "PUBLISHED",
+        },
+      },
+    });
+
+    res.status(200).json(events);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 const joinEvent = async (req, res) => {
   const userId = req.user.id;
   const eventId = req.params.id;
@@ -34,4 +54,4 @@ const joinEvent = async (req, res) => {
   }
 };
 
-module.exports = { joinEvent };
+module.exports = { joinEvent, getOngoingEvents };
