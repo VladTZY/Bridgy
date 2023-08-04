@@ -22,6 +22,18 @@ export const StudentDashboardPage = () => {
         console.log(res.data);
       })
       .catch((error) => console.log(error));
+
+    axios
+      .get("http://localhost:4004/api/student/requested_events", {
+        headers: {
+          Authorization: `BEARER ${jwt}`,
+        },
+      })
+      .then((res) => {
+        setRequestedEvents(res.data);
+        console.log(res.data);
+      })
+      .catch((error) => console.log(error));
   }, [jwt]);
 
   return (
@@ -29,6 +41,19 @@ export const StudentDashboardPage = () => {
       <div>
         <h1>Ongoing events</h1>
         {ongoingEvents.map((data) => {
+          return (
+            <Card
+              key={data.event.id}
+              name={data.event.name}
+              description={data.event.description}
+            />
+          );
+        })}
+      </div>
+
+      <div>
+        <h1>Requested events</h1>
+        {requestedEvents.map((data) => {
           return (
             <Card
               key={data.event.id}
