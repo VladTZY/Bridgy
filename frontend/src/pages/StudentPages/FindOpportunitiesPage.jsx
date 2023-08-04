@@ -26,7 +26,14 @@ export const FindOpportunitiesPage = () => {
   return (
     <div>
       {events.map((event) => {
-        return <Card name={event.name} description={event.description} />;
+        return (
+          <Card
+            key={event.id}
+            id={event.id}
+            name={event.name}
+            description={event.description}
+          />
+        );
       })}
     </div>
   );

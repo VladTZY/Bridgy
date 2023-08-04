@@ -31,6 +31,7 @@ export const OrganizationMyOportunitiesPage = () => {
         return (
           <Card
             key={event.id}
+            id={event.id}
             name={event.name}
             description={event.description}
           />

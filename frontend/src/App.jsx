@@ -12,6 +12,7 @@ import { PostOpportunitiesPage } from "./pages/OrganizationPages/PostOpportuniti
 import { SchoolStudentsMyPage } from "./pages/SchoolPages/SchoolMyStudentsPage";
 import { AddStudent } from "./pages/SchoolPages/AddStudent";
 import { StudentDashboardPage } from "./pages/StudentPages/StudentDashboardPage";
+import { OportunityPage } from "./pages/MiscPages/OportunityPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -149,6 +150,10 @@ function App() {
         <Route
           path="/profile/:id"
           element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/oportunity/:id"
+          element={isLoggedIn ? <OportunityPage /> : <Navigate to="/login" />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
