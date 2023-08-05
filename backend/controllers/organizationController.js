@@ -59,6 +59,10 @@ const confirmStudent = async (req, res) => {
   const studentId = req.query.student;
 
   try {
+    if (!eventId) throw Error("Event id not specified");
+
+    if (!studentId) throw Error("Student id not specified");
+
     const event = await EventModel.findOne({
       where: {
         id: eventId,
@@ -95,6 +99,10 @@ const rejectStudent = async (req, res) => {
   const studentId = req.query.student;
 
   try {
+    if (!eventId) throw Error("Event id not specified");
+
+    if (!studentId) throw Error("Student id not specified");
+
     const event = await EventModel.findOne({
       where: {
         id: eventId,
@@ -123,4 +131,49 @@ const rejectStudent = async (req, res) => {
   }
 };
 
-module.exports = { createEvent, confirmStudent, rejectStudent };
+const finishEvent = async (req, res) => {
+  try {
+    const eventId = req.query.eventId;
+    const studentList = req.body;
+
+    if (!eventId) throw Error("Event id not specified");
+
+    if (!studentList) throw Error("Student list not specified");
+
+    const event = await EventModel.findOne({
+      where: {
+        id: eventId,
+      },
+      include: OrganizationModel,
+    });
+
+    if (event.organization.adminId != req.user.id)
+      throw Error("Not admin for this event");
+
+    studentList.forEach(async (student) => {
+      const userToEvent = await UserToEvent.findOne({
+        where: {
+          userId: student.userId,
+          eventId: eventId,
+        },
+      });
+
+      if (!userToEvent)
+        throw Error(
+          `User with id ${student.userId} didnt participated in the event`
+        );
+
+      userToEvent.status = student.status;
+      await userToEvent.save();
+    });
+
+    event.status = "FINISHED";
+    await event.save();
+
+    res.status(200).json({ message: "Event finished" });
+  } catch (error) {
+    res.status(200).json(error.message);
+  }
+};
+
+module.exports = { createEvent, confirmStudent, rejectStudent, finishEvent };

@@ -11,10 +11,12 @@ const {
   createEvent,
   confirmStudent,
   rejectStudent,
+  finishEvent,
 } = require("../controllers/organizationController");
 
 router.post("/create_event", createEvent);
 router.post("/confirm_student", confirmStudent);
 router.post("/reject_student", rejectStudent);
+router.post("/finish_event", finishEvent);
 
 module.exports = router;

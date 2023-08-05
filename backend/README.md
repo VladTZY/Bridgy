@@ -18,6 +18,7 @@
 - JOINED - accepteed
 - REJECTED - rejected
 - FINISHED - finished
+- MISSING - didn t participated in the event
 
 !!! SEC RISK
 --- role needs to be separate
