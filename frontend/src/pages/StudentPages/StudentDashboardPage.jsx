@@ -19,7 +19,6 @@ export const StudentDashboardPage = () => {
       })
       .then((res) => {
         setOngoingEvents(res.data);
-        console.log(res.data);
       })
       .catch((error) => console.log(error));
 

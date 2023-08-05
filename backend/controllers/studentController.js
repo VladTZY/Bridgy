@@ -5,6 +5,7 @@ const getOngoingEvents = async (req, res) => {
     const events = await UserToEvent.findAll({
       where: {
         status: "JOINED",
+        userId: req.user.id,
       },
       include: {
         model: EventModel,
@@ -25,6 +26,7 @@ const getRequestedEvents = async (req, res) => {
     const events = await UserToEvent.findAll({
       where: {
         status: "REQUESTED",
+        userId: req.user.id,
       },
       include: {
         model: EventModel,
