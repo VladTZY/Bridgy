@@ -2,14 +2,15 @@ import { useSelector } from "react-redux";
 import { LoginPage } from "./pages/MiscPages/LoginPage";
 import { HomePage } from "./pages/MiscPages/HomePage";
 import { Navbar } from "./components/Navbar";
+import { Sidebar } from "./components/Sidebar";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { NotFoundPage } from "./pages/MiscPages/NotFoundPage";
 import { ErrorPage } from "./pages/MiscPages/ErrorPage";
 import { FindOpportunitiesPage } from "./pages/StudentPages/FindOpportunitiesPage";
 import { ProfilePage } from "./pages/MiscPages/ProfilePage";
-import { OrganizationMyOportunitiesPage } from "./pages/OrganizationPages/OrganizationMyOportunitiesPage";
+import { OrganizationMyOportunitiesPage } from "./pages/OrganizationPages/OrganizationMissionsPage";
 import { PostOpportunitiesPage } from "./pages/OrganizationPages/PostOpportunitiesPage";
-import { SchoolStudentsMyPage } from "./pages/SchoolPages/SchoolMyStudentsPage";
+import { SchoolStudentsMyPage } from "./pages/SchoolPages/SchoolDashboardPage";
 import { AddStudent } from "./pages/SchoolPages/AddStudent";
 import { StudentDashboardPage } from "./pages/StudentPages/StudentDashboardPage";
 import { OportunityPage } from "./pages/MiscPages/OportunityPage";
@@ -28,9 +29,9 @@ function App() {
               <Navigate to="/login" />
             ) : (
               {
-                STUDENT: <Navigate to="/student" />,
-                ORGANIZATION: <Navigate to="/organization" />,
-                SCHOOL: <Navigate to="/school" />,
+                STUDENT: <Navigate to="/student/dashboard" />,
+                ORGANIZATION: <Navigate to="/organization/dashboard" />,
+                SCHOOL: <Navigate to="/school/dashboard" />,
               }[role]
             )
           }
@@ -40,7 +41,7 @@ function App() {
           element={!isLoggedIn ? <LoginPage /> : <Navigate to="/" />}
         />
         <Route
-          path="/student"
+          path="/student/dashboard"
           element={
             role == "STUDENT" ? (
               <HomePage />
@@ -52,7 +53,7 @@ function App() {
           }
         />
         <Route
-          path="/organization"
+          path="/organization/dashboard"
           element={
             role == "ORGANIZATION" ? (
               <HomePage />
@@ -100,7 +101,7 @@ function App() {
           }
         />
         <Route
-          path="/organization/my_opportunities"
+          path="/organization/missions"
           element={
             role == "ORGANIZATION" ? (
               <OrganizationMyOportunitiesPage />
@@ -124,7 +125,7 @@ function App() {
           }
         />
         <Route
-          path="/school/my_students"
+          path="/school/dashboard"
           element={
             role == "SCHOOL" ? (
               <SchoolStudentsMyPage />
@@ -162,10 +163,19 @@ function App() {
 }
 
 function WrappedApp() {
+  const role = useSelector((state) => state.auth.role);  
+
   return (
     <BrowserRouter>
       <Navbar />
-      <App />
+      <div className="space-x-80">
+        <div>
+          <Sidebar />
+        </div>
+        <div>
+          <App />
+        </div>
+      </div>
     </BrowserRouter>
   );
 }
