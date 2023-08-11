@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { LoginPage } from "./pages/MiscPages/LoginPage";
 import { HomePage } from "./pages/MiscPages/HomePage";
 import { Navbar } from "./components/Navbar";
+import { MiniNavbar } from "./components/MiniNavbar";
 import { Sidebar } from "./components/Sidebar";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { NotFoundPage } from "./pages/MiscPages/NotFoundPage";
@@ -14,6 +15,7 @@ import { SchoolStudentsMyPage } from "./pages/SchoolPages/SchoolDashboardPage";
 import { AddStudent } from "./pages/SchoolPages/AddStudent";
 import { StudentDashboardPage } from "./pages/StudentPages/StudentDashboardPage";
 import { OportunityPage } from "./pages/MiscPages/OportunityPage";
+import { LandingPage } from "./pages/MiscPages/LandingPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -26,7 +28,7 @@ function App() {
           path="/"
           element={
             !isLoggedIn ? (
-              <Navigate to="/login" />
+              <LandingPage />
             ) : (
               {
                 STUDENT: <Navigate to="/student/dashboard" />,
@@ -168,20 +170,25 @@ function WrappedApp() {
 
   return (
     <BrowserRouter>
-      <Navbar />
       {
         {
           true:
-            <div className="space-x-80">
-              <div>
-                <Sidebar />
-              </div>
-              <div>
-                <App />
+            <div>
+              <MiniNavbar />
+              <div className="space-x-80">
+                <div>
+                  <Sidebar />
+                </div>
+                <div>
+                  <App />
+                </div>
               </div>
             </div>,
           false:
-            <App />
+            <div>
+              <Navbar />
+              <App />
+            </div>
         }[isLoggedIn]
       }
     </BrowserRouter>

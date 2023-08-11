@@ -3,46 +3,6 @@ import { Card } from "../../components/Card";
 export const LandingPage = () => {
   return (
     <div>
-      <nav className="bg-cyan-500">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a className="flex items-center">
-            <img src="" className="h-8 mr-3" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Bridgy
-            </span>
-          </a>
-
-          <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-2 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-cyan-500 ">
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 text-white bg-cyan-500"
-                >
-                  Create an account
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 text-white bg-cyan-500"
-                >
-                  Login
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 text-white bg-cyan-500"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
       <div className="m-20 font-mono">
         <div className="text-center">
           <h1 className="text-5xl bold">Founding Story</h1>
