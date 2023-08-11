@@ -163,19 +163,27 @@ function App() {
 }
 
 function WrappedApp() {
-  const role = useSelector((state) => state.auth.role);  
+  const role = useSelector((state) => state.auth.role);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="space-x-80">
-        <div>
-          <Sidebar />
-        </div>
-        <div>
-          <App />
-        </div>
-      </div>
+      {
+        {
+          true:
+            <div className="space-x-80">
+              <div>
+                <Sidebar />
+              </div>
+              <div>
+                <App />
+              </div>
+            </div>,
+          false:
+            <App />
+        }[isLoggedIn]
+      }
     </BrowserRouter>
   );
 }
