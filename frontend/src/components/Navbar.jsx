@@ -22,6 +22,9 @@ export const Navbar = () => {
           <Link to="/meet_our_charities">Meet Our Charities</Link>
         </div>
         <div className="hover:underline underline-offset-8 decoration-2 hover:text-sky-400 text-lg">
+          <Link to="/faq">FAQ</Link>
+        </div>
+        <div className="hover:underline underline-offset-8 decoration-2 hover:text-sky-400 text-lg">
           <Link to="/contact_us">Contact Us</Link>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { HomePage } from "./pages/MiscPages/HomePage";
 import { Navbar } from "./components/Navbar";
 import { MiniNavbar } from "./components/MiniNavbar";
 import { Sidebar } from "./components/Sidebar";
+import { Footer } from "./components/Footer";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { NotFoundPage } from "./pages/MiscPages/NotFoundPage";
 import { ErrorPage } from "./pages/MiscPages/ErrorPage";
@@ -182,12 +183,16 @@ function WrappedApp() {
                 <div>
                   <App />
                 </div>
+                <div>
+                  <Footer />
+                </div>
               </div>
             </div>,
           false:
             <div>
               <Navbar />
               <App />
+              <Footer />
             </div>
         }[isLoggedIn]
       }
