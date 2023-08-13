@@ -17,32 +17,32 @@ export const Footer = () => {
         </div>
       </div>
       <div className="flex-row space-y-5 mt-24">
-        <div className="text-2xl text-white">
+        <div className="text-2xl text-white font-nunito">
           Companies
         </div>
-        <div className="text-lg text-white pt-6">
+        <div className="text-lg text-white pt-6 font-nunito">
           <Link to="/">Home</Link>
         </div>
-        <div className="text-lg text-white">
+        <div className="text-lg text-white font-nunito">
           <Link to="/about_us">About Us</Link>
         </div>
-        <div className="text-lg text-white">
+        <div className="text-lg text-white font-nunito">
           <Link to="/faq">FAQ</Link>
         </div>
-        <div className="text-lg text-white">
+        <div className="text-lg text-white font-nunito">
           <Link to="/contact_us">Contact Us</Link>
         </div>
       </div>
       <div className="flex-row space-y-5 mt-24">
-        <div className="text-2xl text-white">
+        <div className="text-2xl text-white font-nunito">
             Address
         </div>
-        <div className="text-base text-white pt-6">
+        <div className="text-base text-white pt-6 font-nunito">
           New York, ..........
         </div>
       </div>
       <div className="flex-row space-y-5 mt-24">
-        <div className="text-2xl text-white">
+        <div className="text-2xl text-white font-nunito">
           Want to get involved? <br></br> Contact Us!
         </div>
       </div>

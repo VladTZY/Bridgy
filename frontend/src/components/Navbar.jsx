@@ -30,9 +30,11 @@ export const Navbar = () => {
       </div>
       <div className="flex items-center">
         <div className="text-lg">
-          <button className="bg-[#a6c1ee] text-white px-10 py-3 rounded-full hover:bg-[#87acec]">
-            <Link to="/login">Login</Link>
-          </button>
+          <Link to="/login">
+            <button className="bg-[#a6c1ee] text-white px-10 py-3 rounded-full hover:bg-[#87acec]">
+              Login
+            </button>
+          </Link>
         </div>
       </div>
     </div>

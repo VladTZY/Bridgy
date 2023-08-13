@@ -5,6 +5,7 @@ import { Navbar } from "./components/Navbar";
 import { MiniNavbar } from "./components/MiniNavbar";
 import { Sidebar } from "./components/Sidebar";
 import { Footer } from "./components/Footer";
+import { MiniFooter } from "./components/MiniFooter";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { NotFoundPage } from "./pages/MiscPages/NotFoundPage";
 import { ErrorPage } from "./pages/MiscPages/ErrorPage";
@@ -184,7 +185,7 @@ function WrappedApp() {
                   <App />
                 </div>
                 <div>
-                  <Footer />
+                  <MiniFooter />
                 </div>
               </div>
             </div>,
