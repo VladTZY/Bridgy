@@ -2,6 +2,26 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => {
 
+  const scToHome = () => {
+    window.scrollTo({top: 0, behavior: "smooth"});
+  }
+
+  const scToAboutUs = () => {
+    window.scrollTo({top: 400, behavior: "smooth"});
+  };
+
+  const scToFAQ = () => {
+    window.scrollTo({top: 1200, behavior: "smooth"});
+  };
+
+  const scToContactUs = () => {
+    window.scrollTo({top: 1600, behavior: "smooth"});
+  };
+
+  const scToMeetOurCharities = () => {
+    window.scrollTo({top: 800, behavior: "smooth"});
+  };
+
   return (
     <div className="flex-row items-center h-[500px] bg-[#02040D]">
     <div className="flex items-start justify-around h-[85%] bg-[#02040D]">
@@ -20,17 +40,33 @@ export const Footer = () => {
         <div className="text-2xl text-white font-nunito">
           Companies
         </div>
-        <div className="text-lg text-white pt-6 font-nunito">
-          <Link to="/">Home</Link>
+        <div>
+          <button onClick={scToHome}>
+            <div className="text-lg text-white pt-4 font-nunito">
+              Home
+            </div>
+          </button>
         </div>
-        <div className="text-lg text-white font-nunito">
-          <Link to="/about_us">About Us</Link>
+        <div>
+          <button onClick={scToAboutUs}>
+            <div className="text-lg text-white pt-4 font-nunito">
+              About Us
+            </div>
+          </button>
         </div>
-        <div className="text-lg text-white font-nunito">
-          <Link to="/faq">FAQ</Link>
+        <div>
+          <button onClick={scToFAQ}>
+            <div className="text-lg text-white pt-4 font-nunito">
+              FAQ
+            </div>
+          </button>
         </div>
-        <div className="text-lg text-white font-nunito">
-          <Link to="/contact_us">Contact Us</Link>
+        <div>
+          <button onClick={scToContactUs}>
+            <div className="text-lg text-white pt-4 font-nunito">
+              Contact Us
+            </div>
+          </button>
         </div>
       </div>
       <div className="flex-row space-y-5 mt-24">
