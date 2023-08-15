@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
+import insta from '../../Bridgy_Assets/icon/instagram white.svg';
+import twitter from '../../Bridgy_Assets/icon/twitter white.svg';
+import telg from '../../Bridgy_Assets/icon/telegram white.svg';
+import yt from '../../Bridgy_Assets/icon/youtube white.svg';
 
 export const MiniFooter = () => {
 
   return (
-    <div className="flex items-center justify-between h-[50px] w-full bg-[#2135D9]">
+    <div className="flex items-center justify-between h-[60px] w-full bg-[#2135D9]">
       <div className="text-gray-400 pl-60 text-sm">
         © Copyright 2023 Bridgy | All rights reserved. 
       </div>
-      <div className="flex items-center pr-8 space-x-2">
-        <img src="http://ih0.redbubble.net/image.12044100.3946/sticker,375x360.png" alt="react logo" style={{ width: '50px', height: '50px'}}/>
-        <img src="http://ih0.redbubble.net/image.12044100.3946/sticker,375x360.png" alt="react logo" style={{ width: '50px', height: '50px'}}/>
-        <img src="http://ih0.redbubble.net/image.12044100.3946/sticker,375x360.png" alt="react logo" style={{ width: '50px', height: '50px'}}/>
-        <img src="http://ih0.redbubble.net/image.12044100.3946/sticker,375x360.png" alt="react logo" style={{ width: '50px', height: '50px'}}/>
+      <div className="flex items-center pr-20 space-x-3">
+      <img src={insta} alt="react logo" style={{ width: '40px', height: '40px'}}/>
+          <img src={twitter} alt="react logo" style={{ width: '40px', height: '40px'}}/>
+          <img src={telg} alt="react logo" style={{ width: '40px', height: '40px'}}/>
+          <img src={yt} alt="react logo" style={{ width: '40px', height: '40px'}}/>
       </div>
     </div>
   );

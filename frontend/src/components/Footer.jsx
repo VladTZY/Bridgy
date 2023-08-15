@@ -1,4 +1,11 @@
 import { Link } from "react-router-dom";
+import logo from '../../Bridgy_Assets/LOGO BRIDGY/fav icon/SVG (1).svg';
+import insta from '../../Bridgy_Assets/icon/instagram white.svg';
+import twitter from '../../Bridgy_Assets/icon/twitter white.svg';
+import telg from '../../Bridgy_Assets/icon/telegram white.svg';
+import yt from '../../Bridgy_Assets/icon/youtube white.svg';
+
+
 
 export const Footer = () => {
 
@@ -25,7 +32,8 @@ export const Footer = () => {
   return (
     <div className="flex-row items-center h-[500px] bg-[#02040D]">
     <div className="flex items-start justify-around h-[85%] bg-[#02040D]">
-      <div className="flex-row items-center mt-40">
+      <div className="flex-row items-center mt-24">
+        <img src={logo} alt="react logo" style={{ width: '150px', height: '150px'}}/>
         <div className="text-white text-4xl font-nunito">
           Bridgy
         </div>
@@ -80,6 +88,12 @@ export const Footer = () => {
       <div className="flex-row space-y-5 mt-24">
         <div className="text-2xl text-white font-nunito">
           Want to get involved? <br></br> Contact Us!
+        </div>
+        <div className="flex space-x-6">
+          <img src={insta} alt="react logo" style={{ width: '40px', height: '40px'}}/>
+          <img src={twitter} alt="react logo" style={{ width: '40px', height: '40px'}}/>
+          <img src={telg} alt="react logo" style={{ width: '40px', height: '40px'}}/>
+          <img src={yt} alt="react logo" style={{ width: '40px', height: '40px'}}/>
         </div>
       </div>
     </div>

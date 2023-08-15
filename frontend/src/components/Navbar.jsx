@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from '../../Bridgy_Assets/LOGO BRIDGY/Logo/SVG.svg';
 
 export const Navbar = () => {
 
@@ -23,15 +24,14 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between w-[90%]">
-      <div className="flex w-80 h-20 items-center">
-        <img src="http://ih0.redbubble.net/image.12044100.3946/sticker,375x360.png" alt="react logo" style={{ width: '70px', height: '70px'}}/>
-        <div className="hover:text-[#2135D9] text-5xl">
-          <Link to="/">Bridgy</Link>
-        </div>
+    <div className="flex px-20 justify-between h-[100px]">
+      <div className="flex items-center">
+        <Link to="/">
+          <img src={logo} alt="react logo" style={{ width: '120px', height: '120px'}}/>
+        </Link>
       </div>
 
-      <div className="flex pl-96 gap-10 items-center">
+      <div className="flex gap-10 items-center">
          <button onClick={scToHome}>
           <div className="hover:underline underline-offset-8 decoration-2 hover:text-[#2135D9] text-lg">
             Home
@@ -57,14 +57,14 @@ export const Navbar = () => {
             Contact Us
           </div>
         </button>
-      </div>
-      <div className="flex items-center">
-        <div className="text-lg">
-          <Link to="/login">
-            <button className="bg-[#2EA0FB] text-white px-10 py-3 rounded-full hover:bg-[#2135D9]">
-              Login
-            </button>
-          </Link>
+        <div className="flex items-center ml-10">
+          <div className="text-lg">
+            <Link to="/login">
+              <button className="bg-[#2EA0FB] text-white px-10 py-3 rounded-full hover:bg-[#2135D9]">
+                Login
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
