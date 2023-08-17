@@ -8,19 +8,19 @@ export const Navbar = () => {
   }
 
   const scToAboutUs = () => {
-    window.scrollTo({top: 400, behavior: "smooth"});
+    window.scrollTo({top: 1000, behavior: "smooth"});
   };
 
   const scToFAQ = () => {
-    window.scrollTo({top: 1200, behavior: "smooth"});
+    window.scrollTo({top: 2100, behavior: "smooth"});
   };
 
   const scToContactUs = () => {
-    window.scrollTo({top: 1600, behavior: "smooth"});
+    window.scrollTo({top: 3100, behavior: "smooth"});
   };
 
   const scToMeetOurCharities = () => {
-    window.scrollTo({top: 800, behavior: "smooth"});
+    window.scrollTo({top: 4100, behavior: "smooth"});
   };
 
   return (

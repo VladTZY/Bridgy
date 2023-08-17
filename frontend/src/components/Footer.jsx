@@ -14,7 +14,7 @@ export const Footer = () => {
   }
 
   const scToAboutUs = () => {
-    window.scrollTo({top: 400, behavior: "smooth"});
+    window.scrollTo({top: 1000, behavior: "smooth"});
   };
 
   const scToFAQ = () => {
