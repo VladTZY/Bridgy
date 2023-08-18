@@ -2,6 +2,7 @@ const {
   UserModel,
   SchoolModel,
   OrganizationModel,
+  LocationModel,
 } = require("../database/sequelize");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -120,6 +121,9 @@ const getProfileInfo = async (req, res) => {
     if (!id) throw Error("Id required");
 
     const user = await UserModel.findByPk(id);
+    const userLocation = await LocationModel.findByPk(id, {
+      attributes: { exclude: ["id"] },
+    });
     const institutionId = await getInstutionId(user);
 
     const userInfo = {
@@ -127,6 +131,7 @@ const getProfileInfo = async (req, res) => {
       email: user.email,
       phoneNumber: user.phoneNumber,
       role: user.role,
+      location: userLocation,
       institutionId: institutionId,
     };
 
