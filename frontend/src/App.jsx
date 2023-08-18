@@ -183,7 +183,7 @@ function WrappedApp() {
           ),
           false: {
             true: (
-              <div>
+              <div className="flex flex-col">
                 <Navbar />
                 <App />
               </div>
