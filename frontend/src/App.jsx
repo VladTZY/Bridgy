@@ -174,19 +174,11 @@ function WrappedApp() {
       {
         {
           true: (
-            <div>
+            <div className="grid auto-rows-auto grid-cols-12 grid-rows-8 gap-0 h-max">
               <MiniNavbar />
-              <div className="space-x-80">
-                <div>
-                  <Sidebar />
-                </div>
-                <div>
-                  <App />
-                </div>
-                <div>
-                  <MiniFooter />
-                </div>
-              </div>
+              <Sidebar />
+              <App />
+              <MiniFooter />
             </div>
           ),
           false: {
