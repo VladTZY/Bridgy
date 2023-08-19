@@ -4,6 +4,7 @@ import { LoginPage } from "./pages/MiscPages/LoginPage";
 import { HomePage } from "./pages/MiscPages/HomePage";
 import { Navbar } from "./components/Navbar";
 import { MiniNavbar } from "./components/MiniNavbar";
+import { LoginNavbar } from "./components/LoginNavbar";
 import { Sidebar } from "./components/Sidebar";
 import { Footer } from "./components/Footer";
 import { MiniFooter } from "./components/MiniFooter";
@@ -158,7 +159,7 @@ function App() {
         element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" />}
       />
       <Route
-        path="/oportunity/:id"
+        path="/opportunity/:id"
         element={isLoggedIn ? <OportunityPage /> : <Navigate to="/login" />}
       />
       <Route path="*" element={<NotFoundPage />} />
@@ -184,7 +185,7 @@ function WrappedApp() {
           false: {
             true: (
               <div className="flex flex-col">
-                <Navbar />
+                <LoginNavbar />
                 <App />
               </div>
             ),

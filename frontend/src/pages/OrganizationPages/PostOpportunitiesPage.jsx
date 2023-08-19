@@ -79,7 +79,7 @@ export const PostOpportunitiesPage = () => {
               <div className="w-full">
                 <label>
                   <div className="flex">
-                    <img className="my-auto" src={ClockIcon} />
+                    <img className="my-auto" src={TimeIcon} />
                     <p className="my-auto text-xl">Capacity</p>
                   </div>
                   <input
@@ -94,7 +94,7 @@ export const PostOpportunitiesPage = () => {
               <div className="w-full mx-8">
                 <label>
                   <div className="flex">
-                    <img className="my-auto" src={TimeIcon} />
+                    <img className="my-auto" src={ClockIcon} />
                     <p className="my-auto text-xl">Required hours</p>
                   </div>
                   <input
@@ -109,7 +109,7 @@ export const PostOpportunitiesPage = () => {
               <div className="w-full">
                 <label>
                   <div className="flex">
-                    <img className="my-auto" src={ClockIcon} />
+                    <img className="my-auto" src={CalendarIcon} />
                     <p className="my-auto text-xl">Date and time</p>
                   </div>
                   <input
@@ -171,7 +171,7 @@ export const PostOpportunitiesPage = () => {
 
             <div>
               <button
-                className="bg-[#2EA0FB] text-white mt-5 py-4 px-10 rounded-[50px]"
+                className="bg-[#2EA0FB] text-white mt-5 py-4 px-10 rounded-[50px] hover:bg-[#2135D9]"
                 type="submit"
               >
                 Submit

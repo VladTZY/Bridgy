@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Card } from "../../components/Card";
+import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png"
 
 export const FindOpportunitiesPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -30,8 +31,13 @@ export const FindOpportunitiesPage = () => {
           <Card
             key={event.id}
             id={event.id}
-            name={event.name}
+            title={event.name}
             description={event.description}
+            date={event.time}
+            location={event.location}
+            duration={event.hours}
+            event_type={"opportunity"}
+            pic={pic}
           />
         );
       })}
