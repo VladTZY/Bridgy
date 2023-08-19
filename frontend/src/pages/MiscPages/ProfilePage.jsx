@@ -52,7 +52,7 @@ export const ProfilePage = () => {
         <div className="flex items-end">
           <button className="bg-[#2135D9] text-white m-5 rounded-[50px]">
             <div className="flex my-4 mx-12">
-              <img className="my-auto w-8 h-8" src={EditProfileIcon} />{" "}
+              <img className="my-auto w-8 h-8" src={EditProfileIcon} />
               <p className="ml-2 my-auto text-xl">Edit profile</p>
             </div>
           </button>
