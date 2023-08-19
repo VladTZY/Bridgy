@@ -18,18 +18,51 @@ export const SchoolStudentsMyPage = () => {
   }, [jwt]);
 
   return (
-    <div>
-      {students.map((student) => {
-        return (
-          <div key={student.id} className="bg-cyan-500 mt-5">
-            <h1>{student.username}</h1>
-            <p>{student.id}</p>
-            <a href={`http://127.0.0.1:5173/profile/${student.id}`}>
-              View profile
-            </a>
-          </div>
-        );
-      })}
+    <div className="col-span-10 row-span-6 col-start-3 row-start-2 h-full bg-gray-100 flex flex-col p-5">
+      <h1 className="text-4xl font-semibold">Students</h1>
+
+      <div className="rounded-[15px] overflow-hidden mt-5">
+        <table className="min-w-full">
+          <thead className="bg-[#2135D9] text-white">
+            <tr>
+              <th className="px-6 py-3 text-left text-l font-medium">
+                Username
+              </th>
+              <th className="px-6 py-3 text-left text-l font-medium">Email</th>
+              <th className="px-6 py-3 text-left text-l font-medium">
+                Phone number
+              </th>
+              <th className="px-6 py-3 text-left text-l font-medium">
+                Profile
+              </th>
+            </tr>
+          </thead>
+
+          <tbody className="bg-white divide-y divide-gray-200">
+            {students.map((student) => {
+              return (
+                <tr key={student.id} className="hover:bg-gray-100">
+                  <td className="px-6 py-4 font-semibold">
+                    {student.username}
+                  </td>
+                  <td className="px-6 py-4 font-semibold">{student.email}</td>
+                  <td className="px-6 py-4 font-semibold">
+                    {student.phoneNumber}
+                  </td>
+                  <td className="px-6 py-4 font-semibold">
+                    <a
+                      className="bg-[#2EA0FB] py-2 px-5 rounded-[50px] text-white text-l"
+                      href={`http://127.0.0.1:5173/profile/${student.id}`}
+                    >
+                      View profile
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
