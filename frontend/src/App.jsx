@@ -50,7 +50,7 @@ function App() {
         path="/student/dashboard"
         element={
           role == "STUDENT" ? (
-            <HomePage />
+            <StudentDashboardPage />
           ) : isLoggedIn ? (
             <ErrorPage />
           ) : (

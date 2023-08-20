@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../../Bridgy_Assets/LOGO BRIDGY/fav icon/SVG (1).svg";
+import notificationsIcon from "../../Bridgy_Assets/icon/notification black.svg";
 
 export const MiniNavbar = () => {
   const name = useSelector((state) => state.auth.username);
@@ -8,7 +9,7 @@ export const MiniNavbar = () => {
   return (
     <div className="col-span-12 row-span-1">
       <div className="flex justify-between w-[90%]">
-        <div className="flex w-80 h-20 items-center">
+        <div className="flex w-80 items-center">
           <img
             src={logo}
             alt="react logo"
@@ -20,7 +21,7 @@ export const MiniNavbar = () => {
         </div>
         <div className="flex items-center">
           <img
-            src="http://ih0.redbubble.net/image.12044100.3946/sticker,375x360.png"
+            src={notificationsIcon}
             alt="react logo"
             style={{ width: "20px", height: "20px" }}
           />

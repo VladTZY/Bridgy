@@ -21,7 +21,7 @@ export const SchoolStudentsMyPage = () => {
     <div className="col-span-10 row-span-6 col-start-3 row-start-2 h-full bg-gray-100 flex flex-col p-5">
       <h1 className="text-4xl font-semibold">Students</h1>
 
-      <div className="rounded-[15px] overflow-hidden mt-5">
+      <div className="rounded-[15px] overflow-hidden mt-10">
         <table className="min-w-full">
           <thead className="bg-[#2135D9] text-white">
             <tr>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Card } from "../../components/Card";
-import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
 
 export const FindOpportunitiesPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -25,22 +25,26 @@ export const FindOpportunitiesPage = () => {
   }, [type]);
 
   return (
-    <div>
-      {events.map((event) => {
-        return (
-          <Card
-            key={event.id}
-            id={event.id}
-            title={event.name}
-            description={event.description}
-            date={event.time}
-            location={event.location}
-            duration={event.hours}
-            event_type={"opportunity"}
-            pic={pic}
-          />
-        );
-      })}
+    <div className="col-span-10 row-span-6 col-start-3 row-start-2 h-full bg-gray-100 flex flex-col">
+      <h1 className="text-4xl font-semibold m-10">Published Oportunities</h1>
+
+      <div className="mx-6 flex flex-wrap justify-center">
+        {events.map((event) => {
+          return (
+            <Card
+              key={event.id}
+              id={event.id}
+              title={event.name}
+              description={event.description}
+              date={event.time}
+              location={event.location}
+              duration={event.hours}
+              event_type={"opportunity"}
+              pic={pic}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
