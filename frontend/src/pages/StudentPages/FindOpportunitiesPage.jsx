@@ -25,7 +25,7 @@ export const FindOpportunitiesPage = () => {
   }, [type]);
 
   return (
-    <div className="col-span-10 row-span-6 col-start-3 row-start-2 h-full bg-gray-100 flex flex-col">
+    <div className="h-full bg-gray-100 flex flex-col">
       <h1 className="text-4xl font-semibold m-10">Published Oportunities</h1>
 
       <div className="mx-6 flex flex-wrap justify-center">

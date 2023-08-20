@@ -27,143 +27,145 @@ function App() {
   const location = useLocation();
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          !isLoggedIn ? (
-            <LandingPage />
-          ) : (
-            {
-              STUDENT: <Navigate to="/student/dashboard" />,
-              ORGANIZATION: <Navigate to="/organization/dashboard" />,
-              SCHOOL: <Navigate to="/school/dashboard" />,
-            }[role]
-          )
-        }
-      />
-      <Route
-        path="/login"
-        element={!isLoggedIn ? <LoginPage /> : <Navigate to="/" />}
-      />
-      <Route
-        path="/student/dashboard"
-        element={
-          role == "STUDENT" ? (
-            <StudentDashboardPage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/organization/dashboard"
-        element={
-          role == "ORGANIZATION" ? (
-            <HomePage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/school"
-        element={
-          role == "SCHOOL" ? (
-            <HomePage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/student/find_opportunities"
-        element={
-          role == "STUDENT" ? (
-            <FindOpportunitiesPage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/student/dashboard"
-        element={
-          role == "STUDENT" ? (
-            <StudentDashboardPage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/organization/missions"
-        element={
-          role == "ORGANIZATION" ? (
-            <OrganizationMyOportunitiesPage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/organization/post_opportunities"
-        element={
-          role == "ORGANIZATION" ? (
-            <PostOpportunitiesPage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/school/dashboard"
-        element={
-          role == "SCHOOL" ? (
-            <SchoolStudentsMyPage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/school/add_student"
-        element={
-          role == "SCHOOL" ? (
-            <AddStudent />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/profile/:id"
-        element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" />}
-      />
-      <Route
-        path="/opportunity/:id"
-        element={isLoggedIn ? <OportunityPage /> : <Navigate to="/login" />}
-      />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <div className="w-full">
+      <Routes>
+        <Route
+          path="/"
+          element={
+            !isLoggedIn ? (
+              <LandingPage />
+            ) : (
+              {
+                STUDENT: <Navigate to="/student/dashboard" />,
+                ORGANIZATION: <Navigate to="/organization/dashboard" />,
+                SCHOOL: <Navigate to="/school/dashboard" />,
+              }[role]
+            )
+          }
+        />
+        <Route
+          path="/login"
+          element={!isLoggedIn ? <LoginPage /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/student/dashboard"
+          element={
+            role == "STUDENT" ? (
+              <StudentDashboardPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/organization/dashboard"
+          element={
+            role == "ORGANIZATION" ? (
+              <HomePage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/school"
+          element={
+            role == "SCHOOL" ? (
+              <HomePage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/student/find_opportunities"
+          element={
+            role == "STUDENT" ? (
+              <FindOpportunitiesPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/student/dashboard"
+          element={
+            role == "STUDENT" ? (
+              <StudentDashboardPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/organization/missions"
+          element={
+            role == "ORGANIZATION" ? (
+              <OrganizationMyOportunitiesPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/organization/post_opportunities"
+          element={
+            role == "ORGANIZATION" ? (
+              <PostOpportunitiesPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/school/dashboard"
+          element={
+            role == "SCHOOL" ? (
+              <SchoolStudentsMyPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/school/add_student"
+          element={
+            role == "SCHOOL" ? (
+              <AddStudent />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/profile/:id"
+          element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/opportunity/:id"
+          element={isLoggedIn ? <OportunityPage /> : <Navigate to="/login" />}
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </div>
   );
 }
 
@@ -175,10 +177,12 @@ function WrappedApp() {
       {
         {
           true: (
-            <div className="grid auto-rows-auto grid-cols-12 grid-rows-8 gap-0 h-max">
+            <div className="flex flex-col">
               <MiniNavbar />
-              <Sidebar />
-              <App />
+              <div className="flex h-full">
+                <Sidebar />
+                <App />
+              </div>
               <MiniFooter />
             </div>
           ),

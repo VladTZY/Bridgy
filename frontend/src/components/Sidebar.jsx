@@ -28,7 +28,7 @@ export const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="col-span-2 row-span-6 row-start-2 flex flex-col justify-between">
+    <div className="flex flex-col justify-between">
       <div>
         {
           {

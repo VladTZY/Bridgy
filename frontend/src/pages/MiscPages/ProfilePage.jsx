@@ -29,7 +29,7 @@ export const ProfilePage = () => {
   }, [id]);
 
   return (
-    <div className="col-span-10 row-span-6 col-start-3 row-start-2 h-full bg-gray-100 flex flex-col">
+    <div className=" h-full bg-gray-100 flex flex-col">
       <div className="bg-white m-5 rounded-3xl flex justify-between">
         <div>
           <div className="flex m-5">

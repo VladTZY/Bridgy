@@ -35,7 +35,7 @@ export const StudentDashboardPage = () => {
   }, [jwt]);
 
   return (
-    <div className="col-span-10 row-span-6 col-start-3 row-start-2 h-full bg-gray-100 flex flex-col">
+    <div className="h-full bg-gray-100 flex flex-col">
       <div>
         <h1>Ongoing events</h1>
         {ongoingEvents.map((data) => {
