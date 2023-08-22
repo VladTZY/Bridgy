@@ -46,7 +46,7 @@ export const OrganizationMyOportunitiesPage = () => {
   return (
     <div className="min-h-full bg-gray-100 flex flex-col">
       <div className="flex flex-col">
-        <h1 className="text-4xl font-semibold m-10">Active Oportunities</h1>
+        <h1 className="text-4xl font-semibold m-10">Active Opportunities</h1>
 
         <div className="mx-6 flex flex-wrap justify-center">
           {publishedEvents.map((event) => {
@@ -68,7 +68,7 @@ export const OrganizationMyOportunitiesPage = () => {
       </div>
 
       <div className="flex flex-col">
-        <h1 className="text-4xl font-semibold m-10">Past Oportunities</h1>
+        <h1 className="text-4xl font-semibold m-10">Past Opportunities</h1>
 
         <div className="mx-6 flex flex-wrap justify-center">
           {finishedEvents.map((event) => {

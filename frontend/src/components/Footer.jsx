@@ -43,7 +43,7 @@ export const Footer = () => {
             no one cares to do
           </div>
         </div>
-        <div className="flex-row space-y-5 mt-24">
+        <div className="flex flex-col space-y-5 mt-24">
           <div className="text-2xl text-white font-nunito">Companies</div>
           <div>
             <button onClick={scToHome}>
@@ -70,13 +70,13 @@ export const Footer = () => {
             </button>
           </div>
         </div>
-        <div className="flex-row space-y-5 mt-24">
+        <div className="flex flex-col space-y-5 mt-24">
           <div className="text-2xl text-white font-nunito">Address</div>
           <div className="text-base text-white pt-6 font-nunito">
             New York, ..........
           </div>
         </div>
-        <div className="flex-row space-y-5 mt-24">
+        <div className="flex flex-col space-y-5 mt-24">
           <div className="text-2xl text-white font-nunito">
             Want to get involved? <br></br> Contact Us!
           </div>
@@ -104,7 +104,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex-row items-center space-y-6">
+      <div className="space-y-6">
         <hr className="color-[#9CA3AF] mx-28 self-center"></hr>
         <div className="text-gray-400 font-nunito text-center">
           Copyright Bridgy 2023 | Privacy Policy | Terms & Conditions

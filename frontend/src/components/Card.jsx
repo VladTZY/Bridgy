@@ -43,7 +43,7 @@ export const Card = ({
         </div>
       </div>
       <div className="mt-4 ml-6 text-3xl text-bold">{title}</div>
-      <div className="ml-6 mt-2 text-xl text-gray-700">{description}</div>
+      <div className="mx-6 mt-2 text-xl text-gray-700">{description}</div>
       <button
         className="rounded-3xl ml-4 mt-8 mb-4 px-48 py-4 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
         onClick={handleMoreInfo}

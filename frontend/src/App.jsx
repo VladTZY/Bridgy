@@ -179,9 +179,11 @@ function WrappedApp() {
           true: (
             <div className="flex flex-col">
               <MiniNavbar />
-              <div className="flex h-full">
+              <div className="flex">
                 <Sidebar />
-                <App />
+                <div style={{overflow: "scroll"}}>
+                  <App />
+                </div>
               </div>
               <MiniFooter />
             </div>
