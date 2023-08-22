@@ -20,7 +20,7 @@ export const LoginPage = () => {
 
   return (
     <div className="flex flex-wrap h-full">
-      <div className="w-6/12 flex items-center justify-center">
+      <div className="w-6/12 flex items-center justify-center content-center">
         <div className="w-8/12">
           <h1 className="font-semibold text-6xl">Login</h1>
           <p className="mt-3">

@@ -65,9 +65,31 @@ const getEventByOrganization = async (req, res) => {
   }
 };
 
+const getEventByOrganizationAndStatus = async (req, res) => {
+  try {
+    const organizationId = req.query.organizationId;
+    const status = req.query.status;
+
+    if (!status) throw Error("Status not specified");
+    if (!organizationId) throw Error("Organization Id not specified");
+
+    const events = await EventModel.findAll({
+      where: {
+        organizationId: organizationId,
+        status: status,
+      },
+    });
+
+    res.status(200).json(events);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 module.exports = {
   getEvents,
   getEventById,
   getEventsByStatus,
   getEventByOrganization,
+  getEventByOrganizationAndStatus,
 };

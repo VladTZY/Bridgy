@@ -28,3 +28,10 @@
 !!!! MORE VALIDATORS ON JOINING EVENT
 !! add some dtos
 !! look on dtos for student get events, smth easy
+
+!!! modifications on database
+
+- add name field for user
+- add bio field for user
+- add adress field for location
+- worked hours? for user??
