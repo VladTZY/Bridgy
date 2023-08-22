@@ -30,7 +30,7 @@ export const ProfilePage = () => {
 
   return (
     <div className=" h-full bg-gray-100 flex flex-col">
-      <div className="bg-white m-5 rounded-3xl flex justify-between">
+      <div className="bg-white m-10 rounded-3xl flex justify-between">
         <div>
           <div className="flex m-5">
             <img
@@ -59,12 +59,12 @@ export const ProfilePage = () => {
         </div>
       </div>
 
-      <div className="mx-5 flex flex-col h-full">
-        <h1 className="font-semibold text-3xl">Account Information</h1>
+      <div className=" flex flex-col h-full">
+        <h1 className="mx-10 font-semibold text-3xl">Account Information</h1>
 
         <div className="mt-5 text-xl font-medium text-gray-700 flex flex-col">
           <div className="flex my-2">
-            <div className="flex flex-col w-full mx-5">
+            <div className="flex flex-col w-full ml-10 mr-5">
               <label>Username</label>
               <input
                 type="text"
@@ -75,7 +75,7 @@ export const ProfilePage = () => {
               ></input>
             </div>
 
-            <div className="flex flex-col w-full mx-5">
+            <div className="flex flex-col w-full ml-5 mr-10">
               <label>Email</label>
               <input
                 type="text"
@@ -88,7 +88,7 @@ export const ProfilePage = () => {
           </div>
 
           <div className="flex my-2">
-            <div className="flex flex-col w-full mx-5">
+            <div className="flex flex-col w-full ml-10 mr-5">
               <label>Phone number</label>
               <input
                 type="text"
@@ -99,7 +99,7 @@ export const ProfilePage = () => {
               ></input>
             </div>
 
-            <div className="flex flex-col w-full mx-5">
+            <div className="flex flex-col w-full ml-5 mr-10">
               <label>Location</label>
               <input
                 type="text"
@@ -111,7 +111,7 @@ export const ProfilePage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col my-2 mx-5">
+          <div className="flex flex-col my-2 mx-10">
             <label>Bio</label>
             <textarea
               type="text"

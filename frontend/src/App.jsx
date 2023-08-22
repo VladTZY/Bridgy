@@ -27,7 +27,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full min-h-full">
       <Routes>
         <Route
           path="/"
@@ -179,7 +179,7 @@ function WrappedApp() {
           true: (
             <div className="flex flex-col">
               <MiniNavbar />
-              <div className="flex min-h-full">
+              <div className="flex h-full">
                 <Sidebar />
                 <App />
               </div>
