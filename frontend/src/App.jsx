@@ -246,7 +246,7 @@ function WrappedApp() {
               <MiniNavbar />
               <div className="flex min-h-[82%]">
                 <Sidebar />
-                <div className="w-full" style={{overflow: "scroll"}}>
+                <div className="w-full">
                   <App />
                 </div>
               </div>
