@@ -18,7 +18,7 @@ import { PostOpportunitiesPage } from "./pages/OrganizationPages/PostOpportuniti
 import { SchoolStudentsMyPage } from "./pages/SchoolPages/SchoolDashboardPage";
 import { AddStudent } from "./pages/SchoolPages/AddStudent";
 import { StudentDashboardPage } from "./pages/StudentPages/StudentDashboardPage";
-import { OportunityPage } from "./pages/MiscPages/OportunityPage";
+import { MoreInfoPage } from "./pages/MiscPages/MoreInfoPage";
 import { LandingPage } from "./pages/MiscPages/LandingPage";
 import { CreateAdminPage } from "./pages/SuperAdminPages/CreateAdminPage";
 import { CreateOrganizationPage } from "./pages/AdminPages/CreateOrganizationPage";
@@ -226,7 +226,7 @@ function App() {
         />
         <Route
           path="/opportunity/:id"
-          element={isLoggedIn ? <OportunityPage /> : <Navigate to="/login" />}
+          element={isLoggedIn ? <MoreInfoPage /> : <Navigate to="/login" />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
@@ -244,7 +244,7 @@ function WrappedApp() {
           true: (
             <div className="">
               <MiniNavbar />
-              <div className="flex min-h-[82%]">
+              <div className="flex min-h-[84%]">
                 <Sidebar />
                 <div className="w-full" style={{overflow: "scroll"}}>
                   <App />
