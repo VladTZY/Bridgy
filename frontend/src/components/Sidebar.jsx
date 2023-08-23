@@ -28,7 +28,7 @@ export const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col justify-between w-[20%]">
+    <div className="flex flex-col justify-between h-[84vh]">
       <div>
         {
           {
@@ -466,7 +466,7 @@ export const Sidebar = () => {
           )}
         </div>
       </div>
-      <div className="ml-8 mb-4">
+      <div className="ml-8 mb-4 bottom-4">
         <div className="flex items-center">
           <img
             src={help}

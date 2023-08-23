@@ -244,8 +244,10 @@ function WrappedApp() {
           true: (
             <div>
               <MiniNavbar />
-              <div className="flex min-h-[84%]">
+              <div className="flex bg-gray-100">
+                <div className="h-[84%] w-[20%] bg-white">
                 <Sidebar />
+                </div>
                 <div className="w-full">
                   <App />
                 </div>
