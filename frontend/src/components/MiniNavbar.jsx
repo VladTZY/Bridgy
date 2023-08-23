@@ -7,7 +7,7 @@ export const MiniNavbar = () => {
   const name = useSelector((state) => state.auth.username);
 
   return (
-    <div className="flex justify-between w-[90%]">
+    <div className="flex justify-between w-[90%] h-[10%]">
       <div className="flex w-80 items-center">
         <img
           src={logo}

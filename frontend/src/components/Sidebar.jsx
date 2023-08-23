@@ -28,7 +28,7 @@ export const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col justify-between w-[15%]">
+    <div className="flex flex-col justify-between w-[20%]">
       <div>
         {
           {
@@ -298,6 +298,139 @@ export const Sidebar = () => {
                           style={{ width: "30px", height: "40px" }}
                         />
                         <div className="ml-2 text-xl">Updates</div>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ),
+            ADMIN: (
+              <div className="flex-col mr-3">
+                <div>
+                  {location.pathname == "/admin/create_school" ? (
+                    <Link to="/admin/create_school">
+                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
+                        <img
+                          src={po_white}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-white text-xl">Create School</div>
+                      </div>
+                    </Link>
+                  ) : (
+                    <Link to="/admin/create_school">
+                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
+                        <img
+                          src={po_black}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-xl">Create School</div>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+                <div>
+                  {location.pathname == "/admin/create_organization" ? (
+                    <Link to="/admin/create_organization">
+                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
+                        <img
+                          src={myex_white}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-white text-xl">Create Organization</div>
+                      </div>
+                    </Link>
+                  ) : (
+                    <Link to="/admin/create_organization">
+                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
+                        <img
+                          src={myex_black}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-xl">Create Organization</div>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ),
+            SUPER_ADMIN: (
+              <div className="flex-col mr-3">
+                <div>
+                  {location.pathname == "/super_admin/create_admin" ? (
+                    <Link to="/super_admin/create_admin">
+                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
+                        <img
+                          src={fg_white}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-white text-xl">Create Admin</div>
+                      </div>
+                    </Link>
+                  ) : (
+                    <Link to="/super_admin/create_admin">
+                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
+                        <img
+                          src={fg_black}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-xl">Create Admin</div>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+                <div>
+                  {location.pathname == "/super_admin/create_school" ? (
+                    <Link to="/super_admin/create_school">
+                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
+                        <img
+                          src={po_white}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-white text-xl">Create School</div>
+                      </div>
+                    </Link>
+                  ) : (
+                    <Link to="/super_admin/create_school">
+                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
+                        <img
+                          src={po_black}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-xl">Create School</div>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+                <div>
+                  {location.pathname == "/super_admin/create_organization" ? (
+                    <Link to="/super_admin/create_organization">
+                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
+                        <img
+                          src={myex_white}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-white text-xl">Create Organization</div>
+                      </div>
+                    </Link>
+                  ) : (
+                    <Link to="/super_admin/create_organization">
+                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
+                        <img
+                          src={myex_black}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-xl">Create Organization</div>
                       </div>
                     </Link>
                   )}

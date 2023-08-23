@@ -20,10 +20,10 @@ export const Card = ({
   };
 
   return (
-    <div className="w-[500px] rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black flex-row bg-white m-3">
+    <div className="w-[450px] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white m-3">
       <img
         src={pic}
-        className="rounded-lg mx-12 mt-4"
+        className="rounded-lg mx-8 mt-4"
         style={{ height: "200px" }}
       />
       <div className="flex h-[30px] justify-around mt-4">
@@ -45,7 +45,7 @@ export const Card = ({
       <div className="mt-4 ml-6 text-3xl text-bold">{title}</div>
       <div className="mx-6 mt-2 text-xl text-gray-700">{description}</div>
       <button
-        className="rounded-3xl ml-4 mt-8 mb-4 px-48 py-4 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
+        className="rounded-3xl mx-6 mt-8 mb-4 px-36 py-4 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
         onClick={handleMoreInfo}
       >
         More info

@@ -6,7 +6,7 @@ import yt from "../../Bridgy_Assets/icon/youtube white.svg";
 
 export const MiniFooter = () => {
   return (
-    <div className="flex items-center justify-between h-20 w-full bg-[#2135D9]">
+    <div className="flex items-center justify-between h-[8%] w-full bg-[#2135D9]">
       <div className="text-gray-400 pl-60 text-sm">
         © Copyright 2023 Bridgy | All rights reserved.
       </div>

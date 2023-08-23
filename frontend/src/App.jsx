@@ -20,6 +20,9 @@ import { AddStudent } from "./pages/SchoolPages/AddStudent";
 import { StudentDashboardPage } from "./pages/StudentPages/StudentDashboardPage";
 import { OportunityPage } from "./pages/MiscPages/OportunityPage";
 import { LandingPage } from "./pages/MiscPages/LandingPage";
+import { CreateAdminPage } from "./pages/SuperAdminPages/CreateAdminPage";
+import { CreateOrganizationPage } from "./pages/AdminPages/CreateOrganizationPage";
+import { CreateSchoolPage } from "./pages/AdminPages/CreateSchoolPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -39,6 +42,8 @@ function App() {
                 STUDENT: <Navigate to="/student/dashboard" />,
                 ORGANIZATION: <Navigate to="/organization/dashboard" />,
                 SCHOOL: <Navigate to="/school/dashboard" />,
+                ADMIN: <Navigate to="admin/create_school" />,
+                SUPER_ADMIN: <Navigate to="super_admin/create_admin" />,
               }[role]
             )
           }
@@ -156,6 +161,66 @@ function App() {
           }
         />
         <Route
+          path="/admin/create_school"
+          element={
+            role == "ADMIN" ? (
+              <CreateSchoolPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/admin/create_organization"
+          element={
+            role == "ADMIN" ? (
+              <CreateOrganizationPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/super_admin/create_school"
+          element={
+            role == "SUPER_ADMIN" ? (
+              <CreateSchoolPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/super_admin/create_organization"
+          element={
+            role == "SUPER_ADMIN" ? (
+              <CreateOrganizationPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/super_admin/create_admin"
+          element={
+            role == "SUPER_ADMIN" ? (
+              <CreateAdminPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
           path="/profile/:id"
           element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" />}
         />
@@ -177,11 +242,11 @@ function WrappedApp() {
       {
         {
           true: (
-            <div className="flex flex-col">
+            <div className="">
               <MiniNavbar />
-              <div className="flex">
+              <div className="flex min-h-[82%]">
                 <Sidebar />
-                <div style={{overflow: "scroll"}}>
+                <div className="w-full" style={{overflow: "scroll"}}>
                   <App />
                 </div>
               </div>
