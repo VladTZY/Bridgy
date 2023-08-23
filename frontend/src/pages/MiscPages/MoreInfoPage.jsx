@@ -40,7 +40,7 @@ export const MoreInfoPage = () => {
   }, [id, jwt]);
 
   const isAdmin = (role, userId, eventId) => {
-    return false;
+    return true;
   };
 
   return (

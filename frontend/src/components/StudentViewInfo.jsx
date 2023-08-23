@@ -22,7 +22,7 @@ export const StudentViewInfo = ({ jwt, eventId }) => {
   };
 
   return (
-    <div className=" mt-10">
+    <div className="mt-10">
       <button className="w-[30%] rounded-full bg-[#2EA0FB] hover:bg-[#2135D9] py-5 text-white text-xl" onClick={() => joinEvent()}>Join Now</button>
     </div>
   );

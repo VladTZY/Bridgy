@@ -242,7 +242,7 @@ function WrappedApp() {
       {
         {
           true: (
-            <div className="">
+            <div>
               <MiniNavbar />
               <div className="flex min-h-[84%]">
                 <Sidebar />
