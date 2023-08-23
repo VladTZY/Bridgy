@@ -1,3 +1,3 @@
-export const OrganizationAdminOportunity = () => {
+export const OrganizationViewInfo = () => {
   return <div>OrganizationAdminOportunity</div>;
 };

@@ -60,7 +60,7 @@ export const Sidebar = () => {
                   )}
                 </div>
                 <div>
-                  {location.pathname == "/student/find_opportunities" ? (
+                  {(location.pathname == "/student/find_opportunities" || location.pathname.toString().substring(0, 12) == "/opportunity") ? (
                     <Link to="/student/find_opportunities">
                       <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
                         <img

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const StudentOportunity = ({ jwt, eventId }) => {
+export const StudentViewInfo = ({ jwt, eventId }) => {
   const navigate = useNavigate();
 
   const joinEvent = () => {
@@ -22,8 +22,8 @@ export const StudentOportunity = ({ jwt, eventId }) => {
   };
 
   return (
-    <div>
-      <button onClick={() => joinEvent()}>Join Event</button>
+    <div className=" mt-10">
+      <button className="w-[30%] rounded-full bg-[#2EA0FB] hover:bg-[#2135D9] py-5 text-white text-xl" onClick={() => joinEvent()}>Join Now</button>
     </div>
   );
 };
