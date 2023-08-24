@@ -16,7 +16,7 @@ export const StudentViewInfo = ({ jwt, eventId }) => {
         }
       )
       .then((res) => {
-        navigate("/student");
+        navigate("/student/dashboard");
       })
       .catch((error) => console.log(error));
   };

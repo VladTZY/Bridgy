@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
+import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
+
 
 import { Card } from "../../components/Card";
 
@@ -36,30 +38,48 @@ export const StudentDashboardPage = () => {
 
   return (
     <div className="h-full bg-gray-100 flex flex-col">
-      <div>
-        <h1>Ongoing events</h1>
-        {ongoingEvents.map((data) => {
-          return (
-            <Card
-              key={data.event.id}
-              name={data.event.name}
-              description={data.event.description}
-            />
-          );
-        })}
+      <div className="min-h-full bg-gray-100 flex flex-col">
+        <h1 className="text-4xl font-semibold m-10">Ongoing Events</h1>
+
+        <div className="mx-6 flex flex-wrap justify-center">
+          {ongoingEvents.map((data) => {
+            return (
+              <Card
+                key={data.event.id}
+                id={data.event.id}
+                title={data.event.name}
+                description={data.event.description}
+                date={data.event.time}
+                location={data.event.location}
+                duration={data.event.hours}
+                event_type={"opportunity"}
+                pic={pic}
+              />
+            );
+          })}
+        </div>
       </div>
 
-      <div>
-        <h1>Requested events</h1>
-        {requestedEvents.map((data) => {
-          return (
-            <Card
-              key={data.event.id}
-              name={data.event.name}
-              description={data.event.description}
-            />
-          );
-        })}
+      <div className="min-h-full bg-gray-100 flex flex-col">
+        <h1 className="text-4xl font-semibold m-10">Requested Events</h1>
+
+        <div className="mx-6 flex flex-wrap justify-center">
+          {requestedEvents.map((data) => {
+            return (
+              <Card
+                key={data.event.id}
+                id={data.event.id}
+                title={data.event.name}
+                description={data.event.description}
+                date={data.event.time}
+                location={data.event.location}
+                duration={data.event.hours}
+                event_type={"opportunity"}
+                pic={pic}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
