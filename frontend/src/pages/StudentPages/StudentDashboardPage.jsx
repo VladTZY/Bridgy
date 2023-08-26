@@ -3,7 +3,6 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
 
-
 import { Card } from "../../components/Card";
 
 export const StudentDashboardPage = () => {
@@ -41,7 +40,7 @@ export const StudentDashboardPage = () => {
       <div className="min-h-full bg-gray-100 flex flex-col">
         <h1 className="text-4xl font-semibold m-10">Ongoing Events</h1>
 
-        <div className="mx-6 flex flex-wrap justify-center">
+        <div className="mx-6 flex flex-wrap">
           {ongoingEvents.map((data) => {
             return (
               <Card
@@ -63,7 +62,7 @@ export const StudentDashboardPage = () => {
       <div className="min-h-full bg-gray-100 flex flex-col">
         <h1 className="text-4xl font-semibold m-10">Requested Events</h1>
 
-        <div className="mx-6 flex flex-wrap justify-center">
+        <div className="mx-6 flex flex-wrap">
           {requestedEvents.map((data) => {
             return (
               <Card
