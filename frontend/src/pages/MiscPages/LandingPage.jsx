@@ -13,10 +13,10 @@ export const LandingPage = () => {
   };
 
   return (
-    <div>
+    <div className="h-[10vh]">
       <Navbar />
       <div className="flex-row relative">
-        <div className="w-[100%] h-[900px] flex justify-between">
+        <div className="w-[100%] flex justify-between">
           <div className="flex-row mt-40">
             <div className="font-bold ml-32 text-8xl">Bridgy</div>
             <div className="font-bold ml-32 mt-4 text-6xl">
@@ -39,7 +39,7 @@ export const LandingPage = () => {
             <img
               className="w-full border-8 border-[#2EA0FB] border-l-0 border-t-0"
               src={pic1}
-              style={{ width: "950px", height: "800px" }}
+              style={{ width: "950px", height: "88vh" }}
             />
           </div>
         </div>

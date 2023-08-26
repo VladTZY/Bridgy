@@ -48,7 +48,7 @@ export const OrganizationMyOportunitiesPage = () => {
       <div className="flex flex-col">
         <h1 className="text-4xl font-semibold m-10">Active Opportunities</h1>
 
-        <div className="mx-6 flex flex-wrap justify-center">
+        <div className="mx-6 flex flex-wrap">
           {publishedEvents.map((event) => {
             return (
               <Card
@@ -70,7 +70,7 @@ export const OrganizationMyOportunitiesPage = () => {
       <div className="flex flex-col">
         <h1 className="text-4xl font-semibold m-10">Past Opportunities</h1>
 
-        <div className="mx-6 flex flex-wrap justify-center">
+        <div className="mx-6 flex flex-wrap">
           {finishedEvents.map((event) => {
             return (
               <Card

@@ -26,7 +26,7 @@ export const Footer = () => {
   };
 
   return (
-    <div className="flex-row items-center h-[500px] bg-[#02040D]">
+    <div className="flex-row items-center h-[55vh] bg-[#02040D]">
       <div className="flex items-start justify-around h-[85%] bg-[#02040D]">
         <div className="flex-row items-center mt-24">
           <img

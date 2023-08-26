@@ -22,11 +22,11 @@ export const LoginPage = () => {
 
   return (
     <div>
-      <div className="h-[10%]">
+      <div className="h-[10vh]">
         <LoginNavbar />
       </div>
-      <div className="flex h-[90%]">
-        <div className="mt-40 w-6/12 flex items-center justify-center content-center">
+      <div className="h-[90vh] flex">
+        <div className="w-6/12 flex items-center justify-center content-center">
           <div className="w-8/12">
             <h1 className="font-semibold text-6xl">Login</h1>
             <p className="mt-3">

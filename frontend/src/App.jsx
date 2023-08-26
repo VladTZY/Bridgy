@@ -13,7 +13,7 @@ import { NotFoundPage } from "./pages/MiscPages/NotFoundPage";
 import { ErrorPage } from "./pages/MiscPages/ErrorPage";
 import { FindOpportunitiesPage } from "./pages/StudentPages/FindOpportunitiesPage";
 import { ProfilePage } from "./pages/MiscPages/ProfilePage";
-import { OrganizationMyOportunitiesPage } from "./pages/OrganizationPages/OrganizationMissionsPage";
+import { OrganizationMyOportunitiesPage } from "./pages/OrganizationPages/MissionsPage";
 import { PostOpportunitiesPage } from "./pages/OrganizationPages/PostOpportunitiesPage";
 import { SchoolStudentsMyPage } from "./pages/SchoolPages/SchoolDashboardPage";
 import { AddStudent } from "./pages/SchoolPages/AddStudent";
@@ -29,7 +29,7 @@ function App() {
   const role = useSelector((state) => state.auth.role);
 
   return (
-    <div className="w-full min-h-full">
+    <div>
       <Routes>
         <Route
           path="/"
@@ -245,7 +245,7 @@ function WrappedApp() {
               <MiniNavbar />
               <div className="flex h-[84%] bg-gray-100">
                 <div className=" w-[20%] bg-white">
-                <Sidebar />
+                  <Sidebar />
                 </div>
                 <div className="w-full overflow-scroll">
                   <App />
@@ -254,9 +254,7 @@ function WrappedApp() {
               <MiniFooter />
             </div>
           ),
-          false: (
-            <App />
-            ),
+          false: <App />,
         }[isLoggedIn]
       }
     </BrowserRouter>
