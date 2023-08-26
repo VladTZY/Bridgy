@@ -46,37 +46,38 @@ export const MoreInfoPage = () => {
   return (
     <div className="h-full bg-gray-100 flex flex-col">
       <div className="m-5 p-5 rounded-lg bg-white flex flex-col">
-        <img className="mx-6 rounded-lg self-center" src={pic} style={{height: "600px"}} />
-        <div className="mt-8 text-6xl font-bold">
-          {event.name}
-        </div>
-        <div className="mt-4 text-xl">
-          {event.description}
-        </div>
+        <img
+          className="mx-6 rounded-lg self-center"
+          src={pic}
+          style={{ height: "600px" }}
+        />
+        <div className="mt-8 text-6xl font-bold">{event.name}</div>
+        <div className="mt-4 text-xl">{event.description}</div>
         <div className="flex h-[40px] mt-4 space-x-4">
-        <div className="flex px-28 border items-center">
-          <img src={CalendarIcon} style={{ width: "30px", height: "30px" }} />
-          <div className="text-xl text-black">
-            {event.time?.toString().substring(0, 10)} {event.time?.toString().substring(11, 16)}
+          <div className="flex px-28 border items-center">
+            <img src={CalendarIcon} style={{ width: "30px", height: "30px" }} />
+            <div className="text-xl text-black">
+              {event.time?.toString().substring(0, 10)}{" "}
+              {event.time?.toString().substring(11, 16)}
+            </div>
           </div>
-        </div>
-        <div className="flex px-28 border items-center">
-          <img src={LocationIcon} style={{ width: "30px", height: "30px" }} />
-          <div className="text-xl text-black">Location</div>
-        </div>
-        <div className="flex px-28 border items-center">
-          <img src={ClockIcon} style={{ width: "30px", height: "30px" }} />
-          <div className="text-xl text-black">{event.hours} hours</div>
-        </div>
-        <div className="flex px-28 border items-center">
-          <img src={ClockIcon} style={{ width: "30px", height: "30px" }} />
-          <div className="text-xl text-black">{event.capacity} places</div>
-        </div>
+          <div className="flex px-28 border items-center">
+            <img src={LocationIcon} style={{ width: "30px", height: "30px" }} />
+            <div className="text-xl text-black">Location</div>
+          </div>
+          <div className="flex px-28 border items-center">
+            <img src={ClockIcon} style={{ width: "30px", height: "30px" }} />
+            <div className="text-xl text-black">{event.hours} hours</div>
+          </div>
+          <div className="flex px-28 border items-center">
+            <img src={ClockIcon} style={{ width: "30px", height: "30px" }} />
+            <div className="text-xl text-black">{event.capacity} places</div>
+          </div>
         </div>
         {role == "STUDENT" ? (
           <StudentViewInfo jwt={jwt} eventId={id} />
         ) : isAdmin(role, userId, id) ? (
-          <OrganizationViewInfo />
+          <OrganizationViewInfo eventId={id} />
         ) : (
           <div></div>
         )}

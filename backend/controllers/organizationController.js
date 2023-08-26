@@ -3,6 +3,7 @@ const {
   LocationModel,
   OrganizationModel,
   UserToEvent,
+  UserModel,
 } = require("../database/sequelize");
 
 const createEvent = async (req, res) => {
@@ -75,6 +76,7 @@ const getRequestedStudents = async (req, res) => {
         eventId: eventId,
         status: "REQUESTED",
       },
+      include: UserModel,
     });
 
     res.status(200).json(userToEvent);
