@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
 import logo from '../../Bridgy_Assets/LOGO BRIDGY/Logo/SVG.svg';
+import { useNavigate } from "react-router-dom";
+
 
 export const Navbar = () => {
+
+  const navigate = useNavigate();
+
+  const handleMoreInfo = () => {
+    navigate("/login");
+  };
 
   const scToHome = () => {
     window.scrollTo({top: 0, behavior: "smooth"});
@@ -24,7 +32,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="flex px-20 justify-between h-[100px]">
+    <div className="flex px-20 justify-between h-[10%]">
       <div className="flex items-center">
         <Link to="/">
           <img src={logo} alt="react logo" style={{ width: '120px', height: '120px'}}/>
@@ -59,11 +67,9 @@ export const Navbar = () => {
         </button>
         <div className="flex items-center ml-10">
           <div className="text-lg">
-            <Link to="/login">
-              <button className="bg-[#2EA0FB] text-white px-10 py-3 rounded-full hover:bg-[#2135D9]">
+              <button onClick={handleMoreInfo} className="bg-[#2EA0FB] text-white px-10 py-3 rounded-full hover:bg-[#2135D9]">
                 Login
               </button>
-            </Link>
           </div>
         </div>
       </div>

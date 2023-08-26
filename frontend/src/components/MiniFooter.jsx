@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import insta from "../../Bridgy_Assets/icon/instagram white.svg";
 import twitter from "../../Bridgy_Assets/icon/twitter white.svg";
 import telg from "../../Bridgy_Assets/icon/telegram white.svg";

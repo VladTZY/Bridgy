@@ -27,7 +27,6 @@ import { CreateSchoolPage } from "./pages/AdminPages/CreateSchoolPage";
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
-  const location = useLocation();
 
   return (
     <div className="w-full min-h-full">
@@ -244,32 +243,20 @@ function WrappedApp() {
           true: (
             <div>
               <MiniNavbar />
-              <div className="flex bg-gray-100">
-                <div className="h-[84%] w-[20%] bg-white">
+              <div className="flex h-[84%] bg-gray-100">
+                <div className=" w-[20%] bg-white">
                 <Sidebar />
                 </div>
-                <div className="w-full">
+                <div className="w-full overflow-scroll">
                   <App />
                 </div>
               </div>
               <MiniFooter />
             </div>
           ),
-          false: {
-            true: (
-              <div className="flex flex-col h-full">
-                <LoginNavbar />
-                <App />
-              </div>
+          false: (
+            <App />
             ),
-            false: (
-              <div>
-                <Navbar />
-                <App />
-                <Footer />
-              </div>
-            ),
-          }[location.pathname === "/login"],
         }[isLoggedIn]
       }
     </BrowserRouter>
