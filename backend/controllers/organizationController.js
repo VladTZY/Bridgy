@@ -54,11 +54,40 @@ const createEvent = async (req, res) => {
   }
 };
 
-const confirmStudent = async (req, res) => {
-  const eventId = req.query.event;
-  const studentId = req.query.student;
-
+const getRequestedStudents = async (req, res) => {
   try {
+    const eventId = req.query.eventId;
+
+    if (!eventId) throw Error("Event id not specified");
+
+    const event = await EventModel.findOne({
+      where: {
+        id: eventId,
+      },
+      include: OrganizationModel,
+    });
+
+    if (event.organization.adminId != req.user.id)
+      throw Error("Not admin for this event");
+
+    const userToEvent = await UserToEvent.findAll({
+      where: {
+        eventId: eventId,
+        status: "REQUESTED",
+      },
+    });
+
+    res.status(200).json(userToEvent);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const confirmStudent = async (req, res) => {
+  try {
+    const eventId = req.query.event;
+    const studentId = req.query.student;
+
     if (!eventId) throw Error("Event id not specified");
 
     if (!studentId) throw Error("Student id not specified");
@@ -95,10 +124,10 @@ const confirmStudent = async (req, res) => {
 };
 
 const rejectStudent = async (req, res) => {
-  const eventId = req.query.event;
-  const studentId = req.query.student;
-
   try {
+    const eventId = req.query.event;
+    const studentId = req.query.student;
+
     if (!eventId) throw Error("Event id not specified");
 
     if (!studentId) throw Error("Student id not specified");
@@ -176,4 +205,10 @@ const finishEvent = async (req, res) => {
   }
 };
 
-module.exports = { createEvent, confirmStudent, rejectStudent, finishEvent };
+module.exports = {
+  createEvent,
+  getRequestedStudents,
+  confirmStudent,
+  rejectStudent,
+  finishEvent,
+};
