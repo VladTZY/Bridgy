@@ -1,12 +1,8 @@
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import { LoginPage } from "./pages/MiscPages/LoginPage";
 import { HomePage } from "./pages/MiscPages/HomePage";
-import { Navbar } from "./components/Navbar";
 import { MiniNavbar } from "./components/MiniNavbar";
-import { LoginNavbar } from "./components/LoginNavbar";
 import { Sidebar } from "./components/Sidebar";
-import { Footer } from "./components/Footer";
 import { MiniFooter } from "./components/MiniFooter";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { NotFoundPage } from "./pages/MiscPages/NotFoundPage";

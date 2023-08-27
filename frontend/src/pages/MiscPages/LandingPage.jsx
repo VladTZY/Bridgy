@@ -13,8 +13,10 @@ export const LandingPage = () => {
   };
 
   return (
-    <div className="h-[10vh]">
-      <Navbar />
+    <div>
+      <div className="h-[15vh]">
+        <Navbar />
+      </div>
       <div className="flex-row relative">
         <div className="w-[100%] flex justify-between">
           <div className="flex-row mt-40">
@@ -39,11 +41,11 @@ export const LandingPage = () => {
             <img
               className="w-full border-8 border-[#2EA0FB] border-l-0 border-t-0"
               src={pic1}
-              style={{ width: "950px", height: "88vh" }}
+              style={{ height: "85vh" }}
             />
           </div>
         </div>
-        <div className="w-[100%] h-[1000px] flex-row space-y-16">
+        <div className="w-[100%] h-screen flex-row space-y-16">
           <div className="mt-16 text-center font-bold text-6xl">
             Our <span className="text-[#2135D9]"> Founding </span> Story
           </div>
@@ -51,7 +53,7 @@ export const LandingPage = () => {
             <img
               className="border-8 border-[#2EA0FB] border-r-0 border-b-0"
               src={pic2}
-              style={{ width: "700px", height: "600px" }}
+              style={{ height: "60vh" }}
             />
             <div className="flex-row ml-8">
               <div className="text-3xl">
@@ -91,7 +93,7 @@ export const LandingPage = () => {
             that void.
           </div>
         </div>
-        <div className="w-[100%] h-[700px] flex-row space-x-20">
+        <div className="w-[100%] h-[70vh] flex-row space-x-20">
           <div className="flex-row mx-40 py-32 bg-[#2135D9] text-center rounded-3xl">
             <div className="text-white text-6xl">
               Meet Our Extraordinary Team
@@ -120,11 +122,11 @@ export const LandingPage = () => {
               schools in the <br></br> most efficient and secure ways possible.
             </div>
           </div>
-          <div className="mt-32 w-full h-[800px] bg-gradient-to-r from-[#1e1e1e] to-[#696969] relative">
+          <div className="mt-32 w-full h-[90vh] bg-gradient-to-r from-[#1e1e1e] to-[#696969] relative">
             <img
               src={pic3}
               className="absolute w-full mix-blend-overlay"
-              style={{ height: "800px" }}
+              style={{ height: "90vh" }}
             />
             <div className="text-7xl text-white ml-40 pt-60">For Schools</div>
             <ul className="text-2xl text-white ml-40 list-disc pt-10 space-y-4">
@@ -143,11 +145,11 @@ export const LandingPage = () => {
               </li>
             </ul>
           </div>
-          <div className="w-full h-[800px] bg-gradient-to-r from-[#696969] to-[#1e1e1e] relative">
+          <div className="w-full h-[90vh] bg-gradient-to-r from-[#696969] to-[#1e1e1e] relative">
             <img
               src={pic4}
               className="absolute w-full mix-blend-overlay"
-              style={{ height: "800px" }}
+              style={{ height: "90vh" }}
             />
             <div className="text-7xl text-white pt-60 text-right mr-40">
               For Charities
@@ -163,11 +165,11 @@ export const LandingPage = () => {
               </li>
             </ul>
           </div>
-          <div className="w-full h-[800px] bg-gradient-to-r from-[#1e1e1e] to-[#696969] relative">
+          <div className="w-full h-[90vh] bg-gradient-to-r from-[#1e1e1e] to-[#696969] relative">
             <img
               src={pic5}
               className="absolute w-full mix-blend-overlay"
-              style={{ height: "800px" }}
+              style={{ height: "90vh" }}
             />
             <div className="text-7xl text-white pt-60 ml-40">For Students</div>
             <ul className="text-2xl text-white list-disc pt-10 space-y-4 ml-40">

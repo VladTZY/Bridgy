@@ -22,10 +22,10 @@ export const LoginPage = () => {
 
   return (
     <div>
-      <div className="h-[10vh]">
+      <div className="h-[15vh]">
         <LoginNavbar />
       </div>
-      <div className="h-[90vh] flex">
+      <div className="h-[85vh] flex">
         <div className="w-6/12 flex items-center justify-center content-center">
           <div className="w-8/12">
             <h1 className="font-semibold text-6xl">Login</h1>
