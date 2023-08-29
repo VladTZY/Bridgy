@@ -11,12 +11,13 @@ export const PostOpportunitiesPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [isRemote, setIsRemote] = useState(false);
   const [hours, setHours] = useState(0);
   const [time, setTime] = useState(new Date());
   const [capacity, setCapacity] = useState(0);
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
-  const [adress, setAdress] = useState("");
+  const [address, setAddress] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -24,7 +25,17 @@ export const PostOpportunitiesPage = () => {
     axios
       .post(
         "http://localhost:4004/api/organization/create_event",
-        { name, description, hours, time, capacity, country, city },
+        {
+          name,
+          description,
+          remote: isRemote,
+          hours,
+          time,
+          capacity,
+          country,
+          city,
+          address,
+        },
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -39,8 +50,9 @@ export const PostOpportunitiesPage = () => {
         setCapacity(0);
         setCountry("");
         setCity("");
+        setAddress("");
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -71,6 +83,18 @@ export const PostOpportunitiesPage = () => {
                   placeholder="Description..."
                   className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
                   onChange={(e) => setDescription(e.target.value)}
+                />
+              </label>
+            </div>
+
+            <div className="my-6">
+              <label className="flex">
+                <p className="text-xl">Is the event remote?</p>
+                <input
+                  className="m-2"
+                  type="checkbox"
+                  value={isRemote}
+                  onChange={(e) => setIsRemote(e.target.value)}
                 />
               </label>
             </div>
@@ -157,13 +181,13 @@ export const PostOpportunitiesPage = () => {
                 <label>
                   <div className="flex">
                     <img className="my-auto" src={LocationIcon} />
-                    <p className="my-auto text-xl">Adress </p>
+                    <p className="my-auto text-xl">Address</p>
                   </div>
                   <input
                     type="text"
-                    value={adress}
+                    value={address}
                     className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
-                    onChange={(e) => setAdress(e.target.value)}
+                    onChange={(e) => setAddress(e.target.value)}
                   />
                 </label>
               </div>
