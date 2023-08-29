@@ -21,6 +21,7 @@ const UserToEvent = require("./models/UserToEvent")(sequelize);
 LocationModel.hasOne(SchoolModel);
 LocationModel.hasOne(OrganizationModel);
 LocationModel.hasOne(EventModel);
+LocationModel.hasOne(UserModel);
 
 UserModel.hasOne(SchoolModel, { foreignKey: "adminId" });
 SchoolModel.belongsTo(UserModel, { foreignKey: "adminId" });

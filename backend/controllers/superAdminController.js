@@ -1,10 +1,11 @@
-const { UserModel } = require("../database/sequelize");
+const { UserModel, LocationModel } = require("../database/sequelize");
 
 const validator = require("validator");
 const bcrypt = require("bcrypt");
 
 const createAdmin = async (req, res) => {
-  const { username, email, password, phoneNumber } = req.body;
+  const { username, email, password, phoneNumber, country, city, address } =
+    req.body;
 
   try {
     if (!username || !email || !password || !phoneNumber)
@@ -29,12 +30,19 @@ const createAdmin = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 
+    const location = await LocationModel.create({
+      country: country,
+      city: city,
+      address: address,
+    });
+
     const user = await UserModel.create({
       username: username,
       email: email,
       phoneNumber: phoneNumber,
       password: hash,
       role: "ADMIN",
+      locationId: location.id,
     });
 
     res.status(200).json({

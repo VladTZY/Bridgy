@@ -1,9 +1,14 @@
-const { UserModel, SchoolModel } = require("../database/sequelize");
+const {
+  UserModel,
+  SchoolModel,
+  LocationModel,
+} = require("../database/sequelize");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
 
 const createOneStudent = async (req, res) => {
-  const { username, email, phoneNumber } = req.body;
+  const { username, email, phoneNumber, bio, country, city, address } =
+    req.body;
   const password = "studentPassword@123";
 
   try {
@@ -37,12 +42,20 @@ const createOneStudent = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 
+    const location = await LocationModel.create({
+      country: country,
+      city: city,
+      address: address,
+    });
+
     const user = await UserModel.create({
       username: username,
       email: email,
       phoneNumber: phoneNumber,
+      bio: bio,
       password: hash,
       schoolId: school.id,
+      locationId: location.id,
       role: "STUDENT",
     });
 
@@ -50,7 +63,7 @@ const createOneStudent = async (req, res) => {
       username,
       email,
       phoneNumber,
-      password,
+      bio,
       schoolId: user.schoolId,
       role: user.role,
     });

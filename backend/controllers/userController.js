@@ -47,7 +47,16 @@ const createToken = (id, username, role, institutionId) => {
 };
 
 const signupUser = async (req, res) => {
-  const { username, email, password, phoneNumber, role } = req.body;
+  const {
+    username,
+    email,
+    password,
+    phoneNumber,
+    role,
+    country,
+    city,
+    address,
+  } = req.body;
 
   try {
     if (!username || !email || !password || !phoneNumber)
@@ -72,12 +81,19 @@ const signupUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 
+    const location = await LocationModel.create({
+      country: country,
+      city: city,
+      address: address,
+    });
+
     const user = await UserModel.create({
       username: username,
       email: email,
       phoneNumber: phoneNumber,
       password: hash,
       role: role,
+      locationId: location.id,
     });
 
     const institutionId = await getInstutionId(user);

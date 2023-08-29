@@ -15,19 +15,27 @@ const createEvent = async (req, res) => {
     capacity,
     country,
     city,
-    latitude,
-    longitude,
+    address,
+    supervisorContact,
+    remote,
   } = req.body;
 
   try {
-    if (!name || !description || !capacity || !country || !city)
+    if (
+      !name ||
+      !description ||
+      !capacity ||
+      !country ||
+      !city ||
+      !address ||
+      !remote
+    )
       throw Error("All fields need to be filled");
 
     const location = await LocationModel.create({
       country: country,
       city: city,
-      latitude: latitude,
-      longitude: longitude,
+      address: address,
     });
 
     const organization = await OrganizationModel.findOne({
@@ -44,6 +52,8 @@ const createEvent = async (req, res) => {
       hours: hours,
       time: time,
       capacity: capacity,
+      remote: remote,
+      supervisorContact: supervisorContact,
       status: "PUBLISHED",
       locationId: location.id,
       organizationId: organization.id,

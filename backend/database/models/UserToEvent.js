@@ -8,6 +8,10 @@ module.exports = (sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      feedback: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
     },
     { timestamps: false }
   );

@@ -16,6 +16,12 @@ module.exports = (sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      objective: {
+        type: Sequelize.INTEGER,
+      },
+      objectiveType: {
+        type: Sequelize.STRING,
+      },
     },
     { timestamps: false }
   );

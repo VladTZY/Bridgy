@@ -15,11 +15,12 @@ const createSchool = async (req, res) => {
     schoolPhoneNumber,
     schoolCountry,
     schoolCity,
-    schoolLatitude,
-    schoolLongitude,
+    schoolAddress,
+    schoolObjective,
     username,
     email,
     phoneNumber,
+    bio,
   } = req.body;
   try {
     if (
@@ -57,20 +58,21 @@ const createSchool = async (req, res) => {
       email: email,
       phoneNumber: phoneNumber,
       password: hash,
+      bio: bio,
       role: "SCHOOL",
     });
 
     const location = await LocationModel.create({
       country: schoolCountry,
       city: schoolCity,
-      latitude: schoolLatitude,
-      longitude: schoolLongitude,
+      address: schoolAddress,
     });
 
     const school = await SchoolModel.create({
       name: schoolName,
       email: schoolEmail,
       phoneNumber: schoolPhoneNumber,
+      objective: schoolObjective,
       locationId: location.id,
       adminId: user.id,
     });
@@ -89,11 +91,11 @@ const createOrganization = async (req, res) => {
     organizationDescription,
     organizationCountry,
     organizationCity,
-    organizationLatitude,
-    organizationLongitude,
+    organizationAddress,
     username,
     email,
     phoneNumber,
+    bio,
   } = req.body;
 
   try {
@@ -132,14 +134,14 @@ const createOrganization = async (req, res) => {
       email: email,
       phoneNumber: phoneNumber,
       password: hash,
+      bio: bio,
       role: "ORGANIZATION",
     });
 
     const location = await LocationModel.create({
       country: organizationCountry,
       city: organizationCity,
-      latitude: organizationLatitude,
-      longitude: organizationLongitude,
+      address: organizationAddress,
     });
 
     const organization = await OrganizationModel.create({

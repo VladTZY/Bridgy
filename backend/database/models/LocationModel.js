@@ -10,11 +10,8 @@ module.exports = (sequelize) => {
       city: {
         type: Sequelize.STRING,
       },
-      latitude: {
-        type: Sequelize.DOUBLE,
-      },
-      longitude: {
-        type: Sequelize.DOUBLE,
+      address: {
+        type: Sequelize.STRING,
       },
     },
     { timestamps: false }

@@ -27,6 +27,16 @@ module.exports = (sequelize) => {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      remote: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      photoUrl: {
+        type: Sequelize.STRING,
+      },
+      supervisorContact: {
+        type: Sequelize.STRING,
+      },
     },
     { timestamps: false }
   );
