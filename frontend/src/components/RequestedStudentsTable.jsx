@@ -21,11 +21,11 @@ export const RequestedStudentsTable = ({ eventId }) => {
       .catch((error) => console.log(error));
   }, [jwt]);
 
-  const acceptStudent = (id) => {
+  const acceptStudent = async (id) => {
     console.log(id);
   };
 
-  const rejectStudent = (id) => {
+  const rejectStudent = async (id) => {
     console.log(id);
   };
 
