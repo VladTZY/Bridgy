@@ -6,12 +6,15 @@ module.exports = (sequelize) => {
     {
       country: {
         type: Sequelize.STRING,
+        defaultValue: "",
       },
       city: {
         type: Sequelize.STRING,
+        defaultValue: "",
       },
       address: {
         type: Sequelize.STRING,
+        defaultValue: "",
       },
     },
     { timestamps: false }
