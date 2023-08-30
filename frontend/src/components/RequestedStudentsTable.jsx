@@ -22,15 +22,39 @@ export const RequestedStudentsTable = ({ eventId }) => {
   }, [jwt]);
 
   const acceptStudent = async (id) => {
-    console.log(id);
+    await axios
+      .post(
+        `http://localhost:4004/api/organization/confirm_student?student=${id}&event=${eventId}`,
+        {},
+        {
+          headers: {
+            Authorization: `BEARER ${jwt}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log("Student accepted");
+      });
   };
 
   const rejectStudent = async (id) => {
-    console.log(id);
+    await axios
+      .post(
+        `http://localhost:4004/api/organization/reject_student?student=${id}&event=${eventId}`,
+        {},
+        {
+          headers: {
+            Authorization: `BEARER ${jwt}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log("Student rejected");
+      });
   };
 
   return (
-    <div className="rounded-[15px] overflow-hidden mt-10">
+    <div className="rounded-[15px] overflow-hidden mt-5">
       <table className="min-w-full">
         <thead className="bg-[#2135D9] text-white">
           <tr>

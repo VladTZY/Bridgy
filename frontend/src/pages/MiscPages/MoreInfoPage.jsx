@@ -2,8 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
-import { StudentViewInfo } from "../../components/StudentViewInfo";
-import { OrganizationViewInfo } from "../../components/OrganizationViewInfo";
+import { StudentMoreInfo } from "../../components/StudentMoreInfo";
+import { OrganizationMoreInfo } from "../../components/OrganizationMoreInfo";
 import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
 import ClockIcon from "../../../Bridgy_Assets/icon/clock blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
@@ -75,9 +75,9 @@ export const MoreInfoPage = () => {
           </div>
         </div>
         {role == "STUDENT" ? (
-          <StudentViewInfo jwt={jwt} eventId={id} />
+          <StudentMoreInfo jwt={jwt} eventId={id} />
         ) : isAdmin(role, userId, id) ? (
-          <OrganizationViewInfo eventId={id} />
+          <OrganizationMoreInfo eventId={id} />
         ) : (
           <div></div>
         )}
