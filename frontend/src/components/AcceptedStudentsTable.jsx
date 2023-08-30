@@ -2,14 +2,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
-export const RequestedStudentsTable = ({ eventId }) => {
+export const AcceptedStudentsTable = ({ eventId }) => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        `http://localhost:4004/api/organization/requested_students?eventId=${eventId}`,
+        `http://localhost:4004/api/organization/joined_students?eventId=${eventId}`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -19,38 +19,6 @@ export const RequestedStudentsTable = ({ eventId }) => {
       .then((res) => setStudents(res.data))
       .catch((error) => console.log(error));
   }, [jwt, eventId]);
-
-  const acceptStudent = async (id) => {
-    await axios
-      .post(
-        `http://localhost:4004/api/organization/confirm_student?student=${id}&event=${eventId}`,
-        {},
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
-      )
-      .then((res) => {
-        console.log("Student accepted");
-      });
-  };
-
-  const rejectStudent = async (id) => {
-    await axios
-      .post(
-        `http://localhost:4004/api/organization/reject_student?student=${id}&event=${eventId}`,
-        {},
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
-      )
-      .then((res) => {
-        console.log("Student rejected");
-      });
-  };
 
   return (
     <div className="rounded-[15px] overflow-hidden mt-5">
@@ -63,8 +31,6 @@ export const RequestedStudentsTable = ({ eventId }) => {
               Phone number
             </th>
             <th className="px-6 py-3 text-left text-l font-medium">Profile</th>
-            <th className="px-6 py-3 text-left text-l font-medium">Accept</th>
-            <th className="px-6 py-3 text-left text-l font-medium">Reject</th>
           </tr>
         </thead>
 
@@ -88,22 +54,6 @@ export const RequestedStudentsTable = ({ eventId }) => {
                   >
                     View profile
                   </a>
-                </td>
-                <td className="px-6 py-4 font-semibold">
-                  <button
-                    className="bg-green-700 py-2 px-5 rounded-[50px] text-white text-l"
-                    onClick={() => acceptStudent(student.user.id)}
-                  >
-                    Accept
-                  </button>
-                </td>
-                <td className="px-6 py-4 font-semibold">
-                  <button
-                    className="bg-red-700 py-2 px-5 rounded-[50px] text-white text-l"
-                    onClick={() => rejectStudent(student.user.id)}
-                  >
-                    Reject
-                  </button>
                 </td>
               </tr>
             );
