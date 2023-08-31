@@ -1,25 +1,4 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux/es/hooks/useSelector";
-
-export const AcceptedStudentsTable = ({ eventId }) => {
-  const jwt = useSelector((state) => state.auth.jwt);
-  const [students, setStudents] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(
-        `http://localhost:4004/api/organization/joined_students?eventId=${eventId}`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
-      )
-      .then((res) => setStudents(res.data))
-      .catch((error) => console.log(error));
-  }, [jwt, eventId]);
-
+export const AcceptedStudentsTable = ({ eventId, students }) => {
   return (
     <div className="rounded-[15px] overflow-hidden mt-5">
       <table className="min-w-full">
