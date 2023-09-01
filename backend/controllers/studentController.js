@@ -43,10 +43,10 @@ const getRequestedEvents = async (req, res) => {
 };
 
 const joinEvent = async (req, res) => {
-  const userId = req.user.id;
-  const eventId = req.params.id;
-
   try {
+    const userId = req.user.id;
+    const eventId = req.params.id;
+
     const event = await EventModel.findByPk(eventId);
 
     if (!event) throw Error("Event doesn't exists");
@@ -76,4 +76,35 @@ const joinEvent = async (req, res) => {
   }
 };
 
-module.exports = { joinEvent, getOngoingEvents, getRequestedEvents };
+const postFeedback = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const eventId = req.params.id;
+    const feedback = req.body.feedback;
+
+    const userToEvent = await UserToEvent.findOne({
+      where: {
+        eventId: eventId,
+        userId: userId,
+        status: "FINISHED",
+      },
+    });
+
+    if (!userToEvent)
+      throw Error("This enrolment doesnt exist or isnt finished");
+
+    userToEvent.feedback = feedback;
+    await userToEvent.save();
+
+    await res.status(200).json(userToEvent.feedback);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+module.exports = {
+  joinEvent,
+  getOngoingEvents,
+  getRequestedEvents,
+  postFeedback,
+};
