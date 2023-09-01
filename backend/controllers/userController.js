@@ -131,9 +131,9 @@ const loginUser = async (req, res) => {
 };
 
 const getProfileInfo = async (req, res) => {
-  const id = req.params.id;
-
   try {
+    const id = req.params.id;
+
     if (!id) throw Error("Id required");
 
     const user = await UserModel.findByPk(id);
@@ -157,4 +157,31 @@ const getProfileInfo = async (req, res) => {
   }
 };
 
-module.exports = { loginUser, signupUser, getProfileInfo };
+const updateProfileInfo = async (req, res) => {
+  try {
+    const id = req.user.id;
+    const { phoneNumber, grade, bio, iconUrl } = req.body;
+
+    const user = await UserModel.findByPk(id, {
+      attributes: { exclude: ["password", "role", "locationId", "schoolId"] },
+    });
+
+    console.log(user);
+
+    if (phoneNumber) user.phoneNumber = phoneNumber;
+
+    if (grade) user.grade = grade;
+
+    if (bio) user.bio = bio;
+
+    if (iconUrl) user.iconUrl = iconUrl;
+
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+module.exports = { loginUser, signupUser, getProfileInfo, updateProfileInfo };
