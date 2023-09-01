@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import EditProfileIcon from "../../../Bridgy_Assets/icon/edit profile white.svg";
+import banner from "../../../Bridgy_Assets/Images/Banner.png";
 
 export const ProfilePage = () => {
   let { id } = useParams();
@@ -30,30 +31,28 @@ export const ProfilePage = () => {
 
   return (
     <div className=" h-full bg-gray-100 flex flex-col">
-      <div className="bg-white m-10 rounded-3xl flex justify-between">
-        <div>
-          <div className="flex m-5">
-            <img
-              className="d-block  img-fluid w-50 rounded-xl"
-              style={{ height: 150, width: 200 }}
-              src="https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png"
-            />
+      <div className="bg-white m-10 rounded-3xl h-[40vh] bg-[url('../../Bridgy_Assets/Images/Banner.png')] bg-no-repeat bg-contain flex justify-between">
+        <div className="flex m-5 items-end">
+          <img
+            className="rounded-xl ml-6 mb-10"
+            style={{ height: "50%", width: "50%", borderRadius: "50%" }}
+            src="https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png"
+          />
 
-            <div className="flex items-end">
-              <div className="flex flex-col ml-5">
-                <h1 className="font-semibold text-2xl">{username}</h1>
-                <p className="text-gray-500">{`${role.slice(0, 1)}${role
-                  .slice(1)
-                  .toLocaleLowerCase()}`}</p>
-              </div>
+          <div className="flex ml-16 mb-10">
+            <div className="flex flex-col">
+              <h1 className="font-semibold text-2xl">{username}</h1>
+              <p className="text-gray-500 mt-4">{`${role.slice(0, 1)}${role
+                .slice(1)
+                .toLocaleLowerCase()}`}</p>
             </div>
           </div>
         </div>
-        <div className="flex items-end">
+        <div className="flex items-end mr-6 mb-10">
           <button className="bg-[#2135D9] text-white m-5 rounded-[50px]">
             <div className="flex my-4 mx-12">
-              <img className="my-auto w-8 h-8" src={EditProfileIcon} />
-              <p className="ml-2 my-auto text-xl">Edit profile</p>
+              <img className="my-auto w-6 h-6" src={EditProfileIcon} />
+              <p className="ml-2 my-auto text-lg">Edit profile</p>
             </div>
           </button>
         </div>

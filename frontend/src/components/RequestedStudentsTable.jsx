@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { Link } from "react-router-dom";
 
 export const RequestedStudentsTable = ({ eventId }) => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -82,12 +83,12 @@ export const RequestedStudentsTable = ({ eventId }) => {
                   {student.user.phoneNumber}
                 </td>
                 <td className="px-6 py-4 font-semibold">
-                  <a
+                  <Link
+                    to={`/profile/${student.user.id}`}
                     className="bg-[#2EA0FB] py-2 px-5 rounded-[50px] text-white text-l"
-                    href={`http://127.0.0.1:5173/profile/${student.user.id}`}
                   >
                     View profile
-                  </a>
+                  </Link>
                 </td>
                 <td className="px-6 py-4 font-semibold">
                   <button

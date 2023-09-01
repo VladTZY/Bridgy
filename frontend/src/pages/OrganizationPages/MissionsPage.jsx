@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Card } from "../../components/Card";
+import { SearchBar } from "../../components/SearchBar";
 import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
 
 export const OrganizationMyOportunitiesPage = () => {
@@ -45,6 +46,7 @@ export const OrganizationMyOportunitiesPage = () => {
   }, [organizationId]);
   return (
     <div className="min-h-full bg-gray-100 flex flex-col">
+      <SearchBar />
       <div className="flex flex-col">
         <h1 className="text-4xl font-semibold m-10">Active Opportunities</h1>
 
