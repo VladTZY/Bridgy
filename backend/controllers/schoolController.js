@@ -74,6 +74,8 @@ const createOneStudent = async (req, res) => {
 
 const getStudents = async (req, res) => {
   try {
+    const grade = req.query.grade;
+
     const school = await SchoolModel.findOne({
       where: {
         adminId: req.user.id,
@@ -85,6 +87,7 @@ const getStudents = async (req, res) => {
       where: {
         schoolId: school.id,
         role: "STUDENT",
+        grade: grade,
       },
     });
 
