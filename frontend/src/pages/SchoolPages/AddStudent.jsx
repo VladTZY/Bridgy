@@ -9,7 +9,7 @@ export const AddStudent = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
+  const [grade, setGrade] = useState(9);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ export const AddStudent = () => {
     axios
       .post(
         "http://localhost:4004/api/school/create_one_student",
-        { username, email, phoneNumber, country, city, address },
+        { username, email, phoneNumber, country, city, grade },
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -30,7 +30,7 @@ export const AddStudent = () => {
         setPhoneNumber("");
         setCountry("");
         setCity("");
-        setAddress("");
+        setGrade(9);
       })
       .catch((error) => console.log(error.message));
   };
@@ -57,6 +57,18 @@ export const AddStudent = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email..."
+              className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
+            />
+          </label>
+          <label className="my-6">
+            <p className="text-xl">Grade</p>
+            <input
+              type="number"
+              max={12}
+              min={9}
+              value={grade}
+              onChange={(e) => setGrade(e.target.value)}
+              placeholder="Grade..."
               className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
             />
           </label>
@@ -90,16 +102,7 @@ export const AddStudent = () => {
               className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
             />
           </label>
-          <label className="my-6">
-            <p className="text-xl">Address</p>
-            <input
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              placeholder="Address..."
-              className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
-            />
-          </label>
+
           <div className="self-center">
             <button
               className="mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-20 py-4 text-xl"

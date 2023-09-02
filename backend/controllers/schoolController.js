@@ -7,12 +7,11 @@ const validator = require("validator");
 const bcrypt = require("bcrypt");
 
 const createOneStudent = async (req, res) => {
-  const { username, email, phoneNumber, bio, country, city, address } =
-    req.body;
+  const { username, email, phoneNumber, bio, country, city, grade } = req.body;
   const password = "studentPassword@123";
 
   try {
-    if (!username || !email || !password || !phoneNumber)
+    if (!username || !email || !password || !phoneNumber || !grade)
       throw Error("All fields need to be filled");
 
     if (!validator.isEmail(email)) {
@@ -45,12 +44,12 @@ const createOneStudent = async (req, res) => {
     const location = await LocationModel.create({
       country: country,
       city: city,
-      address: address,
     });
 
     const user = await UserModel.create({
       username: username,
       email: email,
+      grade: grade,
       phoneNumber: phoneNumber,
       bio: bio,
       password: hash,
@@ -62,6 +61,7 @@ const createOneStudent = async (req, res) => {
     res.status(200).json({
       username,
       email,
+      grade,
       phoneNumber,
       bio,
       schoolId: user.schoolId,
