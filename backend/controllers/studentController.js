@@ -42,6 +42,27 @@ const getRequestedEvents = async (req, res) => {
   }
 };
 
+const getFinishedEvents = async (req, res) => {
+  try {
+    const events = await UserToEvent.findAll({
+      where: {
+        status: "FINISHED",
+        userId: req.user.id,
+      },
+      include: {
+        model: EventModel,
+        where: {
+          status: "FINISHED",
+        },
+      },
+    });
+
+    res.status(200).json(events);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 const joinEvent = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -107,4 +128,5 @@ module.exports = {
   getOngoingEvents,
   getRequestedEvents,
   postFeedback,
+  getFinishedEvents,
 };
