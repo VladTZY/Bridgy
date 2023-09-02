@@ -19,6 +19,7 @@ import { LandingPage } from "./pages/MiscPages/LandingPage";
 import { CreateAdminPage } from "./pages/SuperAdminPages/CreateAdminPage";
 import { CreateOrganizationPage } from "./pages/AdminPages/CreateOrganizationPage";
 import { CreateSchoolPage } from "./pages/AdminPages/CreateSchoolPage";
+import { MyExperiencesPage } from "./pages/StudentPages/MyExperiencesPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -100,6 +101,18 @@ function App() {
           element={
             role == "STUDENT" ? (
               <StudentDashboardPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/student/my_experiences"
+          element={
+            role == "STUDENT" ? (
+              <MyExperiencesPage />
             ) : isLoggedIn ? (
               <ErrorPage />
             ) : (
