@@ -29,6 +29,12 @@ export const ProfilePage = () => {
     });
   }, [id]);
 
+  const onClickHandler = () => {
+    if (!isDisabled) {
+    }
+    setIsDisabled(!isDisabled);
+  };
+
   return (
     <div className=" h-full bg-gray-100 flex flex-col">
       <div className="bg-white m-10 rounded-3xl h-[40vh] bg-[url('../../Bridgy_Assets/Images/Banner.png')] bg-no-repeat bg-contain flex justify-between">
@@ -49,11 +55,26 @@ export const ProfilePage = () => {
           </div>
         </div>
         <div className="flex items-end mr-6 mb-10">
-          <button className="bg-[#2135D9] text-white m-5 rounded-[50px]">
-            <div className="flex my-4 mx-12">
-              <img className="my-auto w-6 h-6" src={EditProfileIcon} />
-              <p className="ml-2 my-auto text-lg">Edit profile</p>
-            </div>
+          <button
+            onClick={onClickHandler}
+            className="bg-[#2135D9] text-white m-5 rounded-[50px] hover:bg-blue-900"
+          >
+            {
+              {
+                true: (
+                  <div className="flex my-4 mx-12">
+                    <img className="my-auto w-6 h-6" src={EditProfileIcon} />
+                    <p className="ml-2 my-auto text-lg">Edit profile</p>
+                  </div>
+                ),
+                false: (
+                  <div className="flex my-4 mx-12">
+                    <img className="my-auto w-6 h-6" src={EditProfileIcon} />
+                    <p className="ml-2 my-auto text-lg">Save profile</p>
+                  </div>
+                ),
+              }[isDisabled]
+            }
           </button>
         </div>
       </div>
@@ -68,8 +89,8 @@ export const ProfilePage = () => {
               <input
                 type="text"
                 defaultValue={username}
-                disabled={isDisabled}
-                readOnly={isDisabled}
+                disabled={true}
+                readOnly={true}
                 className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
               ></input>
             </div>
@@ -79,8 +100,8 @@ export const ProfilePage = () => {
               <input
                 type="text"
                 defaultValue={email}
-                disabled={isDisabled}
-                readOnly={isDisabled}
+                disabled={true}
+                readOnly={true}
                 className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
               ></input>
             </div>
