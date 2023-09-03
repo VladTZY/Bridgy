@@ -147,6 +147,7 @@ const getProfileInfo = async (req, res) => {
       email: user.email,
       phoneNumber: user.phoneNumber,
       role: user.role,
+      bio: user.bio,
       location: userLocation,
       institutionId: institutionId,
     };

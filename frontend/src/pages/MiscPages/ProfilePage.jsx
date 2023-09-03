@@ -3,16 +3,16 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import EditProfileIcon from "../../../Bridgy_Assets/icon/edit profile white.svg";
 import banner from "../../../Bridgy_Assets/Images/Banner.png";
+import { useSelector } from "react-redux";
 
 export const ProfilePage = () => {
+  const jwt = useSelector((state) => state.auth.jwt);
   let { id } = useParams();
   const [isDisabled, setIsDisabled] = useState(true);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [bio, setBio] = useState(
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  );
+  const [bio, setBio] = useState("No bio");
   const [location, setLocation] = useState({
     location: "",
     city: "",
@@ -26,11 +26,33 @@ export const ProfilePage = () => {
       setPhoneNumber(res.data.phoneNumber);
       setLocation(res.data.location);
       setRole(res.data.role);
+
+      if (res.data.bio) setBio(res.data.bio);
     });
   }, [id]);
 
   const onClickHandler = () => {
     if (!isDisabled) {
+      axios
+        .put(
+          `http://localhost:4004/api/user/update_profile`,
+          {
+            bio,
+            phoneNumber,
+          },
+          {
+            headers: {
+              Authorization: `BEARER ${jwt}`,
+            },
+          }
+        )
+        .then((res) => {
+          setUsername(res.data.username);
+          setEmail(res.data.email);
+          setPhoneNumber(res.data.phoneNumber);
+
+          if (res.data.bio) setBio(res.data.bio);
+        });
     }
     setIsDisabled(!isDisabled);
   };
@@ -88,7 +110,7 @@ export const ProfilePage = () => {
               <label>Username</label>
               <input
                 type="text"
-                defaultValue={username}
+                value={username}
                 disabled={true}
                 readOnly={true}
                 className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -99,7 +121,7 @@ export const ProfilePage = () => {
               <label>Email</label>
               <input
                 type="text"
-                defaultValue={email}
+                value={email}
                 disabled={true}
                 readOnly={true}
                 className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -112,7 +134,8 @@ export const ProfilePage = () => {
               <label>Phone number</label>
               <input
                 type="text"
-                defaultValue={phoneNumber}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
                 disabled={isDisabled}
                 readOnly={isDisabled}
                 className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -135,7 +158,8 @@ export const ProfilePage = () => {
             <label>Bio</label>
             <textarea
               type="text"
-              defaultValue={bio}
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
               disabled={isDisabled}
               readOnly={isDisabled}
               className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal h-[150px]"
