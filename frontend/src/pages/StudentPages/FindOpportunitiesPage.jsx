@@ -4,6 +4,8 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Card } from "../../components/Card";
 import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
 
+import { SearchBar } from "../../components/SearchBar";
+
 export const FindOpportunitiesPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [type, setType] = useState("PUBLISHED");
@@ -26,6 +28,7 @@ export const FindOpportunitiesPage = () => {
 
   return (
     <div className="min-h-full bg-gray-100 flex flex-col">
+      <SearchBar />
       <h1 className="text-4xl font-semibold m-10">Published Opportunities</h1>
 
       <div className="mx-6 flex flex-wrap">

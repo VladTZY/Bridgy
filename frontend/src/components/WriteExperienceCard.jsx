@@ -1,14 +1,28 @@
 import { useState } from "react";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import axios from "axios";
 
 export const WriteExperienceCard = ({ id, title, eventDescription }) => {
-  const [description, setDescription] = useState("");
+  const jwt = useSelector((state) => state.auth.jwt);
+  const [description, setDescription] = useState(eventDescription);
+
+  const handleClick = () => {
+    axios
+      .post(
+        `http://localhost:4004/api/student/post_feedback/${id}`,
+        { feedback: description },
+        {
+          headers: {
+            Authorization: `BEARER ${jwt}`,
+          },
+        }
+      )
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="w-[60%] flex flex-col rounded-xl bg-white m-3">
-      <div className="ml-6 mt-6 text-5xl font-semibold">{title}</div>
-      <div className="ml-6 mt-4 text-xl">
-        {eventDescription?.toString().substring(0, 80)}...
-      </div>
+      <div className="ml-6 mt-6 text-5xl font-semibold">Your feedback</div>
       <textarea
         type="text"
         value={description}
@@ -17,11 +31,11 @@ export const WriteExperienceCard = ({ id, title, eventDescription }) => {
         onChange={(e) => setDescription(e.target.value)}
       />
       <div className="flex items-start">
-        <button className="rounded-3xl mx-6 mt-8 mb-4 px-20 py-4 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl">
+        <button
+          onClick={() => handleClick()}
+          className="rounded-3xl mx-6 mt-8 mb-4 px-20 py-4 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
+        >
           Save
-        </button>
-        <button className="rounded-3xl mx-6 mt-8 mb-4 px-16 py-4 bg-white hover:bg-slate-300 text-[#2EA0FB] text-xl">
-          Cancel
         </button>
       </div>
     </div>
