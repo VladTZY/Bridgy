@@ -3,26 +3,17 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
 
-export const RequestedStudentsTable = ({ eventId }) => {
+export const RequestedStudentsTable = ({
+  eventId,
+  students,
+  setRequestedStudents,
+  acceptedStudents,
+  setAcceptedStudents,
+}) => {
   const jwt = useSelector((state) => state.auth.jwt);
-  const [students, setStudents] = useState([]);
 
-  useEffect(() => {
+  const acceptStudent = (id, index) => {
     axios
-      .get(
-        `http://localhost:4004/api/organization/requested_students?eventId=${eventId}`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
-      )
-      .then((res) => setStudents(res.data))
-      .catch((error) => console.log(error));
-  }, [jwt, eventId]);
-
-  const acceptStudent = async (id) => {
-    await axios
       .post(
         `http://localhost:4004/api/organization/confirm_student?student=${id}&event=${eventId}`,
         {},
@@ -33,12 +24,15 @@ export const RequestedStudentsTable = ({ eventId }) => {
         }
       )
       .then((res) => {
-        console.log("Student accepted");
+        setAcceptedStudents([...acceptedStudents, students[index]]);
+        setRequestedStudents(
+          students.filter((student) => student.user.id != id)
+        );
       });
   };
 
-  const rejectStudent = async (id) => {
-    await axios
+  const rejectStudent = (id, index) => {
+    axios
       .post(
         `http://localhost:4004/api/organization/reject_student?student=${id}&event=${eventId}`,
         {},
@@ -49,7 +43,9 @@ export const RequestedStudentsTable = ({ eventId }) => {
         }
       )
       .then((res) => {
-        console.log("Student rejected");
+        setRequestedStudents(
+          students.filter((student) => student.user.id != id)
+        );
       });
   };
 
@@ -70,7 +66,7 @@ export const RequestedStudentsTable = ({ eventId }) => {
         </thead>
 
         <tbody className="bg-white divide-y divide-gray-200">
-          {students.map((student) => {
+          {students.map((student, index) => {
             return (
               <tr key={student.user.id} className="hover:bg-gray-100">
                 <td className="px-6 py-4 font-semibold">
@@ -93,7 +89,7 @@ export const RequestedStudentsTable = ({ eventId }) => {
                 <td className="px-6 py-4 font-semibold">
                   <button
                     className="bg-green-700 py-2 px-5 rounded-[50px] text-white text-l"
-                    onClick={() => acceptStudent(student.user.id)}
+                    onClick={() => acceptStudent(student.user.id, index)}
                   >
                     Accept
                   </button>
@@ -101,7 +97,7 @@ export const RequestedStudentsTable = ({ eventId }) => {
                 <td className="px-6 py-4 font-semibold">
                   <button
                     className="bg-red-700 py-2 px-5 rounded-[50px] text-white text-l"
-                    onClick={() => rejectStudent(student.user.id)}
+                    onClick={() => rejectStudent(student.user.id, index)}
                   >
                     Reject
                   </button>

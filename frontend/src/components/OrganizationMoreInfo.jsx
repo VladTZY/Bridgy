@@ -9,6 +9,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 export const OrganizationMoreInfo = ({ eventId }) => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [acceptedStudents, setAcceptedStudents] = useState([]);
+  const [requestedStudents, setRequestedStudents] = useState([]);
   const [endModal, setEndModal] = useState(false);
 
   useEffect(() => {
@@ -22,6 +23,18 @@ export const OrganizationMoreInfo = ({ eventId }) => {
         }
       )
       .then((res) => setAcceptedStudents(res.data))
+      .catch((error) => console.log(error));
+
+    axios
+      .get(
+        `http://localhost:4004/api/organization/requested_students?eventId=${eventId}`,
+        {
+          headers: {
+            Authorization: `BEARER ${jwt}`,
+          },
+        }
+      )
+      .then((res) => setRequestedStudents(res.data))
       .catch((error) => console.log(error));
   }, [jwt, eventId]);
 
@@ -44,7 +57,13 @@ export const OrganizationMoreInfo = ({ eventId }) => {
       </div>
       <div className="mt-10">
         <h1 className="text-4xl font-semibold">Requested Students</h1>
-        <RequestedStudentsTable eventId={eventId} />
+        <RequestedStudentsTable
+          eventId={eventId}
+          students={requestedStudents}
+          setRequestedStudents={setRequestedStudents}
+          acceptedStudents={acceptedStudents}
+          setAcceptedStudents={setAcceptedStudents}
+        />
       </div>
 
       {endModal ? (

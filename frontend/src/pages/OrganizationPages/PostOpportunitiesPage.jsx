@@ -11,7 +11,7 @@ export const PostOpportunitiesPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [isRemote, setIsRemote] = useState(false);
+  const [isRemote, setIsRemote] = useState("false");
   const [hours, setHours] = useState(0);
   const [time, setTime] = useState(new Date());
   const [capacity, setCapacity] = useState(0);
