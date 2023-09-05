@@ -2,7 +2,15 @@ const { EventModel } = require("../database/sequelize.js");
 
 const getEvents = async (req, res) => {
   try {
-    const events = await EventModel.findAll();
+    const offset = parseInt(req.query.offset);
+    const pageSize = parseInt(req.query.pageSize);
+
+    console.log(offset, pageSize);
+
+    const events = await EventModel.findAll({
+      offset: offset * pageSize,
+      limit: pageSize,
+    });
 
     res.status(200).json(events);
   } catch (error) {
@@ -29,6 +37,8 @@ const getEventById = async (req, res) => {
 const getEventsByStatus = async (req, res) => {
   try {
     const status = req.query.status;
+    const offset = parseInt(req.query.offset);
+    const pageSize = parseInt(req.query.pageSize);
 
     if (!status) throw Error("Status not specified");
 
@@ -39,6 +49,8 @@ const getEventsByStatus = async (req, res) => {
       where: {
         status: status,
       },
+      offset: offset * pageSize,
+      limit: pageSize,
     });
 
     res.status(200).json(events);

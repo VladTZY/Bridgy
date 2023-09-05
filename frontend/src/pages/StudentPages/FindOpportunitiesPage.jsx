@@ -10,21 +10,32 @@ export const FindOpportunitiesPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [type, setType] = useState("PUBLISHED");
   const [events, setEvents] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4004/api/events/by_status?status=${type}`, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
-      })
+      .get(
+        `http://localhost:4004/api/events/by_status?status=${type}&offset=${
+          page - 1
+        }&pageSize=6`,
+        {
+          headers: {
+            Authorization: `BEARER ${jwt}`,
+          },
+        }
+      )
       .then((res) => {
         setEvents(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [type]);
+  }, [type, page]);
+
+  const handleChangePage = (val) => {
+    if (val == -1) if (page + val > 0) setPage(page - 1);
+    if (val == 1) if (events.length == 6) setPage(page + 1);
+  };
 
   return (
     <div className="min-h-full bg-gray-100 flex flex-col">
@@ -47,6 +58,21 @@ export const FindOpportunitiesPage = () => {
             />
           );
         })}
+      </div>
+
+      <div className="flex justify-between  m-10">
+        <button
+          className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+          onClick={() => handleChangePage(-1)}
+        >
+          Previous Page
+        </button>
+        <button
+          className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+          onClick={() => handleChangePage(1)}
+        >
+          Next Page
+        </button>
       </div>
     </div>
   );
