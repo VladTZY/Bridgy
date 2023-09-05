@@ -4,6 +4,7 @@ import axios from "axios";
 import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
 
 import { Card } from "../../components/Card";
+import { PieChart } from "../../components/PieChart";
 
 export const StudentDashboardPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -37,6 +38,29 @@ export const StudentDashboardPage = () => {
 
   return (
     <div className="h-full bg-gray-100 flex flex-col">
+      <div className="flex">
+        <PieChart
+          title={"Working hours"}
+          description={"Total number of working hours"}
+          update={"A 30% increase"}
+          percentage={70}
+          color={"#32cd32"}
+        />
+        <PieChart
+          title={"Total Economy"}
+          description={"This is the total economy"}
+          update={"A 30% decrease"}
+          percentage={50}
+          color={"#eed202"}
+        />
+        <PieChart
+          title={"Nr. of Students"}
+          description={"This is the number of students"}
+          update={"Full Completion Rate"}
+          percentage={90}
+          color={"#dda0dd"}
+        />
+      </div>
       <div className="min-h-full bg-gray-100 flex flex-col">
         <h1 className="text-4xl font-semibold m-10">Ongoing Events</h1>
 
