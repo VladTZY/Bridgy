@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 
-export const AddStudent = () => {
+export const AddStudentPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
