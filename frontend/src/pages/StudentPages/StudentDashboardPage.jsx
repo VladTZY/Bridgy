@@ -4,7 +4,7 @@ import axios from "axios";
 import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
 
 import { Card } from "../../components/Card";
-import { PieChart } from "../../components/PieChart";
+import { StudentProgressCard } from "../../components/StudentProgressCard";
 
 export const StudentDashboardPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -39,26 +39,33 @@ export const StudentDashboardPage = () => {
   return (
     <div className="h-full bg-gray-100 flex flex-col">
       <div className="flex">
-        <PieChart
-          title={"Working hours"}
-          description={"Total number of working hours"}
-          update={"A 30% increase"}
+        <StudentProgressCard
+          title={"Active"}
+          total={"250"}
+          update={"A 17% increase"}
           percentage={70}
           color={"#32cd32"}
         />
-        <PieChart
-          title={"Total Economy"}
-          description={"This is the total economy"}
-          update={"A 30% decrease"}
+        <StudentProgressCard
+          title={"In Progress"}
+          total={"56"}
+          update={"A 2% decrease"}
           percentage={50}
           color={"#eed202"}
         />
-        <PieChart
-          title={"Nr. of Students"}
-          description={"This is the number of students"}
+        <StudentProgressCard
+          title={"Completed"}
+          total={"1000+"}
           update={"Full Completion Rate"}
           percentage={100}
-          color={"#dda0dd"}
+          color={"#000080"}
+        />
+        <StudentProgressCard
+          title={"Due"}
+          total={"10"}
+          update={"A 10% increase"}
+          percentage={20}
+          color={"#d8bfd8"}
         />
       </div>
       <div className="min-h-full bg-gray-100 flex flex-col">

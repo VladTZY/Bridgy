@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 import { StudentsTable } from "../../components/StudentsTable";
+import { SchoolProgressCard } from "../../components/SchoolProgressCard";
 
 export const SchoolStudentsMyPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -44,7 +45,30 @@ export const SchoolStudentsMyPage = () => {
 
   return (
     <div className="h-full bg-gray-100 flex flex-col p-5">
-      <div className="flex justify-between">
+      <div className="flex">
+        <SchoolProgressCard
+          title={"Working hours"}
+          total={"1200h"}
+          description={"A 30% increase"}
+          percentage={70}
+          color={"#32cd32"}
+        />
+        <SchoolProgressCard
+          title={"Total Economy"}
+          total={"$120k"}
+          description={"A 30% decrease"}
+          percentage={30}
+          color={"#eed202"}
+        />
+        <SchoolProgressCard
+          title={"Nr. of Students"}
+          total={"500/1000"}
+          description={"Full Completion Rate"}
+          percentage={50}
+          color={"#a40000"}
+        />
+      </div>
+      <div className="mt-6 flex justify-between">
         <h1 className="text-4xl font-semibold">Students</h1>
         <div className="flex">
           <select
