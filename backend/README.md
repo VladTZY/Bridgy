@@ -17,6 +17,7 @@
 - REQUESTED - requested to join
 - JOINED - accepteed
 - REJECTED - rejected
+- MARKED - marked attendence
 - FINISHED - finished
 - MISSING - didn t participated in the event
 

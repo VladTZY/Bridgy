@@ -6,6 +6,8 @@ const {
   UserModel,
 } = require("../database/sequelize");
 
+const { Op } = require("sequelize");
+
 const createEvent = async (req, res) => {
   const {
     name,
@@ -111,15 +113,17 @@ const getJoinedStudents = async (req, res) => {
     if (event.organization.adminId != req.user.id)
       throw Error("Not admin for this event");
 
-    const userToEvent = await UserToEvent.findAll({
+    const joinedStudents = await UserToEvent.findAll({
       where: {
         eventId: eventId,
-        status: "JOINED",
+        status: {
+          [Op.or]: ["JOINED", "MARKED"],
+        },
       },
       include: UserModel,
     });
 
-    res.status(200).json(userToEvent);
+    res.status(200).json(joinedStudents);
   } catch (error) {
     res.status(500).json(error.message);
   }
@@ -127,8 +131,8 @@ const getJoinedStudents = async (req, res) => {
 
 const confirmStudent = async (req, res) => {
   try {
-    const eventId = req.query.event;
-    const studentId = req.query.student;
+    const eventId = req.query.eventId;
+    const studentId = req.query.studentId;
 
     if (!eventId) throw Error("Event id not specified");
 
@@ -167,8 +171,8 @@ const confirmStudent = async (req, res) => {
 
 const rejectStudent = async (req, res) => {
   try {
-    const eventId = req.query.event;
-    const studentId = req.query.student;
+    const eventId = req.query.eventId;
+    const studentId = req.query.studentId;
 
     if (!eventId) throw Error("Event id not specified");
 
@@ -194,6 +198,45 @@ const rejectStudent = async (req, res) => {
     if (!userToEvent) throw Error("Student didn t apply");
 
     userToEvent.status = "REJECTED";
+    await userToEvent.save();
+
+    res.status(200).json(userToEvent);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const checkStudent = async (req, res) => {
+  try {
+    const eventId = req.query.eventId;
+    const userId = req.query.userId;
+
+    if (!eventId) throw Error("Event id not specified");
+    if (!userId) throw Error("User id not specified");
+
+    const event = await EventModel.findOne({
+      where: {
+        id: eventId,
+      },
+      include: OrganizationModel,
+    });
+
+    if (event.organization.adminId != req.user.id)
+      throw Error("Not admin for this event");
+
+    const userToEvent = await UserToEvent.findOne({
+      where: {
+        eventId: eventId,
+        userId: userId,
+        status: {
+          [Op.or]: ["JOINED", "MARKED"],
+        },
+      },
+    });
+
+    if (userToEvent.status == "JOINED") userToEvent.status = "MARKED";
+    else userToEvent.status = "JOINED";
+
     await userToEvent.save();
 
     res.status(200).json(userToEvent);
@@ -253,5 +296,6 @@ module.exports = {
   getJoinedStudents,
   confirmStudent,
   rejectStudent,
+  checkStudent,
   finishEvent,
 };

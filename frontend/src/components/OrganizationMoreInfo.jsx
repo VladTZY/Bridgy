@@ -1,6 +1,7 @@
 import { AcceptedStudentsTable } from "./AcceptedStudentsTable";
 import { RequestedStudentsTable } from "./RequestedStudentsTable";
 import { EndEventModal } from "./EndEventModal";
+import { MarkAttendanceModal } from "./MarkAttendanceModal";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -11,6 +12,7 @@ export const OrganizationMoreInfo = ({ eventId }) => {
   const [acceptedStudents, setAcceptedStudents] = useState([]);
   const [requestedStudents, setRequestedStudents] = useState([]);
   const [endModal, setEndModal] = useState(false);
+  const [attendanceModal, setAttendanceModal] = useState(false);
 
   useEffect(() => {
     axios
@@ -41,7 +43,10 @@ export const OrganizationMoreInfo = ({ eventId }) => {
   return (
     <div className="mt-10">
       <div className="flex content-between w-full">
-        <button className="w-[30%] border py-5 text-[#2135D9] border-[#2135D9] rounded-full hover:bg-[#2135D9] hover:text-white text-xl">
+        <button
+          onClick={() => setAttendanceModal(true)}
+          className="w-[30%] border py-5 text-[#2135D9] border-[#2135D9] rounded-full hover:bg-[#2135D9] hover:text-white text-xl"
+        >
           Mark Attendance
         </button>
         <button
@@ -70,6 +75,15 @@ export const OrganizationMoreInfo = ({ eventId }) => {
         <EndEventModal
           setEndModal={setEndModal}
           students={acceptedStudents}
+          eventId={eventId}
+        />
+      ) : null}
+
+      {attendanceModal ? (
+        <MarkAttendanceModal
+          setAttendanceModal={setAttendanceModal}
+          students={acceptedStudents}
+          setStudents={setAcceptedStudents}
           eventId={eventId}
         />
       ) : null}
