@@ -11,24 +11,26 @@ export const PieChart = ({ color, title, description, update, percentage }) => {
         </div>
       </div>
       <div
-        className="rounded-full outline outline-2 outline-offset-3 flex relative items-center justify-center"
-        style={{
-          margin: 10,
-          height: 150,
-          width: 150,
-          outlineColor: color,
-        }}
+        className="m-5 w-[30%] rounded-full outline outline-2 outline-offset-4 flex relative items-center justify-center"
+        style={{ outlineColor: color }}
       >
-        <div className="absolute text-center text-2xl">{percentage}%</div>
-        <Circle
-          percent={percentage}
-          strokeColor={color}
-          strokeWidth={15}
-          trailColor="white"
-          trailWidth={15}
-          strokeLinecap="round"
-          gapPosition="right"
-        />
+        <div className="absolute text-center text-3xl">{percentage}%</div>
+        <div
+          style={{
+            height: "100%",
+            width: "100%",
+          }}
+        >
+          <Circle
+            percent={percentage}
+            strokeColor={color}
+            strokeWidth={15}
+            trailColor="white"
+            trailWidth={15}
+            strokeLinecap="round"
+            gapPosition="right"
+          />
+        </div>
       </div>
     </div>
   );

@@ -57,7 +57,7 @@ export const StudentDashboardPage = () => {
           title={"Nr. of Students"}
           description={"This is the number of students"}
           update={"Full Completion Rate"}
-          percentage={90}
+          percentage={100}
           color={"#dda0dd"}
         />
       </div>

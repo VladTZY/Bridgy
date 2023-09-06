@@ -33,7 +33,7 @@ export const WriteExperienceCard = ({ id, title, eventDescription }) => {
       <div className="flex items-start">
         <button
           onClick={() => handleClick()}
-          className="rounded-3xl mx-6 mt-8 mb-4 px-20 py-4 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
+          className="rounded-3xl mx-6 mt-4 mb-4 px-20 py-4 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
         >
           Save
         </button>
