@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 
@@ -7,6 +7,15 @@ export const EndEventModal = ({ setEndModal, students, eventId }) => {
   const [presentArray, setPresentArray] = useState(
     new Array(students.length).fill(false)
   );
+
+  useEffect(() => {
+    const newArray = students.map((student) => {
+      if (student.status == "MARKED") return true;
+      return false;
+    });
+
+    setPresentArray(newArray);
+  }, [students]);
 
   const handleChange = (index) => {
     const updatedValues = presentArray.map((val, i) => {
@@ -76,7 +85,7 @@ export const EndEventModal = ({ setEndModal, students, eventId }) => {
                         <h1>{student.user.username}</h1>
                         <input
                           type="checkbox"
-                          value={presentArray[index]}
+                          defaultChecked={student.status == "MARKED"}
                           onChange={(e) => handleChange(index)}
                         />
                       </div>
