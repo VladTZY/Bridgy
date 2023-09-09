@@ -11,7 +11,9 @@ export const PostOpportunitiesPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [isRemote, setIsRemote] = useState("false");
+  const [supervisorContact, setSupervisorContact] = useState("");
+  const [isRemote, setIsRemote] = useState(false);
+  const [file, setFile] = useState(null);
   const [hours, setHours] = useState(0);
   const [time, setTime] = useState(new Date());
   const [capacity, setCapacity] = useState(0);
@@ -22,26 +24,25 @@ export const PostOpportunitiesPage = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append("photoUrl", file);
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("remote", isRemote);
+    formData.append("hours", hours);
+    formData.append("time", time);
+    formData.append("capacity", capacity);
+    formData.append("country", country);
+    formData.append("city", city);
+    formData.append("address", address);
+    formData.append("supervisorContact", supervisorContact);
+
     axios
-      .post(
-        "http://localhost:4004/api/organization/create_event",
-        {
-          name,
-          description,
-          remote: isRemote,
-          hours,
-          time,
-          capacity,
-          country,
-          city,
-          address,
+      .post("http://localhost:4004/api/organization/create_event", formData, {
+        headers: {
+          Authorization: `BEARER ${jwt}`,
         },
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
-      )
+      })
       .then((res) => {
         setName("");
         setDescription("");
@@ -51,6 +52,8 @@ export const PostOpportunitiesPage = () => {
         setCountry("");
         setCity("");
         setAddress("");
+        setSupervisorContact("");
+        setIsRemote("false");
       })
       .catch((error) => console.log(error));
   };
@@ -88,13 +91,38 @@ export const PostOpportunitiesPage = () => {
             </div>
 
             <div className="my-6">
+              <label>
+                <p className="text-xl">Supervisor Contact</p>
+                <input
+                  type="text"
+                  value={supervisorContact}
+                  onChange={(e) => setSupervisorContact(e.target.value)}
+                  placeholder="Contact..."
+                  className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
+                />
+              </label>
+            </div>
+
+            <div className="my-6">
               <label className="flex">
                 <p className="text-xl">Is the event remote?</p>
                 <input
                   className="m-2"
                   type="checkbox"
-                  value={isRemote}
-                  onChange={(e) => setIsRemote(e.target.value)}
+                  defaultChecked={isRemote}
+                  onChange={(e) => setIsRemote(!isRemote)}
+                />
+              </label>
+            </div>
+
+            <div className="my-6">
+              <label className="flex">
+                <p className="text-xl">Cover Image*</p>
+                <input
+                  className="m-2"
+                  type="file"
+                  value={""}
+                  onChange={(e) => setFile(e.target.files[0])}
                 />
               </label>
             </div>
@@ -146,53 +174,58 @@ export const PostOpportunitiesPage = () => {
               </div>
             </div>
 
-            <div className="flex my-6">
-              <div className="w-full">
-                <label>
-                  <div className="flex">
-                    <img className="my-auto" src={LocationIcon} />
-                    <p className="my-auto text-xl">Country</p>
+            {isRemote ? (
+              <></>
+            ) : (
+              <div>
+                <div className="flex my-6">
+                  <div className="w-full">
+                    <label>
+                      <div className="flex">
+                        <img className="my-auto" src={LocationIcon} />
+                        <p className="my-auto text-xl">Country</p>
+                      </div>
+                      <input
+                        type="text"
+                        value={country}
+                        className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
+                        onChange={(e) => setCountry(e.target.value)}
+                      />
+                    </label>
                   </div>
-                  <input
-                    type="text"
-                    value={country}
-                    className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
-                    onChange={(e) => setCountry(e.target.value)}
-                  />
-                </label>
-              </div>
 
-              <div className="w-full mx-6">
-                <label>
-                  <div className="flex">
-                    <img className="my-auto" src={LocationIcon} />
-                    <p className="my-auto text-xl">City</p>
+                  <div className="w-full mx-6">
+                    <label>
+                      <div className="flex">
+                        <img className="my-auto" src={LocationIcon} />
+                        <p className="my-auto text-xl">City</p>
+                      </div>
+                      <input
+                        type="text"
+                        value={city}
+                        className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
+                        onChange={(e) => setCity(e.target.value)}
+                      />
+                    </label>
                   </div>
-                  <input
-                    type="text"
-                    value={city}
-                    className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
-                    onChange={(e) => setCity(e.target.value)}
-                  />
-                </label>
-              </div>
 
-              <div className="w-full">
-                <label>
-                  <div className="flex">
-                    <img className="my-auto" src={LocationIcon} />
-                    <p className="my-auto text-xl">Address</p>
+                  <div className="w-full">
+                    <label>
+                      <div className="flex">
+                        <img className="my-auto" src={LocationIcon} />
+                        <p className="my-auto text-xl">Address</p>
+                      </div>
+                      <input
+                        type="text"
+                        value={address}
+                        className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
+                        onChange={(e) => setAddress(e.target.value)}
+                      />
+                    </label>
                   </div>
-                  <input
-                    type="text"
-                    value={address}
-                    className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
-                    onChange={(e) => setAddress(e.target.value)}
-                  />
-                </label>
+                </div>
               </div>
-            </div>
-
+            )}
             <div>
               <button
                 className="bg-[#2EA0FB] text-white mt-5 py-4 px-10 rounded-[50px] hover:bg-[#2135D9]"

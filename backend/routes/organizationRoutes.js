@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { requireAuth } = require("../middlewares/requireAuth");
 const { requireOrganization } = require("../middlewares/requireOrganization");
+const { upload } = require("../middlewares/multerMiddleware");
 
 router.use(requireAuth);
 router.use(requireOrganization);
@@ -17,7 +18,7 @@ const {
   finishEvent,
 } = require("../controllers/organizationController");
 
-router.post("/create_event", createEvent);
+router.post("/create_event", upload.single("photoUrl"), createEvent);
 router.get("/requested_students", getRequestedStudents);
 router.get("/joined_students", getJoinedStudents);
 router.post("/confirm_student", confirmStudent);

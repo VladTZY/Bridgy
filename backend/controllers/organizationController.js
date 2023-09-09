@@ -23,16 +23,11 @@ const createEvent = async (req, res) => {
   } = req.body;
 
   try {
-    if (
-      !name ||
-      !description ||
-      !capacity ||
-      !country ||
-      !city ||
-      !address ||
-      !remote
-    )
+    if (!name || !description || !capacity)
       throw Error("All fields need to be filled");
+
+    if (!remote && (!country || !city || !address))
+      throw Error("You need to fill the address if the event is not remote");
 
     const location = await LocationModel.create({
       country: country,
@@ -56,6 +51,7 @@ const createEvent = async (req, res) => {
       capacity: capacity,
       remote: remote,
       supervisorContact: supervisorContact,
+      photoUrl: res.req.file.filename,
       status: "PUBLISHED",
       locationId: location.id,
       organizationId: organization.id,
