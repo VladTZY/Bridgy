@@ -9,6 +9,9 @@ const { sequelize } = require("./database/sequelize");
 
 const app = express();
 
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+
 app.use(cors());
 app.use(morgan("dev"));
 app.use(helmet());
