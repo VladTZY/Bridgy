@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Card } from "../../components/Card";
 import { SearchBar } from "../../components/SearchBar";
-import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
 
 export const OrganizationMyOportunitiesPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -62,7 +61,11 @@ export const OrganizationMyOportunitiesPage = () => {
                 location={event.location}
                 duration={event.hours}
                 event_type={"opportunity"}
-                pic={pic}
+                photoUrl={
+                  event.photoUrl == null
+                    ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                    : `http://localhost:4004/uploads/${event.photoUrl}`
+                }
               />
             );
           })}
@@ -84,7 +87,11 @@ export const OrganizationMyOportunitiesPage = () => {
                 location={event.location}
                 duration={event.hours}
                 event_type={"opportunity"}
-                pic={pic}
+                photoUrl={
+                  event.photoUrl == null
+                    ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                    : `http://localhost:4004/uploads/${event.photoUrl}`
+                }
               />
             );
           })}

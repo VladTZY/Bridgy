@@ -6,12 +6,12 @@ import CalendarIcon from "../../Bridgy_Assets/icon/calender blue.svg";
 export const Card = ({
   id,
   event_type,
-  pic,
   title,
   description,
   date,
   location,
   duration,
+  photoUrl,
 }) => {
   const navigate = useNavigate();
 
@@ -22,9 +22,9 @@ export const Card = ({
   return (
     <div className="w-[30%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white m-3">
       <img
-        src={pic}
+        src={photoUrl}
         className="rounded-lg mx-8 mt-4"
-        style={{ height: "50%" }}
+        style={{ height: "25vh" }}
       />
       <div className="flex h-[7%] justify-around mt-4">
         <div className="flex px-4 border justify-around items-center">

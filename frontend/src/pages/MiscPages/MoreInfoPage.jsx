@@ -24,6 +24,7 @@ export const MoreInfoPage = () => {
     city: "",
     latitude: null,
     longitude: null,
+    photoUrl: "",
   });
 
   useEffect(() => {
@@ -48,7 +49,11 @@ export const MoreInfoPage = () => {
       <div className="m-5 p-5 rounded-lg bg-white flex flex-col">
         <img
           className="mx-6 rounded-lg self-center"
-          src={pic}
+          src={
+            event.photoUrl == null
+              ? "../../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+              : `http://localhost:4004/uploads/${event.photoUrl}`
+          }
           style={{ height: "600px" }}
         />
         <div className="mt-8 text-6xl font-bold">{event.name}</div>
