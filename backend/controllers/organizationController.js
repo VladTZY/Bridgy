@@ -244,7 +244,7 @@ const checkStudent = async (req, res) => {
 const finishEvent = async (req, res) => {
   try {
     const eventId = req.query.eventId;
-    const studentList = req.query.body;
+    const studentList = req.body;
 
     if (!eventId) throw Error("Event id not specified");
 
