@@ -190,6 +190,12 @@ const passwordReset = async (req, res) => {
     const password = req.body.password;
     const newPassword = req.body.newPassword;
 
+    if (!password) throw Error("Password not specified");
+    if (!newPassword) throw Error("New password not specified");
+
+    if (!validator.isStrongPassword(newPassword))
+      throw Error("New passowrd too weak");
+
     const match = await bcrypt.compare(password, req.user.password);
 
     if (!match) throw Error("Wrong password");
