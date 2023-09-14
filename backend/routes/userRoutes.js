@@ -6,6 +6,7 @@ const {
   signupUser,
   getProfileInfo,
   updateProfileInfo,
+  passwordReset,
 } = require("../controllers/userController");
 
 const { requireAuth } = require("../middlewares/requireAuth");
@@ -17,5 +18,6 @@ router.get("/profile/:id", getProfileInfo);
 router.use(requireAuth);
 
 router.put("/update_profile", updateProfileInfo);
+router.put("/password_reset", passwordReset);
 
 module.exports = router;

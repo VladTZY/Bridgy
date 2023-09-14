@@ -185,4 +185,33 @@ const updateProfileInfo = async (req, res) => {
   }
 };
 
-module.exports = { loginUser, signupUser, getProfileInfo, updateProfileInfo };
+const passwordReset = async (req, res) => {
+  try {
+    const password = req.body.password;
+    const newPassword = req.body.newPassword;
+
+    const match = await bcrypt.compare(password, req.user.password);
+
+    if (!match) throw Error("Wrong password");
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(newPassword, salt);
+
+    const user = await UserModel.findByPk(req.user.id);
+
+    user.password = hash;
+    await user.save();
+
+    res.status(200).json({ message: "Password changed" });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+module.exports = {
+  loginUser,
+  signupUser,
+  getProfileInfo,
+  updateProfileInfo,
+  passwordReset,
+};
