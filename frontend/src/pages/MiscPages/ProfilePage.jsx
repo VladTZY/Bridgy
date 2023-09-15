@@ -5,6 +5,8 @@ import EditProfileIcon from "../../../Bridgy_Assets/icon/edit profile white.svg"
 import banner from "../../../Bridgy_Assets/Images/Banner.png";
 import { useSelector } from "react-redux";
 
+import { ChangePasswordModal } from "../../components/ChangePasswordModal";
+
 export const ProfilePage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   let { id } = useParams();
@@ -18,6 +20,7 @@ export const ProfilePage = () => {
     city: "",
   });
   const [role, setRole] = useState("");
+  const [passwordModal, setPasswordModal] = useState(false);
 
   useEffect(() => {
     axios.get(`http://localhost:4004/api/user/profile/${id}`).then((res) => {
@@ -77,6 +80,15 @@ export const ProfilePage = () => {
           </div>
         </div>
         <div className="flex items-end mr-6 mb-10">
+          <button
+            onClick={() => setPasswordModal(true)}
+            className="bg-[#2135D9] text-white my-5 rounded-[50px] hover:bg-blue-900"
+          >
+            <div className="flex my-4 mx-12">
+              <img className="my-auto w-6 h-6" src={EditProfileIcon} />
+              <p className="ml-2 my-auto text-lg">Change Password</p>
+            </div>
+          </button>
           <button
             onClick={onClickHandler}
             className="bg-[#2135D9] text-white m-5 rounded-[50px] hover:bg-blue-900"
@@ -167,6 +179,10 @@ export const ProfilePage = () => {
           </div>
         </div>
       </div>
+
+      {passwordModal ? (
+        <ChangePasswordModal setModal={setPasswordModal} />
+      ) : null}
     </div>
   );
 };

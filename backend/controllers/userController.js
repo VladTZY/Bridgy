@@ -185,7 +185,7 @@ const updateProfileInfo = async (req, res) => {
   }
 };
 
-const passwordReset = async (req, res) => {
+const changePassword = async (req, res) => {
   try {
     const password = req.body.password;
     const newPassword = req.body.newPassword;
@@ -219,5 +219,5 @@ module.exports = {
   signupUser,
   getProfileInfo,
   updateProfileInfo,
-  passwordReset,
+  changePassword,
 };
