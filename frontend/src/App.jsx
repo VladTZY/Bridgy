@@ -9,9 +9,9 @@ import { NotFoundPage } from "./pages/MiscPages/NotFoundPage";
 import { ErrorPage } from "./pages/MiscPages/ErrorPage";
 import { FindOpportunitiesPage } from "./pages/StudentPages/FindOpportunitiesPage";
 import { ProfilePage } from "./pages/MiscPages/ProfilePage";
-import { OrganizationMyOportunitiesPage } from "./pages/OrganizationPages/MissionsPage";
+import { MissionsPage } from "./pages/OrganizationPages/MissionsPage";
 import { PostOpportunitiesPage } from "./pages/OrganizationPages/PostOpportunitiesPage";
-import { SchoolStudentsMyPage } from "./pages/SchoolPages/SchoolDashboardPage";
+import { SchoolDashboardPage } from "./pages/SchoolPages/SchoolDashboardPage";
 import { AddStudentPage } from "./pages/SchoolPages/AddStudentPage";
 import { StudentDashboardPage } from "./pages/StudentPages/StudentDashboardPage";
 import { MoreInfoPage } from "./pages/MiscPages/MoreInfoPage";
@@ -21,6 +21,7 @@ import { CreateOrganizationPage } from "./pages/AdminPages/CreateOrganizationPag
 import { CreateSchoolPage } from "./pages/AdminPages/CreateSchoolPage";
 import { MyExperiencesPage } from "./pages/StudentPages/MyExperiencesPage";
 import { UpdatesPage } from "./pages/SchoolPages/UpdatesPage";
+import { OrganizationDashboardPage } from "./pages/OrganizationPages/OrganizationDashboardPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -62,46 +63,10 @@ function App() {
           }
         />
         <Route
-          path="/organization/dashboard"
-          element={
-            role == "ORGANIZATION" ? (
-              <HomePage />
-            ) : isLoggedIn ? (
-              <ErrorPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/school"
-          element={
-            role == "SCHOOL" ? (
-              <HomePage />
-            ) : isLoggedIn ? (
-              <ErrorPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
           path="/student/find_opportunities"
           element={
             role == "STUDENT" ? (
               <FindOpportunitiesPage />
-            ) : isLoggedIn ? (
-              <ErrorPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/student/dashboard"
-          element={
-            role == "STUDENT" ? (
-              <StudentDashboardPage />
             ) : isLoggedIn ? (
               <ErrorPage />
             ) : (
@@ -122,10 +87,22 @@ function App() {
           }
         />
         <Route
+          path="/organization/dashboard"
+          element={
+            role == "ORGANIZATION" ? (
+              <OrganizationDashboardPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
           path="/organization/missions"
           element={
             role == "ORGANIZATION" ? (
-              <OrganizationMyOportunitiesPage />
+              <MissionsPage />
             ) : isLoggedIn ? (
               <ErrorPage />
             ) : (
@@ -149,7 +126,7 @@ function App() {
           path="/school/dashboard"
           element={
             role == "SCHOOL" ? (
-              <SchoolStudentsMyPage />
+              <SchoolDashboardPage />
             ) : isLoggedIn ? (
               <ErrorPage />
             ) : (

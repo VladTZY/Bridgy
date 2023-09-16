@@ -4,7 +4,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Card } from "../../components/Card";
 import { SearchBar } from "../../components/SearchBar";
 
-export const OrganizationMyOportunitiesPage = () => {
+export const MissionsPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const organizationId = useSelector((state) => state.auth.institutionId);
   const [publishedEvents, setPublishedEvents] = useState([]);

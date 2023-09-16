@@ -5,7 +5,7 @@ import axios from "axios";
 import { StudentsTable } from "../../components/StudentsTable";
 import { SchoolProgressCard } from "../../components/SchoolProgressCard";
 
-export const SchoolStudentsMyPage = () => {
+export const SchoolDashboardPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [students, setStudents] = useState([]);
   const [tableData, setTableData] = useState([]);
