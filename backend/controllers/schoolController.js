@@ -77,6 +77,7 @@ const createOneStudent = async (req, res) => {
 const createMultipleStudents = async (req, res) => {
   try {
     /// req.file.pathname - file path
+
     res.status(200).json({ message: "ok" });
   } catch (error) {
     res.status(500).json(error.message);
