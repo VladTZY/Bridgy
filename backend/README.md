@@ -36,3 +36,5 @@
 - add bio field for user
 - add adress field for location
 - worked hours? for user??
+
+CREATE PUBLIC/UPLOADS AND PUBLIC/TABLES

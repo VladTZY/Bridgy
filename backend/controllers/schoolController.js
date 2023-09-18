@@ -5,6 +5,8 @@ const {
 } = require("../database/sequelize");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
+const csv = require("fast-csv");
+const fs = require("fs");
 
 const createOneStudent = async (req, res) => {
   const { username, email, phoneNumber, bio, country, city, grade } = req.body;
@@ -72,6 +74,15 @@ const createOneStudent = async (req, res) => {
   }
 };
 
+const createMultipleStudents = async (req, res) => {
+  try {
+    /// req.file.pathname - file path
+    res.status(200).json({ message: "ok" });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 const getStudents = async (req, res) => {
   try {
     const grade = req.query.grade;
@@ -97,4 +108,4 @@ const getStudents = async (req, res) => {
   }
 };
 
-module.exports = { createOneStudent, getStudents };
+module.exports = { createOneStudent, getStudents, createMultipleStudents };

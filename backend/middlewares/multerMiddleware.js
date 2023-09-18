@@ -2,7 +2,7 @@ const multer = require("multer");
 const path = require("path");
 const checkFileType = require("../misc/checkFileType");
 
-const storage = multer.diskStorage({
+const imageStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./public/uploads/");
   },
@@ -13,12 +13,29 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({
-  storage: storage,
+const imageUpload = multer({
+  storage: imageStorage,
   limits: { fileSize: 100000000 },
   fileFilter: (req, file, cb) => {
     checkFileType(file, cb);
   },
 });
 
-module.exports = { upload: upload };
+const tableStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./public/tables/");
+  },
+
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  },
+});
+
+const tableUpload = multer({
+  storage: tableStorage,
+  limits: { fileSize: 100000000 },
+  ///file filter
+});
+
+module.exports = { imageUpload, tableUpload };
