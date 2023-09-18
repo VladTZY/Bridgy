@@ -1,4 +1,4 @@
-const { EventModel } = require("../database/sequelize.js");
+const { EventModel, LocationModel } = require("../database/sequelize.js");
 
 const getEvents = async (req, res) => {
   try {
@@ -10,6 +10,7 @@ const getEvents = async (req, res) => {
     const events = await EventModel.findAll({
       offset: offset * pageSize,
       limit: pageSize,
+      include: LocationModel,
     });
 
     res.status(200).json(events);
@@ -24,7 +25,7 @@ const getEventById = async (req, res) => {
 
     if (!id) throw Error("Id not specified");
 
-    const event = await EventModel.findByPk(id);
+    const event = await EventModel.findByPk(id, { include: LocationModel });
 
     if (!event) throw Error("No event at this id");
 
@@ -51,6 +52,7 @@ const getEventsByStatus = async (req, res) => {
       },
       offset: offset * pageSize,
       limit: pageSize,
+      include: LocationModel,
     });
 
     res.status(200).json(events);
@@ -69,6 +71,7 @@ const getEventByOrganization = async (req, res) => {
       where: {
         organizationId: organizationId,
       },
+      include: LocationModel,
     });
 
     res.status(200).json(events);
@@ -90,6 +93,7 @@ const getEventByOrganizationAndStatus = async (req, res) => {
         organizationId: organizationId,
         status: status,
       },
+      include: LocationModel,
     });
 
     res.status(200).json(events);
