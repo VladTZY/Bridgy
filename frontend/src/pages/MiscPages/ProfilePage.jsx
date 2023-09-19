@@ -9,6 +9,7 @@ import { ChangePasswordModal } from "../../components/ChangePasswordModal";
 
 export const ProfilePage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
+  const userId = useSelector((state) => state.auth.id);
   let { id } = useParams();
   const [isDisabled, setIsDisabled] = useState(true);
   const [username, setUsername] = useState("");
@@ -79,38 +80,42 @@ export const ProfilePage = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-end mr-6 mb-10">
-          <button
-            onClick={() => setPasswordModal(true)}
-            className="bg-[#2135D9] text-white my-5 rounded-[50px] hover:bg-blue-900"
-          >
-            <div className="flex my-4 mx-12">
-              <img className="my-auto w-6 h-6" src={EditProfileIcon} />
-              <p className="ml-2 my-auto text-lg">Change Password</p>
-            </div>
-          </button>
-          <button
-            onClick={onClickHandler}
-            className="bg-[#2135D9] text-white m-5 rounded-[50px] hover:bg-blue-900"
-          >
-            {
+        {userId == id ? (
+          <div className="flex items-end mr-6 mb-10">
+            <button
+              onClick={() => setPasswordModal(true)}
+              className="bg-[#2135D9] text-white my-5 rounded-[50px] hover:bg-blue-900"
+            >
+              <div className="flex my-4 mx-12">
+                <img className="my-auto w-6 h-6" src={EditProfileIcon} />
+                <p className="ml-2 my-auto text-lg">Change Password</p>
+              </div>
+            </button>
+            <button
+              onClick={onClickHandler}
+              className="bg-[#2135D9] text-white m-5 rounded-[50px] hover:bg-blue-900"
+            >
               {
-                true: (
-                  <div className="flex my-4 mx-12">
-                    <img className="my-auto w-6 h-6" src={EditProfileIcon} />
-                    <p className="ml-2 my-auto text-lg">Edit profile</p>
-                  </div>
-                ),
-                false: (
-                  <div className="flex my-4 mx-12">
-                    <img className="my-auto w-6 h-6" src={EditProfileIcon} />
-                    <p className="ml-2 my-auto text-lg">Save profile</p>
-                  </div>
-                ),
-              }[isDisabled]
-            }
-          </button>
-        </div>
+                {
+                  true: (
+                    <div className="flex my-4 mx-12">
+                      <img className="my-auto w-6 h-6" src={EditProfileIcon} />
+                      <p className="ml-2 my-auto text-lg">Edit profile</p>
+                    </div>
+                  ),
+                  false: (
+                    <div className="flex my-4 mx-12">
+                      <img className="my-auto w-6 h-6" src={EditProfileIcon} />
+                      <p className="ml-2 my-auto text-lg">Save profile</p>
+                    </div>
+                  ),
+                }[isDisabled]
+              }
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
 
       <div className=" flex flex-col h-full">
