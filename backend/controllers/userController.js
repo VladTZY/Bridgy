@@ -8,40 +8,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 
-const getInstutionId = async (user) => {
-  let institutionId = null;
-
-  if (user.role == "STUDENT") {
-    institutionId = user.schoolId;
-  }
-
-  if (user.role == "SCHOOL") {
-    const school = await SchoolModel.findOne({
-      where: {
-        adminId: user.id,
-      },
-    });
-
-    if (!school) institutionId = null;
-    else institutionId = school.id;
-  }
-
-  if (user.role == "ORGANIZATION") {
-    const organization = await OrganizationModel.findOne({
-      where: {
-        adminId: user.id,
-      },
-    });
-
-    if (!organization) institutionId = null;
-    else institutionId = organization.id;
-  }
-
-  return institutionId;
-};
-
-const createToken = (id, username, role, institutionId) => {
-  return jwt.sign({ id, username, role, institutionId }, process.env.SECRET, {
+const createToken = (id, username, role) => {
+  return jwt.sign({ id, username, role }, process.env.SECRET, {
     expiresIn: "3d",
   });
 };
@@ -96,8 +64,7 @@ const signupUser = async (req, res) => {
       locationId: location.id,
     });
 
-    const institutionId = await getInstutionId(user);
-    const token = createToken(user.id, user.username, user.role, institutionId);
+    const token = createToken(user.id, user.username, user.role);
 
     res.status(200).json({ token: token });
   } catch (error) {
@@ -121,8 +88,7 @@ const loginUser = async (req, res) => {
 
     if (!match) throw Error("Incorect password");
 
-    const institutionId = await getInstutionId(user);
-    const token = createToken(user.id, user.username, user.role, institutionId);
+    const token = createToken(user.id, user.username, user.role);
 
     res.status(200).json({ token: token });
   } catch (error) {
@@ -140,19 +106,92 @@ const getProfileInfo = async (req, res) => {
     const userLocation = await LocationModel.findByPk(id, {
       attributes: { exclude: ["id"] },
     });
-    const institutionId = await getInstutionId(user);
 
-    const userInfo = {
-      username: user.username,
-      email: user.email,
-      phoneNumber: user.phoneNumber,
-      role: user.role,
-      bio: user.bio,
+    let payload = {
+      username: "Vlad",
+      email: "Vlad",
+      phoneNumber: "Vlad",
+      role: "Vlad",
+      bio: "Vlad",
       location: userLocation,
-      institutionId: institutionId,
     };
 
-    res.status(200).json(userInfo);
+    if (
+      user.role == "STUDENT" ||
+      user.role == "ADMIN" ||
+      user.role == "SUPER_ADMIN"
+    ) {
+      const userInfo = {
+        username: user.username,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        role: user.role,
+        bio: user.bio,
+        location: userLocation,
+        schoolName: "",
+      };
+
+      if (user.role == "ADMIN" || user.role == "SUPER_ADMIN")
+        userInfo.role = "Administrator";
+
+      if (user.role == "STUDENT") {
+        const school = await SchoolModel.findByPk(user.schoolId, {
+          attributes: ["name"],
+        });
+        userInfo.schoolName = school.name;
+      }
+
+      payload = userInfo;
+    }
+
+    if (user.role == "SCHOOL") {
+      const school = await SchoolModel.findOne({
+        where: {
+          adminId: user.id,
+        },
+        attributes: ["name", "email", "phoneNumber", "locationId"],
+      });
+
+      const schoolLocation = await LocationModel.findByPk(school.locationId, {
+        attributes: { exclude: ["id"] },
+      });
+
+      payload = {
+        name: school.name,
+        role: "School",
+        email: school.email,
+        phoneNumber: school.phoneNumber,
+        bio: user.bio,
+        location: schoolLocation,
+      };
+    }
+
+    if (user.role == "ORGANIZATION") {
+      const organization = await OrganizationModel.findOne({
+        where: {
+          adminId: user.id,
+        },
+        attributes: ["name", "email", "phoneNumber", "locationId"],
+      });
+
+      const organizationLocation = await LocationModel.findByPk(
+        organization.locationId,
+        {
+          attributes: { exclude: ["id"] },
+        }
+      );
+
+      payload = {
+        name: organization.name,
+        role: "ORGANIZATION",
+        email: organization.email,
+        phoneNumber: organization.phoneNumber,
+        bio: user.bio,
+        location: organizationLocation,
+      };
+    }
+
+    res.status(200).json(payload);
   } catch (error) {
     res.status(500).json(error.message);
   }
