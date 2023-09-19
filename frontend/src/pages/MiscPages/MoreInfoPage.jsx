@@ -8,6 +8,7 @@ import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
 import ClockIcon from "../../../Bridgy_Assets/icon/clock blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
+import { scrollToTop } from "react-scroll/modules/mixins/animate-scroll";
 
 export const MoreInfoPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
