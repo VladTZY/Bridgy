@@ -27,7 +27,7 @@ export const WriteExperienceCard = ({ id, title, eventDescription }) => {
         type="text"
         value={description}
         placeholder="Describe the experience in your words"
-        className="m-5 pb-60 p-4 rounded-xl border-2 border-gray-400"
+        className="m-5 pb-52 p-4 rounded-xl border-2 border-gray-400"
         onChange={(e) => setDescription(e.target.value)}
       />
       <div className="flex items-start">

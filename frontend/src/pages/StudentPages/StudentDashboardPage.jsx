@@ -69,9 +69,9 @@ export const StudentDashboardPage = () => {
         />
       </div>
       <div className="min-h-full bg-gray-100 flex flex-col">
-        <h1 className="text-4xl font-semibold m-10">Ongoing Events</h1>
+        <h1 className="text-4xl font-semibold mx-5 my-7">Ongoing Events</h1>
 
-        <div className="mx-6 flex flex-wrap">
+        <div className="mx-2 flex flex-wrap">
           {ongoingEvents.map((data) => {
             return (
               <Card
@@ -83,7 +83,11 @@ export const StudentDashboardPage = () => {
                 location={data.event.location}
                 duration={data.event.hours}
                 event_type={"opportunity"}
-                pic={pic}
+                photoUrl={
+                  data.event.photoUrl == null
+                    ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                    : `http://localhost:4004/uploads/${data.event.photoUrl}`
+                }
               />
             );
           })}
@@ -91,9 +95,9 @@ export const StudentDashboardPage = () => {
       </div>
 
       <div className="min-h-full bg-gray-100 flex flex-col">
-        <h1 className="text-4xl font-semibold m-10">Requested Events</h1>
+        <h1 className="text-4xl font-semibold mx-5 my-7">Requested Events</h1>
 
-        <div className="mx-6 flex flex-wrap">
+        <div className="mx-2 flex flex-wrap">
           {requestedEvents.map((data) => {
             return (
               <Card
@@ -105,7 +109,11 @@ export const StudentDashboardPage = () => {
                 location={data.event.location}
                 duration={data.event.hours}
                 event_type={"opportunity"}
-                pic={pic}
+                photoUrl={
+                  data.event.photoUrl == null
+                    ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                    : `http://localhost:4004/uploads/${data.event.photoUrl}`
+                }
               />
             );
           })}

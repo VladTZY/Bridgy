@@ -25,7 +25,7 @@ export const MyExperiencesPage = () => {
   return (
     <div className="min-h-full bg-gray-100 flex flex-col">
       {events.map((data) => (
-        <div className="flex flex-wrap justify-around" key={data.event.id}>
+        <div className="mt-4 flex flex-wrap justify-around" key={data.event.id}>
           <Card
             id={data.event.id}
             title={data.event.name}

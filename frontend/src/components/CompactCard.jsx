@@ -33,7 +33,7 @@ export const CompactCard = ({
       <div className="mx-6 mt-2 text-lg text-gray-700">
         {description?.toString().substring(0, 30)}...
       </div>
-      <div className="flex h-[10%] space-x-2 mt-4 justify-around">
+      <div className="flex h-[10%] w-full mt-4 justify-evenly">
         <div className="flex px-4 border justify-around items-center">
           <img src={CalendarIcon} style={{ height: "70%" }} />
           <div className="text-md text-black">

@@ -7,7 +7,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
-export const OrganizationMoreInfo = ({ eventId }) => {
+export const OrganizationPublishedMoreInfo = ({ eventId }) => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [acceptedStudents, setAcceptedStudents] = useState([]);
   const [requestedStudents, setRequestedStudents] = useState([]);
@@ -41,20 +41,9 @@ export const OrganizationMoreInfo = ({ eventId }) => {
   }, [jwt, eventId]);
 
   return (
-    <div className="mt-10">
-      <div className="flex content-between w-full">
-        <button
-          onClick={() => setAttendanceModal(true)}
-          className="w-[30%] border py-5 text-[#2135D9] border-[#2135D9] rounded-full hover:bg-[#2135D9] hover:text-white text-xl"
-        >
-          Mark Attendance
-        </button>
-        <button
-          onClick={() => setEndModal(true)}
-          className="w-[30%] border py-5 text-[#2135D9] border-[#2135D9] rounded-full hover:bg-[#2135D9] hover:text-white text-xl"
-        >
-          Finish Event
-        </button>
+    <div className="mt-5">
+      <div className="text-3xl font-extrabold">
+        This event has not started yet!
       </div>
       <div className="mt-10">
         <h1 className="text-4xl font-semibold">Accepted Students</h1>

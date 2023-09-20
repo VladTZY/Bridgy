@@ -60,7 +60,9 @@ export const Sidebar = () => {
                   )}
                 </div>
                 <div>
-                  {(location.pathname == "/student/find_opportunities" || location.pathname.toString().substring(0, 12) == "/opportunity") ? (
+                  {location.pathname == "/student/find_opportunities" ||
+                  location.pathname.toString().substring(0, 12) ==
+                    "/opportunity" ? (
                     <Link to="/student/find_opportunities">
                       <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
                         <img
@@ -86,7 +88,7 @@ export const Sidebar = () => {
                     </Link>
                   )}
                 </div>
-                <div>
+                {/*<div>
                   {location.pathname == "/student/find_group" ? (
                     <Link to="/student/find_group">
                       <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
@@ -112,7 +114,7 @@ export const Sidebar = () => {
                       </div>
                     </Link>
                   )}
-                </div>
+                  </div>*/}
                 <div>
                   {location.pathname == "/student/my_experiences" ? (
                     <Link to="/student/my_experiences">
@@ -197,7 +199,9 @@ export const Sidebar = () => {
                   )}
                 </div>
                 <div>
-                  {(location.pathname == "/organization/missions" || location.pathname.toString().substring(0, 12) == "/opportunity") ? (
+                  {location.pathname == "/organization/missions" ||
+                  location.pathname.toString().substring(0, 12) ==
+                    "/opportunity" ? (
                     <Link to="/organization/missions">
                       <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
                         <img
@@ -315,7 +319,9 @@ export const Sidebar = () => {
                           alt="react logo"
                           style={{ width: "30px", height: "40px" }}
                         />
-                        <div className="ml-2 text-white text-xl">Create School</div>
+                        <div className="ml-2 text-white text-xl">
+                          Create School
+                        </div>
                       </div>
                     </Link>
                   ) : (
@@ -340,7 +346,9 @@ export const Sidebar = () => {
                           alt="react logo"
                           style={{ width: "30px", height: "40px" }}
                         />
-                        <div className="ml-2 text-white text-xl">Create Organization</div>
+                        <div className="ml-2 text-white text-xl">
+                          Create Organization
+                        </div>
                       </div>
                     </Link>
                   ) : (
@@ -369,7 +377,9 @@ export const Sidebar = () => {
                           alt="react logo"
                           style={{ width: "30px", height: "40px" }}
                         />
-                        <div className="ml-2 text-white text-xl">Create Admin</div>
+                        <div className="ml-2 text-white text-xl">
+                          Create Admin
+                        </div>
                       </div>
                     </Link>
                   ) : (
@@ -394,7 +404,9 @@ export const Sidebar = () => {
                           alt="react logo"
                           style={{ width: "30px", height: "40px" }}
                         />
-                        <div className="ml-2 text-white text-xl">Create School</div>
+                        <div className="ml-2 text-white text-xl">
+                          Create School
+                        </div>
                       </div>
                     </Link>
                   ) : (
@@ -419,7 +431,9 @@ export const Sidebar = () => {
                           alt="react logo"
                           style={{ width: "30px", height: "40px" }}
                         />
-                        <div className="ml-2 text-white text-xl">Create Organization</div>
+                        <div className="ml-2 text-white text-xl">
+                          Create Organization
+                        </div>
                       </div>
                     </Link>
                   ) : (

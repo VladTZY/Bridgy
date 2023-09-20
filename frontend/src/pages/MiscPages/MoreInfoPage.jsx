@@ -2,13 +2,15 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
-import { StudentMoreInfo } from "../../components/StudentMoreInfo";
-import { OrganizationMoreInfo } from "../../components/OrganizationMoreInfo";
-import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
+import { StudentPublishedMoreInfo } from "../../components/StudentPublishedMoreInfo";
+import { StudentFinishedMoreInfo } from "../../components/StudentFinishedMoreInfo";
+import { StudentOngoingMoreInfo } from "../../components/StudentOngoingMoreInfo";
+import { OrganizationPublishedMoreInfo } from "../../components/OrganizationPublishedMoreInfo";
+import { OrganizationOngoingMoreInfo } from "../../components/OrganizationOngoingMoreInfo";
+import { OrganizationFinishedMoreInfo } from "../../components/OrganizationFinishedMoreInfo";
 import ClockIcon from "../../../Bridgy_Assets/icon/clock blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
-import { scrollToTop } from "react-scroll/modules/mixins/animate-scroll";
 
 export const MoreInfoPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -26,6 +28,8 @@ export const MoreInfoPage = () => {
     latitude: null,
     longitude: null,
     photoUrl: "",
+    location: ("", ""),
+    status: "",
   });
 
   useEffect(() => {
@@ -49,41 +53,55 @@ export const MoreInfoPage = () => {
     <div className="h-full bg-gray-100 flex flex-col">
       <div className="m-5 p-5 rounded-lg bg-white flex flex-col">
         <img
-          className="mx-6 rounded-lg self-center"
+          className="rounded-lg self-center"
           src={
             event.photoUrl == null
               ? "../../../Bridgy_Assets/Images/Webpage/What we do 01.png"
               : `http://localhost:4004/uploads/${event.photoUrl}`
           }
-          style={{ height: "600px" }}
+          style={{ height: "50vh", aspectRatio: "16 / 9" }}
         />
-        <div className="mt-8 text-6xl font-bold">{event.name}</div>
-        <div className="mt-4 text-xl">{event.description}</div>
-        <div className="flex h-[40px] mt-4 space-x-4">
-          <div className="flex px-28 border items-center">
-            <img src={CalendarIcon} style={{ width: "30px", height: "30px" }} />
-            <div className="text-xl text-black">
+        <div className="mt-4 ml-7 text-4xl font-bold">{event.name}</div>
+        <div className="mt-3 ml-7 text-2xl">{event.description}</div>
+        <div className="flex w-full justify-evenly h-[6vh] mt-3 space-x-4">
+          <div className="flex w-[23%] border items-center space-x-2 px-4">
+            <img src={CalendarIcon} style={{ height: "70%" }} />
+            <div className="text-2xl text-black">
               {event.time?.toString().substring(0, 10)}{" "}
               {event.time?.toString().substring(11, 16)}
             </div>
           </div>
-          <div className="flex px-28 border items-center">
-            <img src={LocationIcon} style={{ width: "30px", height: "30px" }} />
-            <div className="text-xl text-black">Location</div>
+          <div className="flex w-[23%] border items-center space-x-2 px-4">
+            <img src={LocationIcon} style={{ height: "70%" }} />
+            <div className="text-2xl text-black">
+              {event.location.city}, {event.location.country}
+            </div>
           </div>
-          <div className="flex px-28 border items-center">
-            <img src={ClockIcon} style={{ width: "30px", height: "30px" }} />
-            <div className="text-xl text-black">{event.hours} hours</div>
+          <div className="flex w-[23%] border items-center space-x-2 px-4">
+            <img src={ClockIcon} style={{ height: "70%" }} />
+            <div className="text-2xl text-black">{event.hours} hours</div>
           </div>
-          <div className="flex px-28 border items-center">
-            <img src={ClockIcon} style={{ width: "30px", height: "30px" }} />
-            <div className="text-xl text-black">{event.capacity} places</div>
+          <div className="flex w-[23%] border items-center space-x-2 px-4">
+            <img src={ClockIcon} style={{ height: "70%" }} />
+            <div className="text-2xl text-black">{event.capacity} places</div>
           </div>
         </div>
         {role == "STUDENT" ? (
-          <StudentMoreInfo jwt={jwt} eventId={id} />
+          event.status == "PUBLISHED" ? (
+            <StudentPublishedMoreInfo jwt={jwt} eventId={id} />
+          ) : event.status == "FINISHED" ? (
+            <StudentFinishedMoreInfo jwt={jwt} eventId={id} />
+          ) : (
+            <StudentOngoingMoreInfo jwt={jwt} eventId={id} />
+          )
         ) : isAdmin(role, userId, id) ? (
-          <OrganizationMoreInfo eventId={id} />
+          event.status == "PUBLISHED" ? (
+            <OrganizationPublishedMoreInfo eventId={id} />
+          ) : event.status == "FINISHED" ? (
+            <OrganizationFinishedMoreInfo eventId={id} />
+          ) : (
+            <OrganizationOngoingMoreInfo eventId={id} />
+          )
         ) : (
           <div></div>
         )}

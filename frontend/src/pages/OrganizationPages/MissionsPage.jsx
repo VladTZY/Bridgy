@@ -47,9 +47,11 @@ export const MissionsPage = () => {
     <div className="min-h-full bg-gray-100 flex flex-col">
       <SearchBar />
       <div className="flex flex-col">
-        <h1 className="text-4xl font-semibold m-10">Active Opportunities</h1>
+        <h1 className="text-4xl font-semibold mx-5 my-7">
+          Active Opportunities
+        </h1>
 
-        <div className="mx-6 flex flex-wrap">
+        <div className="mx-2 flex flex-wrap">
           {publishedEvents.map((event) => {
             return (
               <Card
@@ -73,9 +75,9 @@ export const MissionsPage = () => {
       </div>
 
       <div className="flex flex-col">
-        <h1 className="text-4xl font-semibold m-10">Past Opportunities</h1>
+        <h1 className="text-4xl font-semibold mx-5 my-7">Past Opportunities</h1>
 
-        <div className="mx-6 flex flex-wrap">
+        <div className="mx-2 flex flex-wrap">
           {finishedEvents.map((event) => {
             return (
               <Card

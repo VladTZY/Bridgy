@@ -39,9 +39,11 @@ export const FindOpportunitiesPage = () => {
   return (
     <div className="min-h-full bg-gray-100 flex flex-col">
       <SearchBar />
-      <h1 className="text-4xl font-semibold m-10">Published Opportunities</h1>
+      <h1 className="text-4xl font-semibold mx-5 my-7">
+        Published Opportunities
+      </h1>
 
-      <div className="mx-6 flex flex-wrap">
+      <div className="mx-2 flex flex-wrap">
         {events.map((event) => {
           return (
             <Card
@@ -50,7 +52,7 @@ export const FindOpportunitiesPage = () => {
               title={event.name}
               description={event.description}
               date={event.time}
-              location={event.location}
+              location={event.location.city}
               duration={event.hours}
               event_type={"opportunity"}
               photoUrl={
@@ -63,7 +65,7 @@ export const FindOpportunitiesPage = () => {
         })}
       </div>
 
-      <div className="flex justify-between  m-10">
+      <div className="flex justify-between  mx-5 my-7">
         <button
           className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
           onClick={() => handleChangePage(-1)}
