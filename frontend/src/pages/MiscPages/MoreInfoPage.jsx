@@ -16,6 +16,7 @@ export const MoreInfoPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const role = useSelector((state) => state.auth.role);
   const userId = useSelector((state) => state.auth.id);
+  const [isAdmin, setIsAdmin] = useState(false);
   const { id } = useParams();
   const [event, setEvent] = useState({
     name: "",
@@ -33,6 +34,22 @@ export const MoreInfoPage = () => {
   });
 
   useEffect(() => {
+    if (role == "ORGANIZATION") {
+      axios
+        .get(
+          `http://localhost:4004/api/organization/check_admin?eventId=${id}`,
+          {
+            headers: {
+              Authorization: `BEARER ${jwt}`,
+            },
+          }
+        )
+        .then((res) => {
+          setIsAdmin(res.data.isAdmin);
+        })
+        .catch((error) => console.log(error));
+    }
+
     axios
       .get(`http://localhost:4004/api/events/id?id=${id}`, {
         headers: {
@@ -43,11 +60,7 @@ export const MoreInfoPage = () => {
         setEvent(res.data);
       })
       .catch((error) => console.log(error));
-  }, [id, jwt]);
-
-  const isAdmin = (role, userId, eventId) => {
-    return true;
-  };
+  }, [id, jwt, role]);
 
   return (
     <div className="h-full bg-gray-100 flex flex-col">
@@ -94,7 +107,7 @@ export const MoreInfoPage = () => {
           ) : (
             <StudentOngoingMoreInfo jwt={jwt} eventId={id} />
           )
-        ) : isAdmin(role, userId, id) ? (
+        ) : isAdmin ? (
           event.status == "PUBLISHED" ? (
             <OrganizationPublishedMoreInfo eventId={id} />
           ) : event.status == "FINISHED" ? (

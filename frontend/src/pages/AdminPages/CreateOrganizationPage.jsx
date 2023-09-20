@@ -44,7 +44,7 @@ export const CreateOrganizationPage = () => {
         setEmail("");
         setPhoneNumber("");
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => console.log(error));
   };
 
   return (

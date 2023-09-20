@@ -32,9 +32,10 @@
 
 !!! modifications on database
 
-- add name field for user
-- add bio field for user
-- add adress field for location
+- add name field for user ?
+- notifications
+- last meet date - for user meet with admin
 - worked hours? for user??
+- delete description for organization
 
 CREATE PUBLIC/UPLOADS AND PUBLIC/TABLES

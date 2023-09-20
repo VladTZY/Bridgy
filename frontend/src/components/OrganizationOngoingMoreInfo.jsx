@@ -25,18 +25,6 @@ export const OrganizationOngoingMoreInfo = ({ eventId }) => {
       )
       .then((res) => setAcceptedStudents(res.data))
       .catch((error) => console.log(error));
-
-    axios
-      .get(
-        `http://localhost:4004/api/organization/requested_students?eventId=${eventId}`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
-      )
-      .then((res) => setRequestedStudents(res.data))
-      .catch((error) => console.log(error));
   }, [jwt, eventId]);
 
   return (

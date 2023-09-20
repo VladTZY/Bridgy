@@ -16,6 +16,7 @@ const {
   rejectStudent,
   checkStudent,
   finishEvent,
+  checkAdmin,
 } = require("../controllers/organizationController");
 
 router.post("/create_event", imageUpload.single("photoUrl"), createEvent);
@@ -25,5 +26,6 @@ router.post("/confirm_student", confirmStudent);
 router.post("/reject_student", rejectStudent);
 router.post("/check_student", checkStudent);
 router.post("/finish_event", finishEvent);
+router.get("/check_admin", checkAdmin);
 
 module.exports = router;

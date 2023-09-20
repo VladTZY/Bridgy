@@ -282,7 +282,30 @@ const finishEvent = async (req, res) => {
 
     res.status(200).json({ message: "Event finished" });
   } catch (error) {
-    res.status(200).json(error.message);
+    res.status(500).json(error.message);
+  }
+};
+
+const checkAdmin = async (req, res) => {
+  try {
+    const eventId = req.query.eventId;
+
+    const organization = await OrganizationModel.findOne({
+      where: {
+        adminId: req.user.id,
+      },
+      attributes: ["id"],
+    });
+
+    const event = await EventModel.findByPk(eventId, {
+      attributes: ["organizationId"],
+    });
+
+    if (event.organizationId == organization.id)
+      res.status(200).json({ isAdmin: true });
+    else res.status(200).json({ isAdmin: false });
+  } catch (error) {
+    res.status(500).json(error.message);
   }
 };
 
@@ -294,4 +317,5 @@ module.exports = {
   rejectStudent,
   checkStudent,
   finishEvent,
+  checkAdmin,
 };
