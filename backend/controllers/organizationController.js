@@ -125,6 +125,38 @@ const getJoinedStudents = async (req, res) => {
   }
 };
 
+const getFinishedStudents = async (req, res) => {
+  try {
+    const eventId = req.query.eventId;
+
+    if (!eventId) throw Error("Event id not specified");
+
+    const event = await EventModel.findOne({
+      where: {
+        id: eventId,
+      },
+      include: OrganizationModel,
+    });
+
+    if (event.status != "FINISHED") throw Error("Event not finished");
+
+    if (event.organization.adminId != req.user.id)
+      throw Error("Not admin for this event");
+
+    const finsihedStudents = await UserToEvent.findAll({
+      where: {
+        eventId: eventId,
+        status: "FINISHED",
+      },
+      include: UserModel,
+    });
+
+    res.status(200).json(finsihedStudents);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 const confirmStudent = async (req, res) => {
   try {
     const eventId = req.query.eventId;
@@ -312,6 +344,7 @@ const checkAdmin = async (req, res) => {
 module.exports = {
   createEvent,
   getRequestedStudents,
+  getFinishedStudents,
   getJoinedStudents,
   confirmStudent,
   rejectStudent,
