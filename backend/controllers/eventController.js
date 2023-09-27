@@ -4,10 +4,15 @@ const {
   OrganizationModel,
 } = require("../database/sequelize.js");
 
+const { Op } = require("sequelize");
+
 const getEvents = async (req, res) => {
   try {
-    const offset = parseInt(req.query.offset);
-    const pageSize = parseInt(req.query.pageSize);
+    let offset = 0;
+    let pageSize = 1000;
+
+    if (req.query.offset) offset = parseInt(req.query.offset);
+    if (req.query.pageSize) pageSize = parseInt(req.query.pageSize);
 
     console.log(offset, pageSize);
 
@@ -42,22 +47,60 @@ const getEventById = async (req, res) => {
 const getEventsByStatus = async (req, res) => {
   try {
     const status = req.query.status;
-    const offset = parseInt(req.query.offset);
-    const pageSize = parseInt(req.query.pageSize);
+
+    let offset = 0;
+    let pageSize = 1000;
+
+    if (req.query.offset) offset = parseInt(req.query.offset);
+    if (req.query.pageSize) pageSize = parseInt(req.query.pageSize);
 
     if (!status) throw Error("Status not specified");
 
-    if (status != "PUBLISHED" && status != "FULL" && status != "PUBLISHED")
+    if (
+      status != "PUBLISHED" &&
+      status != "FULL" &&
+      status != "FINISHED" &&
+      status != "ONGOING"
+    )
       throw Error("Wrong status name");
 
-    const events = await EventModel.findAll({
-      where: {
-        status: status,
-      },
-      offset: offset * pageSize,
-      limit: pageSize,
-      include: LocationModel,
-    });
+    let events = [];
+    const dateNow = new Date();
+
+    if (status == "ONGOING") {
+      events = await EventModel.findAll({
+        where: {
+          status: "PUBLISHED",
+          time: {
+            [Op.lt]: dateNow,
+          },
+        },
+        offset: offset * pageSize,
+        limit: pageSize,
+        include: LocationModel,
+      });
+    } else if (status == "PUBLISHED") {
+      events = await EventModel.findAll({
+        where: {
+          status: status,
+          time: {
+            [Op.gt]: dateNow,
+          },
+        },
+        offset: offset * pageSize,
+        limit: pageSize,
+        include: LocationModel,
+      });
+    } else {
+      events = await EventModel.findAll({
+        where: {
+          status: status,
+        },
+        offset: offset * pageSize,
+        limit: pageSize,
+        include: LocationModel,
+      });
+    }
 
     res.status(200).json(events);
   } catch (error) {
@@ -69,12 +112,20 @@ const getEventByOrganization = async (req, res) => {
   try {
     const organizationId = req.query.organizationId;
 
+    let offset = 0;
+    let pageSize = 1000;
+
+    if (req.query.offset) offset = parseInt(req.query.offset);
+    if (req.query.pageSize) pageSize = parseInt(req.query.pageSize);
+
     if (!organizationId) throw Error("Organization Id not specified");
 
     const events = await EventModel.findAll({
       where: {
         organizationId: organizationId,
       },
+      offset: offset * pageSize,
+      limit: pageSize,
       include: LocationModel,
     });
 
@@ -89,16 +140,55 @@ const getEventByOrganizationAndStatus = async (req, res) => {
     const organizationId = req.query.organizationId;
     const status = req.query.status;
 
+    let offset = 0;
+    let pageSize = 1000;
+
+    if (req.query.offset) offset = parseInt(req.query.offset);
+    if (req.query.pageSize) pageSize = parseInt(req.query.pageSize);
+
     if (!status) throw Error("Status not specified");
     if (!organizationId) throw Error("Organization Id not specified");
 
-    const events = await EventModel.findAll({
-      where: {
-        organizationId: organizationId,
-        status: status,
-      },
-      include: LocationModel,
-    });
+    let events = [];
+    const dateNow = new Date();
+
+    if (status == "ONGOING") {
+      events = await EventModel.findAll({
+        where: {
+          organizationId: organizationId,
+          status: "PUBLISHED",
+          time: {
+            [Op.lt]: dateNow,
+          },
+        },
+        offset: offset * pageSize,
+        limit: pageSize,
+        include: LocationModel,
+      });
+    } else if (status == "PUBLISHED") {
+      events = await EventModel.findAll({
+        where: {
+          organizationId: organizationId,
+          status: status,
+          time: {
+            [Op.gt]: dateNow,
+          },
+        },
+        offset: offset * pageSize,
+        limit: pageSize,
+        include: LocationModel,
+      });
+    } else {
+      events = await EventModel.findAll({
+        where: {
+          organizationId: organizationId,
+          status: status,
+        },
+        offset: offset * pageSize,
+        limit: pageSize,
+        include: LocationModel,
+      });
+    }
 
     res.status(200).json(events);
   } catch (error) {
@@ -111,6 +201,12 @@ const getEventByAdminAndStatus = async (req, res) => {
     const adminId = req.query.adminId;
     const status = req.query.status;
 
+    let offset = 0;
+    let pageSize = 1000;
+
+    if (req.query.offset) offset = parseInt(req.query.offset);
+    if (req.query.pageSize) pageSize = parseInt(req.query.pageSize);
+
     const organization = await OrganizationModel.findOne({
       where: {
         adminId: adminId,
@@ -118,13 +214,46 @@ const getEventByAdminAndStatus = async (req, res) => {
       attributes: ["id"],
     });
 
-    const events = await EventModel.findAll({
-      where: {
-        organizationId: organization.id,
-        status: status,
-      },
-      include: LocationModel,
-    });
+    let events = [];
+    const dateNow = new Date();
+
+    if (status == "ONGOING") {
+      events = await EventModel.findAll({
+        where: {
+          organizationId: organizationId,
+          status: "PUBLISHED",
+          time: {
+            [Op.lt]: dateNow,
+          },
+        },
+        offset: offset * pageSize,
+        limit: pageSize,
+        include: LocationModel,
+      });
+    } else if (status == "PUBLISHED") {
+      events = await EventModel.findAll({
+        where: {
+          organizationId: organizationId,
+          status: status,
+          time: {
+            [Op.gt]: dateNow,
+          },
+        },
+        offset: offset * pageSize,
+        limit: pageSize,
+        include: LocationModel,
+      });
+    } else {
+      events = await EventModel.findAll({
+        where: {
+          organizationId: organizationId,
+          status: status,
+        },
+        offset: offset * pageSize,
+        limit: pageSize,
+        include: LocationModel,
+      });
+    }
 
     res.status(200).json(events);
   } catch (error) {
