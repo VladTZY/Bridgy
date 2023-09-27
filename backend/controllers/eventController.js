@@ -1,4 +1,8 @@
-const { EventModel, LocationModel } = require("../database/sequelize.js");
+const {
+  EventModel,
+  LocationModel,
+  OrganizationModel,
+} = require("../database/sequelize.js");
 
 const getEvents = async (req, res) => {
   try {
@@ -102,10 +106,37 @@ const getEventByOrganizationAndStatus = async (req, res) => {
   }
 };
 
+const getEventByAdminAndStatus = async (req, res) => {
+  try {
+    const adminId = req.query.adminId;
+    const status = req.query.status;
+
+    const organization = await OrganizationModel.findOne({
+      where: {
+        adminId: adminId,
+      },
+      attributes: ["id"],
+    });
+
+    const events = await EventModel.findAll({
+      where: {
+        organizationId: organization.id,
+        status: status,
+      },
+      include: LocationModel,
+    });
+
+    res.status(200).json(events);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 module.exports = {
   getEvents,
   getEventById,
   getEventsByStatus,
   getEventByOrganization,
   getEventByOrganizationAndStatus,
+  getEventByAdminAndStatus,
 };

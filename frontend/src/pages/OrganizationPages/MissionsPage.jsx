@@ -6,6 +6,7 @@ import { SearchBar } from "../../components/SearchBar";
 
 export const MissionsPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
+  const id = useSelector((state) => state.auth.id);
   const organizationId = useSelector((state) => state.auth.institutionId);
   const [publishedEvents, setPublishedEvents] = useState([]);
   const [finishedEvents, setFinishedEvents] = useState([]);
@@ -13,7 +14,7 @@ export const MissionsPage = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:4004/api/events/by_organization_and_status?organizationId=${organizationId}&status=PUBLISHED`,
+        `http://localhost:4004/api/events/by_admin_and_status?adminId=${id}&status=PUBLISHED`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -29,7 +30,7 @@ export const MissionsPage = () => {
 
     axios
       .get(
-        `http://localhost:4004/api/events/by_organization_and_status?organizationId=${organizationId}&status=FINISHED`,
+        `http://localhost:4004/api/events/by_admin_and_status?adminId=${id}&status=FINISHED`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
