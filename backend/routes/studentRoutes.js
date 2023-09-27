@@ -8,10 +8,11 @@ router.use(requireAuth);
 router.use(requireStudent);
 
 const {
-  joinEvent,
   getOngoingEvents,
   getRequestedEvents,
   getFinishedEvents,
+  joinEvent,
+  getStatusForEvent,
   postFeedback,
 } = require("../controllers/studentController");
 
@@ -19,6 +20,7 @@ router.get("/ongoing_events", getOngoingEvents);
 router.get("/requested_events", getRequestedEvents);
 router.get("/finished_events", getFinishedEvents);
 router.post("/join_event/:id", joinEvent);
+router.get("/get_status", getStatusForEvent);
 router.post("/post_feedback/:id", postFeedback);
 
 module.exports = router;

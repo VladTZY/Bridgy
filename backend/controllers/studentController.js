@@ -97,6 +97,27 @@ const joinEvent = async (req, res) => {
   }
 };
 
+const getStatusForEvent = async (req, res) => {
+  try {
+    const eventId = req.query.eventId;
+
+    if (!eventId) throw Error("Event id not specified");
+
+    const userToEvent = await UserToEvent.findOne({
+      where: {
+        userId: req.user.id,
+        eventId: eventId,
+      },
+    });
+
+    if (!userToEvent) return res.status(200).json({ status: "NEUTRAL" });
+
+    res.status(200).json({ status: userToEvent.status });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 const postFeedback = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -124,9 +145,10 @@ const postFeedback = async (req, res) => {
 };
 
 module.exports = {
-  joinEvent,
   getOngoingEvents,
   getRequestedEvents,
+  joinEvent,
+  getStatusForEvent,
   postFeedback,
   getFinishedEvents,
 };
