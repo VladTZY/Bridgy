@@ -20,12 +20,16 @@ const SchoolModel = require("./models/SchoolModel")(sequelize);
 const OrganizationModel = require("./models/OrganizationModel")(sequelize);
 const EventModel = require("./models/EventModel")(sequelize);
 const LocationModel = require("./models/LocationModel")(sequelize);
+const NotificationModel = require("./models/NotificationModel")(sequelize);
 
 const UserToEvent = require("./models/UserToEvent")(sequelize);
+
+UserModel.hasMany(NotificationModel);
 
 LocationModel.hasOne(SchoolModel);
 LocationModel.hasOne(OrganizationModel);
 LocationModel.hasOne(EventModel);
+
 EventModel.belongsTo(LocationModel);
 LocationModel.hasOne(UserModel);
 
@@ -61,4 +65,5 @@ module.exports = {
   EventModel,
   LocationModel,
   UserToEvent,
+  NotificationModel,
 };

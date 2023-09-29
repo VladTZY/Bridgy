@@ -22,6 +22,9 @@ module.exports = (sequelize) => {
       bio: {
         type: Sequelize.STRING,
       },
+      lastMeet: {
+        type: Sequelize.DATE,
+      },
       password: {
         type: Sequelize.STRING,
         allowNull: false,
