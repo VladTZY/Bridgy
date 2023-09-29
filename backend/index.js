@@ -42,6 +42,9 @@ app.use("/api/admin", adminRouter);
 const superAdminRouter = require("./routes/superAdminRoutes");
 app.use("/api/super_admin", superAdminRouter);
 
+const notificationRouter = require("./routes/notificationRoutes");
+app.use("/api/notification", notificationRouter);
+
 app.get("/ping", (req, res) => {
   res.send("pong");
 });
