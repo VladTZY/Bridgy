@@ -10,7 +10,10 @@ module.exports = (sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    relatedId: {
+    studentId: {
+      type: Sequelize.STRING,
+    },
+    eventId: {
       type: Sequelize.STRING,
     },
   });

@@ -33,9 +33,22 @@
 !!! modifications on database
 
 - add name field for user ?
-- notifications
-- last meet date - for user meet with admin
 - worked hours? for user??
 - delete description for organization
 
 CREATE PUBLIC/UPLOADS AND PUBLIC/TABLES
+
+! NOTIFICATIONS TYPE
+
+- for schools
+
+* STUDENT_FINISHES - when a student has completed a misssion
+
+- for students
+
+* ACCEPTED - when a student gets accepted
+* REMINDER - a student gets reminded of an event
+
+- for organizations
+
+* STUDENT_REQUESTED - when a student registers for a mission

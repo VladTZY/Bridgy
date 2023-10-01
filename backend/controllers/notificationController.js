@@ -16,18 +16,23 @@ const getNotifications = async (req, res) => {
   }
 };
 
-const createNotification = async (userId, type, message, relatedId) => {
+const createNotification = async (
+  userId,
+  type,
+  message,
+  studentId,
+  eventId
+) => {
   try {
     const notification = await NotificationModel.create({
       type: type,
       message: message,
-      relatedId: relatedId,
+      studentId: studentId,
+      eventId: eventId,
       userId: userId,
     });
-
-    return notification;
   } catch (error) {
-    return error.message;
+    console.log(error.message);
   }
 };
 

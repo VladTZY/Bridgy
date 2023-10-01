@@ -1,4 +1,9 @@
-const { EventModel, UserToEvent } = require("../database/sequelize");
+const {
+  EventModel,
+  UserToEvent,
+  OrganizationModel,
+} = require("../database/sequelize");
+const { createNotification } = require("./notificationController");
 
 const getOngoingEvents = async (req, res) => {
   try {
@@ -81,8 +86,6 @@ const joinEvent = async (req, res) => {
       },
     });
 
-    console.log(enroled.length);
-
     if (enroled.length >= event.capacity) throw Error("Event full");
 
     const userToEvent = await UserToEvent.create({
@@ -90,6 +93,21 @@ const joinEvent = async (req, res) => {
       eventId: eventId,
       status: "REQUESTED",
     });
+
+    const organization = await OrganizationModel.findByPk(
+      event.organizationId,
+      {
+        attributes: { include: ["adminId"] },
+      }
+    );
+
+    createNotification(
+      organization.adminId,
+      "STUDENT_REQUESTED",
+      `${req.user.username} requested to join your event, ${event.name}`,
+      req.user.id,
+      event.id
+    );
 
     res.status(200).json(userToEvent);
   } catch (error) {

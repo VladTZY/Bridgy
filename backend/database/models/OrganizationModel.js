@@ -16,9 +16,6 @@ module.exports = (sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      description: {
-        type: Sequelize.STRING,
-      },
     },
     { timestamps: false }
   );
