@@ -4,6 +4,7 @@ const {
   OrganizationModel,
   UserToEvent,
   UserModel,
+  SchoolModel,
 } = require("../database/sequelize");
 
 const { Op } = require("sequelize");
@@ -324,6 +325,18 @@ const finishEvent = async (req, res) => {
 
       userToEvent.status = student.status;
       await userToEvent.save();
+
+      const studentEnt = await UserModel.findByPk(student.userId, {
+        attributes: { include: ["username", "schoolId"] },
+      });
+
+      createNotification(
+        studentEnt.schoolId,
+        "STUDENT_FINISHES",
+        `Your student, ${studentEnt.username} finished the ${event.name} event`,
+        student.userId,
+        event.id
+      );
     });
 
     event.status = "FINISHED";

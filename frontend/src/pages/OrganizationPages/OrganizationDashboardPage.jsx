@@ -14,7 +14,7 @@ export const OrganizationDashboardPage = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:4004/api/events/by_organization_and_status?organizationId=${organizationId}&status=PUBLISHED`,
+        `http://localhost:4004/api/events/by_organization_and_status?organizationId=${organizationId}&status=ONGOING`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
