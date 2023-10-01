@@ -13,7 +13,7 @@ const {
   getRequestedStudents,
   getJoinedStudents,
   getFinishedStudents,
-  confirmStudent,
+  acceptStudent,
   rejectStudent,
   checkStudent,
   finishEvent,
@@ -24,7 +24,7 @@ router.post("/create_event", imageUpload.single("photoUrl"), createEvent);
 router.get("/requested_students", getRequestedStudents);
 router.get("/joined_students", getJoinedStudents);
 router.get("/finished_students", getFinishedStudents);
-router.post("/confirm_student", confirmStudent);
+router.post("/confirm_student", acceptStudent);
 router.post("/reject_student", rejectStudent);
 router.post("/check_student", checkStudent);
 router.post("/finish_event", finishEvent);

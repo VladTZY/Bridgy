@@ -47,6 +47,7 @@ CREATE PUBLIC/UPLOADS AND PUBLIC/TABLES
 - for students
 
 * ACCEPTED - when a student gets accepted
+* REJECTED - when a student gets rejected
 * REMINDER - a student gets reminded of an event
 
 - for organizations

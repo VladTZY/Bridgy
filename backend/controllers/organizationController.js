@@ -7,6 +7,7 @@ const {
 } = require("../database/sequelize");
 
 const { Op } = require("sequelize");
+const { createNotification } = require("./notificationController");
 
 const createEvent = async (req, res) => {
   const {
@@ -157,7 +158,7 @@ const getFinishedStudents = async (req, res) => {
   }
 };
 
-const confirmStudent = async (req, res) => {
+const acceptStudent = async (req, res) => {
   try {
     const eventId = req.query.eventId;
     const studentId = req.query.studentId;
@@ -190,6 +191,14 @@ const confirmStudent = async (req, res) => {
 
     userToEvent.status = "JOINED";
     await userToEvent.save();
+
+    createNotification(
+      studentId,
+      "ACCEPTED",
+      `Congratulations, you are now accepted in the following event, ${event.name}`,
+      null,
+      event.id
+    );
 
     res.status(200).json(userToEvent);
   } catch (error) {
@@ -227,6 +236,14 @@ const rejectStudent = async (req, res) => {
 
     userToEvent.status = "REJECTED";
     await userToEvent.save();
+
+    createNotification(
+      studentId,
+      "REJECTED",
+      `Sadly, you were rejected in your application for the following event, ${event.name}`,
+      null,
+      event.id
+    );
 
     res.status(200).json(userToEvent);
   } catch (error) {
@@ -346,7 +363,7 @@ module.exports = {
   getRequestedStudents,
   getFinishedStudents,
   getJoinedStudents,
-  confirmStudent,
+  acceptStudent,
   rejectStudent,
   checkStudent,
   finishEvent,
