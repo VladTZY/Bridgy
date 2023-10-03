@@ -38,6 +38,11 @@ const getEventById = async (req, res) => {
 
     if (!event) throw Error("No event at this id");
 
+    const dateNow = new Date();
+
+    if (event.time < dateNow && event.status == "PUBLISHED")
+      event.status = "ONGOING";
+
     res.status(200).json(event);
   } catch (error) {
     res.status(500).json(error.message);
@@ -220,7 +225,7 @@ const getEventByAdminAndStatus = async (req, res) => {
     if (status == "ONGOING") {
       events = await EventModel.findAll({
         where: {
-          organizationId: organizationId,
+          organizationId: organization.id,
           status: "PUBLISHED",
           time: {
             [Op.lt]: dateNow,
@@ -233,7 +238,7 @@ const getEventByAdminAndStatus = async (req, res) => {
     } else if (status == "PUBLISHED") {
       events = await EventModel.findAll({
         where: {
-          organizationId: organizationId,
+          organizationId: organization.id,
           status: status,
           time: {
             [Op.gt]: dateNow,
@@ -246,7 +251,7 @@ const getEventByAdminAndStatus = async (req, res) => {
     } else {
       events = await EventModel.findAll({
         where: {
-          organizationId: organizationId,
+          organizationId: organization.id,
           status: status,
         },
         offset: offset * pageSize,
