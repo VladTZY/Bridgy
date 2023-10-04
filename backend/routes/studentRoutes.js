@@ -10,6 +10,7 @@ router.use(requireStudent);
 const {
   getOngoingEvents,
   getRequestedEvents,
+  getAcceptedEvents,
   getFinishedEvents,
   joinEvent,
   getStatusForEvent,
@@ -18,6 +19,7 @@ const {
 
 router.get("/ongoing_events", getOngoingEvents);
 router.get("/requested_events", getRequestedEvents);
+router.get("/accepted_events", getAcceptedEvents);
 router.get("/finished_events", getFinishedEvents);
 router.post("/join_event/:id", joinEvent);
 router.get("/get_status", getStatusForEvent);
