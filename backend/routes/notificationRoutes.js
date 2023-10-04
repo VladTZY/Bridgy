@@ -7,6 +7,6 @@ router.use(requireAuth);
 
 const { getNotifications } = require("../controllers/notificationController");
 
-router.get("/get", getNotifications);
+router.get("/get_all", getNotifications);
 
 module.exports = router;

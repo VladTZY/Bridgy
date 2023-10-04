@@ -330,8 +330,12 @@ const finishEvent = async (req, res) => {
         attributes: { include: ["username", "schoolId"] },
       });
 
+      const schoolEnt = await SchoolModel.findByPk(studentEnt.schoolId, {
+        attributes: { include: ["adminId"] },
+      });
+
       createNotification(
-        studentEnt.schoolId,
+        schoolEnt.adminId,
         "STUDENT_FINISHES",
         `Your student, ${studentEnt.username} finished the ${event.name} event`,
         student.userId,

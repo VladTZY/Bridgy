@@ -1,4 +1,5 @@
 import { EventProgressCard } from "../../components/EventProgressCard";
+import { NotificationsList } from "../../components/NotificationsList";
 
 export const UpdatesPage = () => {
   return (
@@ -30,6 +31,8 @@ export const UpdatesPage = () => {
           duration={2}
         />
       </div>
+
+      <NotificationsList />
     </div>
   );
 };
