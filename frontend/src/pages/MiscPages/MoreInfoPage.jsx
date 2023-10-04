@@ -62,6 +62,11 @@ export const MoreInfoPage = () => {
       .catch((error) => console.log(error));
   }, [id, jwt, role]);
 
+  console.log(event.status);
+
+  var location = event.location.city + ", " + event.location.country;
+  if (location == ", ") location = "Remote";
+
   return (
     <div className="h-full bg-gray-100 flex flex-col">
       <div className="m-5 p-5 rounded-lg bg-white flex flex-col">
@@ -86,9 +91,7 @@ export const MoreInfoPage = () => {
           </div>
           <div className="flex w-[23%] border items-center space-x-2 px-4">
             <img src={LocationIcon} style={{ height: "70%" }} />
-            <div className="text-2xl text-black">
-              {event.location.city}, {event.location.country}
-            </div>
+            <div className="text-2xl text-black">{location}</div>
           </div>
           <div className="flex w-[23%] border items-center space-x-2 px-4">
             <img src={ClockIcon} style={{ height: "70%" }} />
@@ -116,7 +119,9 @@ export const MoreInfoPage = () => {
             <OrganizationOngoingMoreInfo eventId={id} />
           )
         ) : (
-          <div></div>
+          <div className="mt-5 text-3xl font-extrabold">
+            You cannot access this event!
+          </div>
         )}
       </div>
     </div>

@@ -7,14 +7,16 @@ import { CompactCard } from "../../components/CompactCard";
 
 export const OrganizationDashboardPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
+  const id = useSelector((state) => state.auth.id);
   const organizationId = useSelector((state) => state.auth.institutionId);
   const [ongoingEvents, setOngoingEvents] = useState([]);
   const [finishedEvents, setFinishedEvents] = useState([]);
+  const [publishedEvents, setPublishedEvents] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        `http://localhost:4004/api/events/by_organization_and_status?organizationId=${organizationId}&status=ONGOING`,
+        `http://localhost:4004/api/events/by_admin_and_status?adminId=${id}&status=ONGOING`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -30,7 +32,23 @@ export const OrganizationDashboardPage = () => {
 
     axios
       .get(
-        `http://localhost:4004/api/events/by_organization_and_status?organizationId=${organizationId}&status=FINISHED`,
+        `http://localhost:4004/api/events/by_admin_and_status?adminId=${id}&status=PUBLISHED`,
+        {
+          headers: {
+            Authorization: `BEARER ${jwt}`,
+          },
+        }
+      )
+      .then((res) => {
+        setPublishedEvents(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .get(
+        `http://localhost:4004/api/events/by_admin_and_status?adminId=${id}&status=FINISHED`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -76,6 +94,33 @@ export const OrganizationDashboardPage = () => {
               />
             );
           })}
+        </div>
+        <div className="flex flex-col">
+          <h1 className="text-4xl font-semibold mx-5 my-7">
+            Awaiting Requests
+          </h1>
+
+          <div className="mx-2 flex">
+            {publishedEvents.slice(0, 4).map((event) => {
+              return (
+                <CompactCard
+                  key={event.id}
+                  id={event.id}
+                  title={event.name}
+                  description={event.description}
+                  date={event.time}
+                  location={event.location.city}
+                  duration={event.hours}
+                  event_type={"opportunity"}
+                  photoUrl={
+                    event.photoUrl == null
+                      ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                      : `http://localhost:4004/uploads/${event.photoUrl}`
+                  }
+                />
+              );
+            })}
+          </div>
         </div>
         <div className="text-4xl font-semibold mx-5 my-7">
           Recently Completed

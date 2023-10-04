@@ -22,6 +22,7 @@ import { CreateSchoolPage } from "./pages/AdminPages/CreateSchoolPage";
 import { MyExperiencesPage } from "./pages/StudentPages/MyExperiencesPage";
 import { UpdatesPage } from "./pages/SchoolPages/UpdatesPage";
 import { OrganizationDashboardPage } from "./pages/OrganizationPages/OrganizationDashboardPage";
+import { AddPreviousEventsPage } from "./pages/StudentPages/AddPreviousEventsPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -79,6 +80,18 @@ function App() {
           element={
             role == "STUDENT" ? (
               <MyExperiencesPage />
+            ) : isLoggedIn ? (
+              <ErrorPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/student/add_previous_events"
+          element={
+            role == "STUDENT" ? (
+              <AddPreviousEventsPage />
             ) : isLoggedIn ? (
               <ErrorPage />
             ) : (

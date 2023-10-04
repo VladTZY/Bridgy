@@ -12,9 +12,6 @@ export const StudentProgressCard = ({
       <div className="mt-6 flex flex-col space-y-4">
         <div className="ml-6 text-2xl text-bold">{title}</div>
         <div className="ml-6 text-5xl">{total}</div>
-        <div className="mt-6 ml-6 text-xl" style={{ color: color }}>
-          {update}
-        </div>
       </div>
       <div
         className="mx-5 my-8 w-[30%] rounded-full outline outline-2 outline-offset-8 flex relative items-center justify-center"
