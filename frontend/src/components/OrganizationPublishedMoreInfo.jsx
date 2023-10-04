@@ -1,7 +1,5 @@
 import { AcceptedStudentsTable } from "./AcceptedStudentsTable";
 import { RequestedStudentsTable } from "./RequestedStudentsTable";
-import { EndEventModal } from "./EndEventModal";
-import { MarkAttendanceModal } from "./MarkAttendanceModal";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -11,8 +9,6 @@ export const OrganizationPublishedMoreInfo = ({ eventId }) => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [acceptedStudents, setAcceptedStudents] = useState([]);
   const [requestedStudents, setRequestedStudents] = useState([]);
-  const [endModal, setEndModal] = useState(false);
-  const [attendanceModal, setAttendanceModal] = useState(false);
 
   useEffect(() => {
     axios
@@ -59,23 +55,6 @@ export const OrganizationPublishedMoreInfo = ({ eventId }) => {
           setAcceptedStudents={setAcceptedStudents}
         />
       </div>
-
-      {endModal ? (
-        <EndEventModal
-          setEndModal={setEndModal}
-          students={acceptedStudents}
-          eventId={eventId}
-        />
-      ) : null}
-
-      {attendanceModal ? (
-        <MarkAttendanceModal
-          setAttendanceModal={setAttendanceModal}
-          students={acceptedStudents}
-          setStudents={setAcceptedStudents}
-          eventId={eventId}
-        />
-      ) : null}
     </div>
   );
 };
