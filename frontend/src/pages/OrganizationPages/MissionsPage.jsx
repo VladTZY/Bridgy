@@ -49,7 +49,7 @@ export const MissionsPage = () => {
       <SearchBar />
       <div className="flex flex-col">
         <h1 className="text-4xl font-semibold mx-5 my-7">
-          Active Opportunities
+          Future Opportunities
         </h1>
 
         <div className="mx-2 flex flex-wrap">

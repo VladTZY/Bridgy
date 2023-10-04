@@ -4,15 +4,27 @@ import axios from "axios";
 import pic from "../../../Bridgy_Assets/Images/Webpage/What we do 01.png";
 
 import { Card } from "../../components/Card";
+import { CompactCard } from "../../components/CompactCard";
 import { StudentProgressCard } from "../../components/StudentProgressCard";
 
 export const StudentDashboardPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [ongoingEvents, setOngoingEvents] = useState([]);
-  const [pastEvents, setPastEvents] = useState([]);
   const [requestedEvents, setRequestedEvents] = useState([]);
+  const [acceptedEvents, setAcceptedEvents] = useState([]);
 
   useEffect(() => {
+    axios
+      .get("http://localhost:4004/api/student/ongoing_events", {
+        headers: {
+          Authorization: `BEARER ${jwt}`,
+        },
+      })
+      .then((res) => {
+        setAcceptedEvents(res.data);
+      })
+      .catch((error) => console.log(error));
+
     axios
       .get("http://localhost:4004/api/student/ongoing_events", {
         headers: {
@@ -71,52 +83,114 @@ export const StudentDashboardPage = () => {
       <div className="min-h-full bg-gray-100 flex flex-col">
         <h1 className="text-4xl font-semibold mx-5 my-7">Ongoing Events</h1>
 
-        <div className="mx-2 flex flex-wrap">
-          {ongoingEvents.map((data) => {
-            return (
-              <Card
-                key={data.event.id}
-                id={data.event.id}
-                title={data.event.name}
-                description={data.event.description}
-                date={data.event.time}
-                location={data.event.location}
-                duration={data.event.hours}
-                event_type={"opportunity"}
-                photoUrl={
-                  data.event.photoUrl == null
-                    ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
-                    : `http://localhost:4004/uploads/${data.event.photoUrl}`
-                }
-              />
-            );
-          })}
+        <div>
+          {
+            {
+              true: (
+                <div className="text-center text-3xl font-extrabold">
+                  You have no events here!
+                </div>
+              ),
+              false: (
+                <div className="mx-2 flex flex-wrap">
+                  {ongoingEvents.map((data) => {
+                    return (
+                      <CompactCard
+                        id={data.event.id}
+                        title={data.event.name}
+                        description={data.event.description}
+                        date={data.event.time}
+                        location={data.event.location}
+                        duration={data.event.hours}
+                        event_type={"opportunity"}
+                        photoUrl={
+                          data.event.photoUrl == null
+                            ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                            : `http://localhost:4004/uploads/${data.event.photoUrl}`
+                        }
+                      />
+                    );
+                  })}{" "}
+                </div>
+              ),
+            }[ongoingEvents.length == 0]
+          }
+        </div>
+      </div>
+
+      <div className="min-h-full bg-gray-100 flex flex-col">
+        <h1 className="text-4xl font-semibold mx-5 my-7">Accepted Events</h1>
+
+        <div>
+          {
+            {
+              true: (
+                <div className="text-center text-3xl font-extrabold">
+                  You have no events here!
+                </div>
+              ),
+              false: (
+                <div className="mx-2 flex flex-wrap">
+                  {acceptedEvents.map((data) => {
+                    return (
+                      <CompactCard
+                        id={data.event.id}
+                        title={data.event.name}
+                        description={data.event.description}
+                        date={data.event.time}
+                        location={data.event.location}
+                        duration={data.event.hours}
+                        event_type={"opportunity"}
+                        photoUrl={
+                          data.event.photoUrl == null
+                            ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                            : `http://localhost:4004/uploads/${data.event.photoUrl}`
+                        }
+                      />
+                    );
+                  })}{" "}
+                </div>
+              ),
+            }[acceptedEvents.length == 0]
+          }
         </div>
       </div>
 
       <div className="min-h-full bg-gray-100 flex flex-col">
         <h1 className="text-4xl font-semibold mx-5 my-7">Requested Events</h1>
 
-        <div className="mx-2 flex flex-wrap">
-          {requestedEvents.map((data) => {
-            return (
-              <Card
-                key={data.event.id}
-                id={data.event.id}
-                title={data.event.name}
-                description={data.event.description}
-                date={data.event.time}
-                location={data.event.location}
-                duration={data.event.hours}
-                event_type={"opportunity"}
-                photoUrl={
-                  data.event.photoUrl == null
-                    ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
-                    : `http://localhost:4004/uploads/${data.event.photoUrl}`
-                }
-              />
-            );
-          })}
+        <div>
+          {
+            {
+              true: (
+                <div className="text-center text-3xl font-extrabold">
+                  You have no events here!
+                </div>
+              ),
+              false: (
+                <div className="mx-2 flex flex-wrap">
+                  {requestedEvents.map((data) => {
+                    return (
+                      <CompactCard
+                        id={data.event.id}
+                        title={data.event.name}
+                        description={data.event.description}
+                        date={data.event.time}
+                        location={data.event.location}
+                        duration={data.event.hours}
+                        event_type={"opportunity"}
+                        photoUrl={
+                          data.event.photoUrl == null
+                            ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                            : `http://localhost:4004/uploads/${data.event.photoUrl}`
+                        }
+                      />
+                    );
+                  })}{" "}
+                </div>
+              ),
+            }[requestedEvents.length == 0]
+          }
         </div>
       </div>
     </div>

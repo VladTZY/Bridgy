@@ -116,6 +116,33 @@ export const Sidebar = () => {
                   )}
                   </div>*/}
                 <div>
+                  {location.pathname == "/student/add_previous_events" ? (
+                    <Link to="/student/add_previous_events">
+                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
+                        <img
+                          src={fg_white}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-white text-xl">
+                          Add Previous Events
+                        </div>
+                      </div>
+                    </Link>
+                  ) : (
+                    <Link to="/student/add_previous_events">
+                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
+                        <img
+                          src={fg_black}
+                          alt="react logo"
+                          style={{ width: "30px", height: "40px" }}
+                        />
+                        <div className="ml-2 text-xl">Add Previous Events</div>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+                <div>
                   {location.pathname == "/student/my_experiences" ? (
                     <Link to="/student/my_experiences">
                       <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">

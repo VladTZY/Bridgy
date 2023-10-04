@@ -19,6 +19,8 @@ export const Card = ({
     navigate(`/${event_type}/${id}`);
   };
 
+  if (location == "") location = "Remote";
+
   return (
     <div className="w-[32%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white m-2">
       <img

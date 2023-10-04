@@ -19,6 +19,8 @@ export const CompactCard = ({
     navigate(`/${event_type}/${id}`);
   };
 
+  if (location == "") location = "Remote";
+
   return (
     <button
       onClick={handleMoreInfo}
