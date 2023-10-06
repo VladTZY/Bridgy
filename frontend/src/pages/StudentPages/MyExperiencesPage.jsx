@@ -11,7 +11,7 @@ export const MyExperiencesPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4004/api/student/finished_events", {
+      .get(`${import.meta.env.VITE_API_URL}/student/finished_events`, {
         headers: {
           Authorization: `BEARER ${jwt}`,
         },
@@ -50,7 +50,9 @@ export const MyExperiencesPage = () => {
                     photoUrl={
                       data.event.photoUrl == null
                         ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
-                        : `http://localhost:4004/uploads/${data.event.photoUrl}`
+                        : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
+                            data.event.photoUrl
+                          }`
                     }
                   />
                   <WriteExperienceCard

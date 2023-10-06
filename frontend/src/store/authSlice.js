@@ -6,10 +6,13 @@ export const login = createAsyncThunk(
   "auth/login",
   async ({ email, password }) => {
     try {
-      const res = await axios.post("http://localhost:4004/api/user/login", {
-        email: email,
-        password: password,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/user/login`,
+        {
+          email: email,
+          password: password,
+        }
+      );
       const data = jwtDecode(res.data.token);
       return { ...data, token: res.data.token };
     } catch (error) {

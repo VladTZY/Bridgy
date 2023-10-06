@@ -19,7 +19,7 @@ export const AddMultipleStudents = () => {
 
     axios
       .post(
-        "http://localhost:4004/api/school/create_multiple_students",
+        `${import.meta.env.VITE_API_URL}/school/create_multiple_students`,
         formData,
         {
           headers: {

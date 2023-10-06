@@ -24,22 +24,24 @@ export const ProfilePage = () => {
   const [passwordModal, setPasswordModal] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:4004/api/user/profile/${id}`).then((res) => {
-      setUsername(res.data.username);
-      setEmail(res.data.email);
-      setPhoneNumber(res.data.phoneNumber);
-      setLocation(res.data.location);
-      setRole(res.data.role);
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/user/profile/${id}`)
+      .then((res) => {
+        setUsername(res.data.username);
+        setEmail(res.data.email);
+        setPhoneNumber(res.data.phoneNumber);
+        setLocation(res.data.location);
+        setRole(res.data.role);
 
-      if (res.data.bio) setBio(res.data.bio);
-    });
+        if (res.data.bio) setBio(res.data.bio);
+      });
   }, [id]);
 
   const onClickHandler = () => {
     if (!isDisabled) {
       axios
         .put(
-          `http://localhost:4004/api/user/update_profile`,
+          `${import.meta.env.VITE_API_URL}/user/update_profile`,
           {
             bio,
             phoneNumber,

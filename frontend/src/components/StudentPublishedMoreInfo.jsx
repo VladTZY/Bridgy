@@ -7,7 +7,7 @@ export const StudentPublishedMoreInfo = ({ jwt, eventId }) => {
   const joinEvent = () => {
     axios
       .post(
-        `http://localhost:4004/api/student/join_event/${eventId}`,
+        `${import.meta.env.VITE_API_URL}/student/join_event/${eventId}`,
         {},
         {
           headers: {

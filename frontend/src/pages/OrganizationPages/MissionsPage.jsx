@@ -14,7 +14,9 @@ export const MissionsPage = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:4004/api/events/by_admin_and_status?adminId=${id}&status=PUBLISHED`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/events/by_admin_and_status?adminId=${id}&status=PUBLISHED`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -30,7 +32,9 @@ export const MissionsPage = () => {
 
     axios
       .get(
-        `http://localhost:4004/api/events/by_admin_and_status?adminId=${id}&status=FINISHED`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/events/by_admin_and_status?adminId=${id}&status=FINISHED`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -67,7 +71,9 @@ export const MissionsPage = () => {
                 photoUrl={
                   event.photoUrl == null
                     ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
-                    : `http://localhost:4004/uploads/${event.photoUrl}`
+                    : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
+                        event.photoUrl
+                      }`
                 }
               />
             );
@@ -93,7 +99,9 @@ export const MissionsPage = () => {
                 photoUrl={
                   event.photoUrl == null
                     ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
-                    : `http://localhost:4004/uploads/${event.photoUrl}`
+                    : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
+                        event.photoUrl
+                      }`
                 }
               />
             );

@@ -10,7 +10,7 @@ export const NotificationsList = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4004/api/notification/get_all`, {
+      .get(`${import.meta.env.VITE_API_URL}/notification/get_all`, {
         headers: {
           Authorization: `BEARER ${jwt}`,
         },

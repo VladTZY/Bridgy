@@ -17,7 +17,7 @@ export const ChangePasswordModal = ({ setModal }) => {
 
     axios
       .put(
-        `http://localhost:4004/api/user/change_password`,
+        `${import.meta.env.VITE_API_URL}/user/change_password`,
         {
           password,
           newPassword,

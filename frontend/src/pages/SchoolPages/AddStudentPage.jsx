@@ -17,7 +17,7 @@ export const AddStudentPage = () => {
 
     axios
       .post(
-        "http://localhost:4004/api/school/create_one_student",
+        `${import.meta.env.VITE_API_URL}/school/create_one_student`,
         { username, email, phoneNumber, country, city, grade },
         {
           headers: {

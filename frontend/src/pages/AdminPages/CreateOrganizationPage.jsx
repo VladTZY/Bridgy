@@ -17,7 +17,7 @@ export const CreateOrganizationPage = () => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:4004/api/admin/create_organization",
+        `${import.meta.env.VITE_API_URL}/admin/create_organization`,
         {
           organizationName,
           organizationEmail,

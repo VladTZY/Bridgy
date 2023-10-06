@@ -38,11 +38,15 @@ export const PostOpportunitiesPage = () => {
     formData.append("supervisorContact", supervisorContact);
 
     axios
-      .post("http://localhost:4004/api/organization/create_event", formData, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
-      })
+      .post(
+        `${import.meta.env.VITE_API_URL}/organization/create_event`,
+        formData,
+        {
+          headers: {
+            Authorization: `BEARER ${jwt}`,
+          },
+        }
+      )
       .then((res) => {
         setName("");
         setDescription("");

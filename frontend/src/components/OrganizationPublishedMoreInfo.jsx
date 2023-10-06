@@ -13,7 +13,9 @@ export const OrganizationPublishedMoreInfo = ({ eventId }) => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:4004/api/organization/joined_students?eventId=${eventId}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/organization/joined_students?eventId=${eventId}`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -25,7 +27,9 @@ export const OrganizationPublishedMoreInfo = ({ eventId }) => {
 
     axios
       .get(
-        `http://localhost:4004/api/organization/requested_students?eventId=${eventId}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/organization/requested_students?eventId=${eventId}`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,

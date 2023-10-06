@@ -43,7 +43,9 @@ export const EndEventModal = ({ setEndModal, students, eventId }) => {
 
     axios
       .post(
-        `http://localhost:4004/api/organization/finish_event?eventId=${eventId}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/organization/finish_event?eventId=${eventId}`,
         finalArray,
         {
           headers: {

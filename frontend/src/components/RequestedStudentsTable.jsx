@@ -15,7 +15,9 @@ export const RequestedStudentsTable = ({
   const acceptStudent = (id, index) => {
     axios
       .post(
-        `http://localhost:4004/api/organization/confirm_student?studentId=${id}&eventId=${eventId}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/organization/confirm_student?studentId=${id}&eventId=${eventId}`,
         {},
         {
           headers: {
@@ -34,7 +36,9 @@ export const RequestedStudentsTable = ({
   const rejectStudent = (id, index) => {
     axios
       .post(
-        `http://localhost:4004/api/organization/reject_student?studentId=${id}&eventId=${eventId}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/organization/reject_student?studentId=${id}&eventId=${eventId}`,
         {},
         {
           headers: {

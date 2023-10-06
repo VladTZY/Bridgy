@@ -15,7 +15,7 @@ export const StudentDashboardPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4004/api/student/ongoing_events", {
+      .get(`${import.meta.env.VITE_API_URL}/student/ongoing_events`, {
         headers: {
           Authorization: `BEARER ${jwt}`,
         },
@@ -26,7 +26,7 @@ export const StudentDashboardPage = () => {
       .catch((error) => console.log(error));
 
     axios
-      .get("http://localhost:4004/api/student/ongoing_events", {
+      .get(`${import.meta.env.VITE_API_URL}/student/ongoing_events`, {
         headers: {
           Authorization: `BEARER ${jwt}`,
         },
@@ -37,7 +37,7 @@ export const StudentDashboardPage = () => {
       .catch((error) => console.log(error));
 
     axios
-      .get("http://localhost:4004/api/student/requested_events", {
+      .get(`${import.meta.env.VITE_API_URL}/student/requested_events`, {
         headers: {
           Authorization: `BEARER ${jwt}`,
         },
@@ -106,7 +106,9 @@ export const StudentDashboardPage = () => {
                         photoUrl={
                           data.event.photoUrl == null
                             ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
-                            : `http://localhost:4004/uploads/${data.event.photoUrl}`
+                            : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
+                                data.event.photoUrl
+                              }`
                         }
                       />
                     );
@@ -144,7 +146,9 @@ export const StudentDashboardPage = () => {
                         photoUrl={
                           data.event.photoUrl == null
                             ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
-                            : `http://localhost:4004/uploads/${data.event.photoUrl}`
+                            : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
+                                data.event.photoUrl
+                              }`
                         }
                       />
                     );
@@ -182,7 +186,9 @@ export const StudentDashboardPage = () => {
                         photoUrl={
                           data.event.photoUrl == null
                             ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
-                            : `http://localhost:4004/uploads/${data.event.photoUrl}`
+                            : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
+                                data.event.photoUrl
+                              }`
                         }
                       />
                     );

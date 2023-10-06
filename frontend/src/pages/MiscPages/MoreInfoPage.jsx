@@ -37,7 +37,9 @@ export const MoreInfoPage = () => {
     if (role == "ORGANIZATION") {
       axios
         .get(
-          `http://localhost:4004/api/organization/check_admin?eventId=${id}`,
+          `${
+            import.meta.env.VITE_API_URL
+          }/organization/check_admin?eventId=${id}`,
           {
             headers: {
               Authorization: `BEARER ${jwt}`,
@@ -51,7 +53,7 @@ export const MoreInfoPage = () => {
     }
 
     axios
-      .get(`http://localhost:4004/api/events/id?id=${id}`, {
+      .get(`${import.meta.env.VITE_API_URL}/events/id?id=${id}`, {
         headers: {
           Authorization: `BEARER ${jwt}`,
         },

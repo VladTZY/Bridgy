@@ -12,7 +12,9 @@ export const MarkAttendanceModal = ({
   const handleChange = (index, userId) => {
     axios
       .post(
-        `http://localhost:4004/api/organization/check_student?userId=${userId}&eventId=${eventId}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/organization/check_student?userId=${userId}&eventId=${eventId}`,
         {},
         {
           headers: {

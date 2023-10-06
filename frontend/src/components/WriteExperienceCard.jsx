@@ -9,7 +9,7 @@ export const WriteExperienceCard = ({ id, title, eventDescription }) => {
   const handleClick = () => {
     axios
       .post(
-        `http://localhost:4004/api/student/post_feedback/${id}`,
+        `${import.meta.env.VITE_API_URL}/student/post_feedback/${id}`,
         { feedback: description },
         {
           headers: {

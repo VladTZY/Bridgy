@@ -17,7 +17,7 @@ export const CreateSchoolPage = () => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:4004/api/admin/create_school",
+        `${import.meta.env.VITE_API_URL}/admin/create_school`,
         {
           schoolName,
           schoolEmail,

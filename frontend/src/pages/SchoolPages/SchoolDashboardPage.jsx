@@ -14,7 +14,7 @@ export const SchoolDashboardPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4004/api/school/students?grade=${grade}`, {
+      .get(`${import.meta.env.VITE_API_URL}/school/students?grade=${grade}`, {
         headers: {
           Authorization: `BEARER ${jwt}`,
         },

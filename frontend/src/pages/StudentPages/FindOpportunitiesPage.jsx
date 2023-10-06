@@ -14,9 +14,9 @@ export const FindOpportunitiesPage = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:4004/api/events/by_status?status=${type}&offset=${
-          page - 1
-        }&pageSize=6`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/events/by_status?status=${type}&offset=${page - 1}&pageSize=6`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -58,7 +58,9 @@ export const FindOpportunitiesPage = () => {
               photoUrl={
                 event.photoUrl == null
                   ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
-                  : `http://localhost:4004/uploads/${event.photoUrl}`
+                  : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
+                      event.photoUrl
+                    }`
               }
             />
           );
