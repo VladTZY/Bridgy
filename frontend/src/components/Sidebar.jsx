@@ -482,6 +482,32 @@ export const Sidebar = () => {
         }
 
         <div className="mr-3">
+          {location.pathname == `/notifications` ? (
+            <Link to={`/notifications`}>
+              <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
+                <img
+                  src={upd_white}
+                  alt="react logo"
+                  style={{ width: "30px", height: "40px" }}
+                />
+                <div className="ml-2 text-white text-xl">Notifications</div>
+              </div>
+            </Link>
+          ) : (
+            <Link to={`/notifications`}>
+              <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
+                <img
+                  src={upd_black}
+                  alt="react logo"
+                  style={{ width: "30px", height: "40px" }}
+                />
+                <div className="ml-2 text-xl">Notifications</div>
+              </div>
+            </Link>
+          )}
+        </div>
+
+        <div className="mr-3">
           {location.pathname == `/profile/${id}` ? (
             <Link to={`/profile/${id}`}>
               <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">

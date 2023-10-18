@@ -23,6 +23,7 @@ import { MyExperiencesPage } from "./pages/StudentPages/MyExperiencesPage";
 import { UpdatesPage } from "./pages/SchoolPages/UpdatesPage";
 import { OrganizationDashboardPage } from "./pages/OrganizationPages/OrganizationDashboardPage";
 import { AddPreviousEventsPage } from "./pages/StudentPages/AddPreviousEventsPage";
+import { NotificationsPage } from "./pages/MiscPages/NotificationsPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -229,6 +230,12 @@ function App() {
             ) : (
               <Navigate to="/login" />
             )
+          }
+        />
+        <Route
+          path="/notifications"
+          element={
+            isLoggedIn ? <NotificationsPage /> : <Navigate to="/login" />
           }
         />
         <Route
