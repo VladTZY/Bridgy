@@ -65,7 +65,7 @@ export const AddPreviousEventsPage = () => {
   return (
     <div className="h-full bg-gray-100 flex flex-col">
       <div className="bg-white m-5 p-5 rounded-3xl">
-        <h1 className="text-3xl font-semibold">Create New Opportunity</h1>
+        <h1 className="text-3xl font-semibold">Add a previous event</h1>
         <div className="m-5">
           <form onSubmit={submitHandler}>
             <div className="my-6">

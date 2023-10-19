@@ -143,7 +143,7 @@ export const PostOpportunitiesPage = () => {
                 <label>
                   <div className="flex">
                     <img className="my-auto" src={TimeIcon} />
-                    <p className="my-auto text-xl">Capacity</p>
+                    <p className="my-auto text-xl">Number of students</p>
                   </div>
                   <input
                     type="number"
