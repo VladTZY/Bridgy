@@ -260,17 +260,19 @@ function WrappedApp() {
       {
         {
           true: (
-            <div>
-              <MiniNavbar />
-              <div className="flex h-[84%] bg-gray-100">
-                <div className=" w-[20%] bg-white">
-                  <Sidebar />
-                </div>
-                <div className="w-full overflow-scroll">
-                  <App />
-                </div>
+            <div className="h-full bg-gray-100">
+              <div className="h-20 w-full fixed top-0 z-10">
+                <MiniNavbar />
               </div>
-              <MiniFooter />
+              <div className="fixed w-80 top-20 bottom-16 left-0">
+                <Sidebar />
+              </div>
+              <div className="pl-80 pb-16 pt-20">
+                <App />
+              </div>
+              <div className="h-16 w-full fixed bottom-0">
+                <MiniFooter />
+              </div>
             </div>
           ),
           false: <App />,

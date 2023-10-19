@@ -28,67 +28,68 @@ export const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col justify-between h-[84vh]">
-      <div>
-        {
+    <div className="h-full bg-white pl-5">
+      <div className="h-[100%] flex flex-col justify-between">
+        <div>
           {
-            STUDENT: (
-              <div className="flex-col mr-3">
-                <div>
-                  {location.pathname == "/student/dashboard" ? (
-                    <Link to="/student/dashboard">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={dash_white}
-                          alt="react logo"
-                          style={{ width: "40px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">Dashboard</div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/student/dashboard">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={dash_black}
-                          alt="react logo"
-                          style={{ width: "40px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Dashboard</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-                <div>
-                  {location.pathname == "/student/find_opportunities" ||
-                  location.pathname.toString().substring(0, 12) ==
-                    "/opportunity" ? (
-                    <Link to="/student/find_opportunities">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={fo_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">
-                          Find Opportunities
+            {
+              STUDENT: (
+                <div className="flex flex-col">
+                  <div>
+                    {location.pathname == "/student/dashboard" ? (
+                      <Link to="/student/dashboard">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={dash_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className=" text-white text-xl">Dashboard</div>
                         </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/student/find_opportunities">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={fo_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Find Opportunities</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-                {/*<div>
+                      </Link>
+                    ) : (
+                      <Link to="/student/dashboard">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={dash_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Dashboard</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                  <div>
+                    {location.pathname == "/student/find_opportunities" ||
+                    location.pathname.toString().substring(0, 12) ==
+                      "/opportunity" ? (
+                      <Link to="/student/find_opportunities">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={fo_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className=" text-white text-xl">
+                            Find Opportunities
+                          </div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <Link to="/student/find_opportunities">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={fo_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Find Opportunities</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                  {/*<div>
                   {location.pathname == "/student/find_group" ? (
                     <Link to="/student/find_group">
                       <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
@@ -115,443 +116,432 @@ export const Sidebar = () => {
                     </Link>
                   )}
                   </div>*/}
-                <div>
-                  {location.pathname == "/student/add_previous_events" ? (
-                    <Link to="/student/add_previous_events">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={fg_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">
-                          Add Previous Events
+                  <div>
+                    {location.pathname == "/student/add_previous_events" ? (
+                      <Link to="/student/add_previous_events">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={fg_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">
+                            Add Previous Events
+                          </div>
                         </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/student/add_previous_events">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={fg_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Add Previous Events</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-                <div>
-                  {location.pathname == "/student/my_experiences" ? (
-                    <Link to="/student/my_experiences">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={myex_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">
-                          My Experiences
+                      </Link>
+                    ) : (
+                      <Link to="/student/add_previous_events">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={fg_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Add Previous Events</div>
                         </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/student/my_experiences">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={myex_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">My Experiences</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-              </div>
-            ),
-            ORGANIZATION: (
-              <div className="flex-col mr-3">
-                <div>
-                  {location.pathname == "/organization/dashboard" ? (
-                    <Link to="/organization/dashboard">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={dash_white}
-                          alt="react logo"
-                          style={{ width: "40px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">Dashboard</div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/organization/dashboard">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={dash_black}
-                          alt="react logo"
-                          style={{ width: "40px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Dashboard</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-                <div>
-                  {location.pathname == "/organization/post_opportunities" ? (
-                    <Link to="/organization/post_opportunities">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={po_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">
-                          Post Opportunities
+                      </Link>
+                    )}
+                  </div>
+                  <div>
+                    {location.pathname == "/student/my_experiences" ? (
+                      <Link to="/student/my_experiences">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={myex_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">
+                            My Experiences
+                          </div>
                         </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/organization/post_opportunities">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={po_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Post Opportunities</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-                <div>
-                  {location.pathname == "/organization/missions" ||
-                  location.pathname.toString().substring(0, 12) ==
-                    "/opportunity" ? (
-                    <Link to="/organization/missions">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={mss_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">Missions</div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/organization/missions">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={mss_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Missions</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-              </div>
-            ),
-            SCHOOL: (
-              <div className="flex-col mr-3">
-                <div>
-                  {location.pathname == "/school/dashboard" ? (
-                    <Link to="/school/dashboard">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={dash_white}
-                          alt="react logo"
-                          style={{ width: "40px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">Dashboard</div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/school/dashboard">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={dash_black}
-                          alt="react logo"
-                          style={{ width: "40px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Dashboard</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-                <div>
-                  {location.pathname == "/school/add_student" ? (
-                    <Link to="/school/add_student">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={fg_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">
-                          Add Student
+                      </Link>
+                    ) : (
+                      <Link to="/student/my_experiences">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={myex_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">My Experiences</div>
                         </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/school/add_student">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={fg_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Add Student</div>
-                      </div>
-                    </Link>
-                  )}
+                      </Link>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  {location.pathname == "/school/updates" ? (
-                    <Link to="/school/updates">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={upd_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">Updates</div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/school/updates">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={upd_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Updates</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-              </div>
-            ),
-            ADMIN: (
-              <div className="flex-col mr-3">
-                <div>
-                  {location.pathname == "/admin/create_school" ? (
-                    <Link to="/admin/create_school">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={po_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">
-                          Create School
+              ),
+              ORGANIZATION: (
+                <div className="flex flex-col">
+                  <div>
+                    {location.pathname == "/organization/dashboard" ? (
+                      <Link to="/organization/dashboard">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={dash_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">Dashboard</div>
                         </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/admin/create_school">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={po_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Create School</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-                <div>
-                  {location.pathname == "/admin/create_organization" ? (
-                    <Link to="/admin/create_organization">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={myex_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">
-                          Create Organization
+                      </Link>
+                    ) : (
+                      <Link to="/organization/dashboard">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={dash_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Dashboard</div>
                         </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/admin/create_organization">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={myex_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Create Organization</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-              </div>
-            ),
-            SUPER_ADMIN: (
-              <div className="flex-col mr-3">
-                <div>
-                  {location.pathname == "/super_admin/create_admin" ? (
-                    <Link to="/super_admin/create_admin">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={fg_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">
-                          Create Admin
+                      </Link>
+                    )}
+                  </div>
+                  <div>
+                    {location.pathname == "/organization/post_opportunities" ? (
+                      <Link to="/organization/post_opportunities">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={po_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">
+                            Post Opportunities
+                          </div>
                         </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/super_admin/create_admin">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={fg_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Create Admin</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-                <div>
-                  {location.pathname == "/super_admin/create_school" ? (
-                    <Link to="/super_admin/create_school">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={po_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">
-                          Create School
+                      </Link>
+                    ) : (
+                      <Link to="/organization/post_opportunities">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={po_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Post Opportunities</div>
                         </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/super_admin/create_school">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={po_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Create School</div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-                <div>
-                  {location.pathname == "/super_admin/create_organization" ? (
-                    <Link to="/super_admin/create_organization">
-                      <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                        <img
-                          src={myex_white}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-white text-xl">
-                          Create Organization
+                      </Link>
+                    )}
+                  </div>
+                  <div>
+                    {location.pathname == "/organization/missions" ||
+                    location.pathname.toString().substring(0, 12) ==
+                      "/opportunity" ? (
+                      <Link to="/organization/missions">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={mss_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">Missions</div>
                         </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <Link to="/super_admin/create_organization">
-                      <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                        <img
-                          src={myex_black}
-                          alt="react logo"
-                          style={{ width: "30px", height: "40px" }}
-                        />
-                        <div className="ml-2 text-xl">Create Organization</div>
-                      </div>
-                    </Link>
-                  )}
+                      </Link>
+                    ) : (
+                      <Link to="/organization/missions">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={mss_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Missions</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ),
-          }[role]
-        }
+              ),
+              SCHOOL: (
+                <div className="flex flex-col">
+                  <div>
+                    {location.pathname == "/school/dashboard" ? (
+                      <Link to="/school/dashboard">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={dash_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">Dashboard</div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <Link to="/school/dashboard">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={dash_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Dashboard</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                  <div>
+                    {location.pathname == "/school/add_student" ? (
+                      <Link to="/school/add_student">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={fg_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">Add Student</div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <Link to="/school/add_student">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={fg_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Add Student</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                  <div>
+                    {location.pathname == "/school/updates" ? (
+                      <Link to="/school/updates">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={upd_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">Updates</div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <Link to="/school/updates">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={upd_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Updates</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              ),
+              ADMIN: (
+                <div className="flex flex-col">
+                  <div>
+                    {location.pathname == "/admin/create_school" ? (
+                      <Link to="/admin/create_school">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={po_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">
+                            Create School
+                          </div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <Link to="/admin/create_school">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={po_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Create School</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                  <div>
+                    {location.pathname == "/admin/create_organization" ? (
+                      <Link to="/admin/create_organization">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={myex_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">
+                            Create Organization
+                          </div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <Link to="/admin/create_organization">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={myex_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Create Organization</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              ),
+              SUPER_ADMIN: (
+                <div className="flex flex-col">
+                  <div>
+                    {location.pathname == "/super_admin/create_admin" ? (
+                      <Link to="/super_admin/create_admin">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={fg_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">Create Admin</div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <Link to="/super_admin/create_admin">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={fg_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Create Admin</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                  <div>
+                    {location.pathname == "/super_admin/create_school" ? (
+                      <Link to="/super_admin/create_school">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                          <img
+                            src={po_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">
+                            Create School
+                          </div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <Link to="/super_admin/create_school">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={po_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Create School</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                  <div>
+                    {location.pathname == "/super_admin/create_organization" ? (
+                      <Link to="/super_admin/create_organization">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4">
+                          <img
+                            src={myex_white}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-white text-xl">
+                            Create Organization
+                          </div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <Link to="/super_admin/create_organization">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                          <img
+                            src={myex_black}
+                            alt="react logo"
+                            style={{ width: "2.5rem" }}
+                          />
+                          <div className="text-xl">Create Organization</div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              ),
+            }[role]
+          }
 
-        <div className="mr-3">
-          {location.pathname == `/notifications` ? (
-            <Link to={`/notifications`}>
-              <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                <img
-                  src={upd_white}
-                  alt="react logo"
-                  style={{ width: "30px", height: "40px" }}
-                />
-                <div className="ml-2 text-white text-xl">Notifications</div>
-              </div>
-            </Link>
-          ) : (
-            <Link to={`/notifications`}>
-              <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                <img
-                  src={upd_black}
-                  alt="react logo"
-                  style={{ width: "30px", height: "40px" }}
-                />
-                <div className="ml-2 text-xl">Notifications</div>
-              </div>
-            </Link>
-          )}
-        </div>
+          <div>
+            {location.pathname == `/notifications` ? (
+              <Link to={`/notifications`}>
+                <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                  <img
+                    src={upd_white}
+                    alt="react logo"
+                    style={{ width: "2.5rem" }}
+                  />
+                  <div className="text-white text-xl">Notifications</div>
+                </div>
+              </Link>
+            ) : (
+              <Link to={`/notifications`}>
+                <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                  <img
+                    src={upd_black}
+                    alt="react logo"
+                    style={{ width: "2.5rem" }}
+                  />
+                  <div className="text-xl">Notifications</div>
+                </div>
+              </Link>
+            )}
+          </div>
 
-        <div className="mr-3">
-          {location.pathname == `/profile/${id}` ? (
-            <Link to={`/profile/${id}`}>
-              <div className="ml-6 flex items-center rounded-xl bg-[#2135D9] px-3 py-3">
-                <img
-                  src={pf_white}
-                  alt="react logo"
-                  style={{ width: "30px", height: "40px" }}
-                />
-                <div className="ml-2 text-white text-xl">Profile</div>
-              </div>
-            </Link>
-          ) : (
-            <Link to={`/profile/${id}`}>
-              <div className="ml-6 flex items-center px-3 py-3 rounded-xl hover:bg-blue-200">
-                <img
-                  src={pf_black}
-                  alt="react logo"
-                  style={{ width: "30px", height: "40px" }}
-                />
-                <div className="ml-2 text-xl">Profile</div>
-              </div>
-            </Link>
-          )}
-        </div>
-      </div>
-      <div className="ml-8 mb-4 bottom-4">
-        <div className="flex items-center">
-          <img
-            src={help}
-            alt="react logo"
-            style={{ width: "20px", height: "20px" }}
-          />
-          <div className="ml-2 hover:text-[#2135D9] text-lg">
-            <Link to="/help">Help</Link>
+          <div>
+            {location.pathname == `/profile/${id}` ? (
+              <Link to={`/profile/${id}`}>
+                <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                  <img
+                    src={pf_white}
+                    alt="react logo"
+                    style={{ width: "2.5rem" }}
+                  />
+                  <div className="text-white text-xl">Profile</div>
+                </div>
+              </Link>
+            ) : (
+              <Link to={`/profile/${id}`}>
+                <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                  <img
+                    src={pf_black}
+                    alt="react logo"
+                    style={{ width: "2.5rem" }}
+                  />
+                  <div className="text-xl">Profile</div>
+                </div>
+              </Link>
+            )}
           </div>
         </div>
-        <div className="flex items-center">
-          <img
-            src={lo}
-            alt="react logo"
-            style={{ width: "20px", height: "20px" }}
-          />
-          <div className="ml-2 hover:text-[#2135D9] text-lg">
-            <button onClick={() => dispatch(logout())}>Logout</button>
+        <div className="mb-4 ml-4">
+          <div className="flex items-center space-x-2">
+            <img src={help} alt="react logo" style={{ width: "1.5rem" }} />
+            <div className="hover:text-[#2135D9] text-lg">
+              <Link to="/help">Help</Link>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <img src={lo} alt="react logo" style={{ width: "1.5rem" }} />
+            <div className="hover:text-[#2135D9] text-lg">
+              <button onClick={() => dispatch(logout())}>Logout</button>
+            </div>
           </div>
         </div>
       </div>

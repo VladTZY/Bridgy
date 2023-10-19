@@ -5,31 +5,17 @@ import yt from "../../Bridgy_Assets/icon/youtube white.svg";
 
 export const MiniFooter = () => {
   return (
-    <div className="flex items-center justify-between h-[8%] w-full bg-[#2135D9]">
-      <div className="text-gray-400 pl-60 text-sm">
-        © Copyright 2023 Bridgy | All rights reserved.
-      </div>
-      <div className="flex items-center pr-20 space-x-3">
-        <img
-          src={insta}
-          alt="react logo"
-          style={{ width: "40px", height: "40px" }}
-        />
-        <img
-          src={twitter}
-          alt="react logo"
-          style={{ width: "40px", height: "40px" }}
-        />
-        <img
-          src={telg}
-          alt="react logo"
-          style={{ width: "40px", height: "40px" }}
-        />
-        <img
-          src={yt}
-          alt="react logo"
-          style={{ width: "40px", height: "40px" }}
-        />
+    <div className="h-full px-20 py-2 bg-[#2135D9]">
+      <div className="h-full flex items-center justify-between">
+        <div className=" text-gray-400 text-sm">
+          © Copyright 2023 Bridgy | All rights reserved.
+        </div>
+        <div className="flex items-center space-x-2">
+          <img src={insta} alt="react logo" style={{ width: "3rem" }} />
+          <img src={twitter} alt="react logo" style={{ width: "3rem" }} />
+          <img src={telg} alt="react logo" style={{ width: "3rem" }} />
+          <img src={yt} alt="react logo" style={{ width: "3rem" }} />
+        </div>
       </div>
     </div>
   );
