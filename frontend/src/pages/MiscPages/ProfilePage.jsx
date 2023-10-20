@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import EditProfileIcon from "../../../Bridgy_Assets/icon/edit profile white.svg";
-import banner from "../../../Bridgy_Assets/Images/Banner.png";
 import { useSelector } from "react-redux";
 
 import { ChangePasswordModal } from "../../components/ChangePasswordModal";

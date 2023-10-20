@@ -64,8 +64,6 @@ export const MoreInfoPage = () => {
       .catch((error) => console.log(error));
   }, [id, jwt, role]);
 
-  console.log(event.status);
-
   var location = event.location.city + ", " + event.location.country;
   if (location == ", ") location = "Remote";
 
@@ -77,7 +75,7 @@ export const MoreInfoPage = () => {
           src={
             event.photoUrl == null
               ? "../../../Bridgy_Assets/Images/Webpage/What we do 01.png"
-              : `http://localhost:4004/uploads/${event.photoUrl}`
+              : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${event.photoUrl}`
           }
           style={{ height: "50vh", aspectRatio: "16 / 9" }}
         />

@@ -63,72 +63,79 @@ export const AddPreviousEventsPage = () => {
   };
 
   return (
-    <div className="h-full bg-gray-100 flex flex-col">
-      <div className="bg-white m-5 p-5 rounded-3xl">
+    <div className="h-full m-5 bg-gray-100 flex flex-col">
+      <div className="bg-white p-5 rounded-3xl">
         <h1 className="text-3xl font-semibold">Add a previous event</h1>
-        <div className="m-5">
+        <div className="">
           <form onSubmit={submitHandler}>
-            <div className="my-6">
-              <label>
-                <p className="text-xl">Name</p>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Name..."
-                  className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
-                />
-              </label>
-            </div>
+            <div className="flex">
+              <div className="flex-1">
+                <div className="my-6">
+                  <label>
+                    <p className="text-xl">Name</p>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Name..."
+                      className="my-2 rounded-lg p-2 border-2 border-gray-400"
+                      style={{ width: "30rem" }}
+                    />
+                  </label>
+                </div>
 
-            <div className="my-6">
-              <label>
-                <p className="text-xl">Description</p>
-                <textarea
-                  type="text"
-                  value={description}
-                  placeholder="Description..."
-                  className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </label>
-            </div>
+                <div className="my-6">
+                  <label>
+                    <p className="text-xl">Description</p>
+                    <textarea
+                      type="text"
+                      value={description}
+                      placeholder="Description..."
+                      className="my-2 rounded-lg p-2 border-2 border-gray-400"
+                      onChange={(e) => setDescription(e.target.value)}
+                      style={{ width: "30rem" }}
+                    />
+                  </label>
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="my-6">
+                  <label>
+                    <p className="text-xl">Supervisor Contact</p>
+                    <input
+                      type="text"
+                      value={supervisorContact}
+                      onChange={(e) => setSupervisorContact(e.target.value)}
+                      placeholder="Contact..."
+                      className="my-2 rounded-lg p-2 border-2 border-gray-400"
+                      style={{ width: "30rem" }}
+                    />
+                  </label>
+                </div>
+                <div className="my-6">
+                  <label className="flex">
+                    <p className="text-xl">Is the event remote?</p>
+                    <input
+                      className="m-2"
+                      type="checkbox"
+                      defaultChecked={isRemote}
+                      onChange={(e) => setIsRemote(!isRemote)}
+                    />
+                  </label>
+                </div>
 
-            <div className="my-6">
-              <label>
-                <p className="text-xl">Supervisor Contact</p>
-                <input
-                  type="text"
-                  value={supervisorContact}
-                  onChange={(e) => setSupervisorContact(e.target.value)}
-                  placeholder="Contact..."
-                  className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
-                />
-              </label>
-            </div>
-
-            <div className="my-6">
-              <label className="flex">
-                <p className="text-xl">Is the event remote?</p>
-                <input
-                  className="m-2"
-                  type="checkbox"
-                  defaultChecked={isRemote}
-                  onChange={(e) => setIsRemote(!isRemote)}
-                />
-              </label>
-            </div>
-
-            <div className="my-6">
-              <label className="flex">
-                <p className="text-xl">Cover Image*</p>
-                <input
-                  className="m-2"
-                  type="file"
-                  value={""}
-                  onChange={(e) => setFile(e.target.files[0])}
-                />
-              </label>
+                <div className="my-6">
+                  <label className="flex">
+                    <p className="text-xl">Cover Image*</p>
+                    <input
+                      className="m-2"
+                      type="file"
+                      value={""}
+                      onChange={(e) => setFile(e.target.files[0])}
+                    />
+                  </label>
+                </div>
+              </div>
             </div>
 
             <div className="flex my-6">
