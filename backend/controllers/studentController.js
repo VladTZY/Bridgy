@@ -5,8 +5,12 @@ const {
 } = require("../database/sequelize");
 const { createNotification } = require("./notificationController");
 
+const { Op } = require("sequelize");
+
 const getOngoingEvents = async (req, res) => {
   try {
+    const dateNow = new Date();
+
     const events = await UserToEvent.findAll({
       where: {
         status: "JOINED",
@@ -16,6 +20,35 @@ const getOngoingEvents = async (req, res) => {
         model: EventModel,
         where: {
           status: "PUBLISHED",
+          time: {
+            [Op.lt]: dateNow,
+          },
+        },
+      },
+    });
+
+    res.status(200).json(events);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const getAcceptedEvents = async (req, res) => {
+  try {
+    const dateNow = new Date();
+
+    const events = await UserToEvent.findAll({
+      where: {
+        status: "JOINED",
+        userId: req.user.id,
+      },
+      include: {
+        model: EventModel,
+        where: {
+          status: "PUBLISHED",
+          time: {
+            [Op.gt]: dateNow,
+          },
         },
       },
     });
@@ -38,24 +71,6 @@ const getRequestedEvents = async (req, res) => {
         where: {
           status: "PUBLISHED",
         },
-      },
-    });
-
-    res.status(200).json(events);
-  } catch (error) {
-    res.status(500).json(error.message);
-  }
-};
-
-const getAcceptedEvents = async (req, res) => {
-  try {
-    const events = await UserToEvent.findAll({
-      where: {
-        status: "ACCEPTED",
-        userId: req.user.id,
-      },
-      include: {
-        model: EventModel,
       },
     });
 

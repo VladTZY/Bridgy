@@ -15,7 +15,7 @@ export const StudentDashboardPage = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/student/ongoing_events`, {
+      .get(`${import.meta.env.VITE_API_URL}/student/accepted_events`, {
         headers: {
           Authorization: `BEARER ${jwt}`,
         },

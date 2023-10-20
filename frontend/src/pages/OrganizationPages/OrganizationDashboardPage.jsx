@@ -104,9 +104,7 @@ export const OrganizationDashboardPage = () => {
           })}
         </div>
         <div className="flex flex-col">
-          <h1 className="text-4xl font-semibold mx-5 my-7">
-            Awaiting Requests
-          </h1>
+          <h1 className="text-4xl font-semibold mx-5 my-7">Upcoming Events</h1>
 
           <div className="mx-2 flex">
             {publishedEvents.slice(0, 4).map((event) => {
@@ -139,6 +137,7 @@ export const OrganizationDashboardPage = () => {
           {finishedEvents.map((event) => {
             return (
               <EventShortCard
+                key={event.id}
                 id={event.id}
                 title={event.name}
                 description={event.description}
