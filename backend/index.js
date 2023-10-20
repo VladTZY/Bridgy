@@ -49,6 +49,10 @@ app.get("/ping", (req, res) => {
   res.send("pong");
 });
 
+app.get("/datetime", (req, res) => {
+  res.send(new Date());
+});
+
 sequelize.sync().then(() => {
   console.log("Connected to db");
   app.listen(process.env.PORT, () => {
