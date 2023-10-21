@@ -63,7 +63,7 @@ export const AddPreviousEventsPage = () => {
   };
 
   return (
-    <div className="h-full m-5 bg-gray-100 flex flex-col">
+    <div className="h-full p-3 bg-gray-100 flex flex-col">
       <div className="bg-white p-5 rounded-3xl">
         <h1 className="text-3xl font-semibold">Add a previous event</h1>
         <div className="">

@@ -49,8 +49,8 @@ export const StudentDashboardPage = () => {
   }, [jwt]);
 
   return (
-    <div className="h-full bg-gray-100 flex flex-col">
-      <div className="flex">
+    <div className="h-full p-3 bg-gray-100 flex flex-col">
+      <div className="flex justify-between space-x-4">
         <StudentProgressCard
           title={"Active"}
           total={"250"}
@@ -80,8 +80,8 @@ export const StudentDashboardPage = () => {
           color={"#d8bfd8"}
         />
       </div>
-      <div className="min-h-full bg-gray-100 flex flex-col">
-        <h1 className="text-4xl font-semibold mx-5 my-7">Ongoing Events</h1>
+      <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4">
+        <h1 className="text-4xl font-semibold">Ongoing Events</h1>
 
         <div>
           {
@@ -92,7 +92,7 @@ export const StudentDashboardPage = () => {
                 </div>
               ),
               false: (
-                <div className="mx-2 flex flex-wrap">
+                <div className="flex flex-wrap">
                   {ongoingEvents.map((data) => {
                     return (
                       <CompactCard
@@ -120,8 +120,8 @@ export const StudentDashboardPage = () => {
         </div>
       </div>
 
-      <div className="min-h-full bg-gray-100 flex flex-col">
-        <h1 className="text-4xl font-semibold mx-5 my-7">Accepted Events</h1>
+      <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4">
+        <h1 className="text-4xl font-semibold">Accepted Events</h1>
 
         <div>
           {
@@ -132,7 +132,7 @@ export const StudentDashboardPage = () => {
                 </div>
               ),
               false: (
-                <div className="mx-2 flex flex-wrap">
+                <div className="flex flex-wrap">
                   {acceptedEvents.map((data) => {
                     return (
                       <CompactCard
@@ -160,8 +160,8 @@ export const StudentDashboardPage = () => {
         </div>
       </div>
 
-      <div className="min-h-full bg-gray-100 flex flex-col">
-        <h1 className="text-4xl font-semibold mx-5 my-7">Requested Events</h1>
+      <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4">
+        <h1 className="text-4xl font-semibold">Requested Events</h1>
 
         <div>
           {
@@ -172,7 +172,7 @@ export const StudentDashboardPage = () => {
                 </div>
               ),
               false: (
-                <div className="mx-2 flex flex-wrap">
+                <div className="flex flex-wrap">
                   {requestedEvents.map((data) => {
                     return (
                       <CompactCard

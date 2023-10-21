@@ -63,8 +63,8 @@ export const ProfilePage = () => {
   };
 
   return (
-    <div className=" h-full bg-gray-100 flex flex-col">
-      <div className="bg-white m-10 rounded-3xl h-[40vh] bg-[url('../../Bridgy_Assets/Images/Banner.png')] bg-no-repeat bg-contain flex justify-between">
+    <div className="p-3 h-full bg-gray-100 flex flex-col space-y-4">
+      <div className="bg-white rounded-3xl h-[40vh] bg-[url('../../Bridgy_Assets/Images/Banner.png')] bg-no-repeat bg-contain flex justify-between">
         <div className="flex m-5 items-end">
           <img
             className="rounded-xl ml-6 mb-10"
@@ -119,12 +119,12 @@ export const ProfilePage = () => {
         )}
       </div>
 
-      <div className=" flex flex-col h-full">
-        <h1 className="mx-10 font-semibold text-3xl">Account Information</h1>
+      <div className="flex flex-col h-full space-y-4">
+        <h1 className="font-semibold text-3xl">Account Information</h1>
 
-        <div className="mt-5 text-xl font-medium text-gray-700 flex flex-col">
-          <div className="flex my-2">
-            <div className="flex flex-col w-full ml-10 mr-5">
+        <div className="text-xl font-medium text-gray-700 flex flex-col space-y-4">
+          <div className="flex mx-5 space-x-20">
+            <div className="flex-1 flex flex-col w-full">
               <label>Username</label>
               <input
                 type="text"
@@ -135,7 +135,7 @@ export const ProfilePage = () => {
               ></input>
             </div>
 
-            <div className="flex flex-col w-full ml-5 mr-10">
+            <div className="flex-1 flex flex-col w-full">
               <label>Email</label>
               <input
                 type="text"
@@ -147,8 +147,8 @@ export const ProfilePage = () => {
             </div>
           </div>
 
-          <div className="flex my-2">
-            <div className="flex flex-col w-full ml-10 mr-5">
+          <div className="flex mx-5 space-x-20">
+            <div className="flex-1 flex flex-col w-full">
               <label>Phone number</label>
               <input
                 type="text"
@@ -160,7 +160,7 @@ export const ProfilePage = () => {
               ></input>
             </div>
 
-            <div className="flex flex-col w-full ml-5 mr-10">
+            <div className="flex-1 flex flex-col w-full">
               <label>Location</label>
               <input
                 type="text"
@@ -172,7 +172,7 @@ export const ProfilePage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col my-2 mx-10">
+          <div className="flex flex-col mx-5">
             <label>Bio</label>
             <textarea
               type="text"

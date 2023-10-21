@@ -85,14 +85,14 @@ export const RequestedStudentsTable = ({
                 <td className="px-6 py-4 font-semibold">
                   <Link
                     to={`/profile/${student.user.id}`}
-                    className="bg-[#2EA0FB] py-2 px-5 rounded-[50px] text-white text-l"
+                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-3 px-5 rounded-[50px] text-white text-lg"
                   >
                     View profile
                   </Link>
                 </td>
                 <td className="px-6 py-4 font-semibold">
                   <button
-                    className="bg-green-700 py-2 px-5 rounded-[50px] text-white text-l"
+                    className="hover:text-green-700 border-green-700 border-2 hover:bg-white py-2 px-5 rounded-[50px] bg-green-700 text-white text-lg"
                     onClick={() => acceptStudent(student.user.id, index)}
                   >
                     Accept
@@ -100,7 +100,7 @@ export const RequestedStudentsTable = ({
                 </td>
                 <td className="px-6 py-4 font-semibold">
                   <button
-                    className="bg-red-700 py-2 px-5 rounded-[50px] text-white text-l"
+                    className="bg-red-700 hover:text-red-700 border-red-700 border-2 hover:bg-white py-2 px-5 rounded-[50px] text-white text-lg"
                     onClick={() => rejectStudent(student.user.id, index)}
                   >
                     Reject

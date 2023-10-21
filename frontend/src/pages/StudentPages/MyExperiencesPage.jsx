@@ -23,7 +23,7 @@ export const MyExperiencesPage = () => {
   }, [jwt]);
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col">
+    <div className="min-h-full p-5 bg-gray-100 flex flex-col space-x-4">
       {
         {
           true: (
@@ -36,7 +36,7 @@ export const MyExperiencesPage = () => {
             <div>
               {events.map((data) => (
                 <div
-                  className="mt-4 flex flex-wrap justify-around"
+                  className="flex flex-wrap justify-between"
                   key={data.event.id}
                 >
                   <Card
