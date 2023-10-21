@@ -2,6 +2,7 @@ const {
   EventModel,
   LocationModel,
   OrganizationModel,
+  UserToEvent,
 } = require("../database/sequelize.js");
 
 const { Op } = require("sequelize");
@@ -40,8 +41,31 @@ const getEventById = async (req, res) => {
 
     const dateNow = new Date();
 
-    if (event.time < dateNow && event.status == "PUBLISHED")
+    if (
+      req.user.role != "STUDENT" &&
+      event.time < dateNow &&
+      event.status == "PUBLISHED"
+    )
       event.status = "ONGOING";
+
+    if (req.user.role == "STUDENT") {
+      const userToEvent = await UserToEvent.findOne({
+        where: {
+          userId: req.user.id,
+          eventId: id,
+        },
+      });
+
+      if (userToEvent) {
+        if (userToEvent.status == "JOINED") {
+          if (event.time < dateNow) event.status = "STUDENT_ONGOING";
+          else event.status = "STUDENT_ACCEPTED";
+        } else if (userToEvent.status == "REQUESTED")
+          event.status = "STUDENT_REQUESTED";
+        else if (userToEvent.status == "FINISHED")
+          event.status = "STUDENT_FINISHED";
+      }
+    }
 
     res.status(200).json(event);
   } catch (error) {
