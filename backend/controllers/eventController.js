@@ -35,15 +35,20 @@ const getEventById = async (req, res) => {
 
     if (!id) throw Error("Id not specified");
 
-    const event = await EventModel.findByPk(id, { include: LocationModel });
+    let event = await EventModel.findByPk(id, {
+      include: LocationModel,
+    });
+    event = JSON.stringify(event);
+    event = JSON.parse(event);
 
     if (!event) throw Error("No event at this id");
 
+    const eventTime = new Date(event.time);
     const dateNow = new Date();
 
     if (
       req.user.role != "STUDENT" &&
-      event.time < dateNow &&
+      eventTime < dateNow &&
       event.status == "PUBLISHED"
     )
       event.status = "ONGOING";
@@ -58,13 +63,24 @@ const getEventById = async (req, res) => {
 
       if (userToEvent) {
         if (userToEvent.status == "JOINED") {
-          if (event.time < dateNow) event.status = "STUDENT_ONGOING";
+          if (eventTime < dateNow) event.status = "STUDENT_ONGOING";
           else event.status = "STUDENT_ACCEPTED";
         } else if (userToEvent.status == "REQUESTED")
           event.status = "STUDENT_REQUESTED";
         else if (userToEvent.status == "FINISHED")
           event.status = "STUDENT_FINISHED";
       }
+    }
+
+    if (eventTime > dateNow) {
+      const checkCapacity = await UserToEvent.findAndCountAll({
+        where: {
+          eventId: id,
+          status: "JOINED",
+        },
+      });
+
+      event.placesLeft = event.capacity - checkCapacity.count;
     }
 
     res.status(200).json(event);
