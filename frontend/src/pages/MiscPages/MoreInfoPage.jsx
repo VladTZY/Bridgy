@@ -32,6 +32,7 @@ export const MoreInfoPage = () => {
     location: ("", ""),
     status: "",
   });
+  const [locationName, setLocationName] = useState("");
 
   useEffect(() => {
     if (role == "ORGANIZATION") {
@@ -60,12 +61,15 @@ export const MoreInfoPage = () => {
       })
       .then((res) => {
         setEvent(res.data);
+
+        if (res.data.remote) setLocationName("Remote");
+        else
+          setLocationName(
+            res.data.location.country + ", " + res.data.location.city
+          );
       })
       .catch((error) => console.log(error));
   }, [id, jwt, role]);
-
-  var location = event.location.city + ", " + event.location.country;
-  if (location == ", ") location = "Remote";
 
   return (
     <div className="h-full bg-gray-100 flex flex-col">
@@ -73,7 +77,7 @@ export const MoreInfoPage = () => {
         <img
           className="rounded-lg self-center"
           src={
-            event.photoUrl == null
+            event.photoUrl == "NO_FILE"
               ? "../../../Bridgy_Assets/Images/Webpage/What we do 01.png"
               : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${event.photoUrl}`
           }
@@ -91,7 +95,7 @@ export const MoreInfoPage = () => {
           </div>
           <div className="flex w-[23%] border items-center space-x-2 px-4">
             <img src={LocationIcon} style={{ height: "70%" }} />
-            <div className="text-2xl text-black">{location}</div>
+            <div className="text-2xl text-black">{locationName}</div>
           </div>
           <div className="flex w-[23%] border items-center space-x-2 px-4">
             <img src={ClockIcon} style={{ height: "70%" }} />

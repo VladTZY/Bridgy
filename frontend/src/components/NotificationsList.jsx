@@ -22,7 +22,6 @@ export const NotificationsList = () => {
   return (
     <div className="flex flex-col">
       {notifications.map((notification) => {
-        console.log(notification);
         return (
           <div key={notification.id}>
             <NotificationCard

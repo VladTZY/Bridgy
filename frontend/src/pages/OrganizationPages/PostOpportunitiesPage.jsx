@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { CreationModal } from "../../components/CreationModal";
@@ -23,12 +23,24 @@ export const PostOpportunitiesPage = () => {
   const [address, setAddress] = useState("");
   const [creationModal, setCreationModal] = useState(false);
 
+  const fileRef = useRef();
+
+  useEffect(() => {
+    if (file === null) {
+      fileRef.current.value = "";
+    } else {
+      fileRef.current.files = file;
+    }
+  }, [file]);
+
   const submitHandler = (e) => {
     e.preventDefault();
     setCreationModal(true);
 
     const formData = new FormData();
-    formData.append("photoUrl", file);
+
+    if (file != null) formData.append("photoUrl", file[0]);
+
     formData.append("name", name);
     formData.append("description", description);
     formData.append("remote", isRemote);
@@ -134,8 +146,8 @@ export const PostOpportunitiesPage = () => {
                       <input
                         className="m-2"
                         type="file"
-                        value={""}
-                        onChange={(e) => setFile(e.target.files[0])}
+                        ref={fileRef}
+                        onChange={(e) => setFile(e.target.files)}
                       />
                     </label>
                   </div>

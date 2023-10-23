@@ -69,7 +69,7 @@ export const MissionsPage = () => {
                 duration={event.hours}
                 event_type={"opportunity"}
                 photoUrl={
-                  event.photoUrl == null
+                  event.photoUrl == "NO_FILE"
                     ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
                     : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
                         event.photoUrl
@@ -97,7 +97,7 @@ export const MissionsPage = () => {
                 duration={event.hours}
                 event_type={"opportunity"}
                 photoUrl={
-                  event.photoUrl == null
+                  event.photoUrl == "NO_FILE"
                     ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
                     : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
                         event.photoUrl

@@ -45,6 +45,9 @@ const createEvent = async (req, res) => {
 
     if (!organization) throw Error("User is not admin of any organization");
 
+    let photoUrl = "NO_FILE";
+    if (res.req.file) photoUrl = res.req.file.filename;
+
     const event = await EventModel.create({
       name: name,
       description: description,
@@ -53,7 +56,7 @@ const createEvent = async (req, res) => {
       capacity: capacity,
       remote: remote,
       supervisorContact: supervisorContact,
-      photoUrl: res.req.file.filename,
+      photoUrl: photoUrl,
       status: "PUBLISHED",
       locationId: location.id,
       organizationId: organization.id,
