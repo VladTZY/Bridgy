@@ -10,15 +10,20 @@ export const OrganizationDashboardPage = () => {
   const id = useSelector((state) => state.auth.id);
   const organizationId = useSelector((state) => state.auth.institutionId);
   const [ongoingEvents, setOngoingEvents] = useState([]);
-  const [finishedEvents, setFinishedEvents] = useState([]);
   const [publishedEvents, setPublishedEvents] = useState([]);
+  const [finishedEvents, setFinishedEvents] = useState([]);
+  const [ongoingPage, setOngoinPage] = useState(1);
+  const [upcomingPage, setUpcomingPage] = useState(1);
+  const [finishedPage, setFinishedPage] = useState(1);
 
   useEffect(() => {
     axios
       .get(
         `${
           import.meta.env.VITE_API_URL
-        }/events/by_admin_and_status?adminId=${id}&status=ONGOING`,
+        }/events/by_admin_and_status?adminId=${id}&status=ONGOING&offset=${
+          ongoingPage - 1
+        }&pageSize=4`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -31,12 +36,16 @@ export const OrganizationDashboardPage = () => {
       .catch((error) => {
         console.log(error);
       });
+  }, [organizationId, ongoingPage]);
 
+  useEffect(() => {
     axios
       .get(
         `${
           import.meta.env.VITE_API_URL
-        }/events/by_admin_and_status?adminId=${id}&status=PUBLISHED`,
+        }/events/by_admin_and_status?adminId=${id}&status=PUBLISHED&offset=${
+          upcomingPage - 1
+        }&pageSize=4`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -49,12 +58,16 @@ export const OrganizationDashboardPage = () => {
       .catch((error) => {
         console.log(error);
       });
+  }, [organizationId, upcomingPage]);
 
+  useEffect(() => {
     axios
       .get(
         `${
           import.meta.env.VITE_API_URL
-        }/events/by_admin_and_status?adminId=${id}&status=FINISHED`,
+        }/events/by_admin_and_status?adminId=${id}&status=FINISHED&offset=${
+          finishedPage - 1
+        }&pageSize=4`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -67,7 +80,26 @@ export const OrganizationDashboardPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [organizationId]);
+  }, [organizationId, finishedPage]);
+
+  const handleOngoingChangePage = (val) => {
+    if (val == -1) if (ongoingPage + val > 0) setOngoinPage(ongoingPage - 1);
+    if (val == 1) if (ongoingEvents.length == 4) setOngoinPage(ongoingPage + 1);
+  };
+
+  const handleUpcomingChangePage = (val) => {
+    if (val == -1)
+      if (upcomingPage + val > 0) setUpcomingPage(upcomingPage - 1);
+    if (val == 1)
+      if (publishedEvents.length == 4) setUpcomingPage(upcomingPage + 1);
+  };
+
+  const handleFinishedChangePage = (val) => {
+    if (val == -1)
+      if (finishedPage + val > 0) setFinishedPage(finishedPage - 1);
+    if (val == 1)
+      if (finishedPage.length == 4) setFinishedPage(finishedPage + 1);
+  };
 
   return (
     <div className="min-h-full bg-gray-100 flex flex-col">
@@ -81,7 +113,7 @@ export const OrganizationDashboardPage = () => {
           </Link>
         </div>
         <div className="mx-2 flex">
-          {ongoingEvents.slice(0, 4).map((event) => {
+          {ongoingEvents.map((event) => {
             return (
               <CompactCard
                 key={event.id}
@@ -103,11 +135,25 @@ export const OrganizationDashboardPage = () => {
             );
           })}
         </div>
+        <div className="flex justify-between  mx-5 my-7">
+          <button
+            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            onClick={() => handleOngoingChangePage(-1)}
+          >
+            Previous Page
+          </button>
+          <button
+            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            onClick={() => handleOngoingChangePage(1)}
+          >
+            Next Page
+          </button>
+        </div>
         <div className="flex flex-col">
           <h1 className="text-4xl font-semibold mx-5 my-7">Upcoming Events</h1>
 
           <div className="mx-2 flex">
-            {publishedEvents.slice(0, 4).map((event) => {
+            {publishedEvents.map((event) => {
               return (
                 <CompactCard
                   key={event.id}
@@ -130,6 +176,20 @@ export const OrganizationDashboardPage = () => {
             })}
           </div>
         </div>
+        <div className="flex justify-between  mx-5 my-7">
+          <button
+            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            onClick={() => handleUpcomingChangePage(-1)}
+          >
+            Previous Page
+          </button>
+          <button
+            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            onClick={() => handleUpcomingChangePage(1)}
+          >
+            Next Page
+          </button>
+        </div>
         <div className="text-4xl font-semibold mx-5 my-7">
           Recently Completed
         </div>
@@ -146,6 +206,20 @@ export const OrganizationDashboardPage = () => {
               />
             );
           })}
+        </div>
+        <div className="flex justify-between  mx-5 my-7">
+          <button
+            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            onClick={() => handleFinishedChangePage(-1)}
+          >
+            Previous Page
+          </button>
+          <button
+            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            onClick={() => handleFinishedChangePage(1)}
+          >
+            Next Page
+          </button>
         </div>
       </div>
     </div>
