@@ -137,13 +137,13 @@ export const OrganizationDashboardPage = () => {
         </div>
         <div className="flex justify-between  mx-5 my-7">
           <button
-            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            className="bg-[#2EA0FB] hover:bg-[#2135D9] rounded-xl text-white py-2 px-5"
             onClick={() => handleOngoingChangePage(-1)}
           >
             Previous Page
           </button>
           <button
-            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            className="bg-[#2EA0FB] hover:bg-[#2135D9] rounded-xl text-white py-2 px-5"
             onClick={() => handleOngoingChangePage(1)}
           >
             Next Page
@@ -178,13 +178,13 @@ export const OrganizationDashboardPage = () => {
         </div>
         <div className="flex justify-between  mx-5 my-7">
           <button
-            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            className="hover:bg-[#2135D9] bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
             onClick={() => handleUpcomingChangePage(-1)}
           >
             Previous Page
           </button>
           <button
-            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            className="hover:bg-[#2135D9] bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
             onClick={() => handleUpcomingChangePage(1)}
           >
             Next Page
@@ -197,11 +197,10 @@ export const OrganizationDashboardPage = () => {
           {finishedEvents.map((event) => {
             return (
               <EventShortCard
-                key={event.id}
                 id={event.id}
                 title={event.name}
                 description={event.description}
-                attendance={10}
+                attendance={event.attendance}
                 capacity={event.capacity}
               />
             );
@@ -209,13 +208,13 @@ export const OrganizationDashboardPage = () => {
         </div>
         <div className="flex justify-between  mx-5 my-7">
           <button
-            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            className="hover:bg-[#2135D9] bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
             onClick={() => handleFinishedChangePage(-1)}
           >
             Previous Page
           </button>
           <button
-            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            className="hover:bg-[#2135D9] bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
             onClick={() => handleFinishedChangePage(1)}
           >
             Next Page

@@ -5,6 +5,8 @@ import axios from "axios";
 import { StudentPublishedMoreInfo } from "../../components/StudentPublishedMoreInfo";
 import { StudentFinishedMoreInfo } from "../../components/StudentFinishedMoreInfo";
 import { StudentOngoingMoreInfo } from "../../components/StudentOngoingMoreInfo";
+import { StudentAcceptedMoreInfo } from "../../components/StudentAcceptedMoreInfo";
+import { StudentRequestedMoreInfo } from "../../components/StudentRequestedMoreInfo";
 import { OrganizationPublishedMoreInfo } from "../../components/OrganizationPublishedMoreInfo";
 import { OrganizationOngoingMoreInfo } from "../../components/OrganizationOngoingMoreInfo";
 import { OrganizationFinishedMoreInfo } from "../../components/OrganizationFinishedMoreInfo";
@@ -71,6 +73,8 @@ export const MoreInfoPage = () => {
       .catch((error) => console.log(error));
   }, [id, jwt, role]);
 
+  console.log(event.status);
+
   return (
     <div className="h-full bg-gray-100 flex flex-col">
       <div className="m-5 p-5 rounded-lg bg-white flex flex-col">
@@ -108,11 +112,19 @@ export const MoreInfoPage = () => {
         </div>
         {role == "STUDENT" ? (
           event.status == "PUBLISHED" ? (
-            <StudentPublishedMoreInfo jwt={jwt} eventId={id} />
-          ) : event.status == "FINISHED" ? (
+            <StudentPublishedMoreInfo
+              jwt={jwt}
+              eventId={id}
+              placesLeft={event.placesLeft}
+            />
+          ) : event.status == "STUDENT_FINISHED" ? (
             <StudentFinishedMoreInfo jwt={jwt} eventId={id} />
+          ) : event.status == "STUDENT_ONGOING" ? (
+            <StudentOngoingMoreInfo />
+          ) : event.status == "STUDENT_ACCEPTED" ? (
+            <StudentAcceptedMoreInfo />
           ) : (
-            <StudentOngoingMoreInfo jwt={jwt} eventId={id} />
+            <StudentRequestedMoreInfo />
           )
         ) : isAdmin ? (
           event.status == "PUBLISHED" ? (

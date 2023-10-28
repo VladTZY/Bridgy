@@ -35,10 +35,7 @@ export const MyExperiencesPage = () => {
           false: (
             <div>
               {events.map((data) => (
-                <div
-                  className="flex flex-wrap justify-between"
-                  key={data.event.id}
-                >
+                <div className="flex justify-between" key={data.event.id}>
                   <Card
                     id={data.event.id}
                     title={data.event.name}
@@ -55,11 +52,13 @@ export const MyExperiencesPage = () => {
                           }`
                     }
                   />
-                  <WriteExperienceCard
-                    id={data.event.id}
-                    title={data.event.name}
-                    eventDescription={data.feedback}
-                  />
+                  {
+                    <WriteExperienceCard
+                      id={data.event.id}
+                      title={data.event.name}
+                      eventDescription={data.feedback}
+                    />
+                  }
                 </div>
               ))}{" "}
             </div>

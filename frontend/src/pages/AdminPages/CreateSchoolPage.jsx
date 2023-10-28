@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { CreationModal } from "../../components/CreationModal";
+import { ErrorModal } from "../../components/ErrorModal";
 
 export const CreateSchoolPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -14,40 +15,64 @@ export const CreateSchoolPage = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [creationModal, setCreationModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+
+  const validate = () => {
+    if (
+      schoolName == "" ||
+      schoolEmail == "" ||
+      schoolPhoneNumber == "" ||
+      schoolCountry == "" ||
+      schoolCity == "" ||
+      username == "" ||
+      email == "" ||
+      phoneNumber == ""
+    )
+      return false;
+    return true;
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setCreationModal(true);
-    axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/admin/create_school`,
-        {
-          schoolName,
-          schoolEmail,
-          schoolPhoneNumber,
-          schoolCity,
-          schoolCountry,
-          username,
-          email,
-          phoneNumber,
-        },
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
+
+    if (validate()) {
+      setCreationModal(true);
+      setErrorModal(false);
+
+      axios
+        .post(
+          `${import.meta.env.VITE_API_URL}/admin/create_school`,
+          {
+            schoolName,
+            schoolEmail,
+            schoolPhoneNumber,
+            schoolCity,
+            schoolCountry,
+            username,
+            email,
+            phoneNumber,
           },
-        }
-      )
-      .then((res) => {
-        setSchoolName("");
-        setSchoolEmail("");
-        setSchoolPhoneNumber("");
-        setSchoolCountry("");
-        setSchoolCity("");
-        setUsername("");
-        setEmail("");
-        setPhoneNumber("");
-      })
-      .catch((error) => console.log(error.message));
+          {
+            headers: {
+              Authorization: `BEARER ${jwt}`,
+            },
+          }
+        )
+        .then((res) => {
+          setSchoolName("");
+          setSchoolEmail("");
+          setSchoolPhoneNumber("");
+          setSchoolCountry("");
+          setSchoolCity("");
+          setUsername("");
+          setEmail("");
+          setPhoneNumber("");
+        })
+        .catch((error) => console.log(error.message));
+    } else {
+      setCreationModal(false);
+      setErrorModal(true);
+    }
   };
 
   return (
@@ -148,6 +173,7 @@ export const CreateSchoolPage = () => {
       {creationModal ? (
         <CreationModal setCreationModal={setCreationModal} type={"School"} />
       ) : null}
+      {errorModal ? <ErrorModal setErrorModal={setErrorModal} /> : null}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { CreationModal } from "../../components/CreationModal";
+import { ErrorModal } from "../../components/ErrorModal";
 
 export const CreateOrganizationPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -14,41 +15,64 @@ export const CreateOrganizationPage = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [creationModal, setCreationModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+
+  const validate = () => {
+    if (
+      organizationName == "" ||
+      organizationEmail == "" ||
+      organizationPhoneNumber == "" ||
+      organizationCountry == "" ||
+      organizationCity == "" ||
+      username == "" ||
+      email == "" ||
+      phoneNumber == ""
+    )
+      return false;
+    return true;
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setCreationModal(true);
 
-    axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/admin/create_organization`,
-        {
-          organizationName,
-          organizationEmail,
-          organizationPhoneNumber,
-          organizationCity,
-          organizationCountry,
-          username,
-          email,
-          phoneNumber,
-        },
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
+    if (validate()) {
+      setCreationModal(true);
+      setErrorModal(false);
+
+      axios
+        .post(
+          `${import.meta.env.VITE_API_URL}/admin/create_organization`,
+          {
+            organizationName,
+            organizationEmail,
+            organizationPhoneNumber,
+            organizationCity,
+            organizationCountry,
+            username,
+            email,
+            phoneNumber,
           },
-        }
-      )
-      .then((res) => {
-        setOrganizationName("");
-        setOrganizationEmail("");
-        setOrganizationPhoneNumber("");
-        setOrganizationCountry("");
-        setOrganizationCity("");
-        setUsername("");
-        setEmail("");
-        setPhoneNumber("");
-      })
-      .catch((error) => console.log(error));
+          {
+            headers: {
+              Authorization: `BEARER ${jwt}`,
+            },
+          }
+        )
+        .then((res) => {
+          setOrganizationName("");
+          setOrganizationEmail("");
+          setOrganizationPhoneNumber("");
+          setOrganizationCountry("");
+          setOrganizationCity("");
+          setUsername("");
+          setEmail("");
+          setPhoneNumber("");
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setErrorModal(true);
+      setCreationModal(false);
+    }
   };
 
   return (
@@ -152,6 +176,7 @@ export const CreateOrganizationPage = () => {
           type={"Organization"}
         />
       ) : null}
+      {errorModal ? <ErrorModal setErrorModal={setErrorModal} /> : null}
     </div>
   );
 };

@@ -7,7 +7,6 @@ import { SearchBar } from "../../components/SearchBar";
 
 export const FindOpportunitiesPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
-  const [type, setType] = useState("PUBLISHED");
   const [events, setEvents] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -16,7 +15,7 @@ export const FindOpportunitiesPage = () => {
       .get(
         `${
           import.meta.env.VITE_API_URL
-        }/events/by_status?status=${type}&offset=${page - 1}&pageSize=6`,
+        }/events/by_status?status=PUBLISHED&offset=${page - 1}&pageSize=6`,
         {
           headers: {
             Authorization: `BEARER ${jwt}`,
@@ -29,7 +28,7 @@ export const FindOpportunitiesPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [type, page]);
+  }, [page]);
 
   const handleChangePage = (val) => {
     if (val == -1) if (page + val > 0) setPage(page - 1);
@@ -56,7 +55,7 @@ export const FindOpportunitiesPage = () => {
               duration={event.hours}
               event_type={"opportunity"}
               photoUrl={
-                event.photoUrl == null
+                event.photoUrl == "NO_FILE"
                   ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
                   : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
                       event.photoUrl

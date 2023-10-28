@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { CreationModal } from "../../components/CreationModal";
+import { ErrorModal } from "../../components/ErrorModal";
 
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
@@ -22,6 +23,7 @@ export const PostOpportunitiesPage = () => {
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [creationModal, setCreationModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
 
   const fileRef = useRef();
 
@@ -33,9 +35,21 @@ export const PostOpportunitiesPage = () => {
     }
   }, [file]);
 
+  const validate = () => {
+    if (
+      name == "" ||
+      description == "" ||
+      supervisorContact == "" ||
+      capacity == 0 ||
+      hours == 0 ||
+      (!isRemote && (country == "" || city == "" || address == ""))
+    )
+      return false;
+    return true;
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
-    setCreationModal(true);
 
     const formData = new FormData();
 
@@ -52,29 +66,36 @@ export const PostOpportunitiesPage = () => {
     formData.append("address", address);
     formData.append("supervisorContact", supervisorContact);
 
-    axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/organization/create_event`,
-        formData,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
-      )
-      .then((res) => {
-        setName("");
-        setDescription("");
-        setHours(0);
-        setTime(new Date());
-        setCapacity(0);
-        setCountry("");
-        setCity("");
-        setAddress("");
-        setSupervisorContact("");
-        setIsRemote("false");
-      })
-      .catch((error) => console.log(error));
+    if (validate()) {
+      setCreationModal(true);
+      setErrorModal(false);
+      axios
+        .post(
+          `${import.meta.env.VITE_API_URL}/organization/create_event`,
+          formData,
+          {
+            headers: {
+              Authorization: `BEARER ${jwt}`,
+            },
+          }
+        )
+        .then((res) => {
+          setName("");
+          setDescription("");
+          setHours(0);
+          setTime(new Date());
+          setCapacity(0);
+          setCountry("");
+          setCity("");
+          setAddress("");
+          setSupervisorContact("");
+          setIsRemote("false");
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setCreationModal(false);
+      setErrorModal(true);
+    }
   };
 
   return (
@@ -268,6 +289,7 @@ export const PostOpportunitiesPage = () => {
       {creationModal ? (
         <CreationModal setCreationModal={setCreationModal} type={"Event"} />
       ) : null}
+      {errorModal ? <ErrorModal setErrorModal={setErrorModal} /> : null}
     </div>
   );
 };

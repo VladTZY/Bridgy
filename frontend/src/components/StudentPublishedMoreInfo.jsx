@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const StudentPublishedMoreInfo = ({ jwt, eventId }) => {
+export const StudentPublishedMoreInfo = ({ jwt, eventId, placesLeft }) => {
   const navigate = useNavigate();
 
   const joinEvent = () => {
@@ -29,7 +29,7 @@ export const StudentPublishedMoreInfo = ({ jwt, eventId }) => {
       >
         Join Now
       </button>
-      <div className="text-3xl font-semibold">32 places left!</div>
+      <div className="text-3xl font-semibold">{placesLeft} places left!</div>
     </div>
   );
 };
