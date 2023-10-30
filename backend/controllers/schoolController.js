@@ -89,6 +89,7 @@ const getStudents = async (req, res) => {
     const grade = req.query.grade;
 
     const school = await SchoolModel.findOne({
+      attributes: { include: ["id"] },
       where: {
         adminId: req.user.id,
       },
@@ -109,4 +110,44 @@ const getStudents = async (req, res) => {
   }
 };
 
-module.exports = { createOneStudent, getStudents, createMultipleStudents };
+const getStats = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const payload = {
+      numberOfStudents: 0,
+      completedStudents: 0,
+      totalEconomy: 0,
+      actualEconomy: 0,
+      totalObjective: 0,
+      actualObjective: 0,
+    };
+
+    const school = await SchoolModel.findOne({
+      attributes: { include: ["id"] },
+      where: {
+        adminId: userId,
+      },
+    });
+
+    const students = await UserModel.findAll({
+      attributes: { include: ["id"] },
+      where: {
+        schoolId: school.id,
+        role: "STUDENT",
+      },
+    });
+
+    payload.numberOfStudents = students.length;
+
+    res.status(200).json(payload);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+module.exports = {
+  createOneStudent,
+  getStudents,
+  createMultipleStudents,
+  getStats,
+};

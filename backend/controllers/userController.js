@@ -149,7 +149,14 @@ const getProfileInfo = async (req, res) => {
         where: {
           adminId: user.id,
         },
-        attributes: ["name", "email", "phoneNumber", "locationId"],
+        attributes: [
+          "name",
+          "email",
+          "phoneNumber",
+          "locationId",
+          "objective",
+          "objectiveType",
+        ],
       });
 
       const schoolLocation = await LocationModel.findByPk(school.locationId, {
@@ -162,6 +169,8 @@ const getProfileInfo = async (req, res) => {
         email: school.email,
         phoneNumber: school.phoneNumber,
         bio: user.bio,
+        objective: school.objective,
+        objectiveType: school.objectiveType,
         location: schoolLocation,
       };
     }

@@ -13,6 +13,7 @@ const {
   createOneStudent,
   getStudents,
   createMultipleStudents,
+  getStats,
 } = require("../controllers/schoolController");
 
 router.post("/create_one_student", createOneStudent);
@@ -22,5 +23,6 @@ router.post(
   createMultipleStudents
 );
 router.get("/students", getStudents);
+router.get("/stats", getStats);
 
 module.exports = router;
