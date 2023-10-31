@@ -108,11 +108,11 @@ const getProfileInfo = async (req, res) => {
     });
 
     let payload = {
-      username: "Vlad",
-      email: "Vlad",
-      phoneNumber: "Vlad",
-      role: "Vlad",
-      bio: "Vlad",
+      username: "johndoe",
+      email: "johndoe@email.com",
+      phoneNumber: "0",
+      role: "None",
+      bio: "John Doe",
       location: userLocation,
     };
 
@@ -165,7 +165,7 @@ const getProfileInfo = async (req, res) => {
 
       payload = {
         name: school.name,
-        role: "School",
+        role: "SCHOOL",
         email: school.email,
         phoneNumber: school.phoneNumber,
         bio: user.bio,

@@ -45,7 +45,7 @@ export const MyExperiencesPage = () => {
                     duration={data.event.hours}
                     event_type={"opportunity"}
                     photoUrl={
-                      data.event.photoUrl == null
+                      data.event.photoUrl == "NO_FILE"
                         ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
                         : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
                             data.event.photoUrl
