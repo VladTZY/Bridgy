@@ -10,70 +10,57 @@ export const ProfilePage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const userId = useSelector((state) => state.auth.id);
   let { id } = useParams();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [role, setRole] = useState("");
-  const [bio, setBio] = useState("No bio");
-  const [location, setLocation] = useState({
-    location: "",
-    city: "",
-  });
-  const [schoolName, setSchoolName] = useState("");
-  const [objective, setObjective] = useState();
-  const [objectiveType, setObjectiveType] = useState("EVENT");
-  const [name, setName] = useState("");
-  const [passwordModal, setPasswordModal] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [passwordModal, setPasswordModal] = useState(false);
+
+  const [userInfo, setUserInfo] = useState({
+    username: "",
+    email: "",
+    phoneNumber: "",
+    role: "",
+    bio: "",
+    location: {
+      country: "",
+      city: "",
+    },
+    schoolName: "",
+    objective: null,
+    objectiveType: null,
+  });
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/user/profile/${id}`)
       .then((res) => {
-        setName(res.data.name);
-        setEmail(res.data.email);
-        setPhoneNumber(res.data.phoneNumber);
-        setLocation(res.data.location);
-        setRole(res.data.role);
-        if (res.data.role == "STUDENT") {
-          setUsername(res.data.username);
-          setSchoolName(res.data.schoolName);
-        } else if (res.data.role == "SCHOOL") {
-          setObjective(res.data.objective);
-          setObjectiveType(res.data.objectiveType);
-        }
-
-        if (res.data.bio) setBio(res.data.bio);
+        setUserInfo(res.data);
       });
   }, [id]);
 
   const onClickHandler = () => {
     if (!isDisabled) {
-      axios
-        .put(
-          `${import.meta.env.VITE_API_URL}/user/update_profile`,
-          {
-            bio,
-            phoneNumber,
-          },
-          {
-            headers: {
-              Authorization: `BEARER ${jwt}`,
-            },
-          }
-        )
-        .then((res) => {
-          setUsername(res.data.username);
-          setEmail(res.data.email);
-          setPhoneNumber(res.data.phoneNumber);
+      let payload = { bio: userInfo.bio, phoneNumber: userInfo.phoneNumber };
 
-          if (res.data.bio) setBio(res.data.bio);
+      if (userInfo.role == "SCHOOL") {
+        payload.objective = userInfo.objective;
+        payload.objectiveType = userInfo.objectiveType;
+      }
+
+      axios
+        .put(`${import.meta.env.VITE_API_URL}/user/update_profile`, payload, {
+          headers: {
+            Authorization: `BEARER ${jwt}`,
+          },
+        })
+        .then((res) => {
+          setUserInfo({
+            ...userInfo,
+            bio: res.data.bio,
+            phoneNumber: res.data.phoneNumber,
+          });
         });
     }
     setIsDisabled(!isDisabled);
   };
-
-  console.log(role);
 
   return (
     <div className="p-3 h-full bg-gray-100 flex flex-col space-y-4">
@@ -86,20 +73,11 @@ export const ProfilePage = () => {
         <div className="ml-60 mt-6 flex justify-between items-center">
           <div className="flex">
             <div className="flex flex-col">
-              {
-                {
-                  STUDENT: (
-                    <h1 className="font-semibold text-2xl">{username}</h1>
-                  ),
-                  SCHOOL: <h1 className="font-semibold text-2xl">{name}</h1>,
-                  ORGANIZATION: (
-                    <h1 className="font-semibold text-2xl">{name}</h1>
-                  ),
-                }[role]
-              }
-              <p className="text-gray-500 mt-4">{`${role.slice(0, 1)}${role
-                .slice(1)
-                .toLocaleLowerCase()}`}</p>
+              <h1 className="font-semibold text-2xl">{userInfo.username}</h1>
+              <p className="text-gray-500 mt-4">{`${userInfo.role.slice(
+                0,
+                1
+              )}${userInfo.role.slice(1).toLocaleLowerCase()}`}</p>
             </div>
           </div>
           {userId == id ? (
@@ -159,7 +137,7 @@ export const ProfilePage = () => {
                     <label>Username</label>
                     <input
                       type="text"
-                      value={username}
+                      value={userInfo.username}
                       readOnly={true}
                       disabled={true}
                       className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -171,7 +149,7 @@ export const ProfilePage = () => {
                     <label>Name of the school</label>
                     <input
                       type="text"
-                      value={name}
+                      value={userInfo.username}
                       readOnly={true}
                       disabled={true}
                       className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -183,21 +161,21 @@ export const ProfilePage = () => {
                     <label>Organization name</label>
                     <input
                       type="text"
-                      value={name}
+                      value={userInfo.username}
                       readOnly={true}
                       disabled={true}
                       className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
                     ></input>
                   </div>
                 ),
-              }[role]
+              }[userInfo.role]
             }
 
             <div className="flex-1 flex flex-col w-full">
               <label>Email</label>
               <input
                 type="text"
-                value={email}
+                value={userInfo.email}
                 readOnly={true}
                 disabled={true}
                 className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -213,7 +191,7 @@ export const ProfilePage = () => {
                     <label>Full Name</label>
                     <input
                       type="text"
-                      value={name}
+                      value={userInfo.username}
                       readOnly={true}
                       disabled={true}
                       className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -224,7 +202,7 @@ export const ProfilePage = () => {
                     <label>School Name</label>
                     <input
                       type="text"
-                      value={schoolName}
+                      value={userInfo.schoolName}
                       readOnly={true}
                       disabled={true}
                       className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -238,8 +216,13 @@ export const ProfilePage = () => {
                     <label>Objective Type</label>
                     <select
                       type="text"
-                      value={objectiveType}
-                      onChange={(e) => setObjectiveType(e.target.value)}
+                      value={userInfo.objectiveType}
+                      onChange={(e) =>
+                        setUserInfo({
+                          ...userInfo,
+                          objectiveType: e.target.value,
+                        })
+                      }
                       disabled={isDisabled}
                       readOnly={isDisabled}
                       className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -253,8 +236,10 @@ export const ProfilePage = () => {
                     <label>Objective</label>
                     <input
                       type="text"
-                      value={objective}
-                      onChange={(e) => setObjective(e.target.value)}
+                      value={userInfo.objective}
+                      onChange={(e) =>
+                        setUserInfo({ ...userInfo, objective: e.target.value })
+                      }
                       disabled={isDisabled}
                       readOnly={isDisabled}
                       className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -262,7 +247,7 @@ export const ProfilePage = () => {
                   </div>
                 </div>
               ),
-            }[role]
+            }[userInfo.role]
           }
 
           <div className="flex mx-5 space-x-20">
@@ -270,8 +255,10 @@ export const ProfilePage = () => {
               <label>Phone number</label>
               <input
                 type="text"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                value={userInfo.phoneNumber}
+                onChange={(e) =>
+                  setUserInfo({ ...userInfo, phoneNumber: e.target.value })
+                }
                 disabled={isDisabled}
                 readOnly={isDisabled}
                 className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -282,7 +269,7 @@ export const ProfilePage = () => {
               <label>Location</label>
               <input
                 type="text"
-                value={`${location.country}, ${location.city}`}
+                value={`${userInfo.location.country}, ${userInfo.location.city}`}
                 disabled={isDisabled}
                 readOnly={isDisabled}
                 className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
@@ -294,8 +281,10 @@ export const ProfilePage = () => {
             <label>Bio</label>
             <textarea
               type="text"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
+              value={userInfo.bio}
+              onChange={(e) =>
+                setUserInfo({ ...userInfo, bio: e.target.value })
+              }
               disabled={isDisabled}
               readOnly={isDisabled}
               className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal h-[150px]"

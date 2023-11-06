@@ -164,7 +164,7 @@ const getProfileInfo = async (req, res) => {
       });
 
       payload = {
-        name: school.name,
+        username: school.name,
         role: "SCHOOL",
         email: school.email,
         phoneNumber: school.phoneNumber,
@@ -191,7 +191,7 @@ const getProfileInfo = async (req, res) => {
       );
 
       payload = {
-        name: organization.name,
+        username: organization.name,
         role: "ORGANIZATION",
         email: organization.email,
         phoneNumber: organization.phoneNumber,
@@ -209,25 +209,68 @@ const getProfileInfo = async (req, res) => {
 const updateProfileInfo = async (req, res) => {
   try {
     const id = req.user.id;
-    const { phoneNumber, grade, bio, iconUrl } = req.body;
+    const role = req.user.role;
+    const { phoneNumber, bio, objective, objectiveType } = req.body;
+    let payload = {};
 
     const user = await UserModel.findByPk(id, {
       attributes: { exclude: ["password", "role", "locationId", "schoolId"] },
     });
 
-    console.log(user);
+    if (bio) {
+      user.bio = bio;
+      payload.bio = bio;
+    }
 
-    if (phoneNumber) user.phoneNumber = phoneNumber;
+    if (role == "STUDENT") {
+      if (phoneNumber) user.phoneNumber = phoneNumber;
+    }
 
-    if (grade) user.grade = grade;
+    if (role == "SCHOOL") {
+      const school = await SchoolModel.findOne({
+        attributes: ["id", "phoneNumber"],
+        where: {
+          adminId: id,
+        },
+      });
 
-    if (bio) user.bio = bio;
+      if (phoneNumber) {
+        school.phoneNumber = phoneNumber;
+        payload.phoneNumber = phoneNumber;
+      }
 
-    if (iconUrl) user.iconUrl = iconUrl;
+      if (objective) {
+        school.objective = objective;
+        payload.objective = objective;
+      }
+
+      if (objectiveType) {
+        school.objectiveType = objectiveType;
+        payload.objectiveType = objectiveType;
+      }
+
+      await school.save();
+    }
+
+    if (role == "ORGANIZATION") {
+      const organization = await OrganizationModel.findOne({
+        attributes: ["id", "phoneNumber"],
+        where: {
+          adminId: id,
+        },
+      });
+
+      if (phoneNumber) {
+        organization.phoneNumber = phoneNumber;
+        payload.phoneNumber = phoneNumber;
+      }
+
+      await organization.save();
+    }
 
     await user.save();
 
-    res.status(200).json(user);
+    res.status(200).json(payload);
   } catch (error) {
     res.status(500).json(error.message);
   }
