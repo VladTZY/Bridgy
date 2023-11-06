@@ -2,6 +2,7 @@ const {
   UserModel,
   SchoolModel,
   LocationModel,
+  UserToEvent,
 } = require("../database/sequelize");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
@@ -89,7 +90,7 @@ const getStudents = async (req, res) => {
     const grade = req.query.grade;
 
     const school = await SchoolModel.findOne({
-      attributes: { include: ["id"] },
+      attributes: ["id"],
       where: {
         adminId: req.user.id,
       },
@@ -117,20 +118,21 @@ const getStats = async (req, res) => {
       numberOfStudents: 0,
       completedStudents: 0,
       totalEconomy: 0,
-      actualEconomy: 0,
       totalObjective: 0,
       actualObjective: 0,
     };
 
     const school = await SchoolModel.findOne({
-      attributes: { include: ["id"] },
+      attributes: ["id", "objectiveType", "objective"],
       where: {
         adminId: userId,
       },
     });
 
+    console.log(school);
+
     const students = await UserModel.findAll({
-      attributes: { include: ["id"] },
+      attributes: ["id"],
       where: {
         schoolId: school.id,
         role: "STUDENT",
@@ -138,6 +140,16 @@ const getStats = async (req, res) => {
     });
 
     payload.numberOfStudents = students.length;
+
+    students.forEach(async (student) => {
+      const finishedEvents = await UserToEvent.findAll({
+        attributes: ["eventId"],
+        where: {
+          userId: student.id,
+          status: "FINISHED",
+        },
+      });
+    });
 
     res.status(200).json(payload);
   } catch (error) {
