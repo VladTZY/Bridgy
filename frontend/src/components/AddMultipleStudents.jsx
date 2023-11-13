@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export const AddMultipleStudents = () => {
   const jwt = useSelector((state) => state.auth.jwt);
   const [file, setFile] = useState(null);
+
+  /*const fileRef = useRef();
+
+  useEffect(() => {
+    if (file === null) {
+      fileRef.current.value = "";
+    } else {
+      fileRef.current.files = file;
+    }
+  }, [file]);*/
 
   const clickHandler = (e) => {
     e.preventDefault();
@@ -43,6 +53,7 @@ export const AddMultipleStudents = () => {
             className="m-2"
             type="file"
             value={""}
+            //ref={fileRef}
             onChange={(e) => setFile(e.target.files[0])}
           />
         </label>

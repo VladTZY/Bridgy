@@ -7,8 +7,14 @@ const {
 } = require("../database/sequelize");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
-const csv = require("fast-csv");
+//const csv = require("fast-csv");
 const fs = require("fs");
+const csv = require('csv-parser');
+const papa = require('papaparse');
+
+const addStudent = (id, username, password, email, phoneNumber, bio, country, city, grade) => {
+  
+}
 
 const createOneStudent = async (req, res) => {
   const { username, email, phoneNumber, bio, country, city, grade } = req.body;
@@ -76,12 +82,27 @@ const createOneStudent = async (req, res) => {
   }
 };
 
+const handleData = (data) => {
+  const studentInfo = Object.values(data);
+  const username = studentInfo[1] + " " + studentInfo[2];
+  const email = studentInfo[3];
+  const phoneNumber = studentInfo[4];
+  const grade = studentInfo[5];
+  
+}
+
 const createMultipleStudents = async (req, res) => {
   try {
-    /// req.file.pathname - file path
+    /// req.file.path - file path
+
+    const csvFilePath = req.file.path;
+    const csvData = [];
+
+    fs.createReadStream(csvFilePath).pipe(csv()).on('data', (data) => {handleData(data); csvData.push(data);}).on('error', () => {console.log("CSV Format not respected.")});
 
     res.status(200).json({ message: "ok" });
   } catch (error) {
+    console.log(error.message);
     res.status(500).json(error.message);
   }
 };
