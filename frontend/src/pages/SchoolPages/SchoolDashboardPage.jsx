@@ -11,6 +11,13 @@ export const SchoolDashboardPage = () => {
   const [tableData, setTableData] = useState([]);
   const [grade, setGrade] = useState("9");
   const [sorted, setSorted] = useState("none");
+  const [stats, setStats] = useState({
+    numberOfStudents: 0,
+    completedStudents: 0,
+    totalEconomy: 0,
+    totalObjective: 0,
+    actualObjective: 0,
+  });
 
   useEffect(() => {
     axios
@@ -25,6 +32,19 @@ export const SchoolDashboardPage = () => {
       })
       .catch((error) => console.log(error));
   }, [jwt, grade]);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/school/stats`, {
+        headers: {
+          Authorization: `BEARER ${jwt}`,
+        },
+      })
+      .then((res) => {
+        setStats(res.data);
+      })
+      .catch((error) => console.log(error));
+  }, [jwt]);
 
   const handleOrderChange = (value) => {
     if (value == "none") setTableData(students);
@@ -47,24 +67,28 @@ export const SchoolDashboardPage = () => {
     <div className="h-full bg-gray-100 flex flex-col p-5">
       <div className="flex">
         <SchoolProgressCard
-          title={"Working hours"}
-          total={"1200h"}
-          description={"A 30% increase"}
-          percentage={70}
+          title={"Objective"}
+          total={stats.actualObjective + "/" + stats.totalObjective}
+          description={""}
+          percentage={Math.round(
+            (stats.actualObjective / stats.totalObjective) * 100
+          )}
           color={"#32cd32"}
         />
         <SchoolProgressCard
           title={"Total Economy"}
-          total={"$120k"}
-          description={"A 30% decrease"}
-          percentage={30}
+          total={stats.totalEconomy + "$"}
+          description={""}
+          percentage={100}
           color={"#eed202"}
         />
         <SchoolProgressCard
           title={"Nr. of Students"}
-          total={"500/1000"}
-          description={"Full Completion Rate"}
-          percentage={50}
+          total={stats.completedStudents + "/" + stats.numberOfStudents}
+          description={""}
+          percentage={Math.round(
+            (stats.completedStudents / stats.numberOfStudents) * 100
+          )}
           color={"#a40000"}
         />
       </div>
