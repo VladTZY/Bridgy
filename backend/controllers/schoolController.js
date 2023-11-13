@@ -3,6 +3,7 @@ const {
   SchoolModel,
   LocationModel,
   UserToEvent,
+  EventModel,
 } = require("../database/sequelize");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
@@ -111,6 +112,45 @@ const getStudents = async (req, res) => {
   }
 };
 
+const getInDepthData = async (objectiveType, objective, students) => {
+  let actualObjective = 0;
+  let completedStudents = 0;
+  let totalHours = 0;
+
+  const promises = students.map(async (student) => {
+    const finishedEvents = await UserToEvent.findAll({
+      attributes: ["eventId"],
+      where: {
+        userId: student.id,
+        status: "FINISHED",
+      },
+      include: {
+        model: EventModel,
+        attributes: ["hours"],
+      },
+    });
+
+    let hoursNow = 0;
+    finishedEvents.map(async (event) => {
+      hoursNow += event.event.hours;
+    });
+
+    if (objectiveType == "EVENT") {
+      actualObjective += finishedEvents.length;
+      if (finishedEvents.length >= objective) completedStudents++;
+    } else {
+      actualObjective += hoursNow;
+
+      if (hoursNow >= objective) completedStudents++;
+    }
+    totalHours = totalHours + hoursNow;
+  });
+
+  await Promise.all(promises);
+
+  return { actualObjective, completedStudents, totalHours };
+};
+
 const getStats = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -129,8 +169,6 @@ const getStats = async (req, res) => {
       },
     });
 
-    console.log(school);
-
     const students = await UserModel.findAll({
       attributes: ["id"],
       where: {
@@ -140,16 +178,17 @@ const getStats = async (req, res) => {
     });
 
     payload.numberOfStudents = students.length;
+    payload.totalObjective = students.length * school.objective;
 
-    students.forEach(async (student) => {
-      const finishedEvents = await UserToEvent.findAll({
-        attributes: ["eventId"],
-        where: {
-          userId: student.id,
-          status: "FINISHED",
-        },
-      });
-    });
+    const inDepthdata = await getInDepthData(
+      school.objectiveType,
+      school.objective,
+      students
+    );
+
+    payload.actualObjective = inDepthdata.actualObjective;
+    payload.completedStudents = inDepthdata.completedStudents;
+    payload.totalEconomy = inDepthdata.totalHours * 31.8;
 
     res.status(200).json(payload);
   } catch (error) {
