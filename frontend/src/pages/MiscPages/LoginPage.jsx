@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/authSlice";
 import { Link } from "react-router-dom";
+import { LoginModal } from "../../components/LoginModal";
 
 import LoginImage from "../../../Bridgy_Assets/Images/Webpage/Login.png";
 import { LoginNavbar } from "../../components/LoginNavbar";
@@ -11,13 +12,18 @@ export const LoginPage = () => {
   const [password, setPassword] = useState("");
   const username = useSelector((state) => state.auth.username);
   const dispatch = useDispatch();
+  const [loginModal, setLoginModal] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password })).then((res) => {
-      setEmail("");
-      setPassword("");
-    });
+    dispatch(login({ email, password }))
+      .then((res) => {
+        setEmail("");
+        setPassword("");
+      })
+      .catch((error) => {
+        setLoginModal(true);
+      });
   };
 
   return (
@@ -87,6 +93,7 @@ export const LoginPage = () => {
           ></img>
         </div>
       </div>
+      {loginModal ? <LoginModal setLoginModal={setLoginModal} /> : null}
     </div>
   );
 };

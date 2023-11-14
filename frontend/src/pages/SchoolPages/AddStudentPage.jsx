@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 import { AddMultipleStudents } from "../../components/AddMultipleStudents";
+import { CreationModal } from "../../components/CreationModal";
+import { ErrorModal } from "../../components/ErrorModal";
 
 export const AddStudentPage = () => {
   const jwt = useSelector((state) => state.auth.jwt);
@@ -11,29 +13,51 @@ export const AddStudentPage = () => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [grade, setGrade] = useState(9);
+  const [creationModal, setCreationModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+
+  const validate = () => {
+    if (
+      username == "" ||
+      email == "" ||
+      phoneNumber == "" ||
+      country == "" ||
+      city == "" ||
+      grade == 0
+    )
+      return false;
+    return true;
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/school/create_one_student`,
-        { username, email, phoneNumber, country, city, grade },
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
-      )
-      .then((res) => {
-        setUsername("");
-        setEmail("");
-        setPhoneNumber("");
-        setCountry("");
-        setCity("");
-        setGrade(9);
-      })
-      .catch((error) => console.log(error.message));
+    if (validate()) {
+      setCreationModal(true);
+      setErrorModal(false);
+      axios
+        .post(
+          `${import.meta.env.VITE_API_URL}/school/create_one_student`,
+          { username, email, phoneNumber, country, city, grade },
+          {
+            headers: {
+              Authorization: `BEARER ${jwt}`,
+            },
+          }
+        )
+        .then((res) => {
+          setUsername("");
+          setEmail("");
+          setPhoneNumber("");
+          setCountry("");
+          setCity("");
+          setGrade(9);
+        })
+        .catch((error) => console.log(error.message));
+    } else {
+      setCreationModal(false);
+      setErrorModal(true);
+    }
   };
 
   return (
@@ -118,6 +142,11 @@ export const AddStudentPage = () => {
       </div>
 
       <AddMultipleStudents />
+
+      {creationModal ? (
+        <CreationModal setCreationModal={setCreationModal} type={"Student"} />
+      ) : null}
+      {errorModal ? <ErrorModal setErrorModal={setErrorModal} /> : null}
     </>
   );
 };
