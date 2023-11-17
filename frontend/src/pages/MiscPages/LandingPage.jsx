@@ -19,19 +19,22 @@ export const LandingPage = () => {
       </div>
       <div className="flex-row relative">
         <div className="w-[100%] flex justify-between">
-          <div className="flex-row mt-40">
+          <div className="flex flex-col mt-40">
             <div className="font-bold ml-32 text-8xl">Bridgy</div>
             <div className="font-bold ml-32 mt-4 text-6xl">
-              Making The Connections <br></br> No One Cares{" "}
-              <span className="text-[#2135D9]"> To Do </span>
+              Connecting <span className="text-[#2135D9]"> Hearts </span>,
+              <br></br> Building{" "}
+              <span className="text-[#2135D9]"> Futures </span>
             </div>
-            <div className="ml-32 mt-10 text-xl">
-              Description Description Description Description
+            <div className="ml-32 mt-20 text-2xl" style={{ width: "40rem" }}>
+              Building highly customized digital infrastructure to make the
+              charitable ecosystem easily accessible to high schools in the most
+              efficient and secure ways possible.
             </div>
-            <div className="text-xl ml-40 mt-20">
+            <div className="text-xl ml-32 mt-5">
               <button
                 onClick={scToAboutUs}
-                className="bg-[#2EA0FB] text-white px-10 py-4 rounded-full hover:bg-[#2135D9]"
+                className="bg-[#2EA0FB] text-white px-16 py-4 rounded-full hover:bg-[#2135D9]"
               >
                 Learn more
               </button>
@@ -116,10 +119,17 @@ export const LandingPage = () => {
             <div className="text-6xl font-bold">
               What <span className="text-[#2135D9]"> We Do </span>
             </div>
-            <div className="text-2xl underline decoration-[#2135D9]">
-              We are building highly customized digital infrastructure to make{" "}
-              <br></br> the charitable ecosystem easily accessible to high
-              schools in the <br></br> most efficient and secure ways possible.
+            <div
+              className="text-2xl underline decoration-[#2135D9]"
+              style={{ width: "60rem" }}
+            >
+              Welcome to Bridgy, where connecting passion with purpose is our
+              mission. We are a vibrant platform that bridges the gap between
+              high school students eager to make a difference, educational
+              institutions seeking streamlined service programs, and charities
+              in need of enthusiastic volunteers. Our digital hub is designed to
+              empower students, support schools, and bolster charitable efforts,
+              creating a cohesive community dedicated to service and growth.
             </div>
           </div>
           <div className="mt-32 w-full h-[90vh] bg-gradient-to-r from-[#1e1e1e] to-[#696969] relative">
@@ -128,22 +138,21 @@ export const LandingPage = () => {
               className="absolute w-full mix-blend-overlay"
               style={{ height: "90vh" }}
             />
-            <div className="text-7xl text-white ml-40 pt-60">For Schools</div>
-            <ul className="text-2xl text-white ml-40 list-disc pt-10 space-y-4">
-              <li>Real time monitoring capacity for school supervisors</li>
-              <li>
-                Intelligent reminders and calendar building capabilities to
-                streamline student/administrator catch-ups
-              </li>
-              <li>
-                Analytics and detailed summaries of every past, current and
-                planned mission, for every student
-              </li>
-              <li>
-                Student database optimized by year of graduation,
-                extracurricular engagement and a lot of customizable filters!
-              </li>
-            </ul>
+            <div className="text-7xl underline text-white ml-40 pt-40">
+              For Schools
+            </div>
+            <div
+              className="text-2xl text-white ml-40 pt-40"
+              style={{ width: "50rem" }}
+            >
+              Bridgy Inc. offers schools a seamless way to integrate service
+              learning into their curriculum. Our tools reduce the
+              administrative load, enabling counselors to spend more time
+              guiding students and less on paperwork. With our platform,
+              educators can track student progress, schedule support, and
+              generate insightful reports with ease. Embrace a new era of
+              educational excellence and community service with Bridgy.
+            </div>
           </div>
           <div className="w-full h-[90vh] bg-gradient-to-r from-[#696969] to-[#1e1e1e] relative">
             <img
@@ -151,19 +160,20 @@ export const LandingPage = () => {
               className="absolute w-full mix-blend-overlay"
               style={{ height: "90vh" }}
             />
-            <div className="text-7xl text-white pt-60 text-right mr-40">
+            <div className="text-7xl underline text-white pt-40 text-right mr-40">
               For Charities
             </div>
-            <ul className="text-2xl text-white list-disc pt-10 space-y-4 text-right mr-40 list-inside">
-              <li>
-                Publish opportunities with a couple clicks on your dashboard
-              </li>
-              <li>Mission analytics and summaries</li>
-              <li>
-                APIs to your ERP, Bridgy is super flexible in allowing you{" "}
-                <br></br> to select features relevant to your activity!
-              </li>
-            </ul>
+            <div
+              className="text-2xl text-white pt-40 mr-40"
+              style={{ marginLeft: "50rem" }}
+            >
+              Your cause deserves the spotlight and dedicated volunteers ready
+              to take action. Bridgy simplifies the volunteer-matching process,
+              connecting your charity with students who share your passion for
+              change. Our platform ensures you can organize large groups for
+              periodic projects effortlessly, allowing you to focus on what
+              truly matters—your mission.
+            </div>
           </div>
           <div className="w-full h-[90vh] bg-gradient-to-r from-[#1e1e1e] to-[#696969] relative">
             <img
@@ -171,22 +181,21 @@ export const LandingPage = () => {
               className="absolute w-full mix-blend-overlay"
               style={{ height: "90vh" }}
             />
-            <div className="text-7xl text-white pt-60 ml-40">For Students</div>
-            <ul className="text-2xl text-white list-disc pt-10 space-y-4 ml-40">
-              <li>
-                Access missions matching your skill set and availabilities from
-                hundreds of service opportunities
-              </li>
-              <li>Sign-up online super quickly</li>
-              <li>
-                Record experiences for posterity by filling out a diary of
-                takeaways at the end of missions
-              </li>
-              <li>
-                No need to manually report experiences to school supervisors, we
-                do that!
-              </li>
-            </ul>
+            <div className="text-7xl underline text-white pt-40 ml-40">
+              For Students
+            </div>
+            <div
+              className="text-2xl text-white pt-40 ml-40"
+              style={{ width: "50rem" }}
+            >
+              Bridgy is for students ready to explore the world of volunteering
+              and earn tremendous pre-professional experience. It is your
+              digital compass to finding opportunities that resonate with your
+              interests and aspirations. Say goodbye to countless hours
+              searching for the right fit. With our hub, you can connect you
+              with meaningful projects in a snap, track your accomplishments,
+              and build real-time assessments of your impact on the community.
+            </div>
           </div>
         </div>
       </div>
