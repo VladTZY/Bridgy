@@ -64,9 +64,8 @@ const signupUser = async (req, res) => {
       locationId: location.id,
     });
 
-    const token = createToken(user.id, user.username, user.role);
-
-    res.status(200).json({ token: token });
+    res.cookie("token", token, { httpOnly: true });
+    res.status(200).json({ message: "Sign up successful" });
   } catch (error) {
     res.status(500).json(error.message);
   }
@@ -90,7 +89,17 @@ const loginUser = async (req, res) => {
 
     const token = createToken(user.id, user.username, user.role);
 
-    res.status(200).json({ token: token });
+    res.cookie("token", token, { httpOnly: true });
+    res.status(200).json({ message: "Login successful" });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const logoutUser = (req, res) => {
+  try {
+    res.clearCookie("token");
+    res.status(200).json({ message: "Logout successful" });
   } catch (error) {
     res.status(500).json(error.message);
   }
@@ -308,6 +317,7 @@ const changePassword = async (req, res) => {
 module.exports = {
   loginUser,
   signupUser,
+  logoutUser,
   getProfileInfo,
   updateProfileInfo,
   changePassword,

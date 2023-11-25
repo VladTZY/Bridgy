@@ -4,6 +4,7 @@ const router = express.Router();
 const {
   loginUser,
   signupUser,
+  logoutUser,
   getProfileInfo,
   updateProfileInfo,
   changePassword,
@@ -13,6 +14,7 @@ const { requireAuth } = require("../middlewares/requireAuth");
 
 router.post("/login", loginUser);
 router.post("/signup", signupUser);
+router.post("/logout", logoutUser);
 router.get("/profile/:id", getProfileInfo);
 
 router.use(requireAuth);

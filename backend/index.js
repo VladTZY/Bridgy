@@ -4,19 +4,24 @@ const express = require("express");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const { sequelize } = require("./database/sequelize");
+
+const corsOptions = {
+  credentials: true,
+};
 
 const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 const tokenRouter = require("./routes/tokenRoutes");
 app.use("/api/token", tokenRouter);
