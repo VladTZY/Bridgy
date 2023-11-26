@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const AcceptedStudentsTable = ({ eventId, students }) => {
   return (
     <div className="rounded-[15px] overflow-hidden mt-5">
