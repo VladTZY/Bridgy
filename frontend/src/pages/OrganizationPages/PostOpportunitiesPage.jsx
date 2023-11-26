@@ -73,11 +73,7 @@ export const PostOpportunitiesPage = () => {
         .post(
           `${import.meta.env.VITE_API_URL}/organization/create_event`,
           formData,
-          {
-            headers: {
-              Authorization: `BEARER ${jwt}`,
-            },
-          }
+          { withCredentials: true }
         )
         .then((res) => {
           setName("");

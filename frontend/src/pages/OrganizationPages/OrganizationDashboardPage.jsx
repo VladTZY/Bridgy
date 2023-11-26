@@ -24,11 +24,7 @@ export const OrganizationDashboardPage = () => {
         }/events/by_admin_and_status?adminId=${id}&status=ONGOING&offset=${
           ongoingPage - 1
         }&pageSize=4`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setOngoingEvents(res.data);
@@ -46,11 +42,7 @@ export const OrganizationDashboardPage = () => {
         }/events/by_admin_and_status?adminId=${id}&status=PUBLISHED&offset=${
           upcomingPage - 1
         }&pageSize=4`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setPublishedEvents(res.data);
@@ -68,11 +60,7 @@ export const OrganizationDashboardPage = () => {
         }/events/by_admin_and_status?adminId=${id}&status=FINISHED&offset=${
           finishedPage - 1
         }&pageSize=4`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setFinishedEvents(res.data);

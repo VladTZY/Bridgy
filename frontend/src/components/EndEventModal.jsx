@@ -47,11 +47,7 @@ export const EndEventModal = ({ setEndModal, students, eventId }) => {
           import.meta.env.VITE_API_URL
         }/organization/finish_event?eventId=${eventId}`,
         finalArray,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then(setEndModal(false));
   };

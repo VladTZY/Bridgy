@@ -43,11 +43,7 @@ export const MoreInfoPage = () => {
           `${
             import.meta.env.VITE_API_URL
           }/organization/check_admin?eventId=${id}`,
-          {
-            headers: {
-              Authorization: `BEARER ${jwt}`,
-            },
-          }
+          { withCredentials: true }
         )
         .then((res) => {
           setIsAdmin(res.data.isAdmin);
@@ -57,9 +53,7 @@ export const MoreInfoPage = () => {
 
     axios
       .get(`${import.meta.env.VITE_API_URL}/events/id?id=${id}`, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
+        withCredentials: true,
       })
       .then((res) => {
         setEvent(res.data);

@@ -11,11 +11,7 @@ export const WriteExperienceCard = ({ id, title, eventDescription }) => {
       .post(
         `${import.meta.env.VITE_API_URL}/student/post_feedback/${id}`,
         { feedback: description },
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .catch((error) => console.log(error));
   };

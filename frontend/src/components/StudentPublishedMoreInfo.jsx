@@ -9,11 +9,7 @@ export const StudentPublishedMoreInfo = ({ jwt, eventId, placesLeft }) => {
       .post(
         `${import.meta.env.VITE_API_URL}/student/join_event/${eventId}`,
         {},
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         navigate("/student/dashboard");

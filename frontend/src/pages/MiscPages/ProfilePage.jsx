@@ -47,9 +47,7 @@ export const ProfilePage = () => {
 
       axios
         .put(`${import.meta.env.VITE_API_URL}/user/update_profile`, payload, {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
+          withCredentials: true,
         })
         .then((res) => {
           setUserInfo({

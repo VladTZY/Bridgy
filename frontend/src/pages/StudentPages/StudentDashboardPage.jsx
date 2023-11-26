@@ -16,9 +16,7 @@ export const StudentDashboardPage = () => {
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/student/accepted_events`, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
+        withCredentials: true,
       })
       .then((res) => {
         setAcceptedEvents(res.data);

@@ -31,11 +31,7 @@ export const AddMultipleStudents = () => {
       .post(
         `${import.meta.env.VITE_API_URL}/school/create_multiple_students`,
         formData,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setFile(null);

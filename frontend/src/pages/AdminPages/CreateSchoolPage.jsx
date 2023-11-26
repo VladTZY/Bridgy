@@ -52,11 +52,7 @@ export const CreateSchoolPage = () => {
             email,
             phoneNumber,
           },
-          {
-            headers: {
-              Authorization: `BEARER ${jwt}`,
-            },
-          }
+          { withCredentials: true }
         )
         .then((res) => {
           setSchoolName("");

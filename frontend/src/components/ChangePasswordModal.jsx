@@ -22,11 +22,7 @@ export const ChangePasswordModal = ({ setModal }) => {
           password,
           newPassword,
         },
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .catch((err) => console.log(err));
     setModal(false);

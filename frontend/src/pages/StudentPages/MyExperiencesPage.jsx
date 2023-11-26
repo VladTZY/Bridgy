@@ -12,9 +12,7 @@ export const MyExperiencesPage = () => {
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/student/finished_events`, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
+        withCredentials: true,
       })
       .then((res) => {
         setEvents(res.data);

@@ -14,11 +14,7 @@ export const OrganizationFinishedMoreInfo = ({ eventId }) => {
         `${
           import.meta.env.VITE_API_URL
         }/organization/finished_students?eventId=${eventId}`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => setFinishedStudents(res.data))
       .catch((error) => console.log(error));

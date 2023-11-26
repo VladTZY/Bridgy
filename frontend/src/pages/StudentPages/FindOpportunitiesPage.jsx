@@ -16,11 +16,7 @@ export const FindOpportunitiesPage = () => {
         `${
           import.meta.env.VITE_API_URL
         }/events/by_status?status=PUBLISHED&offset=${page - 1}&pageSize=6`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setEvents(res.data);

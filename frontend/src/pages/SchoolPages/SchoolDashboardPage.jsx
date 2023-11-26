@@ -22,9 +22,7 @@ export const SchoolDashboardPage = () => {
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/school/students?grade=${grade}`, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
+        withCredentials: true,
       })
       .then((res) => {
         setStudents(res.data);
@@ -36,9 +34,7 @@ export const SchoolDashboardPage = () => {
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/school/stats`, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
+        withCredentials: true,
       })
       .then((res) => {
         setStats(res.data);

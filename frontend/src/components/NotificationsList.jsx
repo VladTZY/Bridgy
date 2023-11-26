@@ -11,9 +11,7 @@ export const NotificationsList = () => {
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/notification/get_all`, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
+        withCredentials: true,
       })
       .then((res) => setNotifications(res.data))
       .catch((error) => console.log(error));

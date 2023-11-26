@@ -17,11 +17,7 @@ export const MissionsPage = () => {
         `${
           import.meta.env.VITE_API_URL
         }/events/by_admin_and_status?adminId=${id}&status=PUBLISHED`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setPublishedEvents(res.data);
@@ -35,11 +31,7 @@ export const MissionsPage = () => {
         `${
           import.meta.env.VITE_API_URL
         }/events/by_admin_and_status?adminId=${id}&status=FINISHED`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setFinishedEvents(res.data);
