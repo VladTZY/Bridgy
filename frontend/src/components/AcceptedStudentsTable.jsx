@@ -30,7 +30,7 @@ export const AcceptedStudentsTable = ({ eventId, students }) => {
                 </td>
                 <td className="px-6 py-4 font-semibold">
                   <Link
-                    to={`/profile/${student.id}`}
+                    to={`/profile/${student.user.id}`}
                     className="hover:bg-[#2135D9] bg-[#2EA0FB] py-2 px-5 rounded-[50px] text-white text-lg"
                   >
                     View profile
