@@ -9,6 +9,7 @@ const cookieParser = require("cookie-parser");
 const { sequelize } = require("./database/sequelize");
 
 const corsOptions = {
+  origin: process.env.FRONTEND_HOST,
   credentials: true,
 };
 
