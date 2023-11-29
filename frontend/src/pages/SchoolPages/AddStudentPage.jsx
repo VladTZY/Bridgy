@@ -6,7 +6,6 @@ import { CreationModal } from "../../components/CreationModal";
 import { ErrorModal } from "../../components/ErrorModal";
 
 export const AddStudentPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -39,11 +38,7 @@ export const AddStudentPage = () => {
         .post(
           `${import.meta.env.VITE_API_URL}/school/create_one_student`,
           { username, email, phoneNumber, country, city, grade },
-          {
-            headers: {
-              Authorization: `BEARER ${jwt}`,
-            },
-          }
+          { withCredentials: true }
         )
         .then((res) => {
           setUsername("");

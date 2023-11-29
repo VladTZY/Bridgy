@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export const OrganizationFinishedMoreInfo = ({ eventId }) => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [finishedStudents, setFinishedStudents] = useState([]);
 
   useEffect(() => {
@@ -14,15 +13,11 @@ export const OrganizationFinishedMoreInfo = ({ eventId }) => {
         `${
           import.meta.env.VITE_API_URL
         }/organization/finished_students?eventId=${eventId}`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => setFinishedStudents(res.data))
       .catch((error) => console.log(error));
-  }, [jwt, eventId]);
+  }, [eventId]);
 
   return (
     <div className="mt-5">

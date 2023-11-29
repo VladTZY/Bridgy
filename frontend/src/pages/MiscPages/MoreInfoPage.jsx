@@ -15,7 +15,6 @@ import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
 
 export const MoreInfoPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const role = useSelector((state) => state.auth.role);
   const userId = useSelector((state) => state.auth.id);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -43,11 +42,7 @@ export const MoreInfoPage = () => {
           `${
             import.meta.env.VITE_API_URL
           }/organization/check_admin?eventId=${id}`,
-          {
-            headers: {
-              Authorization: `BEARER ${jwt}`,
-            },
-          }
+          { withCredentials: true }
         )
         .then((res) => {
           setIsAdmin(res.data.isAdmin);
@@ -57,9 +52,7 @@ export const MoreInfoPage = () => {
 
     axios
       .get(`${import.meta.env.VITE_API_URL}/events/id?id=${id}`, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
+        withCredentials: true,
       })
       .then((res) => {
         setEvent(res.data);
@@ -71,7 +64,7 @@ export const MoreInfoPage = () => {
           );
       })
       .catch((error) => console.log(error));
-  }, [id, jwt, role]);
+  }, [id, role]);
 
   console.log(event.status);
 
@@ -113,12 +106,11 @@ export const MoreInfoPage = () => {
         {role == "STUDENT" ? (
           event.status == "PUBLISHED" ? (
             <StudentPublishedMoreInfo
-              jwt={jwt}
               eventId={id}
               placesLeft={event.placesLeft}
             />
           ) : event.status == "STUDENT_FINISHED" ? (
-            <StudentFinishedMoreInfo jwt={jwt} eventId={id} />
+            <StudentFinishedMoreInfo eventId={id} />
           ) : event.status == "STUDENT_ONGOING" ? (
             <StudentOngoingMoreInfo />
           ) : event.status == "STUDENT_ACCEPTED" ? (

@@ -3,7 +3,6 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 
 export const EndEventModal = ({ setEndModal, students, eventId }) => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [presentArray, setPresentArray] = useState(
     new Array(students.length).fill(false)
   );
@@ -47,11 +46,7 @@ export const EndEventModal = ({ setEndModal, students, eventId }) => {
           import.meta.env.VITE_API_URL
         }/organization/finish_event?eventId=${eventId}`,
         finalArray,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then(setEndModal(false));
   };

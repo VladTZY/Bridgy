@@ -5,7 +5,6 @@ import { Card } from "../../components/Card";
 import { SearchBar } from "../../components/SearchBar";
 
 export const MissionsPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const id = useSelector((state) => state.auth.id);
   const organizationId = useSelector((state) => state.auth.institutionId);
   const [publishedEvents, setPublishedEvents] = useState([]);
@@ -17,11 +16,7 @@ export const MissionsPage = () => {
         `${
           import.meta.env.VITE_API_URL
         }/events/by_admin_and_status?adminId=${id}&status=PUBLISHED`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setPublishedEvents(res.data);
@@ -35,11 +30,7 @@ export const MissionsPage = () => {
         `${
           import.meta.env.VITE_API_URL
         }/events/by_admin_and_status?adminId=${id}&status=FINISHED`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setFinishedEvents(res.data);

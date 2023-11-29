@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { ChangePasswordModal } from "../../components/ChangePasswordModal";
 
 export const ProfilePage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const userId = useSelector((state) => state.auth.id);
   let { id } = useParams();
   const [isDisabled, setIsDisabled] = useState(true);
@@ -47,9 +46,7 @@ export const ProfilePage = () => {
 
       axios
         .put(`${import.meta.env.VITE_API_URL}/user/update_profile`, payload, {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
+          withCredentials: true,
         })
         .then((res) => {
           setUserInfo({

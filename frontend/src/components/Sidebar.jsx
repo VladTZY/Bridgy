@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 import { logout } from "../store/authSlice";
 import dash_white from "../../Bridgy_Assets/icon/Dashboard white.svg";
 import dash_black from "../../Bridgy_Assets/icon/Dashboard black.svg";
@@ -26,6 +28,17 @@ export const Sidebar = () => {
   const id = useSelector((state) => state.auth.id);
   const dispatch = useDispatch();
   const location = useLocation();
+
+  const logoutUser = async () => {
+    await axios
+      .post(
+        `${import.meta.env.VITE_API_URL}/user/logout`,
+        {},
+        { withCredentials: true }
+      )
+      .then(dispatch(logout()))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="h-full bg-white pl-5">
@@ -540,7 +553,7 @@ export const Sidebar = () => {
           <div className="flex items-center space-x-2">
             <img src={lo} alt="react logo" style={{ width: "1.5rem" }} />
             <div className="hover:text-[#2135D9] text-lg">
-              <button onClick={() => dispatch(logout())}>Logout</button>
+              <button onClick={() => logoutUser()}>Logout</button>
             </div>
           </div>
         </div>

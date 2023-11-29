@@ -7,8 +7,6 @@ export const MarkAttendanceModal = ({
   setStudents,
   eventId,
 }) => {
-  const jwt = useSelector((state) => state.auth.jwt);
-
   const handleChange = (index, userId) => {
     axios
       .post(
@@ -16,11 +14,7 @@ export const MarkAttendanceModal = ({
           import.meta.env.VITE_API_URL
         }/organization/check_student?userId=${userId}&eventId=${eventId}`,
         {},
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         const newArray = students.map((student, indexNow) => {

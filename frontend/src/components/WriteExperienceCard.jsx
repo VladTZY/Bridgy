@@ -3,7 +3,6 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 
 export const WriteExperienceCard = ({ id, title, eventDescription }) => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [description, setDescription] = useState(eventDescription);
 
   const handleClick = () => {
@@ -11,11 +10,7 @@ export const WriteExperienceCard = ({ id, title, eventDescription }) => {
       .post(
         `${import.meta.env.VITE_API_URL}/student/post_feedback/${id}`,
         { feedback: description },
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .catch((error) => console.log(error));
   };

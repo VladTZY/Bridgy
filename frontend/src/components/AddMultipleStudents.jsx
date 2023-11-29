@@ -3,7 +3,6 @@ import axios from "axios";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export const AddMultipleStudents = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [file, setFile] = useState(null);
 
   /*const fileRef = useRef();
@@ -31,11 +30,7 @@ export const AddMultipleStudents = () => {
       .post(
         `${import.meta.env.VITE_API_URL}/school/create_multiple_students`,
         formData,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setFile(null);

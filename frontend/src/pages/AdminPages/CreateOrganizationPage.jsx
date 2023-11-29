@@ -5,7 +5,6 @@ import { CreationModal } from "../../components/CreationModal";
 import { ErrorModal } from "../../components/ErrorModal";
 
 export const CreateOrganizationPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [organizationName, setOrganizationName] = useState("");
   const [organizationEmail, setOrganizationEmail] = useState("");
   const [organizationPhoneNumber, setOrganizationPhoneNumber] = useState("");
@@ -52,11 +51,7 @@ export const CreateOrganizationPage = () => {
             email,
             phoneNumber,
           },
-          {
-            headers: {
-              Authorization: `BEARER ${jwt}`,
-            },
-          }
+          { withCredentials: true }
         )
         .then((res) => {
           setOrganizationName("");

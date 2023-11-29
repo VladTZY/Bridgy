@@ -6,7 +6,6 @@ import { Card } from "../../components/Card";
 import { SearchBar } from "../../components/SearchBar";
 
 export const FindOpportunitiesPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [events, setEvents] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -16,11 +15,7 @@ export const FindOpportunitiesPage = () => {
         `${
           import.meta.env.VITE_API_URL
         }/events/by_status?status=PUBLISHED&offset=${page - 1}&pageSize=6`,
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         setEvents(res.data);

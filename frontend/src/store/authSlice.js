@@ -11,10 +11,12 @@ export const login = createAsyncThunk(
         {
           email: email,
           password: password,
+        },
+        {
+          withCredentials: true,
         }
       );
-      const data = jwtDecode(res.data.token);
-      return { ...data, token: res.data.token };
+      return res.data;
     } catch (error) {
       console.log(error);
     }
@@ -25,7 +27,6 @@ const initialState = {
   id: "",
   username: "",
   role: "",
-  jwt: "",
   isLoggedIn: false,
   loading: false,
   error: null,
@@ -39,7 +40,6 @@ export const authSlice = createSlice({
       state.id = "";
       state.username = "";
       state.role = "";
-      state.jwt = "";
       state.isLoggedIn = false;
       state.loading = false;
       state.error = null;
@@ -51,7 +51,6 @@ export const authSlice = createSlice({
         state.id = action.payload.id;
         state.username = action.payload.username;
         state.role = action.payload.role;
-        state.jwt = action.payload.token;
         state.isLoggedIn = true;
         state.loading = false;
         state.error = null;
@@ -63,7 +62,6 @@ export const authSlice = createSlice({
         state.id = "";
         state.username = "";
         state.role = "";
-        state.jwt = "";
         state.isLoggedIn = false;
         state.loading = false;
         state.error = "Login failed";

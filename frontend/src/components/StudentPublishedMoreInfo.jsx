@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const StudentPublishedMoreInfo = ({ jwt, eventId, placesLeft }) => {
+export const StudentPublishedMoreInfo = ({ eventId, placesLeft }) => {
   const navigate = useNavigate();
 
   const joinEvent = () => {
@@ -9,11 +9,7 @@ export const StudentPublishedMoreInfo = ({ jwt, eventId, placesLeft }) => {
       .post(
         `${import.meta.env.VITE_API_URL}/student/join_event/${eventId}`,
         {},
-        {
-          headers: {
-            Authorization: `BEARER ${jwt}`,
-          },
-        }
+        { withCredentials: true }
       )
       .then((res) => {
         navigate("/student/dashboard");
