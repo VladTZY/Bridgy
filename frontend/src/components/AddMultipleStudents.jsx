@@ -3,7 +3,6 @@ import axios from "axios";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export const AddMultipleStudents = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [file, setFile] = useState(null);
 
   /*const fileRef = useRef();

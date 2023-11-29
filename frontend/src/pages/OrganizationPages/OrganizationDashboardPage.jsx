@@ -6,7 +6,6 @@ import { EventShortCard } from "../../components/EventShortCard";
 import { CompactCard } from "../../components/CompactCard";
 
 export const OrganizationDashboardPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const id = useSelector((state) => state.auth.id);
   const organizationId = useSelector((state) => state.auth.institutionId);
   const [ongoingEvents, setOngoingEvents] = useState([]);

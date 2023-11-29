@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { ChangePasswordModal } from "../../components/ChangePasswordModal";
 
 export const ProfilePage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const userId = useSelector((state) => state.auth.id);
   let { id } = useParams();
   const [isDisabled, setIsDisabled] = useState(true);

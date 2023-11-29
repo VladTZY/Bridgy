@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export const OrganizationPublishedMoreInfo = ({ eventId }) => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [acceptedStudents, setAcceptedStudents] = useState([]);
   const [requestedStudents, setRequestedStudents] = useState([]);
 
@@ -30,7 +29,7 @@ export const OrganizationPublishedMoreInfo = ({ eventId }) => {
       )
       .then((res) => setRequestedStudents(res.data))
       .catch((error) => console.log(error));
-  }, [jwt, eventId]);
+  }, [eventId]);
 
   return (
     <div className="mt-5">

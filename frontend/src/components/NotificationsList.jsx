@@ -5,7 +5,6 @@ import axios from "axios";
 import { NotificationCard } from "./NotificationCard";
 
 export const NotificationsList = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
@@ -15,7 +14,7 @@ export const NotificationsList = () => {
       })
       .then((res) => setNotifications(res.data))
       .catch((error) => console.log(error));
-  }, [jwt]);
+  }, []);
 
   return (
     <div className="flex flex-col">

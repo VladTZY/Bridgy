@@ -10,8 +10,6 @@ export const RequestedStudentsTable = ({
   acceptedStudents,
   setAcceptedStudents,
 }) => {
-  const jwt = useSelector((state) => state.auth.jwt);
-
   const acceptStudent = (id, index) => {
     axios
       .post(

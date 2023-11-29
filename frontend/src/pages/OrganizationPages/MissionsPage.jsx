@@ -5,7 +5,6 @@ import { Card } from "../../components/Card";
 import { SearchBar } from "../../components/SearchBar";
 
 export const MissionsPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const id = useSelector((state) => state.auth.id);
   const organizationId = useSelector((state) => state.auth.institutionId);
   const [publishedEvents, setPublishedEvents] = useState([]);

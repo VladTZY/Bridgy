@@ -7,8 +7,6 @@ export const MarkAttendanceModal = ({
   setStudents,
   eventId,
 }) => {
-  const jwt = useSelector((state) => state.auth.jwt);
-
   const handleChange = (index, userId) => {
     axios
       .post(

@@ -6,7 +6,6 @@ import { StudentsTable } from "../../components/StudentsTable";
 import { SchoolProgressCard } from "../../components/SchoolProgressCard";
 
 export const SchoolDashboardPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [students, setStudents] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [grade, setGrade] = useState("9");
@@ -29,7 +28,7 @@ export const SchoolDashboardPage = () => {
         setTableData(res.data);
       })
       .catch((error) => console.log(error));
-  }, [jwt, grade]);
+  }, [grade]);
 
   useEffect(() => {
     axios
@@ -40,7 +39,7 @@ export const SchoolDashboardPage = () => {
         setStats(res.data);
       })
       .catch((error) => console.log(error));
-  }, [jwt]);
+  }, []);
 
   const handleOrderChange = (value) => {
     if (value == "none") setTableData(students);

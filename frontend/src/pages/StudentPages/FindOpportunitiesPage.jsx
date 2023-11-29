@@ -6,7 +6,6 @@ import { Card } from "../../components/Card";
 import { SearchBar } from "../../components/SearchBar";
 
 export const FindOpportunitiesPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [events, setEvents] = useState([]);
   const [page, setPage] = useState(1);
 

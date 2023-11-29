@@ -8,7 +8,6 @@ import { CompactCard } from "../../components/CompactCard";
 import { StudentProgressCard } from "../../components/StudentProgressCard";
 
 export const StudentDashboardPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [ongoingEvents, setOngoingEvents] = useState([]);
   const [requestedEvents, setRequestedEvents] = useState([]);
   const [acceptedEvents, setAcceptedEvents] = useState([]);
@@ -25,9 +24,7 @@ export const StudentDashboardPage = () => {
 
     axios
       .get(`${import.meta.env.VITE_API_URL}/student/ongoing_events`, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
+        withCredentials: true,
       })
       .then((res) => {
         setOngoingEvents(res.data);
@@ -36,15 +33,13 @@ export const StudentDashboardPage = () => {
 
     axios
       .get(`${import.meta.env.VITE_API_URL}/student/requested_events`, {
-        headers: {
-          Authorization: `BEARER ${jwt}`,
-        },
+        withCredentials: true,
       })
       .then((res) => {
         setRequestedEvents(res.data);
       })
       .catch((error) => console.log(error));
-  }, [jwt]);
+  }, []);
 
   return (
     <div className="h-full p-3 bg-gray-100 flex flex-col">

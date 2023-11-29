@@ -3,7 +3,6 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 
 export const WriteExperienceCard = ({ id, title, eventDescription }) => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [description, setDescription] = useState(eventDescription);
 
   const handleClick = () => {

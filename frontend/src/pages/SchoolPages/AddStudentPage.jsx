@@ -6,7 +6,6 @@ import { CreationModal } from "../../components/CreationModal";
 import { ErrorModal } from "../../components/ErrorModal";
 
 export const AddStudentPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");

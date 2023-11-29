@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const StudentPublishedMoreInfo = ({ jwt, eventId, placesLeft }) => {
+export const StudentPublishedMoreInfo = ({ eventId, placesLeft }) => {
   const navigate = useNavigate();
 
   const joinEvent = () => {

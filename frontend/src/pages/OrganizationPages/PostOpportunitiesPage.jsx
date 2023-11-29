@@ -10,7 +10,6 @@ import ClockIcon from "../../../Bridgy_Assets/icon/clock blue.svg";
 import TimeIcon from "../../../Bridgy_Assets/icon/timeplap blue.svg";
 
 export const PostOpportunitiesPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [supervisorContact, setSupervisorContact] = useState("");

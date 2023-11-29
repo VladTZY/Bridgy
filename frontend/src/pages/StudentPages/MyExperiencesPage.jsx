@@ -6,7 +6,6 @@ import { WriteExperienceCard } from "../../components/WriteExperienceCard";
 import { Card } from "../../components/Card";
 
 export const MyExperiencesPage = () => {
-  const jwt = useSelector((state) => state.auth.jwt);
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -18,7 +17,7 @@ export const MyExperiencesPage = () => {
         setEvents(res.data);
       })
       .catch((error) => console.log(error));
-  }, [jwt]);
+  }, []);
 
   return (
     <div className="min-h-full p-5 bg-gray-100 flex flex-col space-x-4">
