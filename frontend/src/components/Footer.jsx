@@ -36,10 +36,7 @@ export const Footer = () => {
           />
           <div className="text-white text-4xl font-nunito">Bridgy</div>
           <div className="text-gray-400 text-lg pt-4 font-nunito">
-            Making the connections
-          </div>
-          <div className="text-gray-400 text-lg font-nunito">
-            no one cares to do
+            Connecting Hearts, <br></br> Building Futures
           </div>
         </div>
         <div className="flex flex-col space-y-5 mt-24">
@@ -106,7 +103,7 @@ export const Footer = () => {
       <div className="space-y-6">
         <hr className="color-[#9CA3AF] mx-28 self-center"></hr>
         <div className="text-gray-400 font-nunito text-center">
-          Copyright Bridgy 2023 | Privacy Policy | Terms & Conditions
+          Copyright Bridgy, Inc. 2023 | Privacy Policy | Terms & Conditions
         </div>
       </div>
     </div>
