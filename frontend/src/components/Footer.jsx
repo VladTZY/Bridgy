@@ -72,7 +72,7 @@ export const Footer = () => {
         <div className="flex flex-col space-y-5 mt-24">
           <div className="text-2xl text-white font-nunito">Address</div>
           <div className="text-base text-white pt-6 font-nunito">
-            New York, ..........
+            5500 S UNIVERSITY AVE <br></br> CHICAGO, IL 60637
           </div>
         </div>
         <div className="flex flex-col space-y-5 mt-24">

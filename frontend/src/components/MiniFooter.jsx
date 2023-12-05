@@ -8,7 +8,7 @@ export const MiniFooter = () => {
     <div className="h-full px-20 py-2 bg-[#2135D9]">
       <div className="h-full flex items-center justify-between">
         <div className=" text-gray-400 text-sm">
-          © Copyright 2023 Bridgy | All rights reserved.
+          © Copyright 2023 Bridgy, Inc. | All rights reserved.
         </div>
         <div className="flex items-center space-x-2">
           <img src={insta} alt="react logo" style={{ width: "3rem" }} />
