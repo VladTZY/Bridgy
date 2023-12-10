@@ -23,8 +23,22 @@ export const PostOpportunitiesPage = () => {
   const [address, setAddress] = useState("");
   const [creationModal, setCreationModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [descriptionError, setDescriptionError] = useState(false);
+  const [supervisorContactError, setSupervisorContactError] = useState(false);
+  const [hoursError, setHoursError] = useState(false);
+  const [timeError, setTimeError] = useState(false);
+  const [capacityError, setCapacityError] = useState(false);
+  const [countryError, setCountryError] = useState(false);
+  const [cityError, setCityError] = useState(false);
+  const [addressError, setAddressError] = useState(false);
+  const [initialDate, setInitialDate] = useState(time);
 
   const fileRef = useRef();
+
+  const errorSetter = (e, nil, setE) => {
+    if (e == nil) setE(true);
+  };
 
   useEffect(() => {
     if (file === null) {
@@ -41,6 +55,7 @@ export const PostOpportunitiesPage = () => {
       supervisorContact == "" ||
       capacity == 0 ||
       hours == 0 ||
+      time == initialDate ||
       (!isRemote && (country == "" || city == "" || address == ""))
     )
       return false;
@@ -67,7 +82,7 @@ export const PostOpportunitiesPage = () => {
 
     if (validate()) {
       setCreationModal(true);
-      setErrorModal(false);
+      //setErrorModal(false);
       axios
         .post(
           `${import.meta.env.VITE_API_URL}/organization/create_event`,
@@ -84,12 +99,32 @@ export const PostOpportunitiesPage = () => {
           setCity("");
           setAddress("");
           setSupervisorContact("");
-          setIsRemote("false");
+          setIsRemote(false);
+          setNameError(false);
+          setDescriptionError(false);
+          setHoursError(false);
+          setTimeError(false);
+          setCapacityError(false);
+          setCountryError(false);
+          setCityError(false);
+          setAddressError(false);
+          setSupervisorContact(false);
         })
         .catch((error) => console.log(error));
     } else {
       setCreationModal(false);
-      setErrorModal(true);
+      errorSetter(name, "", setNameError);
+      errorSetter(description, "", setDescriptionError);
+      errorSetter(supervisorContact, "", setSupervisorContactError);
+      errorSetter(hours, 0, setHoursError);
+      errorSetter(capacity, 0, setCapacityError);
+      errorSetter(time, initialDate, setTimeError);
+      if (!isRemote) {
+        errorSetter(country, "", setCountryError);
+        errorSetter(city, "", setCityError);
+        errorSetter(address, "", setAddressError);
+      }
+      //setErrorModal(true);
     }
   };
 
@@ -108,9 +143,14 @@ export const PostOpportunitiesPage = () => {
                       <input
                         type="text"
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => {
+                          setName(e.target.value);
+                          setNameError(false);
+                        }}
                         placeholder="Name..."
-                        className="my-2 rounded-lg p-2 border-2 border-gray-400"
+                        className={`${
+                          nameError ? "border-red-500" : "border-gray-400"
+                        } my-2 rounded-lg p-2 border-2`}
                         style={{ width: "30rem" }}
                       />
                     </label>
@@ -123,8 +163,15 @@ export const PostOpportunitiesPage = () => {
                         type="text"
                         value={description}
                         placeholder="Description..."
-                        className="my-2 rounded-lg p-2 border-2 border-gray-400"
-                        onChange={(e) => setDescription(e.target.value)}
+                        className={`${
+                          descriptionError
+                            ? "border-red-500"
+                            : "border-gray-400"
+                        } my-2 rounded-lg p-2 border-2`}
+                        onChange={(e) => {
+                          setDescription(e.target.value);
+                          setDescriptionError(false);
+                        }}
                         style={{ width: "30rem" }}
                       />
                     </label>
@@ -137,9 +184,16 @@ export const PostOpportunitiesPage = () => {
                       <input
                         type="text"
                         value={supervisorContact}
-                        onChange={(e) => setSupervisorContact(e.target.value)}
+                        onChange={(e) => {
+                          setSupervisorContact(e.target.value);
+                          setSupervisorContactError(false);
+                        }}
                         placeholder="Contact..."
-                        className="my-2 rounded-lg p-2 border-2 border-gray-400"
+                        className={`${
+                          supervisorContactError
+                            ? "border-red-500"
+                            : "border-gray-400"
+                        } my-2 rounded-lg p-2 border-2`}
                         style={{ width: "30rem" }}
                       />
                     </label>
@@ -151,7 +205,12 @@ export const PostOpportunitiesPage = () => {
                         className="m-2"
                         type="checkbox"
                         defaultChecked={isRemote}
-                        onChange={(e) => setIsRemote(!isRemote)}
+                        onChange={(e) => {
+                          setIsRemote(!isRemote);
+                          setCityError(false);
+                          setCountryError(false);
+                          setAddressError(false);
+                        }}
                       />
                     </label>
                   </div>
@@ -180,8 +239,13 @@ export const PostOpportunitiesPage = () => {
                     <input
                       type="number"
                       value={capacity}
-                      className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
-                      onChange={(e) => setCapacity(e.target.value)}
+                      className={`${
+                        capacityError ? "border-red-500" : "border-gray-400"
+                      } my-2 rounded-lg w-full p-2 border-2`}
+                      onChange={(e) => {
+                        setCapacity(e.target.value);
+                        setCapacityError(false);
+                      }}
                     />
                   </label>
                 </div>
@@ -195,8 +259,13 @@ export const PostOpportunitiesPage = () => {
                     <input
                       type="number"
                       value={hours}
-                      className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
-                      onChange={(e) => setHours(e.target.value)}
+                      className={`${
+                        hoursError ? "border-red-500" : "border-gray-400"
+                      } my-2 rounded-lg w-full p-2 border-2`}
+                      onChange={(e) => {
+                        setHours(e.target.value);
+                        setHoursError(false);
+                      }}
                     />
                   </label>
                 </div>
@@ -210,8 +279,13 @@ export const PostOpportunitiesPage = () => {
                     <input
                       type="datetime-local"
                       value={time}
-                      className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
-                      onChange={(e) => setTime(e.target.value)}
+                      className={`${
+                        timeError ? "border-red-500" : "border-gray-400"
+                      } my-2 rounded-lg w-full p-2 border-2`}
+                      onChange={(e) => {
+                        setTime(e.target.value);
+                        setTimeError(false);
+                      }}
                     />
                   </label>
                 </div>
@@ -231,8 +305,13 @@ export const PostOpportunitiesPage = () => {
                         <input
                           type="text"
                           value={country}
-                          className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
-                          onChange={(e) => setCountry(e.target.value)}
+                          className={`${
+                            countryError ? "border-red-500" : "border-gray-400"
+                          } my-2 rounded-lg w-full p-2 border-2`}
+                          onChange={(e) => {
+                            setCountry(e.target.value);
+                            setCountryError(false);
+                          }}
                         />
                       </label>
                     </div>
@@ -246,8 +325,13 @@ export const PostOpportunitiesPage = () => {
                         <input
                           type="text"
                           value={city}
-                          className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
-                          onChange={(e) => setCity(e.target.value)}
+                          className={`${
+                            cityError ? "border-red-500" : "border-gray-400"
+                          } my-2 rounded-lg w-full p-2 border-2`}
+                          onChange={(e) => {
+                            setCity(e.target.value);
+                            setCityError(false);
+                          }}
                         />
                       </label>
                     </div>
@@ -261,21 +345,50 @@ export const PostOpportunitiesPage = () => {
                         <input
                           type="text"
                           value={address}
-                          className="my-2 rounded-lg w-full p-2 border-2 border-gray-400"
-                          onChange={(e) => setAddress(e.target.value)}
+                          className={`${
+                            addressError ? "border-red-500" : "border-gray-400"
+                          } my-2 rounded-lg w-full p-2 border-2`}
+                          onChange={(e) => {
+                            setAddress(e.target.value);
+                            setAddressError(false);
+                          }}
                         />
                       </label>
                     </div>
                   </div>
                 </div>
               )}
-              <div>
+
+              {
+                {
+                  true: (
+                    <div className="text-xl text-red-500">
+                      Please make sure all mandatory fields are completed.
+                    </div>
+                  ),
+                }[
+                  nameError ||
+                    descriptionError ||
+                    supervisorContactError ||
+                    hoursError ||
+                    timeError ||
+                    capacityError ||
+                    cityError ||
+                    countryError ||
+                    addressError
+                ]
+              }
+
+              <div className="flex justify-between items-center">
                 <button
                   className="bg-[#2EA0FB] text-white mt-5 py-4 px-10 rounded-[50px] hover:bg-[#2135D9]"
                   type="submit"
                 >
                   Submit
                 </button>
+                <div className="text-sm text-gray-400">
+                  Fields marked with * are optional.
+                </div>
               </div>
             </form>
           </div>
@@ -284,7 +397,9 @@ export const PostOpportunitiesPage = () => {
       {creationModal ? (
         <CreationModal setCreationModal={setCreationModal} type={"Event"} />
       ) : null}
-      {errorModal ? <ErrorModal setErrorModal={setErrorModal} /> : null}
+      {/* -- Error Modal(disabled)
+      errorModal ? <ErrorModal setErrorModal={setErrorModal} /> : null
+      */}
     </div>
   );
 };

@@ -13,6 +13,7 @@ export const LoginPage = () => {
   const username = useSelector((state) => state.auth.username);
   const dispatch = useDispatch();
   const [loginModal, setLoginModal] = useState(false);
+  const [error, setError] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -20,9 +21,11 @@ export const LoginPage = () => {
       .then((res) => {
         setEmail("");
         setPassword("");
+        setError(false);
       })
       .catch((error) => {
-        setLoginModal(true);
+        setError(true);
+        //setLoginModal(true);
       });
   };
 
@@ -47,8 +50,13 @@ export const LoginPage = () => {
                 <input
                   type="text"
                   placeholder="Email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setError(false);
+                  }}
+                  className={`${
+                    error ? "border-red-500" : "border-gray-200"
+                  } appearance-none border-2 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]`}
                 />
               </div>
 
@@ -56,10 +64,25 @@ export const LoginPage = () => {
                 <input
                   type="password"
                   placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="mt-3 appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setError(false);
+                  }}
+                  className={`${
+                    error ? "border-red-500" : "border-gray-200"
+                  } mt-3 appearance-none border-2 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]`}
                 />
               </div>
+
+              {
+                {
+                  true: (
+                    <div className="mt-2 text-red-500 text-xl">
+                      The email or password does not match. Please try again.
+                    </div>
+                  ),
+                }[error]
+              }
 
               <div className="flex justify-between mt-5">
                 <div className="flex">
@@ -93,7 +116,9 @@ export const LoginPage = () => {
           ></img>
         </div>
       </div>
-      {loginModal ? <LoginModal setLoginModal={setLoginModal} /> : null}
+      {/* -- Login Modal(disabled)
+      loginModal ? <LoginModal setLoginModal={setLoginModal} /> : null
+      */}
     </div>
   );
 };
