@@ -10,53 +10,115 @@ import ClockIcon from "../../../Bridgy_Assets/icon/clock blue.svg";
 import TimeIcon from "../../../Bridgy_Assets/icon/timeplap blue.svg";
 
 export const PostOpportunitiesPage = () => {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [supervisorContact, setSupervisorContact] = useState("");
-  const [isRemote, setIsRemote] = useState(false);
-  const [file, setFile] = useState(null);
-  const [hours, setHours] = useState(0);
-  const [time, setTime] = useState(new Date());
-  const [capacity, setCapacity] = useState(0);
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
   const [creationModal, setCreationModal] = useState(false);
-  const [errorModal, setErrorModal] = useState(false);
-  const [nameError, setNameError] = useState(false);
-  const [descriptionError, setDescriptionError] = useState(false);
-  const [supervisorContactError, setSupervisorContactError] = useState(false);
-  const [hoursError, setHoursError] = useState(false);
-  const [timeError, setTimeError] = useState(false);
-  const [capacityError, setCapacityError] = useState(false);
-  const [countryError, setCountryError] = useState(false);
-  const [cityError, setCityError] = useState(false);
-  const [addressError, setAddressError] = useState(false);
-  const [initialDate, setInitialDate] = useState(time);
+
+  //const [errorModal, setErrorModal] = useState(false);
+
+  const emptyForm = {
+    name: "",
+    description: "",
+    supervisorContact: "",
+    isRemote: false,
+    file: null,
+    hours: 0,
+    time: new Date(),
+    capacity: 0,
+    country: "",
+    city: "",
+    address: "",
+  };
+
+  const [form, setForm] = useState({
+    name: "",
+    description: "",
+    supervisorContact: "",
+    isRemote: false,
+    file: null,
+    hours: 0,
+    time: new Date(),
+    capacity: 0,
+    country: "",
+    city: "",
+    address: "",
+  });
+
+  const [initialDate, setInitialDate] = useState(form["time"]);
+
+  const emptyFormError = {
+    nameError: false,
+    descriptionError: false,
+    supervisorContactError: false,
+    hoursError: false,
+    timeError: false,
+    capacityError: false,
+    countryError: false,
+    cityError: false,
+    addressError: false,
+  };
+
+  const [formError, setFormError] = useState({
+    nameError: false,
+    descriptionError: false,
+    supervisorContactError: false,
+    hoursError: false,
+    timeError: false,
+    capacityError: false,
+    countryError: false,
+    cityError: false,
+    addressError: false,
+  });
 
   const fileRef = useRef();
 
-  const errorSetter = (e, nil, setE) => {
-    if (e == nil) setE(true);
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleErrorChange = (e) => {
+    setFormError({ ...formError, [`${e.target.name}Error`]: false });
+  };
+
+  const handleRemote = (e) => {
+    console.log("vechi: " + form["isRemote"]);
+    const newisRemote = !form["isRemote"];
+    console.log(newisRemote);
+    setForm((prev) => ({ ...prev, isRemote: newisRemote }));
+    console.log("nou : " + form["isRemote"]);
+    setFormError((prev) => ({
+      ...prev,
+      cityError: false,
+      countryError: false,
+      addressError: false,
+    }));
+  };
+
+  const errorSetter = (e, nil, error) => {
+    if (e == nil) setFormError((prev) => ({ ...prev, [error]: true }));
+  };
+
+  const checkError = () => {
+    for (const key in formError) if (formError[key]) return true;
+    return false;
   };
 
   useEffect(() => {
-    if (file === null) {
+    if (form["file"] === null) {
       fileRef.current.value = "";
     } else {
-      fileRef.current.files = file;
+      fileRef.current.files = form["file"];
     }
-  }, [file]);
+  }, [form["file"]]);
 
   const validate = () => {
     if (
-      name == "" ||
-      description == "" ||
-      supervisorContact == "" ||
-      capacity == 0 ||
-      hours == 0 ||
-      time == initialDate ||
-      (!isRemote && (country == "" || city == "" || address == ""))
+      form["name"] == "" ||
+      form["description"] == "" ||
+      form["supervisorContact"] == "" ||
+      form["capacity"] == 0 ||
+      form["hours"] == 0 ||
+      form["time"] == initialDate ||
+      (!form["isRemote"] &&
+        (form["country"] == "" || form["city"] == "" || form["address"] == ""))
     )
       return false;
     return true;
@@ -65,23 +127,18 @@ export const PostOpportunitiesPage = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
+    let formData = new FormData();
 
-    if (file != null) formData.append("photoUrl", file[0]);
+    formData.append("muie", 5);
 
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("remote", isRemote);
-    formData.append("hours", hours);
-    formData.append("time", time);
-    formData.append("capacity", capacity);
-    formData.append("country", country);
-    formData.append("city", city);
-    formData.append("address", address);
-    formData.append("supervisorContact", supervisorContact);
+    if (form["file"] != null) formData.append("photoUrl", form["file"][0]);
+
+    for (const key in form)
+      if (key != "file" && key != "isRemote") formData.append(key, form[key]);
+
+    formData.append("remote", form["isRemote"]);
 
     if (validate()) {
-      setCreationModal(true);
       //setErrorModal(false);
       axios
         .post(
@@ -90,39 +147,23 @@ export const PostOpportunitiesPage = () => {
           { withCredentials: true }
         )
         .then((res) => {
-          setName("");
-          setDescription("");
-          setHours(0);
-          setTime(new Date());
-          setCapacity(0);
-          setCountry("");
-          setCity("");
-          setAddress("");
-          setSupervisorContact("");
-          setIsRemote(false);
-          setNameError(false);
-          setDescriptionError(false);
-          setHoursError(false);
-          setTimeError(false);
-          setCapacityError(false);
-          setCountryError(false);
-          setCityError(false);
-          setAddressError(false);
-          setSupervisorContact(false);
+          setForm(emptyForm);
+          setFormError(emptyFormError);
         })
         .catch((error) => console.log(error));
+      setCreationModal(true);
     } else {
       setCreationModal(false);
-      errorSetter(name, "", setNameError);
-      errorSetter(description, "", setDescriptionError);
-      errorSetter(supervisorContact, "", setSupervisorContactError);
-      errorSetter(hours, 0, setHoursError);
-      errorSetter(capacity, 0, setCapacityError);
-      errorSetter(time, initialDate, setTimeError);
-      if (!isRemote) {
-        errorSetter(country, "", setCountryError);
-        errorSetter(city, "", setCityError);
-        errorSetter(address, "", setAddressError);
+      errorSetter(form["name"], "", "nameError");
+      errorSetter(form["description"], "", "descriptionError");
+      errorSetter(form["supervisorContact"], "", "supervisorContactError");
+      errorSetter(form["hours"], 0, "hoursError");
+      errorSetter(form["capacity"], 0, "capacityError");
+      errorSetter(form["time"], initialDate, "timeError");
+      if (!form["isRemote"]) {
+        errorSetter(form["country"], "", "countryError");
+        errorSetter(form["city"], "", "cityError");
+        errorSetter(form["address"], "", "addressError");
       }
       //setErrorModal(true);
     }
@@ -142,14 +183,17 @@ export const PostOpportunitiesPage = () => {
                       <p className="text-xl">Name</p>
                       <input
                         type="text"
-                        value={name}
+                        name="name"
+                        value={form["name"]}
                         onChange={(e) => {
-                          setName(e.target.value);
-                          setNameError(false);
+                          handleChange(e);
+                          handleErrorChange(e);
                         }}
                         placeholder="Name..."
                         className={`${
-                          nameError ? "border-red-500" : "border-gray-400"
+                          formError["nameError"]
+                            ? "border-red-500"
+                            : "border-gray-400"
                         } my-2 rounded-lg p-2 border-2`}
                         style={{ width: "30rem" }}
                       />
@@ -161,17 +205,18 @@ export const PostOpportunitiesPage = () => {
                       <p className="text-xl">Description</p>
                       <textarea
                         type="text"
-                        value={description}
+                        name="description"
+                        onChange={(e) => {
+                          handleChange(e);
+                          handleErrorChange(e);
+                        }}
+                        value={form["description"]}
                         placeholder="Description..."
                         className={`${
-                          descriptionError
+                          formError["descriptionError"]
                             ? "border-red-500"
                             : "border-gray-400"
                         } my-2 rounded-lg p-2 border-2`}
-                        onChange={(e) => {
-                          setDescription(e.target.value);
-                          setDescriptionError(false);
-                        }}
                         style={{ width: "30rem" }}
                       />
                     </label>
@@ -183,14 +228,15 @@ export const PostOpportunitiesPage = () => {
                       <p className="text-xl">Supervisor Contact</p>
                       <input
                         type="text"
-                        value={supervisorContact}
+                        name="supervisorContact"
                         onChange={(e) => {
-                          setSupervisorContact(e.target.value);
-                          setSupervisorContactError(false);
+                          handleChange(e);
+                          handleErrorChange(e);
                         }}
+                        value={form["supervisoContact"]}
                         placeholder="Contact..."
                         className={`${
-                          supervisorContactError
+                          formError["supervisorContactError"]
                             ? "border-red-500"
                             : "border-gray-400"
                         } my-2 rounded-lg p-2 border-2`}
@@ -204,12 +250,9 @@ export const PostOpportunitiesPage = () => {
                       <input
                         className="m-2"
                         type="checkbox"
-                        defaultChecked={isRemote}
+                        defaultChecked={false}
                         onChange={(e) => {
-                          setIsRemote(!isRemote);
-                          setCityError(false);
-                          setCountryError(false);
-                          setAddressError(false);
+                          handleRemote();
                         }}
                       />
                     </label>
@@ -222,7 +265,8 @@ export const PostOpportunitiesPage = () => {
                         className="m-2"
                         type="file"
                         ref={fileRef}
-                        onChange={(e) => setFile(e.target.files)}
+                        name="file"
+                        onChange={(e) => handleChange(e)}
                       />
                     </label>
                   </div>
@@ -238,14 +282,18 @@ export const PostOpportunitiesPage = () => {
                     </div>
                     <input
                       type="number"
-                      value={capacity}
-                      className={`${
-                        capacityError ? "border-red-500" : "border-gray-400"
-                      } my-2 rounded-lg w-full p-2 border-2`}
+                      name={"capacity"}
                       onChange={(e) => {
-                        setCapacity(e.target.value);
-                        setCapacityError(false);
+                        handleChange(e);
+                        handleErrorChange(e);
                       }}
+                      value={form["capacity"]}
+                      placeholder="0"
+                      className={`${
+                        formError["capacityError"]
+                          ? "border-red-500"
+                          : "border-gray-400"
+                      } my-2 rounded-lg w-full p-2 border-2`}
                     />
                   </label>
                 </div>
@@ -258,14 +306,18 @@ export const PostOpportunitiesPage = () => {
                     </div>
                     <input
                       type="number"
-                      value={hours}
-                      className={`${
-                        hoursError ? "border-red-500" : "border-gray-400"
-                      } my-2 rounded-lg w-full p-2 border-2`}
+                      name="hours"
                       onChange={(e) => {
-                        setHours(e.target.value);
-                        setHoursError(false);
+                        handleChange(e);
+                        handleErrorChange(e);
                       }}
+                      value={form["hours"]}
+                      placeholder="0"
+                      className={`${
+                        formError["hoursError"]
+                          ? "border-red-500"
+                          : "border-gray-400"
+                      } my-2 rounded-lg w-full p-2 border-2`}
                     />
                   </label>
                 </div>
@@ -278,20 +330,23 @@ export const PostOpportunitiesPage = () => {
                     </div>
                     <input
                       type="datetime-local"
-                      value={time}
-                      className={`${
-                        timeError ? "border-red-500" : "border-gray-400"
-                      } my-2 rounded-lg w-full p-2 border-2`}
+                      name="time"
                       onChange={(e) => {
-                        setTime(e.target.value);
-                        setTimeError(false);
+                        handleChange(e);
+                        handleErrorChange(e);
                       }}
+                      value={form["time"]}
+                      className={`${
+                        formError["timeError"]
+                          ? "border-red-500"
+                          : "border-gray-400"
+                      } my-2 rounded-lg w-full p-2 border-2`}
                     />
                   </label>
                 </div>
               </div>
 
-              {isRemote ? (
+              {form["isRemote"] ? (
                 <></>
               ) : (
                 <div>
@@ -304,14 +359,18 @@ export const PostOpportunitiesPage = () => {
                         </div>
                         <input
                           type="text"
-                          value={country}
-                          className={`${
-                            countryError ? "border-red-500" : "border-gray-400"
-                          } my-2 rounded-lg w-full p-2 border-2`}
+                          name="country"
                           onChange={(e) => {
-                            setCountry(e.target.value);
-                            setCountryError(false);
+                            handleChange(e);
+                            handleErrorChange(e);
                           }}
+                          value={form["country"]}
+                          placeholder="Country..."
+                          className={`${
+                            formError["countryError"]
+                              ? "border-red-500"
+                              : "border-gray-400"
+                          } my-2 rounded-lg w-full p-2 border-2`}
                         />
                       </label>
                     </div>
@@ -324,14 +383,18 @@ export const PostOpportunitiesPage = () => {
                         </div>
                         <input
                           type="text"
-                          value={city}
-                          className={`${
-                            cityError ? "border-red-500" : "border-gray-400"
-                          } my-2 rounded-lg w-full p-2 border-2`}
+                          name="city"
                           onChange={(e) => {
-                            setCity(e.target.value);
-                            setCityError(false);
+                            handleChange(e);
+                            handleErrorChange(e);
                           }}
+                          value={form["city"]}
+                          placeholder="City..."
+                          className={`${
+                            formError["cityError"]
+                              ? "border-red-500"
+                              : "border-gray-400"
+                          } my-2 rounded-lg w-full p-2 border-2`}
                         />
                       </label>
                     </div>
@@ -344,14 +407,18 @@ export const PostOpportunitiesPage = () => {
                         </div>
                         <input
                           type="text"
-                          value={address}
-                          className={`${
-                            addressError ? "border-red-500" : "border-gray-400"
-                          } my-2 rounded-lg w-full p-2 border-2`}
+                          name="address"
                           onChange={(e) => {
-                            setAddress(e.target.value);
-                            setAddressError(false);
+                            handleChange(e);
+                            handleErrorChange(e);
                           }}
+                          value={form["address"]}
+                          placeholder="Address..."
+                          className={`${
+                            formError["addressError"]
+                              ? "border-red-500"
+                              : "border-gray-400"
+                          } my-2 rounded-lg w-full p-2 border-2`}
                         />
                       </label>
                     </div>
@@ -366,17 +433,7 @@ export const PostOpportunitiesPage = () => {
                       Please make sure all mandatory fields are completed.
                     </div>
                   ),
-                }[
-                  nameError ||
-                    descriptionError ||
-                    supervisorContactError ||
-                    hoursError ||
-                    timeError ||
-                    capacityError ||
-                    cityError ||
-                    countryError ||
-                    addressError
-                ]
+                }[checkError]
               }
 
               <div className="flex justify-between items-center">
