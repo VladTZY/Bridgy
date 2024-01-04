@@ -19,7 +19,7 @@ const getEvents = async (req, res) => {
 
     const events = await EventModel.findAll({
       offset: offset * pageSize,
-      limit: pageSize,
+      limit: pageSize + 1,
       include: LocationModel,
     });
 
@@ -121,7 +121,7 @@ const getEventsByStatus = async (req, res) => {
           },
         },
         offset: offset * pageSize,
-        limit: pageSize,
+        limit: pageSize + 1,
         include: LocationModel,
       });
     } else if (status == "PUBLISHED") {
@@ -133,7 +133,7 @@ const getEventsByStatus = async (req, res) => {
           },
         },
         offset: offset * pageSize,
-        limit: pageSize,
+        limit: pageSize + 1,
         include: LocationModel,
       });
     } else {
@@ -142,7 +142,7 @@ const getEventsByStatus = async (req, res) => {
           status: status,
         },
         offset: offset * pageSize,
-        limit: pageSize,
+        limit: pageSize + 1,
         include: LocationModel,
       });
     }
@@ -170,7 +170,7 @@ const getEventByOrganization = async (req, res) => {
         organizationId: organizationId,
       },
       offset: offset * pageSize,
-      limit: pageSize,
+      limit: pageSize + 1,
       include: LocationModel,
     });
 
@@ -207,7 +207,7 @@ const getEventByOrganizationAndStatus = async (req, res) => {
           },
         },
         offset: offset * pageSize,
-        limit: pageSize,
+        limit: pageSize + 1,
         include: LocationModel,
       });
     } else if (status == "PUBLISHED") {
@@ -220,7 +220,7 @@ const getEventByOrganizationAndStatus = async (req, res) => {
           },
         },
         offset: offset * pageSize,
-        limit: pageSize,
+        limit: pageSize + 1,
         include: LocationModel,
       });
     } else {
@@ -230,7 +230,7 @@ const getEventByOrganizationAndStatus = async (req, res) => {
           status: status,
         },
         offset: offset * pageSize,
-        limit: pageSize,
+        limit: pageSize + 1,
         include: LocationModel,
       });
     }
@@ -272,7 +272,7 @@ const getEventByAdminAndStatus = async (req, res) => {
           },
         },
         offset: offset * pageSize,
-        limit: pageSize,
+        limit: pageSize + 1,
         include: LocationModel,
       });
     } else if (status == "PUBLISHED") {
@@ -285,7 +285,7 @@ const getEventByAdminAndStatus = async (req, res) => {
           },
         },
         offset: offset * pageSize,
-        limit: pageSize,
+        limit: pageSize + 1,
         include: LocationModel,
       });
     } else {
@@ -295,7 +295,7 @@ const getEventByAdminAndStatus = async (req, res) => {
           status: status,
         },
         offset: offset * pageSize,
-        limit: pageSize,
+        limit: pageSize + 1,
         include: LocationModel,
       });
     }
