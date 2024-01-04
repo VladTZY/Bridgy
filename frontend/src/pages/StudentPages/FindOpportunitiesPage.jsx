@@ -1,8 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Card } from "../../components/Card";
-
 import { SearchBar } from "../../components/SearchBar";
 
 export const FindOpportunitiesPage = () => {
@@ -26,8 +24,9 @@ export const FindOpportunitiesPage = () => {
   }, [page]);
 
   const handleChangePage = (val) => {
-    if (val == -1) if (page + val > 0) setPage(page - 1);
-    if (val == 1) if (events.length == 6) setPage(page + 1);
+    if (val == -1 && page + val >= 1) setPage(page + val);
+
+    if (val == 1 && events.length > 6) setPage(page + val);
   };
 
   return (
@@ -38,7 +37,7 @@ export const FindOpportunitiesPage = () => {
       </h1>
 
       <div className="mx-2 flex flex-wrap">
-        {events.map((event) => {
+        {events.slice(0, 6).map((event) => {
           return (
             <Card
               key={event.id}
@@ -62,18 +61,27 @@ export const FindOpportunitiesPage = () => {
       </div>
 
       <div className="flex justify-between  mx-5 my-7">
-        <button
-          className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
-          onClick={() => handleChangePage(-1)}
-        >
-          Previous Page
-        </button>
-        <button
-          className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
-          onClick={() => handleChangePage(1)}
-        >
-          Next Page
-        </button>
+        {page > 1 ? (
+          <button
+            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            onClick={() => handleChangePage(-1)}
+          >
+            Previous Page
+          </button>
+        ) : (
+          <button className="bg-[#c8d2da] rounded-xl text-white py-2 px-5">
+            Previous Page
+          </button>
+        )}
+
+        {events.length >= 6 && (
+          <button
+            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            onClick={() => handleChangePage(1)}
+          >
+            Next Page
+          </button>
+        )}
       </div>
     </div>
   );

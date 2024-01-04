@@ -12,8 +12,6 @@ import TimeIcon from "../../../Bridgy_Assets/icon/timeplap blue.svg";
 export const PostOpportunitiesPage = () => {
   const [creationModal, setCreationModal] = useState(false);
 
-  //const [errorModal, setErrorModal] = useState(false);
-
   const emptyForm = {
     name: "",
     description: "",
@@ -26,6 +24,18 @@ export const PostOpportunitiesPage = () => {
     country: "",
     city: "",
     address: "",
+  };
+
+  const emptyFormError = {
+    nameError: false,
+    descriptionError: false,
+    supervisorContactError: false,
+    hoursError: false,
+    timeError: false,
+    capacityError: false,
+    countryError: false,
+    cityError: false,
+    addressError: false,
   };
 
   const [form, setForm] = useState({
@@ -43,18 +53,6 @@ export const PostOpportunitiesPage = () => {
   });
 
   const [initialDate, setInitialDate] = useState(form["time"]);
-
-  const emptyFormError = {
-    nameError: false,
-    descriptionError: false,
-    supervisorContactError: false,
-    hoursError: false,
-    timeError: false,
-    capacityError: false,
-    countryError: false,
-    cityError: false,
-    addressError: false,
-  };
 
   const [formError, setFormError] = useState({
     nameError: false,
@@ -165,7 +163,6 @@ export const PostOpportunitiesPage = () => {
         errorSetter(form["city"], "", "cityError");
         errorSetter(form["address"], "", "addressError");
       }
-      //setErrorModal(true);
     }
   };
 
@@ -233,7 +230,7 @@ export const PostOpportunitiesPage = () => {
                           handleChange(e);
                           handleErrorChange(e);
                         }}
-                        value={form["supervisoContact"]}
+                        value={form["supervisorContact"]}
                         placeholder="Contact..."
                         className={`${
                           formError["supervisorContactError"]
@@ -250,7 +247,7 @@ export const PostOpportunitiesPage = () => {
                       <input
                         className="m-2"
                         type="checkbox"
-                        defaultChecked={false}
+                        checked={form.isRemote}
                         onChange={(e) => {
                           handleRemote();
                         }}
@@ -454,9 +451,6 @@ export const PostOpportunitiesPage = () => {
       {creationModal ? (
         <CreationModal setCreationModal={setCreationModal} type={"Event"} />
       ) : null}
-      {/* -- Error Modal(disabled)
-      errorModal ? <ErrorModal setErrorModal={setErrorModal} /> : null
-      */}
     </div>
   );
 };
