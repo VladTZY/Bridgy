@@ -70,22 +70,20 @@ export const OrganizationDashboardPage = () => {
   }, [organizationId, finishedPage]);
 
   const handleOngoingChangePage = (val) => {
-    if (val == -1) if (ongoingPage + val > 0) setOngoinPage(ongoingPage - 1);
-    if (val == 1) if (ongoingEvents.length == 4) setOngoinPage(ongoingPage + 1);
+    if (val == -1 && ongoingPage + val > 0) setOngoinPage(ongoingPage - 1);
+    if (val == 1 && ongoingEvents.length > 4) setOngoinPage(ongoingPage + 1);
   };
 
   const handleUpcomingChangePage = (val) => {
-    if (val == -1)
-      if (upcomingPage + val > 0) setUpcomingPage(upcomingPage - 1);
-    if (val == 1)
-      if (publishedEvents.length == 4) setUpcomingPage(upcomingPage + 1);
+    if (val == -1 && upcomingPage + val > 0) setUpcomingPage(upcomingPage - 1);
+    if (val == 1 && publishedEvents.length > 4)
+      setUpcomingPage(upcomingPage + 1);
   };
 
   const handleFinishedChangePage = (val) => {
-    if (val == -1)
-      if (finishedPage + val > 0) setFinishedPage(finishedPage - 1);
-    if (val == 1)
-      if (finishedPage.length == 4) setFinishedPage(finishedPage + 1);
+    if (val == -1 && finishedPage + val > 0) setFinishedPage(finishedPage - 1);
+    if (val == 1 && finishedEvents.length > 4)
+      setFinishedPage(finishedPage + 1);
   };
 
   return (
@@ -100,7 +98,7 @@ export const OrganizationDashboardPage = () => {
           </Link>
         </div>
         <div className="mx-2 flex">
-          {ongoingEvents.map((event) => {
+          {ongoingEvents.slice(0, 4).map((event) => {
             return (
               <CompactCard
                 key={event.id}
@@ -140,7 +138,7 @@ export const OrganizationDashboardPage = () => {
           <h1 className="text-4xl font-semibold mx-5 my-7">Upcoming Events</h1>
 
           <div className="mx-2 flex">
-            {publishedEvents.map((event) => {
+            {publishedEvents.slice(0, 4).map((event) => {
               return (
                 <CompactCard
                   key={event.id}
@@ -181,9 +179,10 @@ export const OrganizationDashboardPage = () => {
           Recently Completed
         </div>
         <div className="flex flex-col">
-          {finishedEvents.map((event) => {
+          {finishedEvents.slice(0, 4).map((event) => {
             return (
               <EventShortCard
+                key={event.id}
                 id={event.id}
                 title={event.name}
                 description={event.description}
