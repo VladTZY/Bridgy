@@ -14,6 +14,8 @@ import ClockIcon from "../../../Bridgy_Assets/icon/clock blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
 
+import datetimeToStr from "../../misc/datetimeToStr";
+
 export const MoreInfoPage = () => {
   const role = useSelector((state) => state.auth.role);
   const userId = useSelector((state) => state.auth.id);
@@ -66,8 +68,6 @@ export const MoreInfoPage = () => {
       .catch((error) => console.log(error));
   }, [id, role]);
 
-  console.log(event.status);
-
   return (
     <div className="h-full bg-gray-100 flex flex-col">
       <div className="m-5 p-5 rounded-lg bg-white flex flex-col">
@@ -86,8 +86,7 @@ export const MoreInfoPage = () => {
           <div className="flex w-[23%] border items-center space-x-2 px-4">
             <img src={CalendarIcon} style={{ height: "70%" }} />
             <div className="text-2xl text-black">
-              {event.time?.toString().substring(0, 10)}{" "}
-              {event.time?.toString().substring(11, 16)}
+              {datetimeToStr(event.time)}
             </div>
           </div>
           <div className="flex w-[23%] border items-center space-x-2 px-4">
