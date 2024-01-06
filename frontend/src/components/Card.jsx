@@ -3,12 +3,14 @@ import ClockIcon from "../../Bridgy_Assets/icon/clock blue.svg";
 import LocationIcon from "../../Bridgy_Assets/icon/location blue.svg";
 import CalendarIcon from "../../Bridgy_Assets/icon/calender blue.svg";
 
+import dateToStr from "../misc/dateToStr";
+
 export const Card = ({
   id,
   event_type,
   title,
   description,
-  date,
+  time,
   location,
   duration,
   photoUrl,
@@ -31,9 +33,7 @@ export const Card = ({
       <div className="flex w-full h-[7%] justify-evenly mt-2">
         <div className="w-[30%] flex px-4 border items-center space-x-2">
           <img src={CalendarIcon} style={{ height: "60%" }} />
-          <div className="text-md text-black">
-            {date?.toString().substring(0, 10)}
-          </div>
+          <div className="text-md text-black">{dateToStr(time)}</div>
         </div>
         <div className="w-[30%] flex px-4 border items-center space-x-2">
           <img src={LocationIcon} style={{ height: "60%" }} />

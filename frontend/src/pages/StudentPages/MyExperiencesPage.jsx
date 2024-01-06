@@ -37,7 +37,7 @@ export const MyExperiencesPage = () => {
                     id={data.event.id}
                     title={data.event.name}
                     description={data.event.description}
-                    date={data.event.time}
+                    time={data.event.time}
                     location={data.event.location}
                     duration={data.event.hours}
                     event_type={"opportunity"}

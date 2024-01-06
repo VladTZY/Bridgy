@@ -55,7 +55,7 @@ export const MissionsPage = () => {
                 id={event.id}
                 title={event.name}
                 description={event.description}
-                date={event.time}
+                time={event.time}
                 location={event.location.city}
                 duration={event.hours}
                 event_type={"opportunity"}
@@ -83,7 +83,7 @@ export const MissionsPage = () => {
                 id={event.id}
                 title={event.name}
                 description={event.description}
-                date={event.time}
+                time={event.time}
                 location={event.location.city}
                 duration={event.hours}
                 event_type={"opportunity"}
