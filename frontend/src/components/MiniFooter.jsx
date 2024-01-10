@@ -11,10 +11,10 @@ export const MiniFooter = () => {
           © Copyright 2023 Bridgy, Inc. | All rights reserved.
         </div>
         <div className="flex items-center space-x-2">
-          <img src={insta} alt="react logo" style={{ width: "3rem" }} />
-          <img src={twitter} alt="react logo" style={{ width: "3rem" }} />
-          <img src={telg} alt="react logo" style={{ width: "3rem" }} />
-          <img src={yt} alt="react logo" style={{ width: "3rem" }} />
+          <img src={insta} alt="react logo" style={{ width: "2rem" }} />
+          <img src={twitter} alt="react logo" style={{ width: "2rem" }} />
+          <img src={telg} alt="react logo" style={{ width: "2rem" }} />
+          <img src={yt} alt="react logo" style={{ width: "2rem" }} />
         </div>
       </div>
     </div>

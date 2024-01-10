@@ -33,8 +33,8 @@ export const Navbar = () => {
     <div className="flex px-20 justify-between">
       <Link to="/">
         <div className="flex items-center hover:text-[#2135D9]">
-          <img src={logo} alt="react logo" style={{ height: "15vh" }} />
-          <span className="text-6xl font-bold">Bridgy</span>
+          <img src={logo} alt="react logo" style={{ height: "13vh" }} />
+          <span className="text-5xl font-bold">Bridgy</span>
         </div>
       </Link>
 

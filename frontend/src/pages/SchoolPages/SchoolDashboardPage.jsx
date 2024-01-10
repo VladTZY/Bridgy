@@ -87,7 +87,7 @@ export const SchoolDashboardPage = () => {
           color={"#a40000"}
         />
       </div>
-      <div className="mt-6 flex justify-between">
+      <div className="mt-6 flex justify-between pl-5">
         <h1 className="text-4xl font-semibold">Students</h1>
         <div className="flex">
           <select

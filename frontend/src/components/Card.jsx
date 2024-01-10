@@ -31,15 +31,15 @@ export const Card = ({
         style={{ height: "55%", aspectRatio: "16 / 9" }}
       />
       <div className="flex w-full h-[7%] justify-evenly mt-2">
-        <div className="w-[30%] flex px-4 border items-center space-x-2">
+        <div className="w-[33.3%] flex px-6 border items-center space-x-1.5 ">
           <img src={CalendarIcon} style={{ height: "60%" }} />
           <div className="text-md text-black">{dateToStr(time)}</div>
         </div>
-        <div className="w-[30%] flex px-4 border items-center space-x-2">
+        <div className="w-[30%] flex px-4 border items-center space-x-1.5">
           <img src={LocationIcon} style={{ height: "60%" }} />
           <div className="text-md text-black">{location}</div>
         </div>
-        <div className="w-[30%] flex px-4 border items-center space-x-2">
+        <div className="w-[30%] flex px-4 border items-center space-x-1.5">
           <img src={ClockIcon} style={{ height: "60%" }} />
           <div className="text-md text-black">{duration} hours</div>
         </div>
@@ -49,7 +49,7 @@ export const Card = ({
         {description?.toString().substring(0, 45)}...
       </div>
       <button
-        className="rounded-3xl mx-6 mt-2 px-20 py-3 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
+        className="rounded-3xl mx-8 mt-2 px-200 py-2 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
         onClick={handleMoreInfo}
       >
         More info

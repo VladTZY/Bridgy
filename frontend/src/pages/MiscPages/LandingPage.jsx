@@ -19,14 +19,14 @@ export const LandingPage = () => {
       </div>
       <div className="flex-row relative">
         <div className="w-[100%] flex justify-between">
-          <div className="flex flex-col mt-40">
+          <div className="flex flex-col pt-20 w-[50%] ">
             <div className="font-bold ml-32 text-8xl">Bridgy</div>
-            <div className="font-bold ml-32 mt-4 text-6xl">
-              Connecting <span className="text-[#2135D9]"> Hearts </span>,
+            <div className="font-bold ml-32 mt-4 text-6xl w-[75%]">
+              Connecting <span className="text-[#2135D9]"> Hearts,   </span>
               <br></br> Building{" "}
               <span className="text-[#2135D9]"> Futures </span>
             </div>
-            <div className="ml-32 mt-20 text-2xl" style={{ width: "40rem" }}>
+            <div className="ml-32 mt-10 text-2xl" style={{ width: "75%" }}>
               Building highly customized digital infrastructure to make the
               charitable ecosystem easily accessible to high schools in the most
               efficient and secure ways possible.
@@ -40,25 +40,25 @@ export const LandingPage = () => {
               </button>
             </div>
           </div>
-          <div>
+          <div className="w-2/4">
             <img
-              className="w-full border-8 border-[#2EA0FB] border-l-0 border-t-0"
+              className="w-100% border-8 border-[#2EA0FB] border-l-0 border-t-0"
               src={pic1}
-              style={{ height: "85vh" }}
+              style={{ height: "auto" }}
             />
           </div>
         </div>
-        <div className="w-[100%] h-screen flex-row space-y-16">
+        <div className="w-[100%] h-[88vh] flex-row space-y-16 pb-0">
           <div className="mt-16 text-center font-bold text-6xl">
             Our <span className="text-[#2135D9]"> Founding </span> Story
           </div>
-          <div className="flex px-48 items-center pt-8">
+          <div className="flex items-center pt-8 w-100%">
             <img
-              className="border-8 border-[#2EA0FB] border-r-0 border-b-0"
+              className="border-8 border-[#2EA0FB] border-r-0 border-b-0 w-2/5"
               src={pic2}
               style={{ height: "60vh" }}
             />
-            <div className="flex-row ml-8">
+            <div className="flex-row ml-8 w-2/4 pr-8 text-justify">
               <div className="text-3xl">
                 Our team had a ton of experience engaging in community service
                 in high school, with some of us creating charities involving 60+
@@ -91,11 +91,11 @@ export const LandingPage = () => {
               </div>
             </div>
           </div>
-          <div className="font-semibold text-center text-4xl">
+        </div>
+        <div className="font-semibold text-center text-4xl pb-[7vh]">
             Bridgy is a <span className="text-[#2135D9]"> pathway </span> across
             that void.
-          </div>
-        </div>
+            </div>
         <div className="w-[100%] h-[70vh] flex-row space-x-20">
           <div className="flex-row mx-40 py-32 bg-[#2135D9] text-center rounded-3xl">
             <div className="text-white text-6xl">
@@ -115,12 +115,12 @@ export const LandingPage = () => {
           </div>
         </div>
         <div className="w-[100%] flex-row">
-          <div className="flex justify-around">
-            <div className="text-6xl font-bold">
+          <div className="flex justify-around pt-[5vh] content-center pb-20">
+            <div className="text-6xl font-bold content-center px-6" >
               What <span className="text-[#2135D9]"> We Do </span>
             </div>
             <div
-              className="text-2xl underline decoration-[#2135D9]"
+              className="text-2xl underline decoration-[#2135D9] px-6"
               style={{ width: "60rem" }}
             >
               Welcome to Bridgy, where connecting passion with purpose is our
@@ -132,17 +132,17 @@ export const LandingPage = () => {
               creating a cohesive community dedicated to service and growth.
             </div>
           </div>
-          <div className="mt-32 w-full h-[90vh] bg-gradient-to-r from-[#1e1e1e] to-[#696969] relative">
+          <div className="w-full h-[90vh] bg-gradient-to-r from-[#1e1e1e] to-[#696969] relative ">
             <img
               src={pic3}
-              className="absolute w-full mix-blend-overlay"
-              style={{ height: "90vh" }}
+              className="absolute w-full mix-blend-overlay object-cover	"
+              style={{ height: "90vh " }}
             />
             <div className="text-7xl underline text-white ml-40 pt-40">
               For Schools
             </div>
             <div
-              className="text-2xl text-white ml-40 pt-40"
+              className="text-2xl text-white ml-40 pt-[6vh]"
               style={{ width: "50rem" }}
             >
               Bridgy Inc. offers schools a seamless way to integrate service
@@ -157,15 +157,15 @@ export const LandingPage = () => {
           <div className="w-full h-[90vh] bg-gradient-to-r from-[#696969] to-[#1e1e1e] relative">
             <img
               src={pic4}
-              className="absolute w-full mix-blend-overlay"
+              className="absolute w-full mix-blend-overlay object-cover	"
               style={{ height: "90vh" }}
             />
             <div className="text-7xl underline text-white pt-40 text-right mr-40">
               For Charities
             </div>
             <div
-              className="text-2xl text-white pt-40 mr-40"
-              style={{ marginLeft: "50rem" }}
+              className="text-2xl text-white pt-[6vh] mr-40 text-right "
+              style={{ marginLeft: "30rem" }}
             >
               Your cause deserves the spotlight and dedicated volunteers ready
               to take action. Bridgy simplifies the volunteer-matching process,
@@ -178,14 +178,14 @@ export const LandingPage = () => {
           <div className="w-full h-[90vh] bg-gradient-to-r from-[#1e1e1e] to-[#696969] relative">
             <img
               src={pic5}
-              className="absolute w-full mix-blend-overlay"
+              className="absolute w-full mix-blend-overlay object-cover	"
               style={{ height: "90vh" }}
             />
             <div className="text-7xl underline text-white pt-40 ml-40">
               For Students
             </div>
             <div
-              className="text-2xl text-white pt-40 ml-40"
+              className="text-2xl text-white pt-[6vh] ml-40"
               style={{ width: "50rem" }}
             >
               Bridgy is for students ready to explore the world of volunteering

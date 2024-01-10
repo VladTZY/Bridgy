@@ -47,7 +47,7 @@ export const MissionsPage = () => {
           Future Opportunities
         </h1>
 
-        <div className="mx-2 flex flex-wrap">
+        <div className="mx-2 flex flex-wrap ">
           {publishedEvents.map((event) => {
             return (
               <Card
