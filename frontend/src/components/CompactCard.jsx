@@ -30,14 +30,14 @@ export const CompactCard = ({
     >
       <img
         src={photoUrl}
-        className="rounded-lg mx-8 mt-4 self-center"
-        style={{ height: "50%", aspectRatio: "16 / 9" }}
+        className="rounded-lg px-1 mt-4 self-center"
+        style={{ height: "55%", aspectRatio: "16 / 9" }}
       />
       <div className="mt-2 ml-6 text-2xl text-bold">{title}</div>
       <div className="mx-6 mt-2 text-lg text-gray-700">
         {description?.toString().substring(0, 30)}...
       </div>
-      <div className="flex h-[10%] w-full mt-4 justify-evenly">
+      <div className="flex h-[10%] w-full mt-4 justify-evenly px-3">
         <div className="flex px-4 border justify-around items-center">
           <img src={CalendarIcon} style={{ height: "70%" }} />
           <div className="text-md text-black">{dateToStr(time)}</div>

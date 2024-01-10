@@ -83,9 +83,9 @@ export const ProfilePage = () => {
                 onClick={() => setPasswordModal(true)}
                 className="bg-[#2135D9] text-white my-5 rounded-[50px] hover:bg-blue-900"
               >
-                <div className="flex my-4 mx-12">
+                <div className="flex my-4 mx-10">
                   <img className="my-auto w-6 h-6" src={EditProfileIcon} />
-                  <p className="ml-2 my-auto text-lg">Change Password</p>
+                  <p className="ml-2 my-auto text-l">Change Password</p>
                 </div>
               </button>
               <button
@@ -95,21 +95,21 @@ export const ProfilePage = () => {
                 {
                   {
                     true: (
-                      <div className="flex my-4 mx-12">
+                      <div className="flex my-4 mx-10">
                         <img
                           className="my-auto w-6 h-6"
                           src={EditProfileIcon}
                         />
-                        <p className="ml-2 my-auto text-lg">Edit profile</p>
+                        <p className="ml-2 my-auto text-l">Edit profile</p>
                       </div>
                     ),
                     false: (
-                      <div className="flex my-4 mx-12">
+                      <div className="flex my-4 mx-10">
                         <img
                           className="my-auto w-6 h-6"
                           src={EditProfileIcon}
                         />
-                        <p className="ml-2 my-auto text-lg">Save profile</p>
+                        <p className="ml-2 my-auto text-l">Save profile</p>
                       </div>
                     ),
                   }[isDisabled]

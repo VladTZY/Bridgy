@@ -219,7 +219,7 @@ export const Sidebar = () => {
                           <img
                             src={po_white}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2 rem" }}
                           />
                           <div className="text-white text-xl">
                             Post Opportunities
@@ -232,7 +232,7 @@ export const Sidebar = () => {
                           <img
                             src={po_black}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-xl">Post Opportunities</div>
                         </div>
@@ -248,7 +248,7 @@ export const Sidebar = () => {
                           <img
                             src={mss_white}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-white text-xl">Missions</div>
                         </div>
@@ -259,7 +259,7 @@ export const Sidebar = () => {
                           <img
                             src={mss_black}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-xl">Missions</div>
                         </div>
@@ -298,11 +298,11 @@ export const Sidebar = () => {
                   <div>
                     {location.pathname == "/school/add_student" ? (
                       <Link to="/school/add_student">
-                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                        <div className="flex items-center rounded-l bg-[#2135D9] p-4 space-x-2">
                           <img
                             src={fg_white}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-white text-xl">Add Student</div>
                         </div>
@@ -313,7 +313,7 @@ export const Sidebar = () => {
                           <img
                             src={fg_black}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-xl">Add Student</div>
                         </div>
@@ -327,7 +327,7 @@ export const Sidebar = () => {
                           <img
                             src={upd_white}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-white text-xl">Updates</div>
                         </div>
@@ -338,7 +338,7 @@ export const Sidebar = () => {
                           <img
                             src={upd_black}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-xl">Updates</div>
                         </div>
@@ -356,7 +356,7 @@ export const Sidebar = () => {
                           <img
                             src={po_white}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-white text-xl">
                             Create School
@@ -369,7 +369,7 @@ export const Sidebar = () => {
                           <img
                             src={po_black}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-xl">Create School</div>
                         </div>
@@ -383,7 +383,7 @@ export const Sidebar = () => {
                           <img
                             src={myex_white}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-white text-xl">
                             Create Organization
@@ -396,7 +396,7 @@ export const Sidebar = () => {
                           <img
                             src={myex_black}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-xl">Create Organization</div>
                         </div>
@@ -425,7 +425,7 @@ export const Sidebar = () => {
                           <img
                             src={fg_black}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-xl">Create Admin</div>
                         </div>
@@ -439,7 +439,7 @@ export const Sidebar = () => {
                           <img
                             src={po_white}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-white text-xl">
                             Create School
@@ -452,7 +452,7 @@ export const Sidebar = () => {
                           <img
                             src={po_black}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-xl">Create School</div>
                         </div>
@@ -466,7 +466,7 @@ export const Sidebar = () => {
                           <img
                             src={myex_white}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-white text-xl">
                             Create Organization
@@ -479,7 +479,7 @@ export const Sidebar = () => {
                           <img
                             src={myex_black}
                             alt="react logo"
-                            style={{ width: "2.5rem" }}
+                            style={{ width: "2rem" }}
                           />
                           <div className="text-xl">Create Organization</div>
                         </div>
@@ -498,7 +498,7 @@ export const Sidebar = () => {
                   <img
                     src={upd_white}
                     alt="react logo"
-                    style={{ width: "2.5rem" }}
+                    style={{ width: "2rem" }}
                   />
                   <div className="text-white text-xl">Notifications</div>
                 </div>
@@ -509,7 +509,7 @@ export const Sidebar = () => {
                   <img
                     src={upd_black}
                     alt="react logo"
-                    style={{ width: "2.5rem" }}
+                    style={{ width: "2rem" }}
                   />
                   <div className="text-xl">Notifications</div>
                 </div>
@@ -524,7 +524,7 @@ export const Sidebar = () => {
                   <img
                     src={pf_white}
                     alt="react logo"
-                    style={{ width: "2.5rem" }}
+                    style={{ width: "2rem" }}
                   />
                   <div className="text-white text-xl">Profile</div>
                 </div>
@@ -535,7 +535,7 @@ export const Sidebar = () => {
                   <img
                     src={pf_black}
                     alt="react logo"
-                    style={{ width: "2.5rem" }}
+                    style={{ width: "2rem" }}
                   />
                   <div className="text-xl">Profile</div>
                 </div>

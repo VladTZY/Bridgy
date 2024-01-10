@@ -74,7 +74,7 @@ export const CreateOrganizationPage = () => {
     <div className="h-full m-5 bg-gray-100">
       <div className="flex flex-col">
         <div className="p-5 bg-white rounded-xl">
-          <h1 className="text-3xl font-semibold">Create organization</h1>
+          <h1 className="text-3xl font-semibold px-5">Create organization</h1>
           <form onSubmit={submitHandler}>
             <div className="m-5">
               <input
@@ -158,7 +158,7 @@ export const CreateOrganizationPage = () => {
 
             <button
               type="submit"
-              className="bg-[#2EA0FB] text-white text-xl py-2 px-5 rounded-xl m-5 hover:bg-[#2135D9]"
+              className="bg-[#2EA0FB] text-white text-l py-2 px-5 rounded-xl m-5 hover:bg-[#2135D9]"
             >
               Submit
             </button>
