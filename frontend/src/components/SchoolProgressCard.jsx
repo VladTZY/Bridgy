@@ -8,14 +8,14 @@ export const SchoolProgressCard = ({
   percentage,
 }) => {
   return (
-    <div className="w-[33%] flex rounded-2xl bg-white m-3 justify-around">
+    <div className="w-[33%] flex rounded-xl bg-white m-3 justify-around">
       <div className="mt-6 flex flex-col space-y-2">
         <div className="text-2xl text-bold">{title}</div>
-        <div className="text-5xl">{total}</div>
+        <div className="text-3xl">{total}</div>
         <div className="pt-6 text-xl text-gray-500">{description}</div>
       </div>
-      <div className="mx-5 my-8 w-[30%] rounded-full flex relative items-center justify-center">
-        <div className="absolute text-center text-3xl" style={{ color: color }}>
+      <div className=" my-4 w-[30%] rounded-full flex relative items-center justify-center">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center text-xl" style={{ color: color }}>
           {percentage}%
         </div>
         <div
@@ -27,9 +27,9 @@ export const SchoolProgressCard = ({
           <Circle
             percent={percentage}
             strokeColor={color}
-            strokeWidth={15}
+            strokeWidth={10}
             trailColor="#d3d3d3"
-            trailWidth={15}
+            trailWidth={10}
             strokeLinecap="round"
             gapPosition="right"
           />

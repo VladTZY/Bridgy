@@ -26,28 +26,28 @@ export const CompactCard = ({
   return (
     <button
       onClick={handleMoreInfo}
-      className="w-[24%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white m-2"
+      className="w-[28%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white m-2"
     >
       <img
         src={photoUrl}
-        className="rounded-lg px-1 mt-4 self-center"
-        style={{ height: "55%", aspectRatio: "16 / 9" }}
+        className="rounded-lg px-2  mt-4 self-center object-cover"
+        style={{ height: "55%", aspectRatio: "16 / 9 , width-[100%], px-6" }}
       />
       <div className="mt-2 ml-6 text-2xl text-bold">{title}</div>
       <div className="mx-6 mt-2 text-lg text-gray-700">
         {description?.toString().substring(0, 30)}...
       </div>
-      <div className="flex h-[10%] w-full mt-4 justify-evenly px-3">
-        <div className="flex px-4 border justify-around items-center">
-          <img src={CalendarIcon} style={{ height: "70%" }} />
+      <div className="flex h-[10%] w-full mt-2 justify-center px-3">
+        <div className="flex px-4 border justify-around items-center w-[45%] px-3">
+          <img src={CalendarIcon} style={{ height: "50%" }} />
           <div className="text-md text-black">{dateToStr(time)}</div>
         </div>
-        <div className="flex px-4 border justify-around items-center">
-          <img src={LocationIcon} style={{ height: "70%" }} />
+        <div className="flex px-4 border justify-around items-center w-[30%]">
+          <img src={LocationIcon} style={{ height: "50%" }} />
           <div className="text-md text-black">{location}</div>
         </div>
-        <div className="flex px-4 border justify-around items-center">
-          <img src={ClockIcon} style={{ height: "70%" }} />
+        <div className="flex px-4 border justify-around items-center w-[25%]">
+          <img src={ClockIcon} style={{ height: "50%" }} />
           <div className="text-md text-black">{duration}h</div>
         </div>
       </div>

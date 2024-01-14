@@ -41,8 +41,8 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="h-full bg-white pl-5">
-      <div className="h-[100%] flex flex-col justify-between">
+    <div className="h-full bg-white pl-3 w-[20]">
+      <div className="min-h-[100%] flex flex-col justify-between">
         <div>
           {
             {
@@ -51,7 +51,7 @@ export const Sidebar = () => {
                   <div>
                     {location.pathname == "/student/dashboard" ? (
                       <Link to="/student/dashboard">
-                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                        <div className="flex items-center rounded-l bg-[#2135D9] p-4 space-x-2 w-fullx ">
                           <img
                             src={dash_white}
                             alt="react logo"
@@ -62,7 +62,7 @@ export const Sidebar = () => {
                       </Link>
                     ) : (
                       <Link to="/student/dashboard">
-                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                        <div className="flex items-center p-4 rounded-l hover:bg-blue-200 space-x-2">
                           <img
                             src={dash_black}
                             alt="react logo"
@@ -78,7 +78,7 @@ export const Sidebar = () => {
                     location.pathname.toString().substring(0, 12) ==
                       "/opportunity" ? (
                       <Link to="/student/find_opportunities">
-                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-2">
+                        <div className="flex items-center rounded-l bg-[#2135D9] p-4 space-x-2">
                           <img
                             src={fo_white}
                             alt="react logo"
@@ -91,7 +91,7 @@ export const Sidebar = () => {
                       </Link>
                     ) : (
                       <Link to="/student/find_opportunities">
-                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-2">
+                        <div className="flex items-center p-4 rounded-l hover:bg-blue-200 space-x-2">
                           <img
                             src={fo_black}
                             alt="react logo"
@@ -186,7 +186,7 @@ export const Sidebar = () => {
                 </div>
               ),
               ORGANIZATION: (
-                <div className="flex flex-col">
+                <div className="flex flex-col w-[100%]">
                   <div>
                     {location.pathname == "/organization/dashboard" ? (
                       <Link to="/organization/dashboard">

@@ -87,12 +87,12 @@ export const OrganizationDashboardPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col">
+    <div className="min-h-full bg-gray-100 flex flex-col w-[90]">
       <div className="flex flex-col">
         <div className="mx-5 my-7 flex justify-between items-center">
           <div className="text-4xl font-semibold">Ongoing Events</div>
           <Link to="/organization/post_opportunities">
-            <button className="text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full py-4 px-16 text-xl">
+            <button className="text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full py-4 px-12 text-l">
               Add New
             </button>
           </Link>
