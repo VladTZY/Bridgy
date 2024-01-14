@@ -20,7 +20,7 @@ export const StudentProgressCard = ({
           className="m-3 sm:w-16 md:w-24 lg:w-32 rounded-full outline outline-2 outline-offset-8 flex relative items-center justify-center"
           style={{ outlineColor: color }}
         >
-          <div className="absolute text-center text-3xl">{percentage}%</div>
+          <div className="absolute text-center text-l">{percentage}%</div>
           <div className="sm:w-16 md:w-24 lg:w-32 sm:h-16 md:h-24 lg:h-32">
             <Circle
               percent={percentage}

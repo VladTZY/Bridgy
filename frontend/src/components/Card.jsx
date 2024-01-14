@@ -24,24 +24,24 @@ export const Card = ({
   if (location == "") location = "Remote";
 
   return (
-    <div className="w-[32%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white m-2">
+    <div className="w-[30%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white m-2 mb-2">
       <img
         src={photoUrl}
-        className="rounded-lg mt-4 self-center"
+        className="rounded-lg mt-4 self-center px-4 w-[100%] object-cover"
         style={{ height: "55%", aspectRatio: "16 / 9" }}
       />
-      <div className="flex w-full h-[7%] justify-evenly mt-2">
-        <div className="w-[33.3%] flex px-6 border items-center space-x-1.5 ">
+      <div className="flex w-full h-[7%] justify-evenly mt-2 px-1.5">
+        <div className="w-[33.3%] flex px-1 border items-center justify-evenly ">
           <img src={CalendarIcon} style={{ height: "60%" }} />
-          <div className="text-md text-black">{dateToStr(time)}</div>
+          <div className="text-sm text-black">{dateToStr(time)}</div>
         </div>
-        <div className="w-[30%] flex px-4 border items-center space-x-1.5">
+        <div className="w-[30%] flex px-1 border items-center justify-evenly">
           <img src={LocationIcon} style={{ height: "60%" }} />
-          <div className="text-md text-black">{location}</div>
+          <div className="text-sm text-black">{location}</div>
         </div>
-        <div className="w-[30%] flex px-4 border items-center space-x-1.5">
+        <div className="w-[30%] flex px-1 border items-center justify-evenly">
           <img src={ClockIcon} style={{ height: "60%" }} />
-          <div className="text-md text-black">{duration} hours</div>
+          <div className="text-sm text-black">{duration} hours</div>
         </div>
       </div>
       <div className="mt-2 ml-6 text-2xl text-bold">{title}</div>
