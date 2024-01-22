@@ -18,18 +18,33 @@ export const NotificationsList = () => {
 
   return (
     <div className="flex flex-col">
-      {notifications.map((notification) => {
-        return (
-          <div key={notification.id}>
-            <NotificationCard
-              type={notification.type}
-              message={notification.message}
-              eventId={notification.eventId}
-              studentId={notification.studentId}
-            />
-          </div>
-        );
-      })}
+      {
+        {
+          true: (
+            <div className="mt-20 text-center text-4xl font-extrabold">
+              {" "}
+              Nothing new here! <br></br> Join more events!
+            </div>
+          ),
+
+          false: (
+            <div className="bg-white m-5 p-5 rounded-3xl">
+              {notifications.map((notification) => {
+                return (
+                  <div key={notification.id}>
+                    <NotificationCard
+                      type={notification.type}
+                      message={notification.message}
+                      eventId={notification.eventId}
+                      studentId={notification.studentId}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          ),
+        }[notifications.length == 0]
+      }
     </div>
   );
 };

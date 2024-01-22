@@ -39,21 +39,23 @@ export const AddMultipleStudents = () => {
   };
 
   return (
-    <div className="m-5 p-5 rounded-3xl bg-white">
-      <h1 className="text-3xl font-semibold">Add Multiple Student</h1>
-      <div className="my-6">
-        <label className="flex">
-          <p className="text-xl">Students table</p>
-          <input
-            className="m-2"
-            type="file"
-            value={""}
-            //ref={fileRef}
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-        </label>
+    <div className="m-5 p-5 rounded-3xl bg-white flex flex-col justify-between">
+      <div>
+        <h1 className="text-3xl font-semibold">Add Multiple Students</h1>
+        <div className="m-5 my-6">
+          <label className="flex flex-col space-y-2">
+            <p className="text-xl">Students table</p>
+            <input
+              className="m-2"
+              type="file"
+              value={""}
+              //ref={fileRef}
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+          </label>
+        </div>
       </div>
-      <div className="self-center">
+      <div className="m-5 self-center">
         <button
           onClick={(e) => clickHandler(e)}
           className="mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-20 py-4 text-xl"
