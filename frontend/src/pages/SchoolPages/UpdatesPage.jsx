@@ -5,7 +5,7 @@ export const UpdatesPage = () => {
   return (
     <div className="min-h-full bg-gray-100 flex flex-col">
       <h1 className="text-4xl font-semibold m-10">Student Projects</h1>
-      <div className="mx- flex flex-wrap">
+      <div className="flex flex-wrap  pl-5">
         <EventProgressCard
           title={"Food Distribution Event"}
           description={"Amet consecteur"}

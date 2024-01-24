@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const StudentsTable = ({ students }) => {
   return (
-    <div className="rounded-[15px] overflow-hidden mt-10">
+    <div className="rounded-[15px] overflow-hidden mt-10 mx-3">
       <table className="min-w-full">
         <thead className="bg-[#2135D9] text-white">
           <tr>
@@ -27,7 +27,7 @@ export const StudentsTable = ({ students }) => {
                 <td className="px-6 py-4 font-semibold">
                   <Link
                     to={`/profile/${student.id}`}
-                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-2 px-5 rounded-[50px] text-white text-lg"
+                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-2 px-3 rounded-[50px] text-white text-lg"
                   >
                     View profile
                   </Link>
