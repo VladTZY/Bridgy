@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { CreationModal } from "../../components/CreationModal";
-import { ErrorModal } from "../../components/ErrorModal";
 
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
@@ -77,11 +76,8 @@ export const PostOpportunitiesPage = () => {
   };
 
   const handleRemote = (e) => {
-    console.log("vechi: " + form["isRemote"]);
     const newisRemote = !form["isRemote"];
-    console.log(newisRemote);
     setForm((prev) => ({ ...prev, isRemote: newisRemote }));
-    console.log("nou : " + form["isRemote"]);
     setFormError((prev) => ({
       ...prev,
       cityError: false,

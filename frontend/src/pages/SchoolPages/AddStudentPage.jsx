@@ -3,7 +3,6 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 import { AddMultipleStudents } from "../../components/AddMultipleStudents";
 import { CreationModal } from "../../components/CreationModal";
-import { ErrorModal } from "../../components/ErrorModal";
 
 export const AddStudentPage = () => {
   const [username, setUsername] = useState("");
@@ -13,27 +12,63 @@ export const AddStudentPage = () => {
   const [city, setCity] = useState("");
   const [grade, setGrade] = useState(9);
   const [creationModal, setCreationModal] = useState(false);
-  const [errorModal, setErrorModal] = useState(false);
+
+  const [student, setStudent] = useState({
+    username: "",
+    email: "",
+    phoneNumber: "",
+    country: "",
+    city: "",
+    grade: 9,
+  });
+
+  const [studentError, setStudentError] = useState({
+    usernameError: false,
+    emailError: false,
+    phoneNumberError: false,
+    countryError: false,
+    cityError: false,
+  });
+
+  const handleChange = (e) => {
+    setStudent((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleErrorChange = (e) => {
+    setStudentError((prev) => ({ ...prev, [`${e.target.name}Error`]: false }));
+  };
+
+  const errorSetter = () => {
+    for (const key in student)
+      if (student[key] == "")
+        setStudentError((prev) => ({ ...prev, [`${key}Error`]: true }));
+  };
+
+  const resetStudent = () => {
+    for (const key in student) student[key] = "";
+    student.grade = 9;
+  };
+
+  const resetError = () => {
+    for (const key in studentError) student[key] = false;
+  };
 
   const validate = () => {
-    if (
-      username == "" ||
-      email == "" ||
-      phoneNumber == "" ||
-      country == "" ||
-      city == "" ||
-      grade == 0
-    )
-      return false;
+    for (const key in student) if (student[key] == "") return false;
     return true;
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
+    setUsername(student.username);
+    setEmail(student.email);
+    setPhoneNumber(student.phoneNumber);
+    setCountry(student.country);
+    setCity(student.city);
+    setGrade(student.grade);
+
     if (validate()) {
-      setCreationModal(true);
-      setErrorModal(false);
       axios
         .post(
           `${import.meta.env.VITE_API_URL}/school/create_one_student`,
@@ -41,107 +76,149 @@ export const AddStudentPage = () => {
           { withCredentials: true }
         )
         .then((res) => {
-          setUsername("");
-          setEmail("");
-          setPhoneNumber("");
-          setCountry("");
-          setCity("");
-          setGrade(9);
+          resetStudent();
+          resetError();
         })
         .catch((error) => console.log(error.message));
+      setCreationModal(true);
     } else {
       setCreationModal(false);
-      setErrorModal(true);
+      errorSetter();
     }
   };
 
   return (
     <>
-      <div className="m-5 p-5 rounded-3xl bg-white ">
-        <h1 className="text-3xl pl-5 pt-2 font-semibold">Add One Student</h1>
-        <div className="m-5">
-          <form onSubmit={submitHandler}>
-            <label className="my-6">
-              <p className="text-xl">Name</p>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
-                placeholder="Name..."
-              />
-            </label>
-            <label className="my-6">
-              <p className="text-xl">Email</p>
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email..."
-                className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
-              />
-            </label>
-            <label className="my-6">
-              <p className="text-xl">Grade</p>
-              <input
-                type="number"
-                max={12}
-                min={9}
-                value={grade}
-                onChange={(e) => setGrade(e.target.value)}
-                placeholder="Grade..."
-                className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
-              />
-            </label>
-            <label className="my-6">
-              <p className="text-xl">Phone Number</p>
-              <input
-                type="number"
-                placeholder="Phone number..."
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
-              />
-            </label>
-            <label className="my-6">
-              <p className="text-xl">Country</p>
-              <input
-                type="text"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                placeholder="Country..."
-                className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
-              />
-            </label>
-            <label className="my-6">
-              <p className="text-xl">City</p>
-              <input
-                type="text"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                placeholder="City..."
-                className="my-2 rounded-lg w-1/3 p-2 border-2 border-gray-400"
-              />
-            </label>
+      <div className="flex flex-row justify-between">
+        <div className="flex-1 m-5 p-5 rounded-3xl bg-white">
+          <h1 className="text-3xl font-semibold">Add One Student</h1>
+          <div className="m-5">
+            <form onSubmit={submitHandler}>
+              <label className="my-6">
+                <p className="text-xl">Name</p>
+                <input
+                  type="text"
+                  name="username"
+                  value={student.username}
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleErrorChange(e);
+                  }}
+                  className={`${
+                    studentError.usernameError
+                      ? "border-red-500"
+                      : "border-gray-400"
+                  } my-2 rounded-lg w-1/2 p-2 border-2`}
+                  placeholder="Name..."
+                />
+              </label>
+              <label className="my-6">
+                <p className="text-xl">Email</p>
+                <input
+                  type="text"
+                  name="email"
+                  value={student.email}
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleErrorChange(e);
+                  }}
+                  className={`${
+                    studentError.emailError
+                      ? "border-red-500"
+                      : "border-gray-400"
+                  } my-2 rounded-lg w-1/2 p-2 border-2`}
+                  placeholder="Email..."
+                />
+              </label>
+              <label className="my-6">
+                <p className="text-xl">Grade</p>
+                <select
+                  value={grade}
+                  className="bg-white w-1/2 my-2 p-2 border-2 border-gray-400 rounded-lg"
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleErrorChange(e);
+                  }}
+                >
+                  <option value={9}>9</option>
+                  <option value={10}>10</option>
+                  <option value={11}>11</option>
+                  <option value={12}>12</option>
+                </select>
+              </label>
+              <label className="my-6">
+                <p className="text-xl">Phone Number</p>
+                <input
+                  type="number"
+                  name="phoneNumber"
+                  placeholder="Phone number..."
+                  value={student.phoneNumber}
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleErrorChange(e);
+                  }}
+                  className={`${
+                    studentError.phoneNumberError
+                      ? "border-red-500"
+                      : "border-gray-400"
+                  } my-2 rounded-lg w-1/2 p-2 border-2`}
+                />
+              </label>
+              <label className="my-6">
+                <p className="text-xl">Country</p>
+                <input
+                  type="text"
+                  name="country"
+                  value={student.country}
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleErrorChange(e);
+                  }}
+                  className={`${
+                    studentError.countryError
+                      ? "border-red-500"
+                      : "border-gray-400"
+                  } my-2 rounded-lg w-1/2 p-2 border-2`}
+                  placeholder="Country..."
+                />
+              </label>
+              <label className="my-6">
+                <p className="text-xl">City</p>
+                <input
+                  type="text"
+                  name="city"
+                  value={student.city}
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleErrorChange(e);
+                  }}
+                  className={`${
+                    studentError.cityError
+                      ? "border-red-500"
+                      : "border-gray-400"
+                  } my-2 rounded-lg w-1/2 p-2 border-2`}
+                  placeholder="City..."
+                />
+              </label>
 
-            <div className="self-center">
-              <button
-                className="mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-20 py-4 text-xl"
-                type="submit"
-              >
-                Add student
-              </button>
-            </div>
-          </form>
+              <div className="self-center">
+                <button
+                  className="mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-20 py-4 text-xl"
+                  type="submit"
+                >
+                  Add student
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
 
-      <AddMultipleStudents />
+        <AddMultipleStudents />
+      </div>
 
       {creationModal ? (
         <CreationModal setCreationModal={setCreationModal} type={"Student"} />
       ) : null}
-      {errorModal ? <ErrorModal setErrorModal={setErrorModal} /> : null}
     </>
   );
 };
