@@ -60,32 +60,32 @@ export const ProfilePage = () => {
   };
 
   return (
-    <div className="p-3 h-full bg-gray-100 flex flex-col space-y-4">
-      <div className="bg-white w-full h-80 rounded-3xl relative overflow-hidden shadow-lg">
+    <div className="p-3 h-[100vh] bg-gray-100 flex flex-col space-y-4">
+      <div className="bg-white w-full h-[35vh] rounded-3xl relative overflow- shadow-lg">
         <div className="h-1/2 bg-[url('../../Bridgy_Assets/Images/Banner.png')]"></div>
         <img
           className="absolute w-40 h-40 left-32 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-full"
           src="https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png"
         ></img>
-        <div className="ml-60 mt-6 flex justify-between items-center">
+        <div className="pl-60 pt-2 flex justify-between items-center">
           <div className="flex">
             <div className="flex flex-col">
               <h1 className="font-semibold text-2xl">{userInfo.username}</h1>
-              <p className="text-gray-500 mt-4">{`${userInfo.role.slice(
+              <p className="text-gray-500 ">{`${userInfo.role.slice(
                 0,
                 1
               )}${userInfo.role.slice(1).toLocaleLowerCase()}`}</p>
             </div>
           </div>
           {userId == id ? (
-            <div className="flex items-end">
+            <div className="flex items-end ">
               <button
                 onClick={() => setPasswordModal(true)}
                 className="bg-[#2135D9] text-white my-5 rounded-[50px] hover:bg-blue-900"
               >
-                <div className="flex my-4 mx-10">
+                <div className="flex my-3 mx-8">
                   <img className="my-auto w-6 h-6" src={EditProfileIcon} />
-                  <p className="ml-2 my-auto text-l">Change Password</p>
+                  <p className="pl-2 my-auto text-l">Change Password</p>
                 </div>
               </button>
               <button
@@ -95,7 +95,7 @@ export const ProfilePage = () => {
                 {
                   {
                     true: (
-                      <div className="flex my-4 mx-10">
+                      <div className="flex my-3 mx-8">
                         <img
                           className="my-auto w-6 h-6"
                           src={EditProfileIcon}
@@ -104,7 +104,7 @@ export const ProfilePage = () => {
                       </div>
                     ),
                     false: (
-                      <div className="flex my-4 mx-10">
+                      <div className="flex my-3 mx-8">
                         <img
                           className="my-auto w-6 h-6"
                           src={EditProfileIcon}
@@ -122,8 +122,8 @@ export const ProfilePage = () => {
         </div>
       </div>
 
-      <div className="flex flex-col h-full space-y-4">
-        <h1 className="font-semibold text-3xl">Account Information</h1>
+      <div className="flex flex-col h-full space-y-4 pt-3">
+        <h1 className="font-semibold text-3xl pl-3">Account Information</h1>
 
         <div className="text-xl font-medium text-gray-700 flex flex-col space-y-4">
           <div className="flex mx-5 space-x-20">
@@ -168,14 +168,14 @@ export const ProfilePage = () => {
               }[userInfo.role]
             }
 
-            <div className="flex-1 flex flex-col w-full">
+            <div className="flex-1 flex flex-col w-[50vw]">
               <label>Email</label>
               <input
                 type="text"
                 value={userInfo.email}
                 readOnly={true}
                 disabled={true}
-                className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                className="my-2 rounded-full w-[40%] p-4 bg-gray-100 border-2 border-gray-200 font-normal text-center"
               ></input>
             </div>
           </div>
@@ -258,7 +258,7 @@ export const ProfilePage = () => {
                 }
                 disabled={isDisabled}
                 readOnly={isDisabled}
-                className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                className="my-2 rounded-full w-[85%] p-4 bg-gray-100 border-2 border-gray-200 font-normal"
               ></input>
             </div>
 

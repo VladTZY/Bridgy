@@ -57,8 +57,8 @@ export const AddStudentPage = () => {
 
   return (
     <>
-      <div className="m-5 p-5 rounded-3xl bg-white">
-        <h1 className="text-3xl font-semibold">Add One Student</h1>
+      <div className="m-5 p-5 rounded-3xl bg-white ">
+        <h1 className="text-3xl pl-5 pt-2 font-semibold">Add One Student</h1>
         <div className="m-5">
           <form onSubmit={submitHandler}>
             <label className="my-6">
