@@ -41,8 +41,8 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="h-[87vh] bg-white pl-3 w-[15vw]">
-      <div className="min-h-[100%] flex flex-col justify-between">
+    <div className="h-[100vh] bg-white pl-3 w-[15vw]  ">
+      <div className="h-[100%] flex flex-col justify-between">
         <div>
           {
             {
@@ -51,13 +51,13 @@ export const Sidebar = () => {
                   <div>
                     {location.pathname == "/student/dashboard" ? (
                       <Link to="/student/dashboard">
-                        <div className="flex items-center rounded-l bg-[#2135D9] p-4 space-x-1 w-fullx ">
+                        <div className="flex items-center rounded-l bg-[#2135D9] p-4 space-x-1 w-full ">
                           <img
                             src={dash_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className=" text-white text-xl">Dashboard</div>
+                          <div className=" text-white text-l">Dashboard</div>
                         </div>
                       </Link>
                     ) : (
@@ -66,9 +66,9 @@ export const Sidebar = () => {
                           <img
                             src={dash_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Dashboard</div>
+                          <div className="text-l">Dashboard</div>
                         </div>
                       </Link>
                     )}
@@ -82,9 +82,9 @@ export const Sidebar = () => {
                           <img
                             src={fo_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className=" text-white text-xl">
+                          <div className=" text-white text-l">
                             Find Opportunities
                           </div>
                         </div>
@@ -95,9 +95,9 @@ export const Sidebar = () => {
                           <img
                             src={fo_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Find Opportunities</div>
+                          <div className="text-l">Find Opportunities</div>
                         </div>
                       </Link>
                     )}
@@ -111,7 +111,7 @@ export const Sidebar = () => {
                           alt="react logo"
                           style={{ width: "30px", height: "40px" }}
                         />
-                        <div className="ml-2 text-white text-xl">
+                        <div className="ml-2 text-white text-l">
                           Find A Group
                         </div>
                       </div>
@@ -124,7 +124,7 @@ export const Sidebar = () => {
                           alt="react logo"
                           style={{ width: "30px", height: "40px" }}
                         />
-                        <div className="ml-2 text-xl">Find A Group</div>
+                        <div className="ml-2 text-l">Find A Group</div>
                       </div>
                     </Link>
                   )}
@@ -136,9 +136,9 @@ export const Sidebar = () => {
                           <img
                             src={fg_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">
+                          <div className="text-white text-l">
                             Add Previous Events
                           </div>
                         </div>
@@ -149,9 +149,9 @@ export const Sidebar = () => {
                           <img
                             src={fg_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Add Previous Events</div>
+                          <div className="text-l">Add Previous Events</div>
                         </div>
                       </Link>
                     )}
@@ -163,9 +163,9 @@ export const Sidebar = () => {
                           <img
                             src={myex_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">
+                          <div className="text-white text-l">
                             My Experiences
                           </div>
                         </div>
@@ -176,9 +176,9 @@ export const Sidebar = () => {
                           <img
                             src={myex_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">My Experiences</div>
+                          <div className="text-l">My Experiences</div>
                         </div>
                       </Link>
                     )}
@@ -194,9 +194,9 @@ export const Sidebar = () => {
                           <img
                             src={dash_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">Dashboard</div>
+                          <div className="text-white text-l">Dashboard</div>
                         </div>
                       </Link>
                     ) : (
@@ -205,9 +205,9 @@ export const Sidebar = () => {
                           <img
                             src={dash_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Dashboard</div>
+                          <div className="text-l">Dashboard</div>
                         </div>
                       </Link>
                     )}
@@ -221,7 +221,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "2 rem" }}
                           />
-                          <div className="text-white text-xl">
+                          <div className="text-white text-l">
                             Post Opportunities
                           </div>
                         </div>
@@ -232,9 +232,9 @@ export const Sidebar = () => {
                           <img
                             src={po_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Post Opportunities</div>
+                          <div className="text-l">Post Opportunities</div>
                         </div>
                       </Link>
                     )}
@@ -248,9 +248,9 @@ export const Sidebar = () => {
                           <img
                             src={mss_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">Missions</div>
+                          <div className="text-white text-l">Missions</div>
                         </div>
                       </Link>
                     ) : (
@@ -259,9 +259,9 @@ export const Sidebar = () => {
                           <img
                             src={mss_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Missions</div>
+                          <div className="text-l">Missions</div>
                         </div>
                       </Link>
                     )}
@@ -277,9 +277,9 @@ export const Sidebar = () => {
                           <img
                             src={dash_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">Dashboard</div>
+                          <div className="text-white text-l">Dashboard</div>
                         </div>
                       </Link>
                     ) : (
@@ -288,9 +288,9 @@ export const Sidebar = () => {
                           <img
                             src={dash_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Dashboard</div>
+                          <div className="text-l">Dashboard</div>
                         </div>
                       </Link>
                     )}
@@ -302,9 +302,9 @@ export const Sidebar = () => {
                           <img
                             src={fg_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">Add Student</div>
+                          <div className="text-white text-l">Add Student</div>
                         </div>
                       </Link>
                     ) : (
@@ -313,9 +313,9 @@ export const Sidebar = () => {
                           <img
                             src={fg_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Add Student</div>
+                          <div className="text-l">Add Student</div>
                         </div>
                       </Link>
                     )}
@@ -327,9 +327,9 @@ export const Sidebar = () => {
                           <img
                             src={upd_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">Updates</div>
+                          <div className="text-white text-l">Updates</div>
                         </div>
                       </Link>
                     ) : (
@@ -338,9 +338,9 @@ export const Sidebar = () => {
                           <img
                             src={upd_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Updates</div>
+                          <div className="text-l">Updates</div>
                         </div>
                       </Link>
                     )}
@@ -356,9 +356,9 @@ export const Sidebar = () => {
                           <img
                             src={po_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">
+                          <div className="text-white text-l">
                             Create School
                           </div>
                         </div>
@@ -369,9 +369,9 @@ export const Sidebar = () => {
                           <img
                             src={po_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Create School</div>
+                          <div className="text-l">Create School</div>
                         </div>
                       </Link>
                     )}
@@ -383,9 +383,9 @@ export const Sidebar = () => {
                           <img
                             src={myex_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">
+                          <div className="text-white text-l">
                             Create Organization
                           </div>
                         </div>
@@ -396,9 +396,9 @@ export const Sidebar = () => {
                           <img
                             src={myex_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Create Organization</div>
+                          <div className="text-l">Create Organization</div>
                         </div>
                       </Link>
                     )}
@@ -414,9 +414,9 @@ export const Sidebar = () => {
                           <img
                             src={fg_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">Create Admin</div>
+                          <div className="text-white text-l">Create Admin</div>
                         </div>
                       </Link>
                     ) : (
@@ -425,9 +425,9 @@ export const Sidebar = () => {
                           <img
                             src={fg_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Create Admin</div>
+                          <div className="text-l">Create Admin</div>
                         </div>
                       </Link>
                     )}
@@ -439,9 +439,9 @@ export const Sidebar = () => {
                           <img
                             src={po_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">
+                          <div className="text-white text-l">
                             Create School
                           </div>
                         </div>
@@ -452,9 +452,9 @@ export const Sidebar = () => {
                           <img
                             src={po_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Create School</div>
+                          <div className="text-l">Create School</div>
                         </div>
                       </Link>
                     )}
@@ -466,9 +466,9 @@ export const Sidebar = () => {
                           <img
                             src={myex_white}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-white text-xl">
+                          <div className="text-white text-l">
                             Create Organization
                           </div>
                         </div>
@@ -479,9 +479,9 @@ export const Sidebar = () => {
                           <img
                             src={myex_black}
                             alt="react logo"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.7rem" }}
                           />
-                          <div className="text-xl">Create Organization</div>
+                          <div className="text-l">Create Organization</div>
                         </div>
                       </Link>
                     )}
@@ -498,9 +498,9 @@ export const Sidebar = () => {
                   <img
                     src={upd_white}
                     alt="react logo"
-                    style={{ width: "2rem" }}
+                    style={{ width: "1.7rem" }}
                   />
-                  <div className="text-white text-xl">Notifications</div>
+                  <div className="text-white text-l">Notifications</div>
                 </div>
               </Link>
             ) : (
@@ -509,9 +509,9 @@ export const Sidebar = () => {
                   <img
                     src={upd_black}
                     alt="react logo"
-                    style={{ width: "2rem" }}
+                    style={{ width: "1.7rem" }}
                   />
-                  <div className="text-xl">Notifications</div>
+                  <div className="text-l">Notifications</div>
                 </div>
               </Link>
             )}
@@ -524,9 +524,9 @@ export const Sidebar = () => {
                   <img
                     src={pf_white}
                     alt="react logo"
-                    style={{ width: "2rem" }}
+                    style={{ width: "1.7rem" }}
                   />
-                  <div className="text-white text-xl">Profile</div>
+                  <div className="text-white text-l">Profile</div>
                 </div>
               </Link>
             ) : (
@@ -535,9 +535,9 @@ export const Sidebar = () => {
                   <img
                     src={pf_black}
                     alt="react logo"
-                    style={{ width: "2rem" }}
+                    style={{ width: "1.7rem" }}
                   />
-                  <div className="text-xl">Profile</div>
+                  <div className="text-l">Profile</div>
                 </div>
               </Link>
             )}
@@ -550,7 +550,7 @@ export const Sidebar = () => {
               <Link to="/help">Help</Link>
             </div>
           </div>
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-1 pb-[7vh]">
             <img src={lo} alt="react logo" style={{ width: "1.5rem" }} />
             <div className="hover:text-[#2135D9] text-lg">
               <button onClick={() => logoutUser()}>Logout</button>

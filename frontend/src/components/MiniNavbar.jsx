@@ -7,27 +7,27 @@ export const MiniNavbar = () => {
   const name = useSelector((state) => state.auth.username);
 
   return (
-    <div className="h-full px-5 bg-white">
+    <div className="h-[7vh] pr-7 bg-white">
       <div className="h-full flex justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center py-5">
           <img
             src={logo}
             alt="react logo"
             style={{
-              width: "5rem",
+              width: "4rem",
             }}
           />
-          <div className="hover:text-[#2135D9] text-4xl">
+          <div className="hover:text-[#2135D9] text-2xl">
             <Link to="/">Bridgy</Link>
           </div>
         </div>
-        <div className="mr-20 flex items-center space-x-2">
+        <div className=" flex items-center space-x-2">
           <img
             src={notificationsIcon}
             alt="react logo"
             style={{ width: "1.5rem" }}
           />
-          <div className="text-xl">Logged in as : {name}</div>
+          <div className="text-sm">Logged in as : {name}</div>
         </div>
       </div>
     </div>

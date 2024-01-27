@@ -24,10 +24,10 @@ export const StudentsTable = ({ students }) => {
                 <td className="px-6 py-4 font-semibold">
                   {student.phoneNumber}
                 </td>
-                <td className="px-6 py-4 font-semibold">
+                <td className="px-6 py-4">
                   <Link
                     to={`/profile/${student.id}`}
-                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-2 px-3 rounded-[50px] text-white text-lg"
+                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-2 px-3 rounded-[50px] text-white text-md"
                   >
                     View profile
                   </Link>

@@ -89,10 +89,10 @@ export const OrganizationDashboardPage = () => {
   return (
     <div className="min-h-full bg-gray-100 flex flex-col w-[90]">
       <div className="flex flex-col">
-        <div className="mx-5 my-7 flex justify-between items-center">
-          <div className="text-4xl font-semibold">Ongoing Events</div>
+        <div className="mx-5 my-7 flex justify-between items-center ">
+          <div className="text-2xl font-semibold">Ongoing Events</div>
           <Link to="/organization/post_opportunities">
-            <button className="text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full py-4 px-12 text-l">
+            <button className="text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full py-2 px-6 text-l">
               Add New
             </button>
           </Link>
@@ -135,7 +135,7 @@ export const OrganizationDashboardPage = () => {
           </button>
         </div>
         <div className="flex flex-col">
-          <h1 className="text-4xl font-semibold mx-5 my-7">Upcoming Events</h1>
+          <h1 className="text-2xl font-semibold mx-5 my-7">Upcoming Events</h1>
 
           <div className="mx-2 flex">
             {publishedEvents.slice(0, 4).map((event) => {
@@ -175,7 +175,7 @@ export const OrganizationDashboardPage = () => {
             Next Page
           </button>
         </div>
-        <div className="text-4xl font-semibold mx-5 my-7">
+        <div className="text-2xl font-semibold mx-5 my-7">
           Recently Completed
         </div>
         <div className="flex flex-col">

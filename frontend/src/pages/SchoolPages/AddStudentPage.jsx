@@ -91,7 +91,7 @@ export const AddStudentPage = () => {
     <>
       <div className="flex flex-row justify-between">
         <div className="flex-1 m-5 p-5 rounded-3xl bg-white">
-          <h1 className="text-3xl font-semibold">Add One Student</h1>
+          <h1 className="text-2xl font-semibold">Add One Student</h1>
           <div className="m-5">
             <form onSubmit={submitHandler}>
               <label className="my-6">
@@ -203,7 +203,7 @@ export const AddStudentPage = () => {
 
               <div className="self-center">
                 <button
-                  className="mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-20 py-4 text-xl"
+                  className="mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-8 py-2 text-xl"
                   type="submit"
                 >
                   Add student
