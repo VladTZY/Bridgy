@@ -34,7 +34,7 @@ export const Navbar = () => {
       <Link to="/">
         <div className="flex items-center hover:text-[#2135D9]">
           <img src={logo} alt="react logo" style={{ height: "13vh" }} />
-          <span className="text-5xl font-bold">Bridgy</span>
+          <span className="text-2xl font-bold">Bridgy</span>
         </div>
       </Link>
 

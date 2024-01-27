@@ -60,14 +60,14 @@ export const ProfilePage = () => {
   };
 
   return (
-    <div className="p-3 h-[100vh] bg-gray-100 flex flex-col space-y-4">
-      <div className="bg-white w-full h-[35vh] rounded-3xl relative overflow- shadow-lg">
+    <div className="px-3 pt-3 h-[100vh] bg-gray-100 flex flex-col space-y-4">
+      <div className="bg-white w-full h-[40%] rounded-3xl relative  ">
         <div className="h-1/2 bg-[url('../../Bridgy_Assets/Images/Banner.png')]"></div>
         <img
           className="absolute w-40 h-40 left-32 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-full"
           src="https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png"
         ></img>
-        <div className="pl-60 pt-2 flex justify-between items-center">
+        <div className="pl-60 pt-7 pr-6 flex justify-between items-center  w-100% sticky bottom-0 ">
           <div className="flex">
             <div className="flex flex-col">
               <h1 className="font-semibold text-2xl">{userInfo.username}</h1>
@@ -78,24 +78,24 @@ export const ProfilePage = () => {
             </div>
           </div>
           {userId == id ? (
-            <div className="flex items-end ">
+            <div className="flex items-end space-x-3">
               <button
                 onClick={() => setPasswordModal(true)}
-                className="bg-[#2135D9] text-white my-5 rounded-[50px] hover:bg-blue-900"
+                className="bg-[#2135D9] text-white  rounded-[50px] hover:bg-blue-900"
               >
-                <div className="flex my-3 mx-8">
+                <div className="flex my-1.5 mx-4">
                   <img className="my-auto w-6 h-6" src={EditProfileIcon} />
                   <p className="pl-2 my-auto text-l">Change Password</p>
                 </div>
               </button>
               <button
                 onClick={onClickHandler}
-                className="bg-[#2135D9] text-white m-5 rounded-[50px] hover:bg-blue-900"
+                className="bg-[#2135D9] text-white rounded-[50px] hover:bg-blue-900"
               >
                 {
                   {
                     true: (
-                      <div className="flex my-3 mx-8">
+                      <div className="flex my-1.5 mx-4">
                         <img
                           className="my-auto w-6 h-6"
                           src={EditProfileIcon}
@@ -104,7 +104,7 @@ export const ProfilePage = () => {
                       </div>
                     ),
                     false: (
-                      <div className="flex my-3 mx-8">
+                      <div className="flex my-1.5 mx-4">
                         <img
                           className="my-auto w-6 h-6"
                           src={EditProfileIcon}
