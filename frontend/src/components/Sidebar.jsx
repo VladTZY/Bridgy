@@ -543,14 +543,14 @@ export const Sidebar = () => {
             )}
           </div>
         </div>
-        <div className="mb-4 ml-4">
+        <div className="mb-10 ml-4">
           <div className="flex items-center space-x-1">
             <img src={help} alt="react logo" style={{ width: "1.5rem" }} />
             <div className="hover:text-[#2135D9] text-lg">
               <Link to="/help">Help</Link>
             </div>
           </div>
-          <div className="flex items-center space-x-1 pb-[7vh]">
+          <div className="flex items-center space-x-1 pb-[8vh]">
             <img src={lo} alt="react logo" style={{ width: "1.5rem" }} />
             <div className="hover:text-[#2135D9] text-lg">
               <button onClick={() => logoutUser()}>Logout</button>

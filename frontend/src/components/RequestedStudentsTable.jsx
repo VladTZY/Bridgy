@@ -48,14 +48,14 @@ export const RequestedStudentsTable = ({
       <table className="min-w-full">
         <thead className="bg-[#2135D9] text-white">
           <tr>
-            <th className="px-6 py-3 text-left text-l font-medium">Username</th>
-            <th className="px-6 py-3 text-left text-l font-medium">Email</th>
-            <th className="px-6 py-3 text-left text-l font-medium">
+            <th className="px-6 py-2 text-left text-l font-medium">Username</th>
+            <th className="px-6 py-2 text-left text-l font-medium">Email</th>
+            <th className="px-6 py-2 text-left text-l font-medium">
               Phone number
             </th>
-            <th className="px-6 py-3 text-left text-l font-medium">Profile</th>
-            <th className="px-6 py-3 text-left text-l font-medium">Accept</th>
-            <th className="px-6 py-3 text-left text-l font-medium">Reject</th>
+            <th className="px-6 py-2 text-left text-l font-medium">Profile</th>
+            <th className="px-6 py-2 text-left text-l font-medium">Accept</th>
+            <th className="px-6 py-2 text-left text-l font-medium">Reject</th>
           </tr>
         </thead>
 
@@ -63,26 +63,26 @@ export const RequestedStudentsTable = ({
           {students.map((student, index) => {
             return (
               <tr key={student.user.id} className="hover:bg-gray-100">
-                <td className="px-6 py-4 font-semibold">
+                <td className="px-6 py-2 font-semibold">
                   {student.user.username}
                 </td>
-                <td className="px-6 py-4 font-semibold">
+                <td className="px-6 py-2 font-semibold">
                   {student.user.email}
                 </td>
-                <td className="px-6 py-4 font-semibold">
+                <td className="px-6 py-2 font-semibold">
                   {student.user.phoneNumber}
                 </td>
-                <td className="px-6 py-4 font-semibold">
+                <td className="px-6 py-2 font-semibold">
                   <Link
                     to={`/profile/${student.user.id}`}
-                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-3 px-5 rounded-[50px] text-white text-lg"
+                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-3 px-5 rounded-[50px] text-white text-l"
                   >
                     View profile
                   </Link>
                 </td>
                 <td className="px-6 py-4 font-semibold">
                   <button
-                    className="hover:text-green-700 border-green-700 border-2 hover:bg-white py-2 px-5 rounded-[50px] bg-green-700 text-white text-lg"
+                    className="hover:text-green-700 border-green-700 border-2 hover:bg-white py-2 px-5 rounded-[50px] bg-green-700 text-white text-l"
                     onClick={() => acceptStudent(student.user.id, index)}
                   >
                     Accept
@@ -90,7 +90,7 @@ export const RequestedStudentsTable = ({
                 </td>
                 <td className="px-6 py-4 font-semibold">
                   <button
-                    className="bg-red-700 hover:text-red-700 border-red-700 border-2 hover:bg-white py-2 px-5 rounded-[50px] text-white text-lg"
+                    className="bg-red-700 hover:text-red-700 border-red-700 border-2 hover:bg-white py-2 px-5 rounded-[50px] text-white text-l"
                     onClick={() => rejectStudent(student.user.id, index)}
                   >
                     Reject

@@ -70,7 +70,7 @@ export const MoreInfoPage = () => {
 
   return (
     <div className="h-full bg-gray-100 flex flex-col">
-      <div className="m-5 p-5 rounded-lg bg-white flex flex-col">
+      <div className="mx-5 mb-10 p-5 rounded-lg bg-white flex flex-col">
         <img
           className="rounded-lg self-center"
           src={
@@ -78,28 +78,28 @@ export const MoreInfoPage = () => {
               ? "../../../Bridgy_Assets/Images/Webpage/What we do 01.png"
               : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${event.photoUrl}`
           }
-          style={{ height: "50vh", aspectRatio: "16 / 9" }}
+          style={{ height: "45vh",width:"100%", objectFit:"cover", aspectRatio: "16 / 9" }}
         />
-        <div className="mt-4 ml-7 text-4xl font-bold">{event.name}</div>
-        <div className="mt-3 ml-7 text-2xl">{event.description}</div>
-        <div className="flex w-full justify-evenly h-[6vh] mt-3 space-x-4">
-          <div className="flex w-[23%] border items-center space-x-2 px-4">
+        <div className="mt-4 ml-7 text-xl font-bold text-center">{event.name}</div>
+        <div className="mt-3 ml-7 text-l text-center">{event.description}</div>
+        <div className="flex w-full justify-evenly h-[4vh] mt-3 space-x-4">
+          <div className="flex w-[23%] border items-center justify-center space-x-2 px-4">
             <img src={CalendarIcon} style={{ height: "70%" }} />
-            <div className="text-2xl text-black">
+            <div className="text-l text-black">
               {datetimeToStr(event.time)}
             </div>
           </div>
-          <div className="flex w-[23%] border items-center space-x-2 px-4">
+          <div className="flex w-[23%] border items-center justify-center space-x-2 px-4">
             <img src={LocationIcon} style={{ height: "70%" }} />
-            <div className="text-2xl text-black">{locationName}</div>
+            <div className="text-l text-black">{locationName}</div>
           </div>
-          <div className="flex w-[23%] border items-center space-x-2 px-4">
+          <div className="flex w-[23%] border items-center justify-center space-x-2 px-4">
             <img src={ClockIcon} style={{ height: "70%" }} />
-            <div className="text-2xl text-black">{event.hours} hours</div>
+            <div className="text-l text-black">{event.hours} hours</div>
           </div>
-          <div className="flex w-[23%] border items-center space-x-2 px-4">
+          <div className="flex w-[23%] border items-center justify-center space-x-2 px-4">
             <img src={ClockIcon} style={{ height: "70%" }} />
-            <div className="text-2xl text-black">{event.capacity} places</div>
+            <div className="text-l text-black">{event.capacity} places</div>
           </div>
         </div>
         {role == "STUDENT" ? (
@@ -126,7 +126,7 @@ export const MoreInfoPage = () => {
             <OrganizationOngoingMoreInfo eventId={id} />
           )
         ) : (
-          <div className="mt-5 text-3xl font-extrabold">
+          <div className="mt-5 text-xl font-extrabold">
             You cannot access this event!
           </div>
         )}

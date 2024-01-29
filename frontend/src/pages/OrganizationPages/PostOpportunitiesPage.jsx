@@ -166,14 +166,14 @@ export const PostOpportunitiesPage = () => {
     <div className="h-full m-5 bg-gray-100">
       <div className="flex flex-col">
         <div className="bg-white p-5 rounded-3xl">
-          <h1 className="text-3xl font-semibold">Create New Opportunity</h1>
+          <h1 className="text-xl font-semibold">Create New Opportunity</h1>
           <div className="">
             <form onSubmit={submitHandler}>
               <div className="flex">
                 <div className="flex-1">
                   <div className="my-6">
                     <label>
-                      <p className="text-xl">Name</p>
+                      <p className="text-l">Name</p>
                       <input
                         type="text"
                         name="name"
@@ -188,14 +188,14 @@ export const PostOpportunitiesPage = () => {
                             ? "border-red-500"
                             : "border-gray-400"
                         } my-2 rounded-lg p-2 border-2`}
-                        style={{ width: "30rem" }}
+                        style={{ width: "50%" }}
                       />
                     </label>
                   </div>
 
                   <div className="my-6">
                     <label>
-                      <p className="text-xl">Description</p>
+                      <p className="text-l">Description</p>
                       <textarea
                         type="text"
                         name="description"
@@ -210,7 +210,7 @@ export const PostOpportunitiesPage = () => {
                             ? "border-red-500"
                             : "border-gray-400"
                         } my-2 rounded-lg p-2 border-2`}
-                        style={{ width: "30rem" }}
+                        style={{ width: "70%" }}
                       />
                     </label>
                   </div>
@@ -218,7 +218,7 @@ export const PostOpportunitiesPage = () => {
                 <div className="flex-1">
                   <div className="my-6">
                     <label>
-                      <p className="text-xl">Supervisor Contact</p>
+                      <p className="text-l">Supervisor Contact</p>
                       <input
                         type="text"
                         name="supervisorContact"
@@ -233,13 +233,13 @@ export const PostOpportunitiesPage = () => {
                             ? "border-red-500"
                             : "border-gray-400"
                         } my-2 rounded-lg p-2 border-2`}
-                        style={{ width: "30rem" }}
+                        style={{ width: "50%" }}
                       />
                     </label>
                   </div>
                   <div className="my-6">
                     <label className="flex">
-                      <p className="text-xl">Is the event remote?</p>
+                      <p className="text-l">Is the event remote?</p>
                       <input
                         className="m-2"
                         type="checkbox"
@@ -253,7 +253,7 @@ export const PostOpportunitiesPage = () => {
 
                   <div className="my-6">
                     <label className="flex">
-                      <p className="text-xl">Cover Image*</p>
+                      <p className="text-l">Cover Image*</p>
                       <input
                         className="m-2"
                         type="file"
@@ -270,8 +270,8 @@ export const PostOpportunitiesPage = () => {
                 <div className="w-full">
                   <label>
                     <div className="flex">
-                      <img className="my-auto" src={TimeIcon} />
-                      <p className="my-auto text-xl">Number of students</p>
+                      <img className="my-auto w-[7%]" src={TimeIcon} />
+                      <p className="my-auto text-l">Number of students</p>
                     </div>
                     <input
                       type="number"
@@ -294,8 +294,8 @@ export const PostOpportunitiesPage = () => {
                 <div className="w-full mx-8">
                   <label>
                     <div className="flex">
-                      <img className="my-auto" src={ClockIcon} />
-                      <p className="my-auto text-xl">Required hours</p>
+                      <img className="my-auto w-[7%]" src={ClockIcon} />
+                      <p className="my-auto text-l">Required hours</p>
                     </div>
                     <input
                       type="number"
@@ -318,8 +318,8 @@ export const PostOpportunitiesPage = () => {
                 <div className="w-full">
                   <label>
                     <div className="flex">
-                      <img className="my-auto" src={CalendarIcon} />
-                      <p className="my-auto text-xl">Date and time</p>
+                      <img className="my-auto w-[7%]" src={CalendarIcon} />
+                      <p className="my-auto text-l">Date and time</p>
                     </div>
                     <input
                       type="datetime-local"
@@ -347,8 +347,8 @@ export const PostOpportunitiesPage = () => {
                     <div className="w-full">
                       <label>
                         <div className="flex">
-                          <img className="my-auto" src={LocationIcon} />
-                          <p className="my-auto text-xl">Country</p>
+                          <img className="my-auto w-[7%]" src={LocationIcon} />
+                          <p className="my-auto text-l">Country</p>
                         </div>
                         <input
                           type="text"
@@ -371,8 +371,8 @@ export const PostOpportunitiesPage = () => {
                     <div className="w-full mx-6">
                       <label>
                         <div className="flex">
-                          <img className="my-auto" src={LocationIcon} />
-                          <p className="my-auto text-xl">City</p>
+                          <img className="my-auto w-[7%]" src={LocationIcon} />
+                          <p className="my-auto text-l">City</p>
                         </div>
                         <input
                           type="text"
@@ -395,8 +395,8 @@ export const PostOpportunitiesPage = () => {
                     <div className="w-full">
                       <label>
                         <div className="flex">
-                          <img className="my-auto" src={LocationIcon} />
-                          <p className="my-auto text-xl">Address</p>
+                          <img className="my-auto w-[7%]" src={LocationIcon} />
+                          <p className="my-auto text-l">Address</p>
                         </div>
                         <input
                           type="text"
@@ -431,7 +431,7 @@ export const PostOpportunitiesPage = () => {
 
               <div className="flex justify-between items-center">
                 <button
-                  className="bg-[#2EA0FB] text-white mt-5 py-4 px-10 rounded-[50px] hover:bg-[#2135D9]"
+                  className="bg-[#2EA0FB] text-white mt-5 py-2 px-4 rounded-[50px] hover:bg-[#2135D9]"
                   type="submit"
                 >
                   Submit

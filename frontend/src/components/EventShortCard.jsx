@@ -16,16 +16,16 @@ export const EventShortCard = ({
 
   return (
     <button onClick={handleButton}>
-      <div className="mx-12 my-1 px-6 py-2 rounded-md w-[94%] bg-white flex justify-between transform transition duration-200  hover:scale-105 hover:drop-shadow-black">
-        <div className="flex space-x-4 items-center">
-          <div className="py-4 text-3xl font-semibold">{title}</div>
-          <div className="text-xl">{description}</div>
+      <div className=" mx-5 my-1 px-4 py-2 rounded-xl bg-white flex justify-between transform transition duration-200  hover:scale-105 hover:drop-shadow-black">
+        <div className="flex space-x-4 items-center justify-between w-[100%]  ">
+          <div className="py-4 text-xl font-semibold">{title}</div>
+          <div className="text-l">{description}</div>
         </div>
         <div className="flex space-x-4 items-center">
-          <div className="text-2xl">
+          <div className="text-xl">
             {attendance}/{capacity}
           </div>
-          <img src={MoreInfoIcon} style={{ height: "100%", width: "2vw" }} />
+          <img src={MoreInfoIcon} style={{ height: "35%", width: "" }} />
         </div>
       </div>
     </button>

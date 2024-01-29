@@ -260,7 +260,7 @@ function WrappedApp() {
       {
         {
           true: (
-            <div className="min-h-screen bg-gray-100 bg-repeat-y">
+            <div className="min-h-screen bg-gray-100 bg-repeat-y ">
               <div className="h-[7vh] w-full fixed top-0 z-10">
                 <MiniNavbar />
               </div>
@@ -270,7 +270,7 @@ function WrappedApp() {
               <div className=" pl-[15vw] w-[100vw] pt-20">
                 <App />
               </div>
-              <div className=" items-end ml-[15vw] sticky top-[100vh]">
+              <div className=" items-end sticky top-[100vh]">
                 <MiniFooter />
               </div>
             </div>

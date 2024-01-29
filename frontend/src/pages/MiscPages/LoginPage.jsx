@@ -31,13 +31,13 @@ export const LoginPage = () => {
 
   return (
     <div>
-      <div className="h-[15vh]">
+      <div className="h-[]">
         <LoginNavbar />
       </div>
       <div className="h-[85vh] flex w-[80vw]">
         <div className="w-6/12 flex items-center justify-center content-center">
           <div className="w-8/12">
-            <h1 className="font-semibold text-6xl">Login</h1>
+            <h1 className="font-semibold text-3xl">Login</h1>
             <p className="mt-3">
               Don't have an account? Check our account policy{" "}
               <Link to="/help" className="text-[#2EA0FB] hover:underline">
@@ -98,7 +98,7 @@ export const LoginPage = () => {
               <div>
                 <button
                   type="submit"
-                  className="mt-10 btn w-full bg-[#2EA0FB] p-5 rounded-[40px] text-white text-2xl hover:bg-[#2135D9]"
+                  className="mt-10 btn   bg-[#2EA0FB] px-6 py-2 rounded-[40px] text-white text-xl hover:bg-[#2135D9]"
                 >
                   Login
                 </button>
@@ -112,7 +112,7 @@ export const LoginPage = () => {
         <div className="w-6/12">
           <img
             src={LoginImage}
-            className="w-5/12 absolute bottom-0 right-0"
+            className="w-5/12 absolute bottom-10 right-0"
           ></img>
         </div>
       </div>

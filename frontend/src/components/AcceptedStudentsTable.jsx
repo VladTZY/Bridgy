@@ -6,12 +6,12 @@ export const AcceptedStudentsTable = ({ eventId, students }) => {
       <table className="min-w-full">
         <thead className="bg-[#2135D9] text-white">
           <tr>
-            <th className="px-6 py-3 text-left text-l font-medium">Username</th>
-            <th className="px-6 py-3 text-left text-l font-medium">Email</th>
-            <th className="px-6 py-3 text-left text-l font-medium">
+            <th className="px-6 py-2 text-left text-l font-medium">Username</th>
+            <th className="px-6 py-2 text-left text-l font-medium">Email</th>
+            <th className="px-6 py-2 text-left text-l font-medium">
               Phone number
             </th>
-            <th className="px-6 py-3 text-left text-l font-medium">Profile</th>
+            <th className="px-6 py-2 text-left text-l font-medium">Profile</th>
           </tr>
         </thead>
 
@@ -31,7 +31,7 @@ export const AcceptedStudentsTable = ({ eventId, students }) => {
                 <td className="px-6 py-4 font-semibold">
                   <Link
                     to={`/profile/${student.user.id}`}
-                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-2 px-5 rounded-[50px] text-white text-lg"
+                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-2 px-5 rounded-[50px] text-white text-l"
                   >
                     View profile
                   </Link>

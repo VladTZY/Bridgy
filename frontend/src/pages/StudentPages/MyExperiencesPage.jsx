@@ -24,7 +24,7 @@ export const MyExperiencesPage = () => {
       {
         {
           true: (
-            <div className="mt-20 text-center text-4xl font-extrabold">
+            <div className="mt-10 text-center text-xl font-extrabold">
               {" "}
               You have no experiences yet! <br></br> Join more events!
             </div>

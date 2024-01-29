@@ -5,9 +5,9 @@ export const LoginNavbar = () => {
   return (
     <div className="flex px-20 justify-between">
       <Link to="/">
-        <div className="flex items-center hover:text-[#2135D9]">
-          <img src={logo} alt="react logo" style={{ height: "15vh" }} />
-          <span className="text-6xl font-bold">Bridgy</span>
+        <div className="flex items-center hover:text-[#2135D9] h-[7vh] pt-3">
+          <img src={logo} alt="react logo" style={{ height: "100%" }} />
+          <span className="text-xl font-bold">Bridgy</span>
         </div>
       </Link>
 

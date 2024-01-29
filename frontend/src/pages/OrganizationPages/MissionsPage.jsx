@@ -40,10 +40,10 @@ export const MissionsPage = () => {
       });
   }, [organizationId]);
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col">
+    <div className="min-h-full bg-gray-100 flex flex-col pb-10">
       <SearchBar />
-      <div className="flex flex-col">
-        <h1 className="text-4xl font-semibold mx-5 my-7">
+      <div className="flex flex-col ">
+        <h1 className="text-2xl font-semibold mx-5 mt-2 mb-3">
           Future Opportunities
         </h1>
 
@@ -73,7 +73,7 @@ export const MissionsPage = () => {
       </div>
 
       <div className="flex flex-col">
-        <h1 className="text-4xl font-semibold mx-5 my-7">Past Opportunities</h1>
+        <h1 className="text-2xl font-semibold mx-5 my-3">Past Opportunities</h1>
 
         <div className="mx-2 flex flex-wrap">
           {finishedEvents.map((event) => {

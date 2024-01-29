@@ -21,14 +21,14 @@ export const NotificationsList = () => {
       {
         {
           true: (
-            <div className="my-auto text-center text-xl font-extrabold py-6">
+            <div className="my-auto text-center text-l font-extrabold py-3">
               {" "}
               Nothing new here! <br></br> Join more events!
             </div>
           ),
 
           false: (
-            <div className="bg-white  rounded-3xl">
+            <div className="bg-white  rounded-3xl ">
               {notifications.map((notification) => {
                 return (
                   <div key={notification.id}>

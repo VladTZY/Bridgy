@@ -24,10 +24,10 @@ export const Card = ({
   if (location == "") location = "Remote";
 
   return (
-    <div className="w-[30%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white m-2 mb-2">
+    <div className="w-[30%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white ml-2">
       <img
         src={photoUrl}
-        className="rounded-lg mt-4 self-center px-4 w-[100%] object-cover"
+        className="rounded-xl mt-4 self-center px-3 w-[100%] object-cover"
         style={{ height: "55%", aspectRatio: "16 / 9" }}
       />
       <div className="flex w-full h-[7%] justify-evenly mt-2 px-1.5">
@@ -44,12 +44,12 @@ export const Card = ({
           <div className="text-sm text-black">{duration} hours</div>
         </div>
       </div>
-      <div className="mt-2 ml-6 text-2xl text-bold">{title}</div>
-      <div className="mx-6 text-xl text-gray-700">
+      <div className="mt-2 text-center justify-center text-xl text-bold max-w-full px-4 truncate">{title}</div>
+      <div className="mx-6 text-l text-center justify-center text-gray-700">
         {description?.toString().substring(0, 45)}...
       </div>
       <button
-        className="rounded-3xl mx-8 mt-2 px-200 py-2 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
+        className="rounded-3xl px-4 mt-2 py-1 mb-2 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-l text-center justify-center self-center"
         onClick={handleMoreInfo}
       >
         More info

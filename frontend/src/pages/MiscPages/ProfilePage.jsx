@@ -83,7 +83,7 @@ export const ProfilePage = () => {
                 onClick={() => setPasswordModal(true)}
                 className="bg-[#2135D9] text-white  rounded-[50px] hover:bg-blue-900"
               >
-                <div className="flex my-1.5 mx-4">
+                <div className="flex my-1 mx-4">
                   <img className="my-auto w-6 h-6" src={EditProfileIcon} />
                   <p className="pl-2 my-auto text-l">Change Password</p>
                 </div>
@@ -95,7 +95,7 @@ export const ProfilePage = () => {
                 {
                   {
                     true: (
-                      <div className="flex my-1.5 mx-4">
+                      <div className="flex my-1 mx-4">
                         <img
                           className="my-auto w-6 h-6"
                           src={EditProfileIcon}
@@ -104,7 +104,7 @@ export const ProfilePage = () => {
                       </div>
                     ),
                     false: (
-                      <div className="flex my-1.5 mx-4">
+                      <div className="flex my-1 mx-4">
                         <img
                           className="my-auto w-6 h-6"
                           src={EditProfileIcon}

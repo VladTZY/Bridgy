@@ -14,11 +14,11 @@ export const LandingPage = () => {
 
   return (
     <div>
-      <div className="h-[15vh]">
+      <div className="h-[7vh]">
         <Navbar />
       </div>
       <div className="flex-row relative">
-        <div className="w-[100%] flex justify-between">
+        <div className="w-[100%] flex justify-between mt-[7vh]">
           <div className="flex flex-col pt-20 w-[50%] ">
             <div className="font-bold ml-32 text-8xl">Bridgy</div>
             <div className="font-bold ml-32 mt-4 text-6xl w-[75%]">
@@ -26,7 +26,7 @@ export const LandingPage = () => {
               <br></br> Building{" "}
               <span className="text-[#2135D9]"> Futures </span>
             </div>
-            <div className="ml-32 mt-10 text-2xl" style={{ width: "75%" }}>
+            <div className="ml-32 mt-10 text- xl" style={{ width: "75%" }}>
               Building highly customized digital infrastructure to make the
               charitable ecosystem easily accessible to high schools in the most
               efficient and secure ways possible.
@@ -34,7 +34,7 @@ export const LandingPage = () => {
             <div className="text-xl ml-32 mt-5">
               <button
                 onClick={scToAboutUs}
-                className="bg-[#2EA0FB] text-white px-16 py-4 rounded-full hover:bg-[#2135D9]"
+                className="bg-[#2EA0FB] text-white px-8 py-2 rounded-full hover:bg-[#2135D9]"
               >
                 Learn more
               </button>
@@ -92,7 +92,7 @@ export const LandingPage = () => {
             </div>
           </div>
         </div>
-        <div className="font-semibold text-center text-4xl pb-[7vh]">
+        <div className="font-semibold text-center text-4xl py-[7vh]">
             Bridgy is a <span className="text-[#2135D9]"> pathway </span> across
             that void.
             </div>
@@ -116,7 +116,7 @@ export const LandingPage = () => {
         </div>
         <div className="w-[100%] flex-row">
           <div className="flex justify-around pt-[5vh] content-center pb-20">
-            <div className="text-6xl font-bold content-center px-6" >
+            <div className="text-5xl font-bold content-center px-6 pl-6" >
               What <span className="text-[#2135D9]"> We Do </span>
             </div>
             <div

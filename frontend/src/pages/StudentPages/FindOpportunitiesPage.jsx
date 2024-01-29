@@ -32,7 +32,7 @@ export const FindOpportunitiesPage = () => {
   return (
     <div className="min-h-full bg-gray-100 flex flex-col">
       <SearchBar />
-      <h1 className="text-4xl font-semibold mx-5 my-7">
+      <h1 className="text-2xl font-bold mx-5 my-7">
         Published Opportunities
       </h1>
 
