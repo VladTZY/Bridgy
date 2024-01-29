@@ -42,7 +42,7 @@ export const StudentDashboardPage = () => {
   }, []);
 
   return (
-    <div className="h-full p-3 bg-gray-100 flex flex-col">
+    <div className="h-full p-3 bg-gray-100 flex flex-col pb-10">
       <div className="flex justify-between space-x-4">
         <StudentProgressCard
           title={"Active"}
@@ -73,14 +73,14 @@ export const StudentDashboardPage = () => {
           color={"#d8bfd8"}
         />
       </div>
-      <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4">
-        <h1 className="text-4xl font-semibold">Ongoing Events</h1>
+      <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4 pl-2">
+        <h1 className="text-xl font-bold">Ongoing Events</h1>
 
         <div>
           {
             {
               true: (
-                <div className="text-center text-3xl font-extrabold">
+                <div className="text-center text-xl font-semibold">
                   You have no events here!
                 </div>
               ),
@@ -113,14 +113,14 @@ export const StudentDashboardPage = () => {
         </div>
       </div>
 
-      <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4">
-        <h1 className="text-4xl font-semibold">Accepted Events</h1>
+      <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4 pl-2">
+        <h1 className="text-xl font-bold">Accepted Events</h1>
 
         <div>
           {
             {
               true: (
-                <div className="text-center text-3xl font-extrabold">
+                <div className="text-center text-xl font-semibold">
                   You have no events here!
                 </div>
               ),
@@ -153,14 +153,14 @@ export const StudentDashboardPage = () => {
         </div>
       </div>
 
-      <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4">
-        <h1 className="text-4xl font-semibold">Requested Events</h1>
+      <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4 pl-2">
+        <h1 className="text-xl font-bold">Requested Events</h1>
 
         <div>
           {
             {
               true: (
-                <div className="text-center text-3xl font-extrabold">
+                <div className="text-center text-xl font-semibold">
                   You have no events here!
                 </div>
               ),

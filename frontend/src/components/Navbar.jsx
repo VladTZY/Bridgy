@@ -30,11 +30,11 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="flex px-20 justify-between">
+    <div className="flex px-20 justify-between pt-5">
       <Link to="/">
         <div className="flex items-center hover:text-[#2135D9]">
-          <img src={logo} alt="react logo" style={{ height: "13vh" }} />
-          <span className="text-2xl font-bold">Bridgy</span>
+          <img src={logo} alt="react logo" style={{ height: "vh" }} />
+          <span className="text-xl font-bold">Bridgy</span>
         </div>
       </Link>
 
@@ -68,7 +68,7 @@ export const Navbar = () => {
           <div className="text-lg">
             <button
               onClick={handleMoreInfo}
-              className="bg-[#2EA0FB] text-white px-10 py-3 rounded-full hover:bg-[#2135D9]"
+              className="bg-[#2EA0FB] text-white px-6 py-1 rounded-full hover:bg-[#2135D9]"
             >
               Login
             </button>

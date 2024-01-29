@@ -19,25 +19,25 @@ export const WriteExperienceCard = ({ id, title, eventDescription }) => {
 
   return (
     <div className="w-[60%] flex flex-col rounded-xl bg-white m-3">
-      <div className="ml-6 mt-6 text-5xl font-semibold">Your feedback</div>
+      <div className="ml-6 mt-6 text-xl font-semibold">Your feedback</div>
       <textarea
         type="text"
         value={description}
         placeholder="Describe the experience in your words"
-        className="m-5 pb-52 p-4 rounded-xl border-2 border-gray-400"
+        className="m-5 pb-52 p-4 rounded-xl border border-gray-400"
         disabled={!canEdit}
         onChange={(e) => setDescription(e.target.value)}
       />
       <div className="flex items-center">
         <button
           onClick={() => handleClick()}
-          className="rounded-3xl mx-6 mt-4 mb-4 px-20 py-4 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
+          className="rounded-3xl mx-6 mt-4 mb-4 px-6 py-2 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-l"
         >
           Save
         </button>
         <button
           onClick={() => setcanEdit(true)}
-          className="rounded-3xl mx-6 mt-4 mb-4 px-20 py-4 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
+          className="rounded-3xl mx-6 mt-4 mb-4 px-6 py-2 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-l"
         >
           Edit
         </button>

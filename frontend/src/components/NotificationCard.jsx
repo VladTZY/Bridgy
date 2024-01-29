@@ -4,7 +4,7 @@ import rejected from "../../Bridgy_Assets/icon/arrow red.svg";
 export const NotificationCard = ({ type, message, studentId, eventId }) => {
   return (
     <div>
-      <div className="mx-5 px-10 py-2 rounded-xl w-[100%] bg-white flex justify-between transform transition duration-200">
+      <div className="mx-5 px-10 py-2 rounded-xl w-[95%] bg-white flex justify-between transform transition duration-200">
         <div className="flex space-x-4 items-center justify-between w-[100%]">
           {
             {
