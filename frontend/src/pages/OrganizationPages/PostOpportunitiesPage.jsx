@@ -68,7 +68,9 @@ export const PostOpportunitiesPage = () => {
   const fileRef = useRef();
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    if (e.target.name != "file")
+      setForm({ ...form, [e.target.name]: e.target.value });
+    else setForm({ ...form, [e.target.name]: e.target.files });
   };
 
   const handleErrorChange = (e) => {
@@ -88,11 +90,6 @@ export const PostOpportunitiesPage = () => {
 
   const errorSetter = (e, nil, error) => {
     if (e == nil) setFormError((prev) => ({ ...prev, [error]: true }));
-  };
-
-  const checkError = () => {
-    for (const key in formError) if (formError[key]) return true;
-    return false;
   };
 
   useEffect(() => {
@@ -167,271 +164,279 @@ export const PostOpportunitiesPage = () => {
       <div className="flex flex-col">
         <div className="bg-white p-5 rounded-3xl">
           <h1 className="text-xl font-semibold">Create New Opportunity</h1>
-          <div className="">
-            <form onSubmit={submitHandler}>
-              <div className="flex">
-                <div className="flex-1">
-                  <div className="my-6">
-                    <label>
-                      <p className="text-l">Name</p>
-                      <input
-                        type="text"
-                        name="name"
-                        value={form["name"]}
-                        onChange={(e) => {
-                          handleChange(e);
-                          handleErrorChange(e);
-                        }}
-                        placeholder="Name..."
-                        className={`${
-                          formError["nameError"]
-                            ? "border-red-500"
-                            : "border-gray-400"
-                        } my-2 rounded-lg p-2 border-2`}
-                        style={{ width: "50%" }}
-                      />
-                    </label>
-                  </div>
+          <form
+            className="m-5 flex flex-col space-y-8"
+            onSubmit={submitHandler}
+          >
+            <label className="flex flex-col space-y-2">
+              <p className="text-l">Description</p>
+              <textarea
+                type="text"
+                name="description"
+                onChange={(e) => {
+                  handleChange(e);
+                  handleErrorChange(e);
+                }}
+                value={form["description"]}
+                placeholder="Write a short description for the event..."
+                className={`${
+                  formError["descriptionError"]
+                    ? "border-red-500"
+                    : "border-gray-200"
+                } rounded-lg p-4 border-2 h-40 outline-none`}
+                style={{ width: "100%" }}
+              />
+            </label>
+            <div className="flex justify-between space-x-10">
+              <label className="flex-1 flex flex-col space-y-2">
+                <p className="text-l">Name</p>
+                <input
+                  type="text"
+                  name="name"
+                  value={form["name"]}
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleErrorChange(e);
+                  }}
+                  placeholder="Name..."
+                  className={`${
+                    formError["nameError"]
+                      ? "border-red-500"
+                      : "border-gray-200"
+                  } rounded-lg p-4 border-2 outline-none`}
+                  style={{ width: "100%" }}
+                />
+              </label>
+              <label className=" flex-1 flex flex-col space-y-2">
+                <p className="text-l">Supervisor Contact</p>
+                <input
+                  type="text"
+                  name="supervisorContact"
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleErrorChange(e);
+                  }}
+                  value={form["supervisorContact"]}
+                  placeholder="Contact..."
+                  className={`${
+                    formError["supervisorContactError"]
+                      ? "border-red-500"
+                      : "border-gray-200"
+                  } rounded-lg p-4 border-2 outline-none`}
+                  style={{ width: "100%" }}
+                />
+              </label>
+              <label className="flex-1 flex items-center">
+                <p className="text-xl">Is the event remote?</p>
+                <input
+                  className="m-2"
+                  type="checkbox"
+                  checked={form.isRemote}
+                  onChange={(e) => {
+                    handleRemote();
+                  }}
+                />
+              </label>
+            </div>
 
-                  <div className="my-6">
-                    <label>
-                      <p className="text-l">Description</p>
-                      <textarea
-                        type="text"
-                        name="description"
-                        onChange={(e) => {
-                          handleChange(e);
-                          handleErrorChange(e);
-                        }}
-                        value={form["description"]}
-                        placeholder="Description..."
-                        className={`${
-                          formError["descriptionError"]
-                            ? "border-red-500"
-                            : "border-gray-400"
-                        } my-2 rounded-lg p-2 border-2`}
-                        style={{ width: "70%" }}
-                      />
-                    </label>
-                  </div>
+            <div className="flex justify-between space-x-10">
+              <label className=" flex-1 flex flex-col space-y-2">
+                <p className="text-l">Number of students</p>
+                <div
+                  className={`${
+                    formError["capacityError"]
+                      ? "border-red-500"
+                      : "border-gray-200"
+                  } rounded-lg w-full border-2 flex`}
+                >
+                  <img className="ml-2" src={TimeIcon} />
+                  <input
+                    type="number"
+                    name={"capacity"}
+                    onChange={(e) => {
+                      handleChange(e);
+                      handleErrorChange(e);
+                    }}
+                    value={form["capacity"]}
+                    placeholder="0"
+                    className="p-4 w-full outline-none"
+                  />
                 </div>
-                <div className="flex-1">
-                  <div className="my-6">
-                    <label>
-                      <p className="text-l">Supervisor Contact</p>
-                      <input
-                        type="text"
-                        name="supervisorContact"
-                        onChange={(e) => {
-                          handleChange(e);
-                          handleErrorChange(e);
-                        }}
-                        value={form["supervisorContact"]}
-                        placeholder="Contact..."
-                        className={`${
-                          formError["supervisorContactError"]
-                            ? "border-red-500"
-                            : "border-gray-400"
-                        } my-2 rounded-lg p-2 border-2`}
-                        style={{ width: "50%" }}
-                      />
-                    </label>
-                  </div>
-                  <div className="my-6">
-                    <label className="flex">
-                      <p className="text-l">Is the event remote?</p>
-                      <input
-                        className="m-2"
-                        type="checkbox"
-                        checked={form.isRemote}
-                        onChange={(e) => {
-                          handleRemote();
-                        }}
-                      />
-                    </label>
-                  </div>
+              </label>
 
-                  <div className="my-6">
-                    <label className="flex">
-                      <p className="text-l">Cover Image*</p>
-                      <input
-                        className="m-2"
-                        type="file"
-                        ref={fileRef}
-                        name="file"
-                        onChange={(e) => handleChange(e)}
-                      />
-                    </label>
-                  </div>
+              <label className=" flex-1 flex flex-col space-y-2">
+                <p className="text-l">Required hours</p>
+                <div
+                  className={`${
+                    formError["hoursError"]
+                      ? "border-red-500"
+                      : "border-gray-200"
+                  } rounded-lg w-full border-2 flex`}
+                >
+                  <img className="ml-2" src={TimeIcon} />
+                  <input
+                    type="number"
+                    name="hours"
+                    onChange={(e) => {
+                      handleChange(e);
+                      handleErrorChange(e);
+                    }}
+                    value={form["hours"]}
+                    placeholder="0"
+                    className="p-4 w-full outline-none"
+                  />
                 </div>
+              </label>
+
+              <label className=" flex-1 flex flex-col space-y-2">
+                <p className="text-l">Date and time</p>
+                <div
+                  className={`${
+                    formError["timeError"]
+                      ? "border-red-500"
+                      : "border-gray-200"
+                  } rounded-lg w-full border-2 flex`}
+                >
+                  <img className="ml-4" src={CalendarIcon} />
+                  <input
+                    type="datetime-local"
+                    name="time"
+                    onChange={(e) => {
+                      handleChange(e);
+                      handleErrorChange(e);
+                    }}
+                    value={form["time"]}
+                    className="p-4 w-full outline-none"
+                  />
+                </div>
+              </label>
+            </div>
+
+            {form["isRemote"] ? (
+              <></>
+            ) : (
+              <div className="flex justify-between space-x-10">
+                <label className="flex-1 flex flex-col space-y-2">
+                  <p className="text-l">Country</p>
+                  <div
+                    className={`${
+                      formError["countryError"]
+                        ? "border-red-500"
+                        : "border-gray-200"
+                    } rounded-lg w-full border-2 flex`}
+                  >
+                    <img className="ml-2" src={LocationIcon} />
+                    <input
+                      type="text"
+                      name="country"
+                      onChange={(e) => {
+                        handleChange(e);
+                        handleErrorChange(e);
+                      }}
+                      value={form["country"]}
+                      placeholder="Country..."
+                      className="p-4 w-full outline-none"
+                    />
+                  </div>
+                </label>
+
+                <label className="flex-1 flex flex-col space-y-2">
+                  <p className="text-l">City</p>
+                  <div
+                    className={`${
+                      formError["cityError"]
+                        ? "border-red-500"
+                        : "border-gray-200"
+                    } rounded-lg w-full border-2 flex`}
+                  >
+                    <img className="ml-2" src={LocationIcon} />
+                    <input
+                      type="text"
+                      name="city"
+                      onChange={(e) => {
+                        handleChange(e);
+                        handleErrorChange(e);
+                      }}
+                      value={form["city"]}
+                      placeholder="City..."
+                      className="p-4 w-full outline-none"
+                    />
+                  </div>
+                </label>
+
+                <label className="flex-1 flex flex-col space-y-2">
+                  <p className="text-l">Address</p>
+                  <div
+                    className={`${
+                      formError["addressError"]
+                        ? "border-red-500"
+                        : "border-gray-200"
+                    } rounded-lg w-full border-2 flex`}
+                  >
+                    <img className="ml-2" src={LocationIcon} />
+                    <input
+                      type="text"
+                      name="address"
+                      onChange={(e) => {
+                        handleChange(e);
+                        handleErrorChange(e);
+                      }}
+                      value={form["address"]}
+                      placeholder="Address..."
+                      className="p-4 w-full outline-none"
+                    />
+                  </div>
+                </label>
               </div>
-
-              <div className="flex my-6">
-                <div className="w-full">
-                  <label>
-                    <div className="flex">
-                      <img className="my-auto w-[7%]" src={TimeIcon} />
-                      <p className="my-auto text-l">Number of students</p>
+            )}
+            <div className="flex">
+              <div className="flex-1 flex flex-col space-y-2">
+                <p className="text-l">Cover Image*</p>
+                <div class="flex items-center justify-center w-full">
+                  <label
+                    for="dropzone-file"
+                    class="flex flex-col items-center justify-center w-full h-64 border-2 border-[#2135D9] border-dashed rounded-lg cursor-pointer bg-[#f8fcfd] hover:bg-[#e9f5f8]"
+                  >
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                      <svg
+                        class="w-10 h-10 mb-4 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 16"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                        />
+                      </svg>
+                      <p class="mb-2 text-lg text-gray-500 dark:text-gray-400">
+                        <span class="font-semibold">Click to upload</span> or
+                        drag and drop
+                      </p>
                     </div>
                     <input
-                      type="number"
-                      name={"capacity"}
-                      onChange={(e) => {
-                        handleChange(e);
-                        handleErrorChange(e);
-                      }}
-                      value={form["capacity"]}
-                      placeholder="0"
-                      className={`${
-                        formError["capacityError"]
-                          ? "border-red-500"
-                          : "border-gray-400"
-                      } my-2 rounded-lg w-full p-2 border-2`}
+                      id="dropzone-file"
+                      type="file"
+                      class="hidden"
+                      ref={fileRef}
+                      name="file"
+                      onChange={(e) => handleChange(e)}
                     />
                   </label>
                 </div>
-
-                <div className="w-full mx-8">
-                  <label>
-                    <div className="flex">
-                      <img className="my-auto w-[7%]" src={ClockIcon} />
-                      <p className="my-auto text-l">Required hours</p>
-                    </div>
-                    <input
-                      type="number"
-                      name="hours"
-                      onChange={(e) => {
-                        handleChange(e);
-                        handleErrorChange(e);
-                      }}
-                      value={form["hours"]}
-                      placeholder="0"
-                      className={`${
-                        formError["hoursError"]
-                          ? "border-red-500"
-                          : "border-gray-400"
-                      } my-2 rounded-lg w-full p-2 border-2`}
-                    />
-                  </label>
-                </div>
-
-                <div className="w-full">
-                  <label>
-                    <div className="flex">
-                      <img className="my-auto w-[7%]" src={CalendarIcon} />
-                      <p className="my-auto text-l">Date and time</p>
-                    </div>
-                    <input
-                      type="datetime-local"
-                      name="time"
-                      onChange={(e) => {
-                        handleChange(e);
-                        handleErrorChange(e);
-                      }}
-                      value={form["time"]}
-                      className={`${
-                        formError["timeError"]
-                          ? "border-red-500"
-                          : "border-gray-400"
-                      } my-2 rounded-lg w-full p-2 border-2`}
-                    />
-                  </label>
-                </div>
+                {form["file"] === null ? (
+                  <></>
+                ) : (
+                  <div className="text-xl"> File Uploaded!</div>
+                )}
               </div>
-
-              {form["isRemote"] ? (
-                <></>
-              ) : (
-                <div>
-                  <div className="flex my-6">
-                    <div className="w-full">
-                      <label>
-                        <div className="flex">
-                          <img className="my-auto w-[7%]" src={LocationIcon} />
-                          <p className="my-auto text-l">Country</p>
-                        </div>
-                        <input
-                          type="text"
-                          name="country"
-                          onChange={(e) => {
-                            handleChange(e);
-                            handleErrorChange(e);
-                          }}
-                          value={form["country"]}
-                          placeholder="Country..."
-                          className={`${
-                            formError["countryError"]
-                              ? "border-red-500"
-                              : "border-gray-400"
-                          } my-2 rounded-lg w-full p-2 border-2`}
-                        />
-                      </label>
-                    </div>
-
-                    <div className="w-full mx-6">
-                      <label>
-                        <div className="flex">
-                          <img className="my-auto w-[7%]" src={LocationIcon} />
-                          <p className="my-auto text-l">City</p>
-                        </div>
-                        <input
-                          type="text"
-                          name="city"
-                          onChange={(e) => {
-                            handleChange(e);
-                            handleErrorChange(e);
-                          }}
-                          value={form["city"]}
-                          placeholder="City..."
-                          className={`${
-                            formError["cityError"]
-                              ? "border-red-500"
-                              : "border-gray-400"
-                          } my-2 rounded-lg w-full p-2 border-2`}
-                        />
-                      </label>
-                    </div>
-
-                    <div className="w-full">
-                      <label>
-                        <div className="flex">
-                          <img className="my-auto w-[7%]" src={LocationIcon} />
-                          <p className="my-auto text-l">Address</p>
-                        </div>
-                        <input
-                          type="text"
-                          name="address"
-                          onChange={(e) => {
-                            handleChange(e);
-                            handleErrorChange(e);
-                          }}
-                          value={form["address"]}
-                          placeholder="Address..."
-                          className={`${
-                            formError["addressError"]
-                              ? "border-red-500"
-                              : "border-gray-400"
-                          } my-2 rounded-lg w-full p-2 border-2`}
-                        />
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {
-                {
-                  true: (
-                    <div className="text-xl text-red-500">
-                      Please make sure all mandatory fields are completed.
-                    </div>
-                  ),
-                }[checkError]
-              }
-
-              <div className="flex justify-between items-center">
+              <div className="flex-1 flex flex-col justify-end items-end space-y-10">
                 <button
-                  className="bg-[#2EA0FB] text-white mt-5 py-2 px-4 rounded-[50px] hover:bg-[#2135D9]"
+                  className="bg-[#2EA0FB] text-white py-6 px-20 rounded-full hover:bg-[#2135D9] text-xl"
                   type="submit"
                 >
                   Submit
@@ -440,8 +445,8 @@ export const PostOpportunitiesPage = () => {
                   Fields marked with * are optional.
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
       {creationModal ? (
