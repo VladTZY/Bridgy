@@ -189,7 +189,7 @@ export const PostOpportunitiesPage = () => {
             </label>
             <div className="flex justify-between space-x-10">
               <label className="flex-1 flex flex-col space-y-2">
-                <p className="text-l">Name</p>
+                <p className="text-l">Mission Title</p>
                 <input
                   type="text"
                   name="name"

@@ -92,125 +92,122 @@ export const AddStudentPage = () => {
       <div className="flex flex-row justify-between">
         <div className="flex-1 m-5 p-5 rounded-3xl bg-white">
           <h1 className="text-2xl font-semibold">Add One Student</h1>
-          <div className="m-5">
-            <form onSubmit={submitHandler}>
-              <label className="my-6">
-                <p className="text-xl">Name</p>
-                <input
-                  type="text"
-                  name="username"
-                  value={student.username}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleErrorChange(e);
-                  }}
-                  className={`${
-                    studentError.usernameError
-                      ? "border-red-500"
-                      : "border-gray-400"
-                  } my-2 rounded-lg w-1/2 p-2 border-2`}
-                  placeholder="Name..."
-                />
-              </label>
-              <label className="my-6">
-                <p className="text-xl">Email</p>
-                <input
-                  type="text"
-                  name="email"
-                  value={student.email}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleErrorChange(e);
-                  }}
-                  className={`${
-                    studentError.emailError
-                      ? "border-red-500"
-                      : "border-gray-400"
-                  } my-2 rounded-lg w-1/2 p-2 border-2`}
-                  placeholder="Email..."
-                />
-              </label>
-              <label className="my-6">
-                <p className="text-xl">Grade</p>
-                <select
-                  value={grade}
-                  className="bg-white w-1/2 my-2 p-2 border-2 border-gray-400 rounded-lg"
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleErrorChange(e);
-                  }}
-                >
-                  <option value={9}>9</option>
-                  <option value={10}>10</option>
-                  <option value={11}>11</option>
-                  <option value={12}>12</option>
-                </select>
-              </label>
-              <label className="my-6">
-                <p className="text-xl">Phone Number</p>
-                <input
-                  type="number"
-                  name="phoneNumber"
-                  placeholder="Phone number..."
-                  value={student.phoneNumber}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleErrorChange(e);
-                  }}
-                  className={`${
-                    studentError.phoneNumberError
-                      ? "border-red-500"
-                      : "border-gray-400"
-                  } my-2 rounded-lg w-1/2 p-2 border-2`}
-                />
-              </label>
-              <label className="my-6">
-                <p className="text-xl">Country</p>
-                <input
-                  type="text"
-                  name="country"
-                  value={student.country}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleErrorChange(e);
-                  }}
-                  className={`${
-                    studentError.countryError
-                      ? "border-red-500"
-                      : "border-gray-400"
-                  } my-2 rounded-lg w-1/2 p-2 border-2`}
-                  placeholder="Country..."
-                />
-              </label>
-              <label className="my-6">
-                <p className="text-xl">City</p>
-                <input
-                  type="text"
-                  name="city"
-                  value={student.city}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleErrorChange(e);
-                  }}
-                  className={`${
-                    studentError.cityError
-                      ? "border-red-500"
-                      : "border-gray-400"
-                  } my-2 rounded-lg w-1/2 p-2 border-2`}
-                  placeholder="City..."
-                />
-              </label>
+          <form
+            className="m-5 flex flex-col space-y-6"
+            onSubmit={submitHandler}
+          >
+            <label className="flex flex-col space-y-2">
+              <p className="text-xl">Name</p>
+              <input
+                type="text"
+                name="username"
+                value={student.username}
+                onChange={(e) => {
+                  handleChange(e);
+                  handleErrorChange(e);
+                }}
+                className={`${
+                  studentError.usernameError
+                    ? "border-red-500"
+                    : "border-gray-200"
+                } rounded-lg w-1/2 p-3 border-2 outline-none`}
+                placeholder="Name..."
+              />
+            </label>
+            <label className="flex flex-col space-y-2">
+              <p className="text-xl">Email</p>
+              <input
+                type="text"
+                name="email"
+                value={student.email}
+                onChange={(e) => {
+                  handleChange(e);
+                  handleErrorChange(e);
+                }}
+                className={`${
+                  studentError.emailError ? "border-red-500" : "border-gray-200"
+                } rounded-lg w-1/2 p-3 border-2 outline-none`}
+                placeholder="Email..."
+              />
+            </label>
+            <label className="flex flex-col space-y-2">
+              <p className="text-xl">Grade</p>
+              <select
+                value={grade}
+                className="bg-white w-1/2 p-3 border-2 border-gray-200 rounded-lg outline-none"
+                onChange={(e) => {
+                  handleChange(e);
+                  handleErrorChange(e);
+                }}
+              >
+                <option value={9}>9</option>
+                <option value={10}>10</option>
+                <option value={11}>11</option>
+                <option value={12}>12</option>
+              </select>
+            </label>
+            <label className="flex flex-col space-y-2">
+              <p className="text-xl">Phone Number</p>
+              <input
+                type="number"
+                name="phoneNumber"
+                placeholder="Phone number..."
+                value={student.phoneNumber}
+                onChange={(e) => {
+                  handleChange(e);
+                  handleErrorChange(e);
+                }}
+                className={`${
+                  studentError.phoneNumberError
+                    ? "border-red-500"
+                    : "border-gray-200"
+                } rounded-lg w-1/2 p-4 border-2 outline-none`}
+              />
+            </label>
+            <label className="flex flex-col space-y-2">
+              <p className="text-xl">Country</p>
+              <input
+                type="text"
+                name="country"
+                value={student.country}
+                onChange={(e) => {
+                  handleChange(e);
+                  handleErrorChange(e);
+                }}
+                className={`${
+                  studentError.countryError
+                    ? "border-red-500"
+                    : "border-gray-200"
+                } rounded-lg w-1/2 p-4 border-2 outline-none`}
+                placeholder="Country..."
+              />
+            </label>
+            <label className="flex flex-col space-y-2">
+              <p className="text-xl">City</p>
+              <input
+                type="text"
+                name="city"
+                value={student.city}
+                onChange={(e) => {
+                  handleChange(e);
+                  handleErrorChange(e);
+                }}
+                className={`${
+                  studentError.cityError ? "border-red-500" : "border-gray-200"
+                } rounded-lg w-1/2 p-4 border-2 outline-none`}
+                placeholder="City..."
+              />
+            </label>
 
-              <div className="self-center">
-                <button
-                  className="mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-8 py-2 text-xl"
-                  type="submit"
-                >
-                  Add student
-                </button>
-              </div>
-            </form>
-          </div>
+            <div className="self-center">
+              <button
+                className="mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-8 py-2 text-xl"
+                type="submit"
+              >
+                Add student
+              </button>
+            </div>
+          </form>
         </div>
 
         <AddMultipleStudents />
