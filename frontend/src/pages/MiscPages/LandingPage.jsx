@@ -19,9 +19,9 @@ export const LandingPage = () => {
       </div>
       <div className="flex-row relative">
         <div className="w-[100%] flex justify-between mt-[7vh]">
-          <div className="flex flex-col pt-20 w-[50%] ">
-            <div className="font-bold ml-32 text-8xl">Bridgy</div>
-            <div className="font-bold ml-32 mt-4 text-6xl w-[75%]">
+          <div className="flex flex-col pt-20 w-[50%] justify-center ">
+            <div className="font-bold ml-32 text-6xl">Bridgy</div>
+            <div className="font-bold ml-32 mt-4 text-4xl w-[75%]">
               Connecting <span className="text-[#2135D9]"> Hearts,   </span>
               <br></br> Building{" "}
               <span className="text-[#2135D9]"> Futures </span>
@@ -40,7 +40,7 @@ export const LandingPage = () => {
               </button>
             </div>
           </div>
-          <div className="w-2/4">
+          <div className="w-[50%]">
             <img
               className="w-100% border-8 border-[#2EA0FB] border-l-0 border-t-0"
               src={pic1}
@@ -54,12 +54,12 @@ export const LandingPage = () => {
           </div>
           <div className="flex items-center pt-8 w-100%">
             <img
-              className="border-8 border-[#2EA0FB] border-r-0 border-b-0 w-2/5"
+              className="border-8 border-[#2EA0FB] border-r-0 border-b-0 w-2/5 object-cover"
               src={pic2}
               style={{ height: "60vh" }}
             />
             <div className="flex-row ml-8 w-2/4 pr-8 text-justify">
-              <div className="text-3xl">
+              <div className="text-2xl">
                 Our team had a ton of experience engaging in community service
                 in high school, with some of us creating charities involving 60+
                 people.
@@ -84,7 +84,7 @@ export const LandingPage = () => {
                   </li>
                 </ul>
               </div>
-              <div className="pt-4 text-3xl">
+              <div className="pt-4 text-2xl">
                 There is simply a lack of centralized access to information or
                 the digital infrastructure needed for these ecosystems to
                 interact dynamically.
@@ -115,7 +115,7 @@ export const LandingPage = () => {
           </div>
         </div>
         <div className="w-[100%] flex-row">
-          <div className="flex justify-around pt-[5vh] content-center pb-20">
+          <div className="flex justify-around pt-[7vh] content-center pb-20">
             <div className="text-5xl font-bold content-center px-6 pl-6" >
               What <span className="text-[#2135D9]"> We Do </span>
             </div>

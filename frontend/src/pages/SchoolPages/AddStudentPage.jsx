@@ -89,15 +89,15 @@ export const AddStudentPage = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between">
-        <div className="flex-1 m-5 p-5 rounded-3xl bg-white">
+      <div className="flex flex-row justify-between bg-gray-100">
+        <div className="flex-1 m-5 p-5 rounded-3xl bg-white ">
           <h1 className="text-2xl font-semibold">Add One Student</h1>
           <form
             className="m-5 flex flex-col space-y-6"
             onSubmit={submitHandler}
           >
             <label className="flex flex-col space-y-2">
-              <p className="text-xl">Name</p>
+              <p className="text-xl w-[50%] ">Name</p>
               <input
                 type="text"
                 name="username"
@@ -110,12 +110,12 @@ export const AddStudentPage = () => {
                   studentError.usernameError
                     ? "border-red-500"
                     : "border-gray-200"
-                } rounded-lg w-1/2 p-3 border-2 outline-none`}
+                } rounded-lg w-1/2 py-2 pl-2 border outline-none`}
                 placeholder="Name..."
               />
             </label>
             <label className="flex flex-col space-y-2">
-              <p className="text-xl">Email</p>
+              <p className="text-xl w-[50%]">Email</p>
               <input
                 type="text"
                 name="email"
@@ -126,15 +126,15 @@ export const AddStudentPage = () => {
                 }}
                 className={`${
                   studentError.emailError ? "border-red-500" : "border-gray-200"
-                } rounded-lg w-1/2 p-3 border-2 outline-none`}
+                } rounded-lg w-1/2 py-2 pl-2 border outline-none`}
                 placeholder="Email..."
               />
             </label>
             <label className="flex flex-col space-y-2">
-              <p className="text-xl">Grade</p>
+              <p className="text-xl w-[50%]">Grade</p>
               <select
                 value={grade}
-                className="bg-white w-1/2 p-3 border-2 border-gray-200 rounded-lg outline-none"
+                className="bg-white w-1/2 py-2 pl-2 border border-gray-200 rounded-lg outline-none"
                 onChange={(e) => {
                   handleChange(e);
                   handleErrorChange(e);
@@ -147,7 +147,7 @@ export const AddStudentPage = () => {
               </select>
             </label>
             <label className="flex flex-col space-y-2">
-              <p className="text-xl">Phone Number</p>
+              <p className="text-xl w-[50%]">Phone Number</p>
               <input
                 type="number"
                 name="phoneNumber"
@@ -161,11 +161,11 @@ export const AddStudentPage = () => {
                   studentError.phoneNumberError
                     ? "border-red-500"
                     : "border-gray-200"
-                } rounded-lg w-1/2 p-4 border-2 outline-none`}
+                } rounded-lg w-1/2 py-2 pl-2 border outline-none`}
               />
             </label>
             <label className="flex flex-col space-y-2">
-              <p className="text-xl">Country</p>
+              <p className="text-xl w-[50%]">Country</p>
               <input
                 type="text"
                 name="country"
@@ -178,12 +178,12 @@ export const AddStudentPage = () => {
                   studentError.countryError
                     ? "border-red-500"
                     : "border-gray-200"
-                } rounded-lg w-1/2 p-4 border-2 outline-none`}
+                } rounded-lg w-1/2 py-2 pl-2 border outline-none`}
                 placeholder="Country..."
               />
             </label>
             <label className="flex flex-col space-y-2">
-              <p className="text-xl">City</p>
+              <p className="text-xl w-[50%]">City</p>
               <input
                 type="text"
                 name="city"
@@ -194,12 +194,12 @@ export const AddStudentPage = () => {
                 }}
                 className={`${
                   studentError.cityError ? "border-red-500" : "border-gray-200"
-                } rounded-lg w-1/2 p-4 border-2 outline-none`}
+                } rounded-lg w-1/2 py-2 pl-2 border outline-none`}
                 placeholder="City..."
               />
             </label>
 
-            <div className="self-center">
+            <div className="w-[50%]">
               <button
                 className="mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-8 py-2 text-xl"
                 type="submit"
