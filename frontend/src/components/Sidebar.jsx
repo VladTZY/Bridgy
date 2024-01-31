@@ -51,7 +51,7 @@ export const Sidebar = () => {
                   <div>
                     {location.pathname == "/student/dashboard" ? (
                       <Link to="/student/dashboard">
-                        <div className="flex items-center rounded-l bg-[#2135D9] p-4 space-x-1 w-full ">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-1 w-full ">
                           <img
                             src={dash_white}
                             alt="react logo"
@@ -62,7 +62,7 @@ export const Sidebar = () => {
                       </Link>
                     ) : (
                       <Link to="/student/dashboard">
-                        <div className="flex items-center p-4 rounded-l hover:bg-blue-200 space-x-1">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-1">
                           <img
                             src={dash_black}
                             alt="react logo"
@@ -78,7 +78,7 @@ export const Sidebar = () => {
                     location.pathname.toString().substring(0, 12) ==
                       "/opportunity" ? (
                       <Link to="/student/find_opportunities">
-                        <div className="flex items-center rounded-l bg-[#2135D9] p-4 space-x-1">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-1">
                           <img
                             src={fo_white}
                             alt="react logo"
@@ -91,7 +91,7 @@ export const Sidebar = () => {
                       </Link>
                     ) : (
                       <Link to="/student/find_opportunities">
-                        <div className="flex items-center p-4 rounded-l hover:bg-blue-200 space-x-1">
+                        <div className="flex items-center p-4 rounded-xl hover:bg-blue-200 space-x-1">
                           <img
                             src={fo_black}
                             alt="react logo"

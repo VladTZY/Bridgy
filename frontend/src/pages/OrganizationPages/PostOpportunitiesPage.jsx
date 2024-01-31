@@ -160,8 +160,8 @@ export const PostOpportunitiesPage = () => {
   };
 
   return (
-    <div className="h-full m-5 bg-gray-100">
-      <div className="flex flex-col">
+    <div className="m-5 bg-gray-100">
+      <div className="flex flex-col bg-gray-100">
         <div className="bg-white p-5 rounded-3xl">
           <h1 className="text-xl font-semibold">Create New Opportunity</h1>
           <form
@@ -183,7 +183,7 @@ export const PostOpportunitiesPage = () => {
                   formError["descriptionError"]
                     ? "border-red-500"
                     : "border-gray-200"
-                } rounded-lg p-4 border-2 h-40 outline-none`}
+                } rounded-lg p-4 border h-40 outline-none`}
                 style={{ width: "100%" }}
               />
             </label>
@@ -203,7 +203,7 @@ export const PostOpportunitiesPage = () => {
                     formError["nameError"]
                       ? "border-red-500"
                       : "border-gray-200"
-                  } rounded-lg p-4 border-2 outline-none`}
+                  } rounded-lg p-4 border outline-none`}
                   style={{ width: "100%" }}
                 />
               </label>
@@ -222,11 +222,11 @@ export const PostOpportunitiesPage = () => {
                     formError["supervisorContactError"]
                       ? "border-red-500"
                       : "border-gray-200"
-                  } rounded-lg p-4 border-2 outline-none`}
+                  } rounded-lg p-4 border outline-none`}
                   style={{ width: "100%" }}
                 />
               </label>
-              <label className="flex-1 flex items-center">
+              <label className="flex-1 flex items-center justify-center">
                 <p className="text-xl">Is the event remote?</p>
                 <input
                   className="m-2"
@@ -247,9 +247,9 @@ export const PostOpportunitiesPage = () => {
                     formError["capacityError"]
                       ? "border-red-500"
                       : "border-gray-200"
-                  } rounded-lg w-full border-2 flex`}
+                  } rounded-lg w-full border flex`}
                 >
-                  <img className="ml-2" src={TimeIcon} />
+                  <img className="ml-2 w-[1.8vw]" src={TimeIcon} />
                   <input
                     type="number"
                     name={"capacity"}
@@ -271,9 +271,9 @@ export const PostOpportunitiesPage = () => {
                     formError["hoursError"]
                       ? "border-red-500"
                       : "border-gray-200"
-                  } rounded-lg w-full border-2 flex`}
+                  } rounded-lg w-full border flex`}
                 >
-                  <img className="ml-2" src={TimeIcon} />
+                  <img className="ml-2 w-[1.8vw]" src={TimeIcon} />
                   <input
                     type="number"
                     name="hours"
@@ -295,9 +295,9 @@ export const PostOpportunitiesPage = () => {
                     formError["timeError"]
                       ? "border-red-500"
                       : "border-gray-200"
-                  } rounded-lg w-full border-2 flex`}
+                  } rounded-lg w-full border flex`}
                 >
-                  <img className="ml-4" src={CalendarIcon} />
+                  <img className="ml-2 w-[1.8vw]" src={CalendarIcon} />
                   <input
                     type="datetime-local"
                     name="time"
@@ -323,9 +323,9 @@ export const PostOpportunitiesPage = () => {
                       formError["countryError"]
                         ? "border-red-500"
                         : "border-gray-200"
-                    } rounded-lg w-full border-2 flex`}
+                    } rounded-lg w-full border flex`}
                   >
-                    <img className="ml-2" src={LocationIcon} />
+                    <img className="ml-2 w-[1.8vw]" src={LocationIcon} />
                     <input
                       type="text"
                       name="country"
@@ -347,9 +347,9 @@ export const PostOpportunitiesPage = () => {
                       formError["cityError"]
                         ? "border-red-500"
                         : "border-gray-200"
-                    } rounded-lg w-full border-2 flex`}
+                    } rounded-lg w-full border flex`}
                   >
-                    <img className="ml-2" src={LocationIcon} />
+                    <img className="ml-2 w-[1.8vw]" src={LocationIcon} />
                     <input
                       type="text"
                       name="city"
@@ -371,9 +371,9 @@ export const PostOpportunitiesPage = () => {
                       formError["addressError"]
                         ? "border-red-500"
                         : "border-gray-200"
-                    } rounded-lg w-full border-2 flex`}
+                    } rounded-lg w-full border flex`}
                   >
-                    <img className="ml-2" src={LocationIcon} />
+                    <img className="ml-2 w-[1.8vw]" src={LocationIcon} />
                     <input
                       type="text"
                       name="address"
@@ -395,7 +395,7 @@ export const PostOpportunitiesPage = () => {
                 <div class="flex items-center justify-center w-full">
                   <label
                     for="dropzone-file"
-                    class="flex flex-col items-center justify-center w-full h-64 border-2 border-[#2135D9] border-dashed rounded-lg cursor-pointer bg-[#f8fcfd] hover:bg-[#e9f5f8]"
+                    class="flex flex-col items-center justify-center w-full h-64 border border-[#2135D9] border-dashed rounded-lg cursor-pointer bg-[#f8fcfd] hover:bg-[#e9f5f8]"
                   >
                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
                       <svg
@@ -436,7 +436,7 @@ export const PostOpportunitiesPage = () => {
               </div>
               <div className="flex-1 flex flex-col justify-end items-end space-y-10">
                 <button
-                  className="bg-[#2EA0FB] text-white py-6 px-20 rounded-full hover:bg-[#2135D9] text-xl"
+                  className="bg-[#2EA0FB] text-white py-2 px-6  rounded-full hover:bg-[#2135D9] text-l"
                   type="submit"
                 >
                   Submit

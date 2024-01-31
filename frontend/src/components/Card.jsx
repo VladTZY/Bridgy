@@ -24,7 +24,7 @@ export const Card = ({
   if (location == "") location = "Remote";
 
   return (
-    <div className="w-[30%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white ml-2">
+    <div className="w-[30%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white ml-2 my-2 mr-2">
       <img
         src={photoUrl}
         className="rounded-xl mt-4 self-center px-3 w-[100%] object-cover"

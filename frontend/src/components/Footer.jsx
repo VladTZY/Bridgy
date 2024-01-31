@@ -28,19 +28,19 @@ export const Footer = () => {
   return (
     <div className="flex-row items-center h-[55vh] bg-[#02040D]">
       <div className="flex items-start justify-around h-[85%] bg-[#02040D]">
-        <div className="flex-row items-center mt-24">
+        <div className="flex-row items-center mt-10">
           <img
             src={logo}
             alt="react logo"
             style={{ width: "150px", height: "150px" }}
           />
-          <div className="text-white text-4xl font-nunito">Bridgy</div>
+          <div className="text-white text-2xl font-nunito">Bridgy</div>
           <div className="text-gray-400 text-lg pt-4 font-nunito">
             Connecting Hearts, <br></br> Building Futures
           </div>
         </div>
-        <div className="flex flex-col space-y-5 mt-24">
-          <div className="text-2xl text-white font-nunito">Companies</div>
+        <div className="flex flex-col space-top-5 space-bottom-2 mt-10">
+          <div className="text-xl text-white font-nunito">Companies</div>
           <div>
             <button onClick={scToHome}>
               <div className="text-lg text-white pt-4 font-nunito">Home</div>
@@ -66,14 +66,14 @@ export const Footer = () => {
             </button>
           </div>
         </div>
-        <div className="flex flex-col space-y-5 mt-24">
-          <div className="text-2xl text-white font-nunito">Address</div>
+        <div className="flex flex-col space-top-5 mt-10">
+          <div className="text-xl text-white font-nunito">Address</div>
           <div className="text-base text-white pt-6 font-nunito">
             5500 S UNIVERSITY AVE <br></br> CHICAGO, IL 60637
           </div>
         </div>
-        <div className="flex flex-col space-y-5 mt-24">
-          <div className="text-2xl text-white font-nunito">
+        <div className="flex flex-col space-y-5 mt-10">
+          <div className="text-xl text-white font-nunito">
             Want to get involved? <br></br> Contact Us!
           </div>
           <div className="flex space-x-6">

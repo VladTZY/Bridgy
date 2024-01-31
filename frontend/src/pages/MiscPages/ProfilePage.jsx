@@ -60,14 +60,14 @@ export const ProfilePage = () => {
   };
 
   return (
-    <div className="px-3 pt-3 h-[100vh] bg-gray-100 flex flex-col space-y-4">
-      <div className="bg-white w-full h-[40%] rounded-3xl relative  ">
-        <div className="h-1/2 bg-[url('../../Bridgy_Assets/Images/Banner.png')]"></div>
+    <div className="px-3 pt-3 h-[100vh] bg-gray-100 flex flex-col space-y-4 pb-10">
+      <div className="bg-white w-full  rounded-3xl relative h-[50%] absolute top-0   ">
+        <div className="sticky h-1/2 top-2/2 bg-[url('../../Bridgy_Assets/Images/Banner.png')]"></div>
         <img
-          className="absolute w-40 h-40 left-32 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-full"
+          className="absolute w-[12%] left-32 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-full"
           src="https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png"
         ></img>
-        <div className="pl-60 pt-7 pr-6 flex justify-between items-center  w-100% sticky bottom-0 ">
+        <div className="sticky pl-60 pt-7 pr-6 flex justify-between items-center w-[100%]  ">
           <div className="flex">
             <div className="flex flex-col">
               <h1 className="font-semibold text-2xl">{userInfo.username}</h1>
@@ -81,7 +81,7 @@ export const ProfilePage = () => {
             <div className="flex items-end space-x-3">
               <button
                 onClick={() => setPasswordModal(true)}
-                className="bg-[#2135D9] text-white  rounded-[50px] hover:bg-blue-900"
+                className="bg-[#2135D9] text-white p-0.5 rounded-[50px] hover:bg-blue-900"
               >
                 <div className="flex my-1 mx-4">
                   <img className="my-auto w-6 h-6" src={EditProfileIcon} />
@@ -90,7 +90,7 @@ export const ProfilePage = () => {
               </button>
               <button
                 onClick={onClickHandler}
-                className="bg-[#2135D9] text-white rounded-[50px] hover:bg-blue-900"
+                className="bg-[#2135D9] text-white p-0.5 rounded-[50px] hover:bg-blue-900"
               >
                 {
                   {
@@ -123,9 +123,9 @@ export const ProfilePage = () => {
       </div>
 
       <div className="flex flex-col h-full space-y-4 pt-3">
-        <h1 className="font-semibold text-3xl pl-3">Account Information</h1>
+        <h1 className="font-semibold text-2xl pl-3">Account Information</h1>
 
-        <div className="text-xl font-medium text-gray-700 flex flex-col space-y-4">
+        <div className="text-l text-center font-medium text-gray-700 flex flex-col space-y-4">
           <div className="flex mx-5 space-x-20">
             {
               {
@@ -137,7 +137,7 @@ export const ProfilePage = () => {
                       value={userInfo.username}
                       readOnly={true}
                       disabled={true}
-                      className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                      className="my-2 rounded-full w-full py-3 bg-gray-100 border border-gray-200 font-normal text-center"
                     ></input>
                   </div>
                 ),
@@ -149,7 +149,7 @@ export const ProfilePage = () => {
                       value={userInfo.username}
                       readOnly={true}
                       disabled={true}
-                      className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                      className="my-2 rounded-full w-full py-3 bg-gray-100 border border-gray-200 font-normal text-center"
                     ></input>
                   </div>
                 ),
@@ -161,21 +161,21 @@ export const ProfilePage = () => {
                       value={userInfo.username}
                       readOnly={true}
                       disabled={true}
-                      className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                      className="my-2 rounded-full w-full py-3 bg-gray-100 border border-gray-200 font-normal text-center"
                     ></input>
                   </div>
                 ),
               }[userInfo.role]
             }
 
-            <div className="flex-1 flex flex-col w-[50vw]">
+            <div className="flex-1 flex flex-col">
               <label>Email</label>
               <input
                 type="text"
                 value={userInfo.email}
                 readOnly={true}
                 disabled={true}
-                className="my-2 rounded-full w-[40%] p-4 bg-gray-100 border-2 border-gray-200 font-normal text-center"
+                className="my-2 rounded-full py-3 bg-gray-100 border border-gray-200 font-normal text-center"
               ></input>
             </div>
           </div>
@@ -191,7 +191,7 @@ export const ProfilePage = () => {
                       value={userInfo.username}
                       readOnly={true}
                       disabled={true}
-                      className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                      className="my-2 rounded-full w-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
                     ></input>
                   </div>
 
@@ -202,7 +202,7 @@ export const ProfilePage = () => {
                       value={userInfo.schoolName}
                       readOnly={true}
                       disabled={true}
-                      className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                      className="my-2 rounded-full w-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
                     ></input>
                   </div>
                 </div>
@@ -222,7 +222,7 @@ export const ProfilePage = () => {
                       }
                       disabled={isDisabled}
                       readOnly={isDisabled}
-                      className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                      className="my-2 rounded-full w-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
                     >
                       <option value={"EVENT"}>Participating events</option>
                       <option value={"HOURS"}>Working hours</option>
@@ -239,7 +239,7 @@ export const ProfilePage = () => {
                       }
                       disabled={isDisabled}
                       readOnly={isDisabled}
-                      className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                      className="my-2 rounded-full w-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
                     ></input>
                   </div>
                 </div>
@@ -258,7 +258,7 @@ export const ProfilePage = () => {
                 }
                 disabled={isDisabled}
                 readOnly={isDisabled}
-                className="my-2 rounded-full w-[85%] p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                className="my-2 rounded-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
               ></input>
             </div>
 
@@ -269,13 +269,13 @@ export const ProfilePage = () => {
                 value={`${userInfo.location.country}, ${userInfo.location.city}`}
                 disabled={isDisabled}
                 readOnly={isDisabled}
-                className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal"
+                className="my-2 rounded-full w-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
               ></input>
             </div>
           </div>
 
           <div className="flex flex-col mx-5">
-            <label>Bio</label>
+            <label className="text-left">Bio</label>
             <textarea
               type="text"
               value={userInfo.bio}
@@ -284,7 +284,7 @@ export const ProfilePage = () => {
               }
               disabled={isDisabled}
               readOnly={isDisabled}
-              className="my-2 rounded-lg w-full p-4 bg-gray-100 border-2 border-gray-200 font-normal h-[150px]"
+              className="my-2 rounded-lg w-full p-4 bg-gray-100 border border-gray-200 font-normal h-[150px]"
             ></textarea>
           </div>
         </div>
