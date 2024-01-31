@@ -5,12 +5,6 @@ import { AddMultipleStudents } from "../../components/AddMultipleStudents";
 import { CreationModal } from "../../components/CreationModal";
 
 export const AddStudentPage = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
-  const [grade, setGrade] = useState(9);
   const [creationModal, setCreationModal] = useState(false);
 
   const [student, setStudent] = useState({
@@ -61,18 +55,18 @@ export const AddStudentPage = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    setUsername(student.username);
-    setEmail(student.email);
-    setPhoneNumber(student.phoneNumber);
-    setCountry(student.country);
-    setCity(student.city);
-    setGrade(student.grade);
-
     if (validate()) {
       axios
         .post(
           `${import.meta.env.VITE_API_URL}/school/create_one_student`,
-          { username, email, phoneNumber, country, city, grade },
+          {
+            username: student.username,
+            email: student.email,
+            phoneNumber: student.phoneNumber,
+            country: student.country,
+            city: student.city,
+            grade: student.grade,
+          },
           { withCredentials: true }
         )
         .then((res) => {
@@ -133,7 +127,8 @@ export const AddStudentPage = () => {
             <label className="flex flex-col space-y-2">
               <p className="text-xl w-[50%]">Grade</p>
               <select
-                value={grade}
+                name="grade"
+                value={student.grade}
                 className="bg-white w-1/2 py-2 pl-2 border border-gray-200 rounded-lg outline-none"
                 onChange={(e) => {
                   handleChange(e);
