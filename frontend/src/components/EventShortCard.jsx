@@ -16,7 +16,7 @@ export const EventShortCard = ({
 
   return (
     <button onClick={handleButton}>
-      <div className=" mx-5 my-1 px-4 py-2 rounded-xl bg-white flex justify-between transform transition duration-200  hover:scale-105 hover:drop-shadow-black">
+      <div className=" mx-5 my-1 px-4 py-2 rounded-xl bg-white flex justify-between transform transition duration-200  hover:scale-[1.01] hover:drop-shadow-black">
         <div className="flex space-x-4 items-center justify-between w-[100%]  ">
           <div className="py-4 text-xl font-semibold">{title}</div>
           <div className="text-l">{description}</div>

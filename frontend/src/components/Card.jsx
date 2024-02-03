@@ -24,7 +24,7 @@ export const Card = ({
   if (location == "") location = "Remote";
 
   return (
-    <div className="w-[30%] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white ml-2 my-2 mr-2">
+    <div className=" lg:w-[300px] flex flex-col rounded-xl transform transition duration-500  hover:scale-[1.025] hover:drop-shadow-black bg-white ml-2 my-2 mr-2 ">
       <img
         src={photoUrl}
         className="rounded-xl mt-4 self-center px-3 w-[100%] object-cover"
@@ -45,7 +45,7 @@ export const Card = ({
         </div>
       </div>
       <div className="mt-2 text-center justify-center text-xl text-bold max-w-full px-4 truncate">{title}</div>
-      <div className="mx-6 text-l text-center justify-center text-gray-700">
+      <div className="mx-6 text-l text-center justify-center text-gray-700 max-w-full truncate">
         {description?.toString().substring(0, 45)}...
       </div>
       <button
