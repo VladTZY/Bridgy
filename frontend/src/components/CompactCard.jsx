@@ -26,7 +26,7 @@ export const CompactCard = ({
   return (
     <button
       onClick={handleMoreInfo}
-      className="w-[30%] h-[40vh] flex flex-col rounded-xl transform transition duration-500  hover:scale-105 hover:drop-shadow-black bg-white m-2 margin-y-auto overflow-x-scroll hide-scroll-bar"
+      className=" lg:w-[300px] h-[310px] flex flex-col rounded-xl transform transition duration-500  hover:scale-[1.025] hover:drop-shadow-black bg-white m-2 margin-y-auto  "
     >
       <img
         src={photoUrl}
@@ -34,7 +34,7 @@ export const CompactCard = ({
         style={{ height: "55%", aspectRatio: "16 / 9 , w-[100%]," }}
       />
       <div className="pt-2  px-4 text-xl text-bold w-full "><p className="w-full text-clip overflow-hidden truncate justify-center text-center">{title}</p></div> 
-      <div className="mx-auto pt-2 px-2 text-l text-gray-700">
+      <div className=" pt-2 px-5 text-l text-gray-700 w-full text-clip overflow-hidden truncate justify-center text-center">
         {description?.toString().substring(0, 30)}...
       </div>
       <div className="flex h-[10%] w-full mt-2  justify-center px-3">

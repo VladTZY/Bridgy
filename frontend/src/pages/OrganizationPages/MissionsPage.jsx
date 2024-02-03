@@ -42,12 +42,12 @@ export const MissionsPage = () => {
   return (
     <div className="min-h-full bg-gray-100 flex flex-col pb-10">
       <SearchBar />
-      <div className="flex flex-col ">
+      <div className="flex flex-col overflow-x-scroll overflow-hidden">
         <h1 className="text-2xl font-semibold mx-5 mt-2 mb-3">
           Future Opportunities
         </h1>
 
-        <div className="mx-2 flex flex-wrap ">
+        <div className="mx-2 flex flex-wrap">
           {publishedEvents.map((event) => {
             return (
               <Card
@@ -72,10 +72,10 @@ export const MissionsPage = () => {
         </div>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col ">
         <h1 className="text-2xl font-semibold mx-5 my-3">Past Opportunities</h1>
 
-        <div className="mx-2 flex flex-wrap">
+        <div className="mx-2 flex flex-wrap overflow-x-scroll overflow-hidden">
           {finishedEvents.map((event) => {
             return (
               <Card

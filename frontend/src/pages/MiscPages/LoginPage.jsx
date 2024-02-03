@@ -34,7 +34,7 @@ export const LoginPage = () => {
       <div className="">
         <LoginNavbar />
       </div>
-      <div className="h-[100vh] flex">
+      <div className="h-[90vh] flex">
         <div className="w-6/12 flex items-center justify-center content-center">
           <div className="w-8/12">
             <h1 className="font-semibold text-4xl">Login</h1>
@@ -109,10 +109,10 @@ export const LoginPage = () => {
           </div>
         </div>
 
-        <div className="w-6/12 h-[100vh] relative">
+        <div className="w-3/12 relative index-0">
           <img
             src={LoginImage}
-            className="w-[90%] absolute top-1/2 right-0 transform -translate-x-2/2 -translate-y-1/2"
+            className="w-[40%] fixed right-0 top-1/2 transform -translate-y-1/2 -translate-x-2/2"
           ></img>
         </div>
       </div>

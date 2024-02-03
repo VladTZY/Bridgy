@@ -87,7 +87,7 @@ export const OrganizationDashboardPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col w-[90]">
+    <div className="min-h-full bg-gray-100 flex flex-col pb-5 ">
       <div className="flex flex-col">
         <div className="mx-5 my-7 flex justify-between items-center ">
           <div className="text-2xl font-semibold">Ongoing Events</div>
@@ -97,7 +97,7 @@ export const OrganizationDashboardPage = () => {
             </button>
           </Link>
         </div>
-        <div className="mx-2 flex">
+        <div className="mx-2 flex flex-row overflow-x-scroll">
           {ongoingEvents.slice(0, 4).map((event) => {
             return (
               <CompactCard
