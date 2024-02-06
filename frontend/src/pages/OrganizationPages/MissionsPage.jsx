@@ -47,7 +47,7 @@ export const MissionsPage = () => {
           Future Opportunities
         </h1>
 
-        <div className="mx-2 flex flex-wrap">
+        <div className="mx-2 flex flex-wrap justify-center justify-items-left  ">
           {publishedEvents.map((event) => {
             return (
               <Card
@@ -75,7 +75,7 @@ export const MissionsPage = () => {
       <div className="flex flex-col ">
         <h1 className="text-2xl font-semibold mx-5 my-3">Past Opportunities</h1>
 
-        <div className="mx-2 flex flex-wrap overflow-x-scroll overflow-hidden">
+        <div className="mx-2 flex flex-wrap justify-center justify-items-left">
           {finishedEvents.map((event) => {
             return (
               <Card
