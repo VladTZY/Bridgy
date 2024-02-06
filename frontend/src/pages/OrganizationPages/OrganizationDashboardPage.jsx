@@ -97,7 +97,7 @@ export const OrganizationDashboardPage = () => {
             </button>
           </Link>
         </div>
-        <div className="mx-2 flex flex-row overflow-x-scroll">
+        <div className="mx-2 flex flex-row overflow-x-scroll no-scrollbar">
           {ongoingEvents.slice(0, 4).map((event) => {
             return (
               <CompactCard
@@ -137,7 +137,7 @@ export const OrganizationDashboardPage = () => {
         <div className="flex flex-col">
           <h1 className="text-2xl font-semibold mx-5 my-7">Upcoming Events</h1>
 
-          <div className="mx-2 flex">
+          <div className="mx-2 flex overflow-x-scroll no-scrollbar">
             {publishedEvents.slice(0, 4).map((event) => {
               return (
                 <CompactCard
