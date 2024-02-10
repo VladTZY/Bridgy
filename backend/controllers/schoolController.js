@@ -5,49 +5,33 @@ const {
   UserToEvent,
   EventModel,
 } = require("../database/sequelize");
-const validator = require("validator");
+const userValidator = require("../misc/userValidator");
 const bcrypt = require("bcrypt");
-//const csv = require("fast-csv");
 const fs = require("fs");
-const csv = require('csv-parser');
-const papa = require('papaparse');
+const csv = require("csv-parser");
+const papa = require("papaparse");
 
-const addStudent = (id, username, password, email, phoneNumber, bio, country, city, grade) => {
-  
-}
-
-const createOneStudent = async (req, res) => {
-  const { username, email, phoneNumber, bio, country, city, grade } = req.body;
+const createStudent = async (
+  { username, email, phoneNumber, bio, country, city, grade },
+  reqId
+) => {
   const password = "studentPassword@123";
 
   try {
-    if (!username || !email || !password || !phoneNumber || !grade)
-      throw Error("All fields need to be filled");
+    //VALIDATIONS
+    await userValidator({ username, email, password, phoneNumber });
 
-    if (!validator.isEmail(email)) {
-      throw Error("Email invalid");
-    }
-
-    if (!validator.isStrongPassword(password)) {
-      throw Error("Password too weak");
-    }
-
-    const exists = await UserModel.findOne({
-      where: {
-        email: email,
-      },
-    });
-
-    if (exists) throw Error("Email already registered");
+    if (!grade) throw Error("Grade needs to be filled");
 
     const school = await SchoolModel.findOne({
       where: {
-        adminId: req.user.id,
+        adminId: reqId,
       },
     });
 
-    if (!school) throw Error(`User is not admin of any school ${req.user.id}`);
+    if (!school) throw Error(`User is not admin of any school ${reqId}`);
 
+    /// CREATION OF USER
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 
@@ -68,7 +52,7 @@ const createOneStudent = async (req, res) => {
       role: "STUDENT",
     });
 
-    res.status(200).json({
+    return {
       username,
       email,
       grade,
@@ -76,8 +60,19 @@ const createOneStudent = async (req, res) => {
       bio,
       schoolId: user.schoolId,
       role: user.role,
-    });
+    };
   } catch (error) {
+    throw error;
+  }
+};
+
+const createOneStudent = async (req, res) => {
+  try {
+    await createStudent(req.body, req.user.id);
+
+    res.status(200).json("Student created");
+  } catch (error) {
+    console.log(error.message);
     res.status(500).json(error.message);
   }
 };
@@ -88,17 +83,22 @@ const handleData = (data) => {
   const email = studentInfo[3];
   const phoneNumber = studentInfo[4];
   const grade = studentInfo[5];
-  
-}
+};
 
 const createMultipleStudents = async (req, res) => {
   try {
-    /// req.file.path - file path
-
     const csvFilePath = req.file.path;
-    const csvData = [];
 
-    fs.createReadStream(csvFilePath).pipe(csv()).on('data', (data) => {handleData(data); csvData.push(data);}).on('error', () => {console.log("CSV Format not respected.")});
+    fs.createReadStream(csvFilePath)
+      .pipe(csv())
+      .on("data", (data) => {
+        handleData(data);
+        csvData.push(data);
+        console.log(data);
+      })
+      .on("error", () => {
+        throw new Error("CSV Format not respected.");
+      });
 
     res.status(200).json({ message: "ok" });
   } catch (error) {
