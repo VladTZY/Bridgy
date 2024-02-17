@@ -10,7 +10,8 @@ import pic9 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/charityicon.png";
 import pic10 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/schoolicon.png";
 import pic11 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/lovephoto.jpg";
 import pic12 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/stats.png";
-
+import pic13 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/FIND OPPORTUNITIES (3).png";
+import pic14 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/heropicv1.jpg";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
 export const LandingPage = () => {
@@ -24,8 +25,8 @@ export const LandingPage = () => {
       <div className="flex flex-col items-center justify-center w-[100vw] bg-gray-100 pt-[10vh]  md:mt-0">
         <div className="flex flex-col w-[100vw]  md:h-[100vh] 2xl:h-[85vh] bg-gray-100 pb-10 justify-center items-center">
           <div className="flex flex-col md:flex-row px-8 relative ">
-          <img className=" md:w-[50%] rounded-2xl" src={pic11} alt="charitieslove" />
-          <div className="text-black\ text-4xl md:text-6xl font-bold flex flex-col justify-center items-center text-center md:w-[50%]">
+          <img className=" md:w-[50%] rounded-2xl drop-shadow-2xl	" src={pic14} alt="charitieslove" />
+          <div className="text-black pt-4 xl:pt-0 text-4xl md:text-6xl font-bold flex flex-col justify-center items-center text-center md:w-[50%]">
               Welcome to Bridgy
             <div className="text-black text-xl md:text-3xl pt-5 ">
             <span className="animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent transition duration-100">Connecting hearts, building futures! </span>
