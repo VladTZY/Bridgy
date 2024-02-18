@@ -41,7 +41,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="h-[100vh] bg-white pl-3 w-[15vw]  ">
+    <div className="h-[100vh] bg-white pl-3 w-[15vw] ">
       <div className="h-[100%] flex flex-col justify-between">
         <div>
           {
@@ -57,7 +57,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className=" text-white text-l">Dashboard</div>
+                          <div className="hidden sm:block text-white text-l">Dashboard</div>
                         </div>
                       </Link>
                     ) : (

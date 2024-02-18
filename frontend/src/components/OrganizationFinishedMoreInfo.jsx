@@ -21,7 +21,7 @@ export const OrganizationFinishedMoreInfo = ({ eventId }) => {
 
   return (
     <div className="mt-5">
-      <div className="text-xl font-extrabold text-center">This event is now finished!</div>
+      <div className="text-xl font-extrabold text-center  ">This event is now finished!</div>
       <div className="text-center">
         <h1 className="text-xl font-semibold">Who showed up?</h1>
         <AcceptedStudentsTable eventId={eventId} students={finishedStudents} />

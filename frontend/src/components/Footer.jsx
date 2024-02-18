@@ -26,84 +26,64 @@ export const Footer = () => {
   };
 
   return (
-    <div className="flex-row items-center h-[55vh] bg-[#02040D]">
-      <div className="flex items-start justify-around h-[85%] bg-[#02040D]">
-        <div className="flex-row items-center mt-10">
-          <img
-            src={logo}
-            alt="react logo"
-            style={{ width: "150px", height: "150px" }}
-          />
-          <div className="text-white text-2xl font-nunito">Bridgy</div>
-          <div className="text-gray-400 text-lg pt-4 font-nunito">
-            Connecting Hearts, <br></br> Building Futures
-          </div>
+    <div className="flex flex-col items-center justify-center w-[100vw] bg-black">
+      <img src={logo} alt="react logo" style={{ height: "10vh" }} />
+      <span className="text-xl font-bold text-white">Bridgy</span>
+      <span className="text-white text-sm font-bold text-white justify-center items-center text-center">Connecting hearts,<br></br> building futures!</span>
+      <div className="flex flex-col md:flex-row w-[100vw] bg-black-100 justify-center md:justify-around margin-auto items-center text-center pb-10 px-10">
+        <div className="flex flex-col justify-center items-center text-center pt-4 pb-4 md:w-[30%]">
+          <button onClick={scToHome}>
+            <div className="hover:underline underline-offset-8 decoration-2 hover:text-[#2135D9] text-lg text-white">
+              Home
+            </div>
+          </button>
+          <button onClick={scToAboutUs}>
+            <div className="hover:underline underline-offset-8 decoration-2 hover:text-[#2135D9] text-lg text-white">
+              About Us
+            </div>
+          </button>
+          <button onClick={scToMeetOurCharities}>
+            <div className="hover:underline underline-offset-8 decoration-2 hover:text-[#2135D9] text-lg text-white">
+              Meet Our Charities
+            </div>
+          </button>
+          <button onClick={scToFAQ}>
+            <div className="hover:underline underline-offset-8 decoration-2 hover:text-[#2135D9] text-lg text-white">
+              FAQ
+            </div>
+          </button>
+          <button onClick={scToContactUs}>
+            <div className="hover:underline underline-offset-8 decoration-2 hover:text-[#2135D9] text-lg text-white">
+              Contact Us
+            </div>
+          </button>
         </div>
-        <div className="flex flex-col space-top-5 space-bottom-2 mt-10">
-          <div className="text-xl text-white font-nunito">Companies</div>
-          <div>
-            <button onClick={scToHome}>
-              <div className="text-lg text-white pt-4 font-nunito">Home</div>
-            </button>
-          </div>
-          <div>
-            <button onClick={scToAboutUs}>
-              <div className="text-lg text-white pt-4 font-nunito">
-                About Us
-              </div>
-            </button>
-          </div>
-          <div>
-            <button onClick={scToFAQ}>
-              <div className="text-lg text-white pt-4 font-nunito">FAQ</div>
-            </button>
-          </div>
-          <div>
-            <button onClick={scToContactUs}>
-              <div className="text-lg text-white pt-4 font-nunito">
-                Contact Us
-              </div>
-            </button>
-          </div>
+        <div className="flex flex-col justify-center items-center text-center pb-4 md:pb-0 md:w-[30%]">
+          <span className="text-white text-lg font-bold">Address</span>
+          <span className="text-white text-sm font-semibold">5500 S UNIVERSITY AVE</span>
+          <span className="text-white text-sm font-semibold">CHICAGO, IL 60637</span>
         </div>
-        <div className="flex flex-col space-top-5 mt-10">
-          <div className="text-xl text-white font-nunito">Address</div>
-          <div className="text-base text-white pt-6 font-nunito">
-            5500 S UNIVERSITY AVE <br></br> CHICAGO, IL 60637
-          </div>
-        </div>
-        <div className="flex flex-col space-y-5 mt-10">
-          <div className="text-xl text-white font-nunito">
-            Want to get involved? <br></br> Contact Us!
-          </div>
-          <div className="flex space-x-6">
-            <img
+        <div className="flex flex-col justify-center items-center text-center md:w-[30%]">
+          <span className="text-white text-lg font-bold">Want to get involved?</span>
+          <span className="text-white text-lg font-bold pb-4">Contact Us!</span>
+          <div className="flex space-x-6 pt-2">
+            <img className="w-[9vw] md:w-[2vw]"
               src={insta}
               alt="react logo"
-              style={{ width: "40px", height: "40px" }}
             />
-            <img
+            <img className="w-[9vw] md:w-[2vw]"
               src={twitter}
               alt="react logo"
-              style={{ width: "40px", height: "40px" }}
             />
-            <img
+            <img className="w-[9vw] md:w-[2vw]"
               src={telg}
               alt="react logo"
-              style={{ width: "40px", height: "40px" }}
             />
-            <img
+            <img className="w-[9vw] md:w-[2vw]"
               src={yt}
               alt="react logo"
-              style={{ width: "40px", height: "40px" }}
             />
           </div>
-        </div>
-      </div>
-      <div className="space-y-6">
-        <hr className="color-[#9CA3AF] mx-28 self-center"></hr>
-        <div className="text-gray-400 font-nunito text-center">
-          Copyright Bridgy, Inc. 2023 | Privacy Policy | Terms & Conditions
         </div>
       </div>
     </div>

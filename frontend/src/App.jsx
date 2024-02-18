@@ -267,7 +267,7 @@ function WrappedApp() {
               <div className="fixed  top-[7vh] bottom-16 left-0">
                 <Sidebar />
               </div>
-              <div className=" pl-[15vw] w-[100vw] pt-20">
+              <div className=" md:pl-[15vw] w-[100vw] pt-20">
                 <App />
               </div>
               <div className=" items-end sticky top-[100vh]">
