@@ -36,7 +36,7 @@ export const FindOpportunitiesPage = () => {
         Published Opportunities
       </h1>
 
-      <div className="mx-2 flex flex-wrap">
+      <div className="mx-2 flex flex-wrap justify-center items-center overflow-x-scroll ">
         {events.slice(0, 6).map((event) => {
           return (
             <Card
