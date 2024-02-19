@@ -10,6 +10,8 @@ const bcrypt = require("bcrypt");
 const fs = require("fs");
 const csv = require("csv-parser");
 const papa = require("papaparse");
+const { json } = require("sequelize");
+const { constrainedMemory } = require("process");
 
 const createStudent = async (
   { username, email, phoneNumber, bio, country, city, grade },
@@ -72,33 +74,75 @@ const createOneStudent = async (req, res) => {
 
     res.status(200).json("Student created");
   } catch (error) {
-    console.log(error.message);
     res.status(500).json(error.message);
   }
 };
 
-const handleData = (data) => {
-  const studentInfo = Object.values(data);
-  const username = studentInfo[1] + " " + studentInfo[2];
-  const email = studentInfo[3];
-  const phoneNumber = studentInfo[4];
-  const grade = studentInfo[5];
-};
+function readCSV(filepath, separator = ",") {
+  /** Reads a csv file, taking into consideration linebreaks inside of fields, and double quotes or no quotes.
+   * Converts it into a json object
+   */
+  const file = fs.readFileSync(filepath, { encoding: "utf-8" });
+
+  // Figure out how many cells there are by counting the first line.
+  // ATTENTION: If your header contains commas or a linebreak, this will fail.
+  const firstLineBreak = file.indexOf("\n");
+  const rowsNum = file.slice(0, firstLineBreak).split(",").length;
+
+  // Construct a regex based on how many headers there are
+  const singleCellRegex = `(?:(?:"([\\s\\S]*?)")|((?:(?:[^"${separator}\\n])|(?:""))+))`;
+  let regexText = "";
+
+  for (let i = 0; i < rowsNum; i++) {
+    regexText += "," + singleCellRegex;
+  }
+
+  const regex = new RegExp(regexText.slice(1), "g");
+  const results = file.matchAll(regex);
+
+  const rowsArr = [];
+  for (const row of results) {
+    const newRow = [];
+
+    for (let i = 0; i < rowsNum; i++) {
+      const rowValue = row[2 * i + 1] ?? row[2 * i + 2];
+      newRow.push(rowValue.replaceAll("\r", "")); // Remove \r
+    }
+
+    rowsArr.push(newRow);
+  }
+
+  const headers = rowsArr[0];
+  const rows = rowsArr.slice(1);
+
+  return rows.map((row) =>
+    row.reduce((jsonRow, field, idx) => {
+      jsonRow[headers[idx]] = field;
+      return jsonRow;
+    }, {})
+  );
+}
 
 const createMultipleStudents = async (req, res) => {
   try {
     const csvFilePath = req.file.path;
 
-    fs.createReadStream(csvFilePath)
-      .pipe(csv())
-      .on("data", (data) => {
-        handleData(data);
-        csvData.push(data);
-        console.log(data);
-      })
-      .on("error", () => {
-        throw new Error("CSV Format not respected.");
-      });
+    var jsonArray = readCSV(csvFilePath);
+
+    jsonArray.forEach(async (newEntry) => {
+      await createStudent(
+        {
+          username: newEntry.name,
+          email: newEntry.email,
+          phoneNumber: newEntry.phoneNumber,
+          bio: "",
+          country: newEntry.country,
+          city: newEntry.city,
+          grade: newEntry.grade,
+        },
+        req.user.id
+      );
+    });
 
     res.status(200).json({ message: "ok" });
   } catch (error) {
