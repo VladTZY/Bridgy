@@ -129,7 +129,9 @@ const createMultipleStudents = async (req, res) => {
 
     var jsonArray = readCSV(csvFilePath);
 
-    jsonArray.forEach(async (newEntry) => {
+    for (let i = 0; i < jsonArray.length; i++) {
+      newEntry = jsonArray[i];
+
       await createStudent(
         {
           username: newEntry.name,
@@ -142,11 +144,10 @@ const createMultipleStudents = async (req, res) => {
         },
         req.user.id
       );
-    });
+    }
 
     res.status(200).json({ message: "ok" });
   } catch (error) {
-    console.log(error.message);
     res.status(500).json(error.message);
   }
 };
