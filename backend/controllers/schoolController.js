@@ -116,6 +116,28 @@ function readCSV(filepath, separator = ",") {
   const headers = rowsArr[0];
   const rows = rowsArr.slice(1);
 
+  const defaultHeaders = [
+    "name",
+    "email",
+    "grade",
+    "phoneNumber",
+    "country",
+    "city",
+  ];
+
+  if (headers.length < defaultHeaders.length)
+    throw Error(
+      "One or more columns missing from table, please check your tables columns"
+    );
+  if (headers.length > defaultHeaders.length)
+    throw Error("Excess number of columns, please check your tables columns");
+
+  defaultHeaders.forEach((header) => {
+    if (!headers.includes(header)) {
+      throw Error(`Column "${header}" is missing from table`);
+    }
+  });
+
   return rows.map((row) =>
     row.reduce((jsonRow, field, idx) => {
       jsonRow[headers[idx]] = field;
