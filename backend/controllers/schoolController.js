@@ -5,34 +5,17 @@ const {
   UserToEvent,
   EventModel,
 } = require("../database/sequelize");
-const userValidator = require("../misc/userValidator");
+const studentValidator = require("../misc/studentValidator");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
-const csv = require("csv-parser");
-const papa = require("papaparse");
-const { json } = require("sequelize");
-const { constrainedMemory } = require("process");
 
 const createStudent = async (
   { username, email, phoneNumber, bio, country, city, grade },
-  reqId
+  schoolId
 ) => {
   const password = "studentPassword@123";
 
   try {
-    //VALIDATIONS
-    await userValidator({ username, email, password, phoneNumber });
-
-    if (!grade) throw Error("Grade needs to be filled");
-
-    const school = await SchoolModel.findOne({
-      where: {
-        adminId: reqId,
-      },
-    });
-
-    if (!school) throw Error(`User is not admin of any school ${reqId}`);
-
     /// CREATION OF USER
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
@@ -49,7 +32,7 @@ const createStudent = async (
       phoneNumber: phoneNumber,
       bio: bio,
       password: hash,
-      schoolId: school.id,
+      schoolId: schoolId,
       locationId: location.id,
       role: "STUDENT",
     });
@@ -70,7 +53,25 @@ const createStudent = async (
 
 const createOneStudent = async (req, res) => {
   try {
-    await createStudent(req.body, req.user.id);
+    // check if is admin
+    const school = await SchoolModel.findOne({
+      where: {
+        adminId: req.user.id,
+      },
+    });
+
+    if (!school) throw Error(`User is not admin of any school ${req.user.id}`);
+
+    // validate student
+    await studentValidator({
+      username: req.body.username,
+      email: req.body.email,
+      phoneNumber: req.body.phoneNumber,
+      grade: req.body.grade,
+    });
+
+    // create student
+    await createStudent(req.body, school.id);
 
     res.status(200).json("Student created");
   } catch (error) {
@@ -115,6 +116,28 @@ function readCSV(filepath, separator = ",") {
   const headers = rowsArr[0];
   const rows = rowsArr.slice(1);
 
+  const defaultHeaders = [
+    "name",
+    "email",
+    "grade",
+    "phoneNumber",
+    "country",
+    "city",
+  ];
+
+  if (headers.length < defaultHeaders.length)
+    throw Error(
+      "One or more columns missing from table, please check your tables columns"
+    );
+  if (headers.length > defaultHeaders.length)
+    throw Error("Excess number of columns, please check your tables columns");
+
+  defaultHeaders.forEach((header) => {
+    if (!headers.includes(header)) {
+      throw Error(`Column "${header}" is missing from table`);
+    }
+  });
+
   return rows.map((row) =>
     row.reduce((jsonRow, field, idx) => {
       jsonRow[headers[idx]] = field;
@@ -125,10 +148,36 @@ function readCSV(filepath, separator = ",") {
 
 const createMultipleStudents = async (req, res) => {
   try {
-    const csvFilePath = req.file.path;
+    // check if is admin
+    const school = await SchoolModel.findOne({
+      where: {
+        adminId: req.user.id,
+      },
+    });
 
+    if (!school) throw Error(`User is not admin of any school ${req.user.id}`);
+
+    // get the json data from csv
+    const csvFilePath = req.file.path;
     var jsonArray = readCSV(csvFilePath);
 
+    // validate data
+    for (let i = 0; i < jsonArray.length; i++) {
+      try {
+        await studentValidator({
+          username: jsonArray[i].name,
+          email: jsonArray[i].email,
+          phoneNumber: jsonArray[i].phoneNumber,
+          grade: jsonArray[i].grade,
+        });
+      } catch (error) {
+        throw Error(
+          error.message + " on line " + (i + 1) + "ignoring the header line"
+        );
+      }
+    }
+
+    // create students
     for (let i = 0; i < jsonArray.length; i++) {
       newEntry = jsonArray[i];
 
@@ -142,12 +191,13 @@ const createMultipleStudents = async (req, res) => {
           city: newEntry.city,
           grade: newEntry.grade,
         },
-        req.user.id
+        school.id
       );
     }
 
     res.status(200).json({ message: "ok" });
   } catch (error) {
+    console.log(error.message);
     res.status(500).json(error.message);
   }
 };
