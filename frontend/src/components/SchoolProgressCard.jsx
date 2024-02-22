@@ -8,7 +8,7 @@ export const SchoolProgressCard = ({
   percentage,
 }) => {
   return (
-    <div className="w-[33%] flex rounded-xl bg-white m-3 justify-around">
+    <div className="w-[100%] flex flex-row overscroll-x-hidden rounded-xl bg-white m-3 justify-around">
       <div className="mt-6 flex flex-col space-y-2">
         <div className="text-2xl text-bold">{title}</div>
         <div className="text-3xl">{total}</div>

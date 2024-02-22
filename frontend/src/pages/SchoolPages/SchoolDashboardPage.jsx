@@ -59,58 +59,97 @@ export const SchoolDashboardPage = () => {
   };
 
   return (
-    <div className="h-full bg-gray-100 flex flex-col p-5">
-      <div className="flex">
-        <SchoolProgressCard
-          title={"Objective"}
-          total={stats.actualObjective + "/" + stats.totalObjective}
-          description={""}
-          percentage={Math.round(
-            (stats.actualObjective / stats.totalObjective) * 100
-          )}
-          color={"#32cd32"}
-        />
-        <SchoolProgressCard
-          title={"Total Economy"}
-          total={stats.totalEconomy + "$"}
-          description={""}
-          percentage={100}
-          color={"#eed202"}
-        />
-        <SchoolProgressCard
-          title={"Nr. of Students"}
-          total={stats.completedStudents + "/" + stats.numberOfStudents}
-          description={""}
-          percentage={Math.round(
-            (stats.completedStudents / stats.numberOfStudents) * 100
-          )}
-          color={"#a40000"}
-        />
-      </div>
-      <div className="mt-6 flex justify-between pl-1 mx-3">
-        <h1 className="text-2xl font-semibold">Students</h1>
-        <div className="flex">
-          <select
-            value={sorted}
-            onChange={(e) => handleOrderChange(e.target.value)}
-            className="bg-gray-100 border-2 border-gray-300 p-2 rounded-md mr-2"
-          >
-            <option value="none">Order</option>
-            <option value="alphabetical">Alphabetical</option>
-          </select>
-          <select
-            value={grade}
-            onChange={(e) => setGrade(e.target.value)}
-            className="bg-gray-100 border-2 border-gray-300 p-2 rounded-md"
-          >
-            <option value="9">9th Grade</option>
-            <option value="10">10th Grade</option>
-            <option value="11">11th Grade</option>
-            <option value="12">12th Grade</option>
-          </select>
+      <div>
+        <div className=" md:flex w-[85vw] ml-[15vw] bg-gray-100 flex flex-col px-2 md:p-5 overflow-x-scroll ">
+          <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+            <SchoolProgressCard 
+              title={"Objective"}
+              total={stats.actualObjective + "/" + stats.totalObjective}
+              description={""}
+              percentage={Math.round(
+                (stats.actualObjective / stats.totalObjective) * 100
+              )}
+              color={"#32cd32"}
+            />
+            <SchoolProgressCard
+              title={"Total Economy"}
+              total={stats.totalEconomy + "$"}
+              description={""}
+              percentage={100}
+              color={"#eed202"}
+            />
+            <SchoolProgressCard
+              title={"Nr. of Students"}
+              total={stats.completedStudents + "/" + stats.numberOfStudents}
+              description={""}
+              percentage={Math.round(
+                (stats.completedStudents / stats.numberOfStudents) * 100
+              )}
+              color={"#a40000"}
+            />
+          </div>
+
+          <div className=" w-[85vw] ml-[15vw] bg-gray-100 flex flex-col  md:p-5 overflow-x-scroll overscroll-contain md:hidden"></div>      
+          <div className="  flex flex-row overflow-x-scroll  justify-center items-center w-[300%] md:hidden"> 
+            <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+              <SchoolProgressCard 
+                title={"Objective"}
+                total={stats.actualObjective + "/" + stats.totalObjective}
+                description={""}
+                percentage={Math.round(
+                  (stats.actualObjective / stats.totalObjective) * 100
+                )}
+                color={"#32cd32"}
+              />
+            </div>
+            <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+              <SchoolProgressCard
+                title={"Total Economy"}
+                total={stats.totalEconomy + "$"}
+                description={""}
+                percentage={100}
+                color={"#eed202"}
+              />
+            </div>
+            <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+              <SchoolProgressCard
+                title={"Nr. of Students"}
+                total={stats.completedStudents + "/" + stats.numberOfStudents}
+                description={""}
+                percentage={Math.round(
+                  (stats.completedStudents / stats.numberOfStudents) * 100
+                )}
+                color={"#a40000"}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="ml-[15vw] mt-6 flex flex-col md:flex md:flex-row justify-between  w-[85%] px-6">
+          <h1 className="text-2xl font-semibold text-center md:text-left">Students</h1>
+          <div className="flex items-center justify-center mt-3 md:mt-0">
+            <select
+              value={sorted}
+              onChange={(e) => handleOrderChange(e.target.value)}
+              className="bg-gray-100 border-2 border-gray-300 p-2 rounded-xl mr-2"
+            >
+              <option value="none">Order</option>
+              <option value="alphabetical">Alphabetical</option>
+            </select>
+            <select
+              value={grade}
+              onChange={(e) => setGrade(e.target.value)}
+              className="bg-gray-100 border-2 border-gray-300 p-2 rounded-xl"
+            >
+              <option value="9">9th Grade</option>
+              <option value="10">10th Grade</option>
+              <option value="11">11th Grade</option>
+              <option value="12">12th Grade</option>
+            </select>
+          </div>
+        </div >
+        <div className="ml-[15vw]">
+        <StudentsTable students={tableData} />
         </div>
       </div>
-      <StudentsTable students={tableData} />
-    </div>
-  );
+    );
 };
