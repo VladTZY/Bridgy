@@ -83,7 +83,7 @@ export const AddStudentPage = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between bg-gray-100">
+      <div className="flex flex-row justify-between bg-gray-100 ml-[15vw]">
         <div className="flex-1 m-5 p-5 rounded-3xl bg-white ">
           <h1 className="text-2xl font-semibold">Add One Student</h1>
           <form
