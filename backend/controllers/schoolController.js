@@ -172,7 +172,7 @@ const createMultipleStudents = async (req, res) => {
         });
       } catch (error) {
         throw Error(
-          error.message + " on line " + (i + 1) + "ignoring the header line"
+          error.message + " on line " + (i + 1) + " ignoring the header line"
         );
       }
     }
