@@ -89,7 +89,7 @@ export const SchoolDashboardPage = () => {
             />
           </div>
 
-          <div className=" w-[85vw] ml-[15vw] bg-gray-100 flex flex-col  md:p-5 overflow-x-scroll overscroll-contain md:hidden"></div>      
+          <div className=" w-[85vw] bg-gray-100 flex flex-col  md:p-5 overflow-x-scroll overscroll-contain md:hidden"></div>      
           <div className="  flex flex-row overflow-x-scroll  justify-center items-center w-[300%] md:hidden"> 
             <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
               <SchoolProgressCard 

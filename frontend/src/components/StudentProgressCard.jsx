@@ -1,4 +1,5 @@
 import { Circle } from "rc-progress";
+import pic from "../../Bridgy_Assets/LOGO BRIDGY/fav icon/backgroundcard.png";  
 
 export const StudentProgressCard = ({
   color,
@@ -8,7 +9,7 @@ export const StudentProgressCard = ({
   percentage,
 }) => {
   return (
-    <div className="flex-1 rounded-3xl p-3 bg-white">
+    <div className="flex-1 rounded-3xl p-3"  >
       <div className="flex justify-between overflow-x-scroll hide-scroll-bar">
         <div className="p-3 flex flex-col space-y-4">
           <div className="sm:text-lg md:text-xl lg:text-xl text-bold">
