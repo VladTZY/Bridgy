@@ -2,13 +2,14 @@ module.exports = (filepath) => {
   var XLSX = require("xlsx");
   var workbook = XLSX.readFile(filepath);
   var sheet_name_list = workbook.SheetNames;
-  var data = [];
-  var validatedData = false;
+  var ans = [];
 
   sheet_name_list.forEach(function (y) {
     var worksheet = workbook.Sheets[y];
     var headers = {};
     var validateHeaders = [];
+    var validatedData = false;
+    var data = [];
 
     for (z in worksheet) {
       if (z[0] === "!") continue;
@@ -67,7 +68,8 @@ module.exports = (filepath) => {
     //drop those first two rows which are empty
     data.shift();
     data.shift();
+    ans.push(...data);
   });
 
-  return data;
+  return ans;
 };

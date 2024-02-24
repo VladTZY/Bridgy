@@ -102,6 +102,8 @@ const createMultipleStudents = async (req, res) => {
       jsonArray = readXLSX(filepath);
     if (jsonArray == null) throw Error("Incorect file type");
 
+    console.log(jsonArray);
+
     // validate data
     for (let i = 0; i < jsonArray.length; i++) {
       try {
