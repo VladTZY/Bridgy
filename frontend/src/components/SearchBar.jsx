@@ -1,7 +1,7 @@
 export const SearchBar = () => {
   return (
-    <form className="h-[]">
-      <div className="ml-5 flex relative">
+    <form>
+      <div className=" flex relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
             className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -22,7 +22,7 @@ export const SearchBar = () => {
         <input
           type="search"
           placeholder="Search here..."
-          className="block w-[30%] p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50"
+          className="block w-[50%] md:w-[15%] p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50"
         />
         <button
           type="submit"

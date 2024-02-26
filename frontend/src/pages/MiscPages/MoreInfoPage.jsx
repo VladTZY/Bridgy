@@ -69,8 +69,8 @@ export const MoreInfoPage = () => {
   }, [id, role]);
 
   return (
-    <div className="h-full bg-gray-100 flex flex-col">
-      <div className="mx-5 mb-10 p-5 rounded-lg bg-white flex flex-col">
+    <div className=" bg-gray-100 flex flex-col w-[85vw] ml-[15vw]">
+      <div className="mx-3 mb-10  rounded-lg bg-white flex flex-col">
         <img
           className="rounded-lg self-center"
           src={
@@ -80,28 +80,33 @@ export const MoreInfoPage = () => {
           }
           style={{ height: "45vh",width:"100%", objectFit:"cover", aspectRatio: "16 / 9" }}
         />
-        <div className="mt-4 ml-7 text-xl font-bold text-center">{event.name}</div>
-        <div className="mt-3 ml-7 text-l text-center">{event.description}</div>
-        <div className="flex w-full justify-evenly h-[4vh] mt-3 space-x-4">
-          <div className="flex w-[23%] border items-center justify-center space-x-2 px-4">
-            <img src={CalendarIcon} style={{ height: "70%" }} />
-            <div className="text-l text-black">
+        <div className="mt-4  text-xl font-bold text-center w-[100%] px-2">{event.name}</div>
+        <div className="mt-3 w-[100%] px-2 text-l text-center ">{event.description}</div>
+        <div className="flex flex-row w-[100%] px-3 justify-evenly  mt-3 space-x-4">
+        <div className="flex flex-col w-[50%] space-y-2">
+          <div className="flex  border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
+            <img src={CalendarIcon} style={{ height: "40%" }} />
+            <div className="text-l text-black truncate overflow-hidden">
               {datetimeToStr(event.time)}
             </div>
           </div>
-          <div className="flex w-[23%] border items-center justify-center space-x-2 px-4">
-            <img src={LocationIcon} style={{ height: "70%" }} />
+          <div className="flex border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
+            <img src={LocationIcon} style={{ height: "40%" }} />
             <div className="text-l text-black">{locationName}</div>
           </div>
-          <div className="flex w-[23%] border items-center justify-center space-x-2 px-4">
-            <img src={ClockIcon} style={{ height: "70%" }} />
+          </div>
+          <div className="flex flex-col w-[50%] space-y-2">
+          <div className="flex  border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
+            <img src={ClockIcon} style={{ height: "40%" }} />
             <div className="text-l text-black">{event.hours} hours</div>
           </div>
-          <div className="flex w-[23%] border items-center justify-center space-x-2 px-4">
-            <img src={ClockIcon} style={{ height: "70%" }} />
+          <div className="flex  border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
+            <img src={ClockIcon} style={{ height: "40%" }} />
             <div className="text-l text-black">{event.capacity} places</div>
           </div>
+          </div>
         </div>
+        <div>
         {role == "STUDENT" ? (
           event.status == "PUBLISHED" ? (
             <StudentPublishedMoreInfo
@@ -130,6 +135,7 @@ export const MoreInfoPage = () => {
             You cannot access this event!
           </div>
         )}
+      </div>
       </div>
     </div>
   );

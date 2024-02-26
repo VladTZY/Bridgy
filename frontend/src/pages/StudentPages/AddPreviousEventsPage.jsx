@@ -58,12 +58,12 @@ export const AddPreviousEventsPage = () => {
   };
 
   return (
-    <div className="h-full p-3 bg-gray-100 flex flex-col">
+    <div className="h-full p-3 bg-gray-100 flex flex-col ml-[15vw]">
       <div className="bg-white p-5 rounded-3xl">
         <h1 className="text-2xl font-bold">Add a previous event</h1>
         <div className="">
           <form onSubmit={submitHandler}>
-            <div className="flex">
+            <div className="flex flex-col lg:flex-row">
               <div className="flex-1">
                 <div className="my-6">
                   <label>
@@ -73,8 +73,7 @@ export const AddPreviousEventsPage = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Name..."
-                      className="my-2 rounded-lg p-2 border border-gray-400"
-                      style={{ width: "30rem" }}
+                      className="my-2 rounded-lg p-2 border border-gray-400 w-[100%] lg:w-[30rem]"
                     />
                   </label>
                 </div>
@@ -86,9 +85,8 @@ export const AddPreviousEventsPage = () => {
                       type="text"
                       value={description}
                       placeholder="Description..."
-                      className="my-2 rounded-lg p-2 border border-gray-400"
+                      className="my-2 rounded-lg p-2 border border-gray-400 w-[100%] lg:w-[30rem]"
                       onChange={(e) => setDescription(e.target.value)}
-                      style={{ width: "30rem" }}
                     />
                   </label>
                 </div>
@@ -102,8 +100,7 @@ export const AddPreviousEventsPage = () => {
                       value={supervisorContact}
                       onChange={(e) => setSupervisorContact(e.target.value)}
                       placeholder="Contact..."
-                      className="my-2 rounded-lg p-2 border border-gray-400"
-                      style={{ width: "30rem" }}
+                      className="my-2 rounded-lg p-2 border border-gray-400 w-[100%] lg:w-[30rem]"
                     />
                   </label>
                 </div>
@@ -133,7 +130,7 @@ export const AddPreviousEventsPage = () => {
               </div>
             </div>
 
-            <div className="flex my-6">
+            <div className="flex flex-col lg:flex-row my-6">
               <div className="w-full">
                 <label>
                   <div className="flex">
@@ -149,7 +146,7 @@ export const AddPreviousEventsPage = () => {
                 </label>
               </div>
 
-              <div className="w-full mx-8">
+              <div className="w-full lg:mx-8">
                 <label>
                   <div className="flex">
                     <img className="my-auto w-[5%]" src={ClockIcon} />
@@ -184,7 +181,7 @@ export const AddPreviousEventsPage = () => {
               <></>
             ) : (
               <div>
-                <div className="flex my-6">
+                <div className="flex flex-col lg:flex-row my-6">
                   <div className="w-full">
                     <label>
                       <div className="flex">
@@ -200,7 +197,7 @@ export const AddPreviousEventsPage = () => {
                     </label>
                   </div>
 
-                  <div className="w-full mx-6">
+                  <div className="w-full lg:mx-6">
                     <label>
                       <div className="flex">
                         <img className="my-auto w-[5%]" src={LocationIcon} />
@@ -244,5 +241,6 @@ export const AddPreviousEventsPage = () => {
         </div>
       </div>
     </div>
+
   );
 };

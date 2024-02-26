@@ -42,9 +42,9 @@ export const StudentDashboardPage = () => {
   }, []);
 
   return (
-    <div className="h-full p-3 bg-gray-100 flex flex-col pb-10">
-      <div className="flex justify-between space-x-4">
-        <StudentProgressCard
+    <div className="w-[85vw] p-3 bg-gray-100 flex flex-col pb-10 ml-[15vw]">
+      <div className="flex justify-between space-x-4 w-[400%] overflow-x-scroll overscroll-contain lg:w-[100%]">
+      <div className="flex flex-row   justify-center items-center w-[100%]">        <StudentProgressCard
           title={"Active"}
           total={"250"}
           update={"A 17% increase"}
@@ -72,6 +72,7 @@ export const StudentDashboardPage = () => {
           percentage={20}
           color={"#d8bfd8"}
         />
+      </div>
       </div>
       <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4 pl-2">
         <h1 className="text-xl font-bold">Ongoing Events</h1>

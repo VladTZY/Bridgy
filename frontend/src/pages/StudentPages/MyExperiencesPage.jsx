@@ -20,7 +20,7 @@ export const MyExperiencesPage = () => {
   }, []);
 
   return (
-    <div className="min-h-full p-5 bg-gray-100 flex flex-col space-x-4">
+    <div className="min-h-full p-5 bg-gray-100 flex flex-col space-x-4 ml-[15vw]">
       {
         {
           true: (

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import EditProfileIcon from "../../../Bridgy_Assets/icon/edit profile white.svg";
 import { useSelector } from "react-redux";
+import padlockIcon from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/padlock.png";
 
 import { ChangePasswordModal } from "../../components/ChangePasswordModal";
 
@@ -60,74 +61,62 @@ export const ProfilePage = () => {
   };
 
   return (
-    <div className="px-3 pt-3 h-[100vh] bg-gray-100 flex flex-col space-y-4 pb-10">
-      <div className="bg-white w-full  rounded-3xl relative h-[50%] absolute top-0   ">
-        <div className="sticky h-1/2 top-2/2 bg-[url('../../Bridgy_Assets/Images/Banner.png')]"></div>
-        <img
-          className="absolute w-[12%] left-32 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-full"
-          src="https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png"
-        ></img>
-        <div className="sticky pl-60 pt-7 pr-6 flex justify-between items-center w-[100%]  ">
-          <div className="flex">
-            <div className="flex flex-col">
-              <h1 className="font-semibold text-2xl">{userInfo.username}</h1>
-              <p className="text-gray-500 ">{`${userInfo.role.slice(
-                0,
-                1
-              )}${userInfo.role.slice(1).toLocaleLowerCase()}`}</p>
+    <div className="flex flex-col bg-gray-100">
+      <div className="w-[85vw]  flex ml-[15vw] px-4 mb-10">
+        <div className="flex flex-col w-full bg-white rounded-xl">
+          <div className="flex flex-row justify-between items-center pr-4">
+            <div className=" pr-4 flex flex-row justify-around items-center">
+              <img
+                className="w-[20vw] lg:w-[10vw] pr-4 rounded-xl "
+                src="https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png"
+              ></img>
+              <div className="flex flex-col">
+                <h2 className="text-sm lg:text-xl font-semibold">
+                  {userInfo.username}
+                </h2>
+                <p className="text-gray-400 text-sm">
+                  {`${userInfo.role.slice(0, 1)}${userInfo.role
+                    .slice(1)
+                    .toLocaleLowerCase()}`}
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-row">
+              <div className="bg-black p-1.5 lg:p-2 rounded-l lg:rounded-xl mr-2 flex flex-row justify-center items-center">
+                <img
+                  src={EditProfileIcon}
+                  className="w-4 h-4 cursor-pointer"
+                  onClick={() => setIsDisabled(!isDisabled)}
+                />
+                <p className="pl-2 text-white hidden lg:block">Edit profile</p>
+              </div>
+              <div className=" hidden bg-black p-1.5 lg:p-2 rounded-l lg:rounded-xl mr-2 flex flex-row justify-center items-center">
+                // Div pt save profile sa ii faci cod
+                <img
+                  src={EditProfileIcon}
+                  className="w-4 h-4 cursor-pointer"
+                  onClick={() => setIsDisabled(!isDisabled)}
+                />
+                <p className="pl-2 text-white hidden lg:block">Save profile</p>
+              </div>
+
+              <div className="bg-black p-1.5 lg:p-2 rounded-r lg:rounded-xl flex flex-row justify-center items-center">
+                <img
+                  src={padlockIcon}
+                  className="w-4 h-4 cursor-pointer"
+                  onClick={() => setPasswordModal(true)}
+                />
+                <p className="pl-2 text-white hidden lg:block">Change password</p>
+              </div>
             </div>
           </div>
-          {userId == id ? (
-            <div className="flex items-end space-x-3">
-              <button
-                onClick={() => setPasswordModal(true)}
-                className="bg-[#2135D9] text-white p-0.5 rounded-[50px] hover:bg-blue-900"
-              >
-                <div className="flex my-1 mx-4">
-                  <img className="my-auto w-6 h-6" src={EditProfileIcon} />
-                  <p className="pl-2 my-auto text-l">Change Password</p>
-                </div>
-              </button>
-              <button
-                onClick={onClickHandler}
-                className="bg-[#2135D9] text-white p-0.5 rounded-[50px] hover:bg-blue-900"
-              >
-                {
-                  {
-                    true: (
-                      <div className="flex my-1 mx-4">
-                        <img
-                          className="my-auto w-6 h-6"
-                          src={EditProfileIcon}
-                        />
-                        <p className="ml-2 my-auto text-l">Edit profile</p>
-                      </div>
-                    ),
-                    false: (
-                      <div className="flex my-1 mx-4">
-                        <img
-                          className="my-auto w-6 h-6"
-                          src={EditProfileIcon}
-                        />
-                        <p className="ml-2 my-auto text-l">Save profile</p>
-                      </div>
-                    ),
-                  }[isDisabled]
-                }
-              </button>
-            </div>
-          ) : (
-            <></>
-          )}
         </div>
       </div>
 
-      <div className="flex flex-col h-full space-y-4 pt-3">
-        <h1 className="font-semibold text-2xl pl-3">Account Information</h1>
-
-        <div className="text-l text-center font-medium text-gray-700 flex flex-col space-y-4">
-          <div className="flex mx-5 space-x-20">
-            {
+      <div className="w-[85vw] flex flex-col lg:flex-row ml-[15vw] px-4 ">
+      <div className="flex flex-col w-[100%] lg:w-[50%] bg-white rounded-xl p-4 lg:mr-2 mb-2 lg:mb-0">
+      <div >
+      {
               {
                 STUDENT: (
                   <div className="flex-1 flex flex-col w-full">
@@ -137,7 +126,7 @@ export const ProfilePage = () => {
                       value={userInfo.username}
                       readOnly={true}
                       disabled={true}
-                      className="my-2 rounded-full w-full py-3 bg-gray-100 border border-gray-200 font-normal text-center"
+                      className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
                     ></input>
                   </div>
                 ),
@@ -149,7 +138,7 @@ export const ProfilePage = () => {
                       value={userInfo.username}
                       readOnly={true}
                       disabled={true}
-                      className="my-2 rounded-full w-full py-3 bg-gray-100 border border-gray-200 font-normal text-center"
+                      className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
                     ></input>
                   </div>
                 ),
@@ -161,55 +150,53 @@ export const ProfilePage = () => {
                       value={userInfo.username}
                       readOnly={true}
                       disabled={true}
-                      className="my-2 rounded-full w-full py-3 bg-gray-100 border border-gray-200 font-normal text-center"
+                      className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
                     ></input>
                   </div>
                 ),
               }[userInfo.role]
-            }
-
-            <div className="flex-1 flex flex-col">
-              <label>Email</label>
+            }              
+          
+          <div className="flex-1 flex flex-col w-full">
+            <label>Email</label>
+            <input
+              type="text"
+              value={userInfo.email}
+              readOnly={true}
+              disabled={true}
+              className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
+            ></input>
+            </div>
+           
+           
+            <div className="flex-1 flex flex-col w-full">
+              <label>Phone number</label>
               <input
                 type="text"
-                value={userInfo.email}
-                readOnly={true}
-                disabled={true}
-                className="my-2 rounded-full py-3 bg-gray-100 border border-gray-200 font-normal text-center"
+                value={userInfo.phoneNumber}
+                readOnly={isDisabled}
+                disabled={isDisabled}
+                onChange={(e) =>
+                  setUserInfo({ ...userInfo, phoneNumber: e.target.value })
+                }
+                className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
               ></input>
-            </div>
-          </div>
+              </div>
 
-          {
-            {
-              STUDENT: (
-                <div className="flex mx-5 space-x-20">
-                  <div className="flex-1 flex flex-col w-full">
-                    <label>Full Name</label>
-                    <input
-                      type="text"
-                      value={userInfo.username}
-                      readOnly={true}
-                      disabled={true}
-                      className="my-2 rounded-full w-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
-                    ></input>
-                  </div>
-
-                  <div className="flex-1 flex flex-col w-full">
-                    <label>School Name</label>
-                    <input
-                      type="text"
-                      value={userInfo.schoolName}
-                      readOnly={true}
-                      disabled={true}
-                      className="my-2 rounded-full w-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
-                    ></input>
-                  </div>
-                </div>
-              ),
-              SCHOOL: (
-                <div className="flex mx-5 space-x-20">
-                  <div className="flex-1 flex flex-col w-full">
+      </div>
+      </div>
+      <div className="flex flex-col w-[100%] lg:w-[50%] bg-white rounded-xl p-4 lg:ml-2 mt-2 lg:mt-0">
+      <div className="flex-1 flex flex-col w-full">
+                <label>Location</label>
+                <input
+                  type="text"
+                  value={`${userInfo.location.city}, ${userInfo.location.country}`}
+                  readOnly={true}
+                  disabled={true}
+                  className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
+                ></input>
+              </div>
+              <div className="flex-1 flex flex-col w-full">
                     <label>Objective Type</label>
                     <select
                       type="text"
@@ -222,7 +209,7 @@ export const ProfilePage = () => {
                       }
                       disabled={isDisabled}
                       readOnly={isDisabled}
-                      className="my-2 rounded-full w-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
+                      className="my-2 rounded-xl w-full p-4 bg-white border border-gray-200 font-normal text-center"
                     >
                       <option value={"EVENT"}>Participating events</option>
                       <option value={"HOURS"}>Working hours</option>
@@ -239,42 +226,12 @@ export const ProfilePage = () => {
                       }
                       disabled={isDisabled}
                       readOnly={isDisabled}
-                      className="my-2 rounded-full w-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
+                      className="my-2 rounded-xl w-full p-4 bg-white border border-gray-200 font-normal text-center"
                     ></input>
                   </div>
                 </div>
-              ),
-            }[userInfo.role]
-          }
-
-          <div className="flex mx-5 space-x-20">
-            <div className="flex-1 flex flex-col w-full">
-              <label>Phone number</label>
-              <input
-                type="text"
-                value={userInfo.phoneNumber}
-                onChange={(e) =>
-                  setUserInfo({ ...userInfo, phoneNumber: e.target.value })
-                }
-                disabled={isDisabled}
-                readOnly={isDisabled}
-                className="my-2 rounded-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
-              ></input>
-            </div>
-
-            <div className="flex-1 flex flex-col w-full">
-              <label>Location</label>
-              <input
-                type="text"
-                value={`${userInfo.location.country}, ${userInfo.location.city}`}
-                disabled={isDisabled}
-                readOnly={isDisabled}
-                className="my-2 rounded-full w-full p-4 bg-gray-100 border border-gray-200 font-normal text-center"
-              ></input>
-            </div>
-          </div>
-
-          <div className="flex flex-col mx-5">
+        </div>
+        <div className="flex flex-col ml-[15vw] px-4 mt-5 lg:mt-10 mb-10 lg:mb-0">
             <label className="text-left">Bio</label>
             <textarea
               type="text"
@@ -284,15 +241,10 @@ export const ProfilePage = () => {
               }
               disabled={isDisabled}
               readOnly={isDisabled}
-              className="my-2 rounded-lg w-full p-4 bg-gray-100 border border-gray-200 font-normal h-[150px]"
+              className="my-2 rounded-lg w-full p-4 bg-white border border-gray-200 font-normal h-[150px]"
             ></textarea>
           </div>
-        </div>
       </div>
 
-      {passwordModal ? (
-        <ChangePasswordModal setModal={setPasswordModal} />
-      ) : null}
-    </div>
   );
 };

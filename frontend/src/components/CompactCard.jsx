@@ -24,33 +24,19 @@ export const CompactCard = ({
   if (location == "") location = "Remote";
 
   return (
-    <button
-      onClick={handleMoreInfo}
-      className=" lg:w-[300px] h-[310px] flex flex-col rounded-xl transform transition duration-500  hover:scale-[1.025] hover:drop-shadow-black bg-white m-2 margin-y-auto  "
-    >
-      <img
-        src={photoUrl}
-        className="rounded-lg px-3  pt-4 self-center object-cover"
-        style={{ height: "55%", aspectRatio: "16 / 9 , w-[100%]," }}
-      />
-      <div className="pt-2  px-4 text-xl text-bold w-full "><p className="w-full text-clip overflow-hidden truncate justify-center text-center">{title}</p></div> 
-      <div className=" pt-2 px-5 text-l text-gray-700 w-full text-clip overflow-hidden truncate justify-center text-center">
-        {description?.toString().substring(0, 30)}...
-      </div>
-      <div className="flex h-[10%] w-full mt-2  justify-center px-3">
-        <div className="flex px-3 border justify-around items-center w-[45%]">
-          <img src={CalendarIcon} style={{ height: "50%" }} />
-          <div className="text-md text-black">{dateToStr(time)}</div>
-        </div>
-        <div className="flex px-4 border justify-around items-center w-[30%]">
-          <img src={LocationIcon} style={{ height: "50%" }} />
-          <div className="text-md text-black">{location}</div>
-        </div>
-        <div className="flex px-4 border justify-around items-center w-[25%]">
-          <img src={ClockIcon} style={{ height: "50%" }} />
-          <div className="text-md text-black">{duration}h</div>
-        </div>
-      </div>
-    </button>
+    <div class=" max-w-sm overflow-hidden rounded-lg bg-white shadow ">
+    <img src={photoUrl} class="aspect-video w-full object-cover" alt="" />
+    <div class="p-4  ">
+      <p class="mb-1 text-sm text-primary-500 ">Organization Name • <time>{dateToStr(time)}</time> • <location>{location}</location></p> 
+      <h3 class="text-xl font-medium text-gray-900 truncate overflow-hidden">{title}</h3>
+      <p class="mt-1 text-gray-500 truncate overflow-hidden">{description}</p>
+      <button
+          className="rounded-xl px-4 mt-2 py-1 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-l text-center justify-center"
+          onClick={handleMoreInfo}
+        >
+          More info
+        </button>
+    </div>
+  </div>
   );
 };

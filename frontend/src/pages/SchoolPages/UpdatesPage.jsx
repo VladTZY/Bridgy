@@ -3,9 +3,9 @@ import { NotificationsList } from "../../components/NotificationsList";
 
 export const UpdatesPage = () => {
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw]">
-      <h1 className="text-2xl font-semibold ml-7 my-6">Student Projects</h1>
-      <div className="flex flex-wrap  pl-5 justify-center">
+    <div className=" bg-gray-100 flex flex-col ml-[15vw] w-[85vw] px-4 ">
+      <h1 className="text-2xl font-semibold my-6">Student Projects</h1>
+      <div className="flex flex-wrap justify-center">
         <EventProgressCard
           title={"Food Distribution Event"}
           description={"Amet consecteur"}
@@ -32,7 +32,7 @@ export const UpdatesPage = () => {
         />
       </div>
 
-      <NotificationsList />
+      <NotificationsList className="w-[85vw] px-4" />
     </div>
   );
 };
