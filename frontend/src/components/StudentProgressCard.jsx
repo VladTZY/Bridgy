@@ -9,7 +9,7 @@ export const StudentProgressCard = ({
   percentage,
 }) => {
   return (
-    <div className="flex-1 rounded-3xl p-3"  >
+    <div className="flex-1 rounded-3xl p-3 bg-white shadow"  >
       <div className="flex justify-between overflow-x-scroll hide-scroll-bar">
         <div className="p-3 flex flex-col space-y-4">
           <div className="sm:text-lg md:text-xl lg:text-xl text-bold">

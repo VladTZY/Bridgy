@@ -59,8 +59,8 @@ export const SchoolDashboardPage = () => {
   };
 
   return (
-      <div>
-        <div className=" md:flex w-[85vw] ml-[15vw] bg-gray-100 flex flex-col px-2 md:p-5 overflow-x-scroll ">
+      <div className="ml-[15vw]">
+        <div className=" md:flex w-[85vw] bg-gray-100 flex flex-col px- md:p-4 overflow-x-scroll ">
           <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%]">
             <SchoolProgressCard 
               title={"Objective"}
@@ -89,7 +89,7 @@ export const SchoolDashboardPage = () => {
             />
           </div>
 
-          <div className=" w-[85vw] bg-gray-100 flex flex-col  md:p-5 overflow-x-scroll overscroll-contain md:hidden"></div>      
+          <div className=" w-[85vw] bg-gray-100 flex flex-col  md:p-4 overflow-x-scroll overscroll-contain md:hidden"></div>      
           <div className="  flex flex-row overflow-x-scroll  justify-center items-center w-[300%] md:hidden"> 
             <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
               <SchoolProgressCard 
@@ -124,13 +124,13 @@ export const SchoolDashboardPage = () => {
             </div>
           </div>
         </div>
-        <div className="ml-[15vw] mt-6 flex flex-col md:flex md:flex-row justify-between  w-[85%] px-6">
-          <h1 className="text-2xl font-semibold text-center md:text-left">Students</h1>
-          <div className="flex items-center justify-center mt-3 md:mt-0">
+        <div className="mt-6 flex flex-col md:flex md:flex-row justify-between  w-[100%] px-4">
+          <h1 className="text-2xl font-semibold text-left">Students</h1>
+          <div className="flex  mt-3 md:mt-0">
             <select
               value={sorted}
               onChange={(e) => handleOrderChange(e.target.value)}
-              className="bg-gray-100 border-2 border-gray-300 p-2 rounded-xl mr-2"
+              className="bg-white shadow-md p-2 rounded-xl mr-2 border"
             >
               <option value="none">Order</option>
               <option value="alphabetical">Alphabetical</option>
@@ -138,7 +138,7 @@ export const SchoolDashboardPage = () => {
             <select
               value={grade}
               onChange={(e) => setGrade(e.target.value)}
-              className="bg-gray-100 border-2 border-gray-300 p-2 rounded-xl"
+              className="bg-white shadow-md p-2 rounded-xl border"
             >
               <option value="9">9th Grade</option>
               <option value="10">10th Grade</option>
@@ -146,8 +146,8 @@ export const SchoolDashboardPage = () => {
               <option value="12">12th Grade</option>
             </select>
           </div>
-        </div >
-        <div className="ml-[15vw]">
+        </div>
+        <div className=" mx-3 mt-6  ">
         <StudentsTable students={tableData} />
         </div>
       </div>

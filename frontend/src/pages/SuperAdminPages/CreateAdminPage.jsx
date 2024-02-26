@@ -1,6 +1,6 @@
 
 export const CreateAdminPage = () => {
     return (
-      <div>Create Admin</div>
+      <div className="ml-[15vw]">Create Admin</div>
     );
   }

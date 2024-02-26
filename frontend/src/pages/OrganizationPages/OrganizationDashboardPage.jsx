@@ -87,17 +87,17 @@ export const OrganizationDashboardPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col pb-5 ">
+    <div className="min-h-full bg-gray-100 flex flex-col pb-5 ml-[15vw]">
       <div className="flex flex-col">
         <div className="mx-5 my-7 flex justify-between items-center ">
-          <div className="text-2xl font-semibold">Ongoing Events</div>
+          <div className="text-xl md:text-2xl font-semibold">Ongoing Events</div>
           <Link to="/organization/post_opportunities">
-            <button className="text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full py-2 px-6 text-l">
+            <button className="text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-xl py-1 px-3 md:py-2 md:px-6 text-l">
               Add New
             </button>
           </Link>
         </div>
-        <div className="mx-2 flex flex-row overflow-x-scroll no-scrollbar">
+        <div className="mx-2 flex flex-row overflow-x-scroll no-scrollbar space-x-4 md:px-2">
           {ongoingEvents.slice(0, 4).map((event) => {
             return (
               <CompactCard
@@ -135,9 +135,9 @@ export const OrganizationDashboardPage = () => {
           </button>
         </div>
         <div className="flex flex-col">
-          <h1 className="text-2xl font-semibold mx-5 my-7">Upcoming Events</h1>
+          <h1 className="text-xl md:text-2xl font-semibold mx-5 my-7">Upcoming Events</h1>
 
-          <div className="mx-2 flex overflow-x-scroll no-scrollbar">
+          <div className="mx-2 flex overflow-x-scroll no-scrollbar space-x-4 md:px-2">
             {publishedEvents.slice(0, 4).map((event) => {
               return (
                 <CompactCard
@@ -175,7 +175,7 @@ export const OrganizationDashboardPage = () => {
             Next Page
           </button>
         </div>
-        <div className="text-2xl font-semibold mx-5 my-7">
+        <div className="text-xl md:text-2xl font-semibold mx-5 my-7">
           Recently Completed
         </div>
         <div className="flex flex-col">

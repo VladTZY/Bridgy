@@ -20,7 +20,7 @@ export const StudentPublishedMoreInfo = ({ eventId, placesLeft }) => {
   return (
     <div className="mt-5 flex justify-evenly items-center">
       <button
-        className="px-40 rounded-full bg-[#2EA0FB] hover:bg-[#2135D9] py-5 text-white text-xl"
+        className="px-20 rounded-full bg-[#2EA0FB] hover:bg-[#2135D9] py-3 text-white text-xl"
         onClick={() => joinEvent()}
       >
         Join Now

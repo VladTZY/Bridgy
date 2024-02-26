@@ -24,36 +24,21 @@ export const Card = ({
   if (location == "") location = "Remote";
 
   return (
-    <div className=" lg:w-[300px] flex flex-col rounded-xl transform transition duration-500  hover:scale-[1.025] hover:drop-shadow-black bg-white ml-2 my-2 mr-2 ">
-      <img
-        src={photoUrl}
-        className="rounded-xl mt-4 self-center px-3 w-[100%] object-cover"
-        style={{ height: "55%", aspectRatio: "16 / 9" }}
-      />
-      <div className="flex w-full h-[7%] justify-evenly mt-2 px-1.5">
-        <div className="w-[33.3%] flex px-1 border items-center justify-evenly ">
-          <img src={CalendarIcon} style={{ height: "60%" }} />
-          <div className="text-sm text-black">{dateToStr(time)}</div>
-        </div>
-        <div className="w-[30%] flex px-1 border items-center justify-evenly">
-          <img src={LocationIcon} style={{ height: "60%" }} />
-          <div className="text-sm text-black">{location}</div>
-        </div>
-        <div className="w-[30%] flex px-1 border items-center justify-evenly">
-          <img src={ClockIcon} style={{ height: "60%" }} />
-          <div className="text-sm text-black">{duration} hours</div>
-        </div>
-      </div>
-      <div className="mt-2 text-center justify-center text-xl text-bold max-w-full px-4 truncate">{title}</div>
-      <div className="mx-6 text-l text-center justify-center text-gray-700 max-w-full truncate">
-        {description?.toString().substring(0, 45)}...
-      </div>
-      <button
-        className="rounded-3xl px-4 mt-2 py-1 mb-2 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-l text-center justify-center self-center"
+   
+<div class="mx-auto max-w-sm overflow-hidden rounded-lg bg-white shadow">
+  <img src={photoUrl} class="aspect-video w-full object-cover" alt="" />
+  <div class="p-4  ">
+    <p class="mb-1 text-sm text-primary-500 ">Organization Name • <time>{dateToStr(time)}</time> • <location>{location}</location></p> 
+    <h3 class="text-xl font-medium text-gray-900 truncate overflow-hidden">{title}</h3>
+    <p class="mt-1 text-gray-500 truncate overflow-hidden">{description}</p>
+    <button
+        className="rounded-xl px-4 mt-2 py-1 bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-l text-center justify-center"
         onClick={handleMoreInfo}
       >
         More info
       </button>
-    </div>
+  </div>
+</div>
+
   );
 };

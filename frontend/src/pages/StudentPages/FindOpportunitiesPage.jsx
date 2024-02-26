@@ -30,13 +30,13 @@ export const FindOpportunitiesPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col">
+    <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw] px-6">
       <SearchBar />
-      <h1 className="text-2xl font-bold mx-5 my-7">
+      <h1 className="text-2xl font-bold  my-7">
         Published Opportunities
       </h1>
 
-      <div className="mx-2 flex flex-wrap justify-center items-center overflow-x-scroll ">
+      <div className=" flex flex-wrap justify-center items-center overflow-x-scroll ">
         {events.slice(0, 6).map((event) => {
           return (
             <Card
@@ -63,20 +63,20 @@ export const FindOpportunitiesPage = () => {
       <div className="flex justify-between  mx-5 my-7">
         {page > 1 ? (
           <button
-            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            className="bg-[#2EA0FB] rounded-xl text-white py-1 px-4"
             onClick={() => handleChangePage(-1)}
           >
             Previous Page
           </button>
         ) : (
-          <button className="bg-[#c8d2da] rounded-xl text-white py-2 px-5">
+          <button className="bg-[#c8d2da] rounded-xl text-white py-1 px-4">
             Previous Page
           </button>
         )}
 
         {events.length >= 6 && (
           <button
-            className="bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
+            className="bg-[#2EA0FB] rounded-xl text-white py-1 px-4"
             onClick={() => handleChangePage(1)}
           >
             Next Page

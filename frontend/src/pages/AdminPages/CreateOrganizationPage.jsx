@@ -71,12 +71,12 @@ export const CreateOrganizationPage = () => {
   };
 
   return (
-    <div className="h-full m-5 bg-gray-100">
-      <div className="flex flex-col">
-        <div className="p-5 bg-white rounded-xl">
-          <h1 className="text-3xl font-semibold px-5">Create organization</h1>
+    <div className="h-full bg-gray-100 ml-[15vw] px-4 pb-10">
+      <div className="flex flex-col ">
+        <div className="px-2 pt-6 bg-white rounded-xl">
+          <h1 className=" text-2xl lg:text-3xl font-semibold px-5 mb-4 text-center">Create organization</h1>
           <form onSubmit={submitHandler}>
-            <div className="m-5">
+            <div className="p-2">
               <input
                 type="text"
                 placeholder="Organization name"
@@ -86,7 +86,7 @@ export const CreateOrganizationPage = () => {
               />
             </div>
 
-            <div className="m-5">
+            <div className="p-2">
               <input
                 type="text"
                 placeholder="Organization Email"
@@ -96,7 +96,7 @@ export const CreateOrganizationPage = () => {
               />
             </div>
 
-            <div className="m-5">
+            <div className="p-2">
               <input
                 type="text"
                 placeholder="Organization Phone Number"
@@ -106,7 +106,7 @@ export const CreateOrganizationPage = () => {
               />
             </div>
 
-            <div className="m-5">
+            <div className="p-2">
               <input
                 type="text"
                 placeholder="Organization Country of origin"
@@ -116,7 +116,7 @@ export const CreateOrganizationPage = () => {
               />
             </div>
 
-            <div className="m-5">
+            <div className="p-2">
               <input
                 type="text"
                 placeholder="Organization City of origin"
@@ -126,7 +126,7 @@ export const CreateOrganizationPage = () => {
               />
             </div>
 
-            <div className="m-5">
+            <div className="p-2">
               <input
                 type="text"
                 placeholder="Account username"
@@ -136,7 +136,7 @@ export const CreateOrganizationPage = () => {
               />
             </div>
 
-            <div className="m-5">
+            <div className="p-2">
               <input
                 type="text"
                 placeholder="Account email"
@@ -146,7 +146,7 @@ export const CreateOrganizationPage = () => {
               />
             </div>
 
-            <div className="m-5">
+            <div className="p-2">
               <input
                 type="text"
                 placeholder="Account phone number"

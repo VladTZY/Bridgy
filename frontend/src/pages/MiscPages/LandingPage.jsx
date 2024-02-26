@@ -38,7 +38,7 @@ export const LandingPage = () => {
           </div>
           </div>
         </div>
-        <div className="flex flex-col w-[100vw] md:h-[90vh] bg-gray-100 justify-center items-center text-center pb-10">
+        <div className="flex flex-col w-[100vw] md:h-[90vh] bg-gray-100 justify-center items-center text-center pb-10"> 
           <div className="text-4xl md:text-6xl text-black font-bold flex flex-col justify-center items-center text-center">
             <span>Our Founding Story</span>
           </div>
