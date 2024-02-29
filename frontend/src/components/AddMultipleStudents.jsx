@@ -37,9 +37,9 @@ export const AddMultipleStudents = ({
   };
 
   return (
-    <div className="m-5 p-5 rounded-3xl bg-white flex flex-col justify-between">
-      <div className="flex flex-col">
-        <h1 className="text-2xl font-semibold">Add Multiple Students</h1>
+    <div className="mx-3 mt-5 lg:mt-0 rounded-3xl bg-white flex flex-col justify-between">
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-2xl font-semibold px-5 pt-6">Add Multiple Students</h1>
         <a
           className="mt-5"
           href={"../../BridgySampleTable.csv"}
@@ -47,7 +47,7 @@ export const AddMultipleStudents = ({
         >
           <strong>Click here to download sample table</strong>
         </a>
-        <div className="m-5 flex flex-col space-y-2">
+        <div className="m-5 flex flex-col space-y-2 justify-center items-center">
           <p className="text-xl">Upload student table</p>
           <div className="flex items-center justify-center w-full">
             <label

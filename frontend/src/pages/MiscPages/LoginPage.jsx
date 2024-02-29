@@ -4,7 +4,7 @@ import { login } from "../../store/authSlice";
 import { Link } from "react-router-dom";
 import { LoginModal } from "../../components/LoginModal";
 
-import LoginImage from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/newloginimage.jpg";
+import LoginImage from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/Login.png";
 import { LoginNavbar } from "../../components/LoginNavbar";
 
 export const LoginPage = () => {
@@ -30,7 +30,7 @@ export const LoginPage = () => {
   };
 
   return (
-<div>
+<div >
 <LoginNavbar />
       <div className="flex flex-col lg:flex-row items-center justify-center w-[100vw] h-[90vh] ">
         <div className="flex flex-col w-[100%] lg:w-[50%] items-center justify-center">
@@ -100,7 +100,7 @@ export const LoginPage = () => {
             </form>
         </div>
         <div className="hidden lg:flex lg:flex-col w-[50%] items-center justify-center">
-          <img src={LoginImage} alt="Login" className="w-[90%] h-[90%] rounded-xl object-cover"/>
+          <img src={LoginImage} alt="Login" className="w-[80%] h-[70%] rounded-xl object-cover"/>
         </div>
       </div>
         

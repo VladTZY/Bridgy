@@ -26,16 +26,16 @@ export const OrganizationOngoingMoreInfo = ({ eventId }) => {
 
   return (
     <div className="mt-5">
-      <div className="flex justify-evenly">
+      <div className="flex justify-evenly px-2">
         <button
           onClick={() => setAttendanceModal(true)}
-          className="w-[30%] border py-5 text-[#2135D9] border-[#2135D9] rounded-full hover:bg-[#2135D9] hover:text-white text-xl"
+          className="w-[50%] border py-5 text-[#2135D9] border-[#2135D9] rounded-full hover:bg-[#2135D9] hover:text-white text-l lg:text-xl"
         >
           Mark Attendance
         </button>
         <button
           onClick={() => setEndModal(true)}
-          className="w-[30%] border py-5 text-[#2135D9] border-[#2135D9] rounded-full hover:bg-[#2135D9] hover:text-white text-xl"
+          className="w-[50%] border py-5 text-[#2135D9] border-[#2135D9] rounded-full hover:bg-[#2135D9] hover:text-white text-l lg:text-xl"
         >
           Finish Event
         </button>

@@ -30,7 +30,7 @@ export const FindOpportunitiesPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw] px-6">
+    <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw] px-6 pt-6">
       <SearchBar />
       <h1 className="text-2xl font-bold  my-7">
         Published Opportunities

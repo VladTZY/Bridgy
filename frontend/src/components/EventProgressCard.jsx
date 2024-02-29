@@ -13,7 +13,7 @@ export const EventProgressCard = ({
   duration,
 }) => {
   return (
-    <div className="w-[30%] flex flex-col rounded-xl bg-white m-3 justify-around relative shadow-md">
+    <div className="w-[100%] lg:w-[30%] flex flex-col rounded-xl bg-white m-3 justify-around relative shadow-md">
       <div className="flex">
         <div className="p-3 w-[30%] rounded-full flex relative items-center justify-center pr-0.5 h-[17vh]">
           <div className="relative"

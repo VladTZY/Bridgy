@@ -160,7 +160,7 @@ export const PostOpportunitiesPage = () => {
   };
 
   return (
-    <div className=" bg-gray-100 ml-[15vw] px-4 pb-10">
+    <div className=" bg-gray-100 ml-[15vw] px-4 pb-10 pt-6">
       <div className="flex flex-col bg-gray-100">
         <div className="bg-white p-5 rounded-3xl">
           <h1 className="text-xl font-semibold">Create New Opportunity</h1>
@@ -239,7 +239,7 @@ export const PostOpportunitiesPage = () => {
               </label>
             </div>
 
-            <div className="flex justify-between flex-col md:flex-row md:space-x-10 m">
+            <div className="flex justify-between flex-col md:flex-row md:space-x-10 ">
               <label className=" flex flex-1 flex-col space-y-2 mb-2">
                 <p className="text-l">Number of students</p>
                 <div

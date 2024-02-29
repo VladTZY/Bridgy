@@ -125,8 +125,8 @@ export const SchoolDashboardPage = () => {
           </div>
         </div>
         <div className="mt-6 flex flex-col md:flex md:flex-row justify-between  w-[100%] px-4">
-          <h1 className="text-2xl font-semibold text-left">Students</h1>
-          <div className="flex  mt-3 md:mt-0">
+          <h1 className="text-2xl font-semibold text-center lg:text-left">Students</h1>
+          <div className="flex  mt-3 md:mt-0 justify-center text-center">
             <select
               value={sorted}
               onChange={(e) => handleOrderChange(e.target.value)}

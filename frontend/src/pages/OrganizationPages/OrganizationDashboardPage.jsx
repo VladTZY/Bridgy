@@ -4,6 +4,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
 import { EventShortCard } from "../../components/EventShortCard";
 import { CompactCard } from "../../components/CompactCard";
+import { OrganizationEventCard }   from "../../components/OrganizationEventCard";
 
 export const OrganizationDashboardPage = () => {
   const id = useSelector((state) => state.auth.id);
@@ -178,35 +179,32 @@ export const OrganizationDashboardPage = () => {
         <div className="text-xl md:text-2xl font-semibold mx-5 my-7">
           Recently Completed
         </div>
-        <div className="flex flex-col">
-          {finishedEvents.slice(0, 4).map((event) => {
-            return (
-              <EventShortCard
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                description={event.description}
-                attendance={event.attendance}
-                capacity={event.capacity}
-              />
-            );
-          })}
+        <div class="w-[85vw] px-4 ">
+          <div class="flex gap-3 bg-white border-1 shadow rounded-xl overflow-hidden items-center justify-start">
+
+          <div class="relative w-[15%] lg:w-[3%] pl-2 ">
+              <img class="  w-full h-full object-cover object-center transition duration-50" loading="lazy" src="https://via.placeholder.com/150" />
+            </div>
+
+          <div class="flex flex-col  py-2">
+
+            <p class="text-xl font-bold">Post title</p>
+
+            <p class="text-gray-500 w-[100%">
+                Description of your post/article,
+            </p>
+
+            <span class="flex items-center justify-start text-gray-500">
+               date time etc
+            </span>
+
         </div>
-        <div className="flex justify-between  mx-5 my-7">
-          <button
-            className="hover:bg-[#2135D9] bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
-            onClick={() => handleFinishedChangePage(-1)}
-          >
-            Previous Page
-          </button>
-          <button
-            className="hover:bg-[#2135D9] bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
-            onClick={() => handleFinishedChangePage(1)}
-          >
-            Next Page
-          </button>
-        </div>
-      </div>
+
     </div>
+
+</div>
+    </div>
+    </div>
+
   );
 };

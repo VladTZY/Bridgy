@@ -2,6 +2,6 @@ import React from 'react'
 
 export const NotFoundPage = () => {
   return (
-    <div>Not Found</div>
+    <div className="ml-[15vw]">Not Found</div>
   );
 }
