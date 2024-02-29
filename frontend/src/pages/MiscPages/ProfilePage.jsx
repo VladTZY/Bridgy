@@ -62,7 +62,7 @@ export const ProfilePage = () => {
 
   return (
     <div className="flex flex-col bg-gray-100">
-      <div className="w-[85vw]  flex ml-[15vw] px-4 mb-10">
+      <div className="w-[85vw]  flex ml-[15vw] px-4 mb-10 pt-6">
         <div className="flex flex-col w-full bg-white rounded-xl">
           <div className="flex flex-row justify-between items-center pr-4">
             <div className=" pr-4 flex flex-row justify-around items-center">
@@ -82,7 +82,7 @@ export const ProfilePage = () => {
               </div>
             </div>
             <div className="flex flex-row">
-              <div className="bg-black p-1.5 lg:p-2 rounded-l lg:rounded-xl mr-2 flex flex-row justify-center items-center">
+              <div className="bg-[#2135D9] p-1.5 lg:p-2 rounded-l lg:rounded-xl mr-2 flex flex-row justify-center items-center">
                 <img
                   src={EditProfileIcon}
                   className="w-4 h-4 cursor-pointer"
@@ -90,7 +90,7 @@ export const ProfilePage = () => {
                 />
                 <p className="pl-2 text-white hidden lg:block">Edit profile</p>
               </div>
-              <div className=" hidden bg-black p-1.5 lg:p-2 rounded-l lg:rounded-xl mr-2 flex flex-row justify-center items-center">
+              <div className=" hidden bg-[#2135D9] p-1.5 lg:p-2 rounded-l lg:rounded-xl mr-2 flex flex-row justify-center items-center">
                 // Div pt save profile sa ii faci cod
                 <img
                   src={EditProfileIcon}
@@ -100,7 +100,7 @@ export const ProfilePage = () => {
                 <p className="pl-2 text-white hidden lg:block">Save profile</p>
               </div>
 
-              <div className="bg-black p-1.5 lg:p-2 rounded-r lg:rounded-xl flex flex-row justify-center items-center">
+              <div className="bg-[#2135D9] p-1.5 lg:p-2 rounded-r lg:rounded-xl flex flex-row justify-center items-center">
                 <img
                   src={padlockIcon}
                   className="w-4 h-4 cursor-pointer"
@@ -231,7 +231,7 @@ export const ProfilePage = () => {
                   </div>
                 </div>
         </div>
-        <div className="flex flex-col ml-[15vw] px-4 mt-5 lg:mt-10 mb-10 lg:mb-0">
+        <div className="flex flex-col w-[85vw] ml-[15vw] px-4 mt-5 lg:mt-10 mb-10 lg:mb-0">
             <label className="text-left">Bio</label>
             <textarea
               type="text"

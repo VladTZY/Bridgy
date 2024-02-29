@@ -84,8 +84,8 @@ export const AddOneStudent = ({
   };
 
   return (
-    <div className="flex-1 m-5 p-5 rounded-3xl bg-white ">
-      <h1 className="text-2xl font-semibold">Add One Student</h1>
+    <div className="flex-1 mx-3 p- rounded-3xl bg-white ">
+      <h1 className="text-2xl font-semibold px-5 pt-6">Add One Student</h1>
       <form className="m-5 flex flex-col space-y-6" onSubmit={submitHandler}>
         <label className="flex flex-col space-y-2">
           <p className="text-xl w-[50%] ">Name</p>
@@ -99,7 +99,7 @@ export const AddOneStudent = ({
             }}
             className={`${
               studentError.usernameError ? "border-red-500" : "border-gray-200"
-            } rounded-lg w-1/2 py-2 pl-2 border outline-none`}
+            } rounded-lg lg:w-1/2 py-2 pl-2 border outline-none`}
             placeholder="Name..."
           />
         </label>
@@ -115,7 +115,7 @@ export const AddOneStudent = ({
             }}
             className={`${
               studentError.emailError ? "border-red-500" : "border-gray-200"
-            } rounded-lg w-1/2 py-2 pl-2 border outline-none`}
+            } rounded-lg lg:w-1/2 py-2 pl-2 border outline-none`}
             placeholder="Email..."
           />
         </label>
@@ -124,7 +124,7 @@ export const AddOneStudent = ({
           <select
             name="grade"
             value={student.grade}
-            className="bg-white w-1/2 py-2 pl-2 border border-gray-200 rounded-lg outline-none"
+            className="bg-white lg:w-1/2 py-2 pl-2 border border-gray-200 rounded-lg outline-none"
             onChange={(e) => {
               handleChange(e);
               handleErrorChange(e);
@@ -151,7 +151,7 @@ export const AddOneStudent = ({
               studentError.phoneNumberError
                 ? "border-red-500"
                 : "border-gray-200"
-            } rounded-lg w-1/2 py-2 pl-2 border outline-none`}
+            } rounded-lg lg:w-1/2 py-2 pl-2 border outline-none`}
           />
         </label>
         <label className="flex flex-col space-y-2">
@@ -166,7 +166,7 @@ export const AddOneStudent = ({
             }}
             className={`${
               studentError.countryError ? "border-red-500" : "border-gray-200"
-            } rounded-lg w-1/2 py-2 pl-2 border outline-none`}
+            } rounded-lg lg:w-1/2 py-2 pl-2 border outline-none`}
             placeholder="Country..."
           />
         </label>
@@ -182,14 +182,14 @@ export const AddOneStudent = ({
             }}
             className={`${
               studentError.cityError ? "border-red-500" : "border-gray-200"
-            } rounded-lg w-1/2 py-2 pl-2 border outline-none`}
+            } rounded-lg lg:w-1/2 py-2 pl-2 border outline-none`}
             placeholder="City..."
           />
         </label>
 
-        <div className="w-[50%]">
+        <div className="lg:w-[50%]">
           <button
-            className="mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-8 py-2 text-xl"
+            className="mt-2 lg:mt-10 text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full px-8 py-2 text-xl"
             type="submit"
           >
             Add student

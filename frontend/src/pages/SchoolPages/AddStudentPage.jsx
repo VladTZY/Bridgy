@@ -12,7 +12,7 @@ export const AddStudentPage = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between bg-gray-100 ml-[15vw]">
+      <div className="flex flex-col lg:flex-row justify-between bg-gray-100 ml-[15vw] pb-10 pt-6">
         <AddOneStudent
           setCreationModal={setCreationModal}
           setErrorModal={setErrorModal}
