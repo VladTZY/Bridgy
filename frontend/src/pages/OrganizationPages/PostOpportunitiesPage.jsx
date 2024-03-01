@@ -160,12 +160,12 @@ export const PostOpportunitiesPage = () => {
   };
 
   return (
-    <div className="m-5 bg-gray-100">
+    <div className=" bg-gray-100 ml-[15vw] px-4 pb-10 pt-6">
       <div className="flex flex-col bg-gray-100">
         <div className="bg-white p-5 rounded-3xl">
           <h1 className="text-xl font-semibold">Create New Opportunity</h1>
           <form
-            className="m-5 flex flex-col space-y-8"
+            className="mt-4 flex flex-col space-y-8"
             onSubmit={submitHandler}
           >
             <label className="flex flex-col space-y-2">
@@ -187,8 +187,8 @@ export const PostOpportunitiesPage = () => {
                 style={{ width: "100%" }}
               />
             </label>
-            <div className="flex justify-between space-x-10">
-              <label className="flex-1 flex flex-col space-y-2">
+            <div className="flex flex-col md:flex-row justify-between md:space-x-10">
+              <label className="flex-1 flex flex-col space-y-2 mb-2">
                 <p className="text-l">Mission Title</p>
                 <input
                   type="text"
@@ -226,7 +226,7 @@ export const PostOpportunitiesPage = () => {
                   style={{ width: "100%" }}
                 />
               </label>
-              <label className="flex-1 flex items-center justify-center">
+              <label className="flex-1 flex items-center justify-center mt-4">
                 <p className="text-xl">Is the event remote?</p>
                 <input
                   className="m-2"
@@ -239,8 +239,8 @@ export const PostOpportunitiesPage = () => {
               </label>
             </div>
 
-            <div className="flex justify-between space-x-10">
-              <label className=" flex-1 flex flex-col space-y-2">
+            <div className="flex justify-between flex-col md:flex-row md:space-x-10 ">
+              <label className=" flex flex-1 flex-col space-y-2 mb-2">
                 <p className="text-l">Number of students</p>
                 <div
                   className={`${
@@ -249,7 +249,7 @@ export const PostOpportunitiesPage = () => {
                       : "border-gray-200"
                   } rounded-lg w-full border flex`}
                 >
-                  <img className="ml-2 w-[1.8vw]" src={TimeIcon} />
+                  <img className="ml-2 w-[5vw]  md:w-[1.8vw]" src={TimeIcon} />
                   <input
                     type="number"
                     name={"capacity"}
@@ -264,7 +264,7 @@ export const PostOpportunitiesPage = () => {
                 </div>
               </label>
 
-              <label className=" flex-1 flex flex-col space-y-2">
+              <label className=" flex-1 flex flex-col space-y-2 mb-2">
                 <p className="text-l">Required hours</p>
                 <div
                   className={`${
@@ -273,7 +273,7 @@ export const PostOpportunitiesPage = () => {
                       : "border-gray-200"
                   } rounded-lg w-full border flex`}
                 >
-                  <img className="ml-2 w-[1.8vw]" src={TimeIcon} />
+                  <img className="ml-2 w-[5vw] md:w-[1.8vw]" src={TimeIcon} />
                   <input
                     type="number"
                     name="hours"
@@ -288,7 +288,7 @@ export const PostOpportunitiesPage = () => {
                 </div>
               </label>
 
-              <label className=" flex-1 flex flex-col space-y-2">
+              <label className=" flex-1 flex flex-col space-y-2 mb-2">
                 <p className="text-l">Date and time</p>
                 <div
                   className={`${
@@ -297,7 +297,7 @@ export const PostOpportunitiesPage = () => {
                       : "border-gray-200"
                   } rounded-lg w-full border flex`}
                 >
-                  <img className="ml-2 w-[1.8vw]" src={CalendarIcon} />
+                  <img className="ml-2 w-[5vw] md:w-[1.8vw]" src={CalendarIcon} />
                   <input
                     type="datetime-local"
                     name="time"
@@ -315,8 +315,8 @@ export const PostOpportunitiesPage = () => {
             {form["isRemote"] ? (
               <></>
             ) : (
-              <div className="flex justify-between space-x-10">
-                <label className="flex-1 flex flex-col space-y-2">
+              <div className="flex justify-between flex-col md:flex-row md:space-x-10">
+                <label className="flex-1 flex flex-col space-y-2 mb-2">
                   <p className="text-l">Country</p>
                   <div
                     className={`${
@@ -325,7 +325,7 @@ export const PostOpportunitiesPage = () => {
                         : "border-gray-200"
                     } rounded-lg w-full border flex`}
                   >
-                    <img className="ml-2 w-[1.8vw]" src={LocationIcon} />
+                    <img className="ml-2 w-[5vw] md:w-[1.8vw]" src={LocationIcon} />
                     <input
                       type="text"
                       name="country"
@@ -340,7 +340,7 @@ export const PostOpportunitiesPage = () => {
                   </div>
                 </label>
 
-                <label className="flex-1 flex flex-col space-y-2">
+                <label className="flex-1 flex flex-col space-y-2 mb-2">
                   <p className="text-l">City</p>
                   <div
                     className={`${
@@ -349,7 +349,7 @@ export const PostOpportunitiesPage = () => {
                         : "border-gray-200"
                     } rounded-lg w-full border flex`}
                   >
-                    <img className="ml-2 w-[1.8vw]" src={LocationIcon} />
+                    <img className="ml-2 w-[5vw] md:w-[1.8vw]" src={LocationIcon} />
                     <input
                       type="text"
                       name="city"
@@ -364,7 +364,7 @@ export const PostOpportunitiesPage = () => {
                   </div>
                 </label>
 
-                <label className="flex-1 flex flex-col space-y-2">
+                <label className="flex-1 flex flex-col space-y-2 mb-2">
                   <p className="text-l">Address</p>
                   <div
                     className={`${
@@ -373,7 +373,7 @@ export const PostOpportunitiesPage = () => {
                         : "border-gray-200"
                     } rounded-lg w-full border flex`}
                   >
-                    <img className="ml-2 w-[1.8vw]" src={LocationIcon} />
+                    <img className="ml-2 w-[5vw] md:w-[1.8vw]" src={LocationIcon} />
                     <input
                       type="text"
                       name="address"
@@ -389,7 +389,7 @@ export const PostOpportunitiesPage = () => {
                 </label>
               </div>
             )}
-            <div className="flex">
+            <div className="flex flex-col md:flex-row">
               <div className="flex-1 flex flex-col space-y-2">
                 <p className="text-l">Cover Image*</p>
                 <div class="flex items-center justify-center w-full">
@@ -397,7 +397,7 @@ export const PostOpportunitiesPage = () => {
                     for="dropzone-file"
                     class="flex flex-col items-center justify-center w-full h-64 border border-[#2135D9] border-dashed rounded-lg cursor-pointer bg-[#f8fcfd] hover:bg-[#e9f5f8]"
                   >
-                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6 text-center">
                       <svg
                         class="w-10 h-10 mb-4 text-gray-500 dark:text-gray-400"
                         aria-hidden="true"
@@ -434,14 +434,14 @@ export const PostOpportunitiesPage = () => {
                   <div className="text-xl"> File Uploaded!</div>
                 )}
               </div>
-              <div className="flex-1 flex flex-col justify-end items-end space-y-10">
+              <div className="flex-1 flex flex-col justify-end items-end my-4">
                 <button
                   className="bg-[#2EA0FB] text-white py-2 px-6  rounded-full hover:bg-[#2135D9] text-l"
                   type="submit"
                 >
                   Submit
                 </button>
-                <div className="text-sm text-gray-400">
+                <div className="text-sm text-gray-400 mt-2">
                   Fields marked with * are optional.
                 </div>
               </div>

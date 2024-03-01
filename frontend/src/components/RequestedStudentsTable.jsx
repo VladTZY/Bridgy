@@ -44,9 +44,9 @@ export const RequestedStudentsTable = ({
   };
 
   return (
-    <div className="rounded-[15px] overflow-hidden mt-5">
-      <table className="min-w-full">
-        <thead className="bg-[#2135D9] text-white">
+    <div className=" overflow-hidden mt-5">
+      <table className="min-w-full ">
+        <thead className="bg-gray-100 text-black">
           <tr>
             <th className="px-6 py-2 text-left text-l font-medium">Username</th>
             <th className="px-6 py-2 text-left text-l font-medium">Email</th>
@@ -75,14 +75,14 @@ export const RequestedStudentsTable = ({
                 <td className="px-6 py-2 font-semibold">
                   <Link
                     to={`/profile/${student.user.id}`}
-                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-3 px-5 rounded-[50px] text-white text-l"
+                    className="hover:bg-[#2135D9] bg-[#2EA0FB] py-1.5 px-3 rounded-[50px] text-white text-l"
                   >
                     View profile
                   </Link>
                 </td>
                 <td className="px-6 py-4 font-semibold">
                   <button
-                    className="hover:text-green-700 border-green-700 border-2 hover:bg-white py-2 px-5 rounded-[50px] bg-green-700 text-white text-l"
+                    className="hover:text-green-700 border-green-700  hover:bg-white py-1.5 px-3 rounded-[50px] bg-green-700 text-white text-l"
                     onClick={() => acceptStudent(student.user.id, index)}
                   >
                     Accept
@@ -90,7 +90,7 @@ export const RequestedStudentsTable = ({
                 </td>
                 <td className="px-6 py-4 font-semibold">
                   <button
-                    className="bg-red-700 hover:text-red-700 border-red-700 border-2 hover:bg-white py-2 px-5 rounded-[50px] text-white text-l"
+                    className="bg-red-700 hover:text-red-700 border-red-700  hover:bg-white py-1.5 px-3 rounded-[50px] text-white text-l"
                     onClick={() => rejectStudent(student.user.id, index)}
                   >
                     Reject

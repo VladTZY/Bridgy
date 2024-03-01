@@ -40,14 +40,14 @@ export const MissionsPage = () => {
       });
   }, [organizationId]);
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col pb-10">
+    <div className="min-h-full bg-gray-100 flex flex-col pb-10 ml-[15vw] px-3 w-[85vw] pt-6">
       <SearchBar />
       <div className="flex flex-col overflow-x-scroll overflow-hidden">
-        <h1 className="text-2xl font-semibold mx-5 mt-2 mb-3">
+        <h1 className="text-2xl font-semibold  mt-4 mb-3 text-center md:text-left">
           Future Opportunities
         </h1>
 
-        <div className="mx-2 flex flex-wrap justify-center justify-items-left  ">
+        <div className=" space-y-4 mx-2 my-2 flex flex-wrap justify-center justify-items-left  ">
           {publishedEvents.map((event) => {
             return (
               <Card
@@ -73,9 +73,9 @@ export const MissionsPage = () => {
       </div>
 
       <div className="flex flex-col ">
-        <h1 className="text-2xl font-semibold mx-5 my-3">Past Opportunities</h1>
+        <h1 className="text-2xl font-semibold my-4 text-center md:text-left">Past Opportunities</h1>
 
-        <div className="mx-2 flex flex-wrap justify-center justify-items-left">
+        <div className="space-y-4 flex flex-wrap justify-center justify-items-left">
           {finishedEvents.map((event) => {
             return (
               <Card

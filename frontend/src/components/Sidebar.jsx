@@ -298,7 +298,7 @@ export const Sidebar = () => {
                   <div>
                     {location.pathname == "/school/add_student" ? (
                       <Link to="/school/add_student">
-                        <div className="flex items-center rounded-l bg-[#2135D9] p-4 space-x-1">
+                        <div className="flex items-center rounded-xl bg-[#2135D9] p-4 space-x-1">
                           <img
                             src={fg_white}
                             alt="react logo"

@@ -42,23 +42,24 @@ export const StudentDashboardPage = () => {
   }, []);
 
   return (
-    <div className="h-full p-3 bg-gray-100 flex flex-col pb-10">
-      <div className="flex justify-between space-x-4">
-        <StudentProgressCard
+    <div className="w-[85vw] p-3 bg-gray-100 flex flex-col pb-10 ml-[15vw]">
+      <div className=" md:flex w-[100%] bg-gray-100 flex flex-col px- md:p-4 overflow-x-scroll ">
+          <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%] space-x-4">
+          <StudentProgressCard
           title={"Active"}
           total={"250"}
           update={"A 17% increase"}
           percentage={70}
           color={"#32cd32"}
         />
-        <StudentProgressCard
+            <StudentProgressCard
           title={"In Progress"}
           total={"56"}
           update={"A 2% decrease"}
           percentage={50}
           color={"#eed202"}
         />
-        <StudentProgressCard
+            <StudentProgressCard
           title={"Completed"}
           total={"1000+"}
           update={"Full Completion Rate"}
@@ -72,7 +73,48 @@ export const StudentDashboardPage = () => {
           percentage={20}
           color={"#d8bfd8"}
         />
-      </div>
+          </div>
+
+          <div className=" w-[85vw] bg-gray-100 flex flex-col  md:p-4 overflow-x-scroll overscroll-contain md:hidden"></div>      
+          <div className="  flex flex-row overflow-x-scroll  justify-center items-center w-[400%] md:hidden"> 
+            <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+            <StudentProgressCard
+          title={"Active"}
+          total={"250"}
+          update={"A 17% increase"}
+          percentage={70}
+          color={"#32cd32"}
+        />
+            </div>
+            <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+            <StudentProgressCard
+          title={"In Progress"}
+          total={"56"}
+          update={"A 2% decrease"}
+          percentage={50}
+          color={"#eed202"}
+        />
+            </div>
+            <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+            <StudentProgressCard
+          title={"Completed"}
+          total={"1000+"}
+          update={"Full Completion Rate"}
+          percentage={100}
+          color={"#000080"}
+        />
+            </div>
+            <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+            <StudentProgressCard
+          title={"Due"}
+          total={"10"}
+          update={"A 10% increase"}
+          percentage={20}
+          color={"#d8bfd8"}
+        />
+            </div>
+          </div>
+        </div>
       <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4 pl-2">
         <h1 className="text-xl font-bold">Ongoing Events</h1>
 

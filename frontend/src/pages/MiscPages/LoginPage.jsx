@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/authSlice";
 import { Link } from "react-router-dom";
 import { LoginModal } from "../../components/LoginModal";
 
-import LoginImage from "../../../Bridgy_Assets/Images/Webpage/Login.png";
+import LoginImage from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/Login.png";
 import { LoginNavbar } from "../../components/LoginNavbar";
 
 export const LoginPage = () => {
@@ -30,22 +30,18 @@ export const LoginPage = () => {
   };
 
   return (
-    <div>
-      <div className="">
-        <LoginNavbar />
-      </div>
-      <div className="h-[90vh] flex">
-        <div className="w-6/12 flex items-center justify-center content-center">
-          <div className="w-8/12">
-            <h1 className="font-semibold text-4xl">Login</h1>
-            <p className="mt-3">
+<div >
+<LoginNavbar />
+      <div className="flex flex-col lg:flex-row items-center justify-center w-[100vw] h-[90vh] ">
+        <div className="flex flex-col w-[100%] lg:w-[50%] items-center justify-center">
+          <h1 className="font-semibold text-4xl">Login</h1>
+            <p className="mt-3 px-4 text-center">
               Don't have an account? Check our account policy{" "}
               <Link to="/help" className="text-[#2EA0FB] hover:underline">
                 here
               </Link>
             </p>
-
-            <form onSubmit={submitHandler} className="flex flex-col mt-12">
+            <form onSubmit={submitHandler} className="flex flex-col mt-6 w-[100%] lg:w-[70%]  px-4">
               <div>
                 <input
                   type="text"
@@ -56,10 +52,8 @@ export const LoginPage = () => {
                   }}
                   className={`${
                     error ? "border-red-500" : "border-gray-200"
-                  } appearance-none border-2 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]`}
-                />
+                  } appearance-none border-2 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]`}/>
               </div>
-
               <div>
                 <input
                   type="password"
@@ -90,7 +84,7 @@ export const LoginPage = () => {
                     type="checkbox"
                     className="checked:bg-[#2135D9]"
                   ></input>
-                  <p className="text-gray-500 ml-2">Remember me</p>
+                  <p className="text-gray-500 ml-2">Remember me</p><br></br>
                 </div>
                 <p className="text-gray-500">Forgot password?</p>
               </div>
@@ -98,27 +92,18 @@ export const LoginPage = () => {
               <div>
                 <button
                   type="submit"
-                  className="mt-10 btn w-full bg-[#2EA0FB] py-2 rounded-[40px] text-white text-xl hover:bg-[#2135D9]"
+                  className="mt-10 btn w-full bg-[#2EA0FB] py-2 rounded-xl text-white text-xl hover:bg-[#2135D9]"
                 >
                   Login
                 </button>
               </div>
             </form>
-
-            <hr className="w-full h-px my-10 bg-[#2EA0FB] border-0" />
-          </div>
         </div>
-
-        <div className="w-3/12 relative index-0">
-          <img
-            src={LoginImage}
-            className="w-[40%] fixed right-0 top-1/2 transform -translate-y-1/2 -translate-x-2/2"
-          ></img>
+        <div className="hidden lg:flex lg:flex-col w-[50%] items-center justify-center">
+          <img src={LoginImage} alt="Login" className="w-[80%] h-[70%] rounded-xl object-cover"/>
         </div>
       </div>
-      {/* -- Login Modal(disabled)
-      loginModal ? <LoginModal setLoginModal={setLoginModal} /> : null
-      */}
-    </div>
+        
+</div>
   );
 };

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 export const AcceptedStudentsTable = ({ eventId, students }) => {
   return (
-    <div className="rounded-[15px] overflow-hidden mt-5">
+    <div className="overflow-hidden mt-5 ">
       <table className="min-w-full">
-        <thead className="bg-[#2135D9] text-white">
+        <thead className="bg-gray-100 text-black">
           <tr>
             <th className="px-6 py-2 text-left text-l font-medium">Username</th>
             <th className="px-6 py-2 text-left text-l font-medium">Email</th>

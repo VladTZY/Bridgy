@@ -9,8 +9,8 @@ export const StudentProgressCard = ({
   percentage,
 }) => {
   return (
-    <div className="flex-1 rounded-3xl p-3"  >
-      <div className="flex justify-between overflow-x-scroll hide-scroll-bar">
+    <div className="flex-1 rounded-3xl p-3 bg-white shadow w-[100%] mx-2"  >
+      <div className="flex justify-between ">
         <div className="p-3 flex flex-col space-y-4">
           <div className="sm:text-lg md:text-xl lg:text-xl text-bold">
             {title}
@@ -22,7 +22,7 @@ export const StudentProgressCard = ({
           style={{ outlineColor: color }}
         >
           <div className="absolute text-center text-l">{percentage}%</div>
-          <div className="sm:w-16 md:w-24 lg:w-32 sm:h-16 md:h-24 lg:h-24">
+          <div className="w-24">
             <Circle
               percent={percentage}
               strokeColor={color}

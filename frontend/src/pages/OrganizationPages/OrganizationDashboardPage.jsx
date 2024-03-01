@@ -4,6 +4,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
 import { EventShortCard } from "../../components/EventShortCard";
 import { CompactCard } from "../../components/CompactCard";
+import { OrganizationEventCard }   from "../../components/OrganizationEventCard";
 
 export const OrganizationDashboardPage = () => {
   const id = useSelector((state) => state.auth.id);
@@ -87,17 +88,17 @@ export const OrganizationDashboardPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col pb-5 ">
+    <div className="min-h-full bg-gray-100 flex flex-col pb-5 ml-[15vw]">
       <div className="flex flex-col">
         <div className="mx-5 my-7 flex justify-between items-center ">
-          <div className="text-2xl font-semibold">Ongoing Events</div>
+          <div className="text-xl md:text-2xl font-semibold">Ongoing Events</div>
           <Link to="/organization/post_opportunities">
-            <button className="text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-full py-2 px-6 text-l">
+            <button className="text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-xl py-1 px-3 md:py-2 md:px-6 text-l">
               Add New
             </button>
           </Link>
         </div>
-        <div className="mx-2 flex flex-row overflow-x-scroll no-scrollbar">
+        <div className="mx-2 flex flex-row overflow-x-scroll no-scrollbar space-x-4 md:px-2">
           {ongoingEvents.slice(0, 4).map((event) => {
             return (
               <CompactCard
@@ -153,9 +154,9 @@ export const OrganizationDashboardPage = () => {
           )}
         </div>
         <div className="flex flex-col">
-          <h1 className="text-2xl font-semibold mx-5 my-7">Upcoming Events</h1>
+          <h1 className="text-xl md:text-2xl font-semibold mx-5 my-7">Upcoming Events</h1>
 
-          <div className="mx-2 flex overflow-x-scroll no-scrollbar">
+          <div className="mx-2 flex overflow-x-scroll no-scrollbar space-x-4 md:px-2">
             {publishedEvents.slice(0, 4).map((event) => {
               return (
                 <CompactCard
@@ -211,56 +212,33 @@ export const OrganizationDashboardPage = () => {
             </div>
           )}
         </div>
-        <div className="text-2xl font-semibold mx-5 my-7">
+        <div className="text-xl md:text-2xl font-semibold mx-5 my-7">
           Recently Completed
         </div>
-        <div className="flex flex-col">
-          {finishedEvents.slice(0, 4).map((event) => {
-            return (
-              <EventShortCard
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                description={event.description}
-                attendance={event.attendance}
-                capacity={event.capacity}
-              />
-            );
-          })}
-        </div>
-        <div className="flex justify-end mx-5 my-7 space-x-6">
-          {finishedPage > 1 ? (
-            <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5"
-              onClick={() => handleFinishedChangePage(-1)}
-            >
-              Previous Page
-            </button>
-          ) : (
-            <div
-              className="bg-inherit text-transparent py-2 px-5"
-              onClick={() => handleFinishedChangePage(1)}
-            >
-              Previous Page
+        <div class="w-[85vw] px-4 ">
+          <div class="flex gap-3 bg-white border-1 shadow rounded-xl overflow-hidden items-center justify-start">
+
+          <div class="relative w-[15%] lg:w-[3%] pl-2 ">
+              <img class="  w-full h-full object-cover object-center transition duration-50" loading="lazy" src="https://via.placeholder.com/150" />
             </div>
-          )}
-          {finishedEvents.length > 4 ? (
-            <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5"
-              onClick={() => handleFinishedChangePage(1)}
-            >
-              Next Page
-            </button>
-          ) : (
-            <div
-              className="bg-inherit text-transparent py-2 px-5"
-              onClick={() => handleFinishedChangePage(1)}
-            >
-              Next Page
-            </div>
-          )}
+
+          <div class="flex flex-col  py-2">
+
+            <p class="text-xl font-bold">Post title</p>
+
+            <p class="text-gray-500 w-[100%">
+                Description of your post/article,
+            </p>
+
+            <span class="flex items-center justify-start text-gray-500">
+               date time etc
+            </span>
         </div>
-      </div>
     </div>
+
+</div>
+    </div>
+    </div>
+
   );
 };
