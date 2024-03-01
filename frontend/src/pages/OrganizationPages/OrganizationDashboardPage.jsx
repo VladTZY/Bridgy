@@ -121,19 +121,37 @@ export const OrganizationDashboardPage = () => {
             );
           })}
         </div>
-        <div className="flex justify-between  mx-5 my-7">
-          <button
-            className="bg-[#2EA0FB] hover:bg-[#2135D9] rounded-xl text-white py-2 px-5"
-            onClick={() => handleOngoingChangePage(-1)}
-          >
-            Previous Page
-          </button>
-          <button
-            className="bg-[#2EA0FB] hover:bg-[#2135D9] rounded-xl text-white py-2 px-5"
-            onClick={() => handleOngoingChangePage(1)}
-          >
-            Next Page
-          </button>
+        <div className="flex justify-end mx-5 my-7 space-x-6">
+          {ongoingPage > 1 ? (
+            <button
+              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5"
+              onClick={() => handleOngoingChangePage(-1)}
+            >
+              Previous Page
+            </button>
+          ) : (
+            <div
+              className="bg-inherit text-transparent py-2 px-5"
+              onClick={() => handleOngoingChangePage(1)}
+            >
+              Previous Page
+            </div>
+          )}
+          {ongoingEvents.length > 4 ? (
+            <button
+              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5"
+              onClick={() => handleOngoingChangePage(1)}
+            >
+              Next Page
+            </button>
+          ) : (
+            <div
+              className="bg-inherit text-transparent py-2 px-5"
+              onClick={() => handleOngoingChangePage(1)}
+            >
+              Next Page
+            </div>
+          )}
         </div>
         <div className="flex flex-col">
           <h1 className="text-xl md:text-2xl font-semibold mx-5 my-7">Upcoming Events</h1>
@@ -162,19 +180,37 @@ export const OrganizationDashboardPage = () => {
             })}
           </div>
         </div>
-        <div className="flex justify-between  mx-5 my-7">
-          <button
-            className="hover:bg-[#2135D9] bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
-            onClick={() => handleUpcomingChangePage(-1)}
-          >
-            Previous Page
-          </button>
-          <button
-            className="hover:bg-[#2135D9] bg-[#2EA0FB] rounded-xl text-white py-2 px-5"
-            onClick={() => handleUpcomingChangePage(1)}
-          >
-            Next Page
-          </button>
+        <div className="flex justify-end mx-5 my-7 space-x-6">
+          {upcomingPage > 1 ? (
+            <button
+              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5"
+              onClick={() => handleUpcomingChangePage(-1)}
+            >
+              Previous Page
+            </button>
+          ) : (
+            <div
+              className="bg-inherit text-transparent py-2 px-5"
+              onClick={() => handleUpcomingChangePage(1)}
+            >
+              Previous Page
+            </div>
+          )}
+          {publishedEvents.length > 4 ? (
+            <button
+              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5"
+              onClick={() => handleUpcomingChangePage(1)}
+            >
+              Next Page
+            </button>
+          ) : (
+            <div
+              className="bg-inherit text-transparent py-2 px-5"
+              onClick={() => handleUpcomingChangePage(1)}
+            >
+              Next Page
+            </div>
+          )}
         </div>
         <div className="text-xl md:text-2xl font-semibold mx-5 my-7">
           Recently Completed
@@ -197,9 +233,7 @@ export const OrganizationDashboardPage = () => {
             <span class="flex items-center justify-start text-gray-500">
                date time etc
             </span>
-
         </div>
-
     </div>
 
 </div>
