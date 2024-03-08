@@ -20,7 +20,7 @@ export const BarOpportunity = ({
 
   return (
     <button
-      class="w-[85vw] px-2 transform transition duration-200  hover:scale-[1.01] hover:drop-shadow-black"
+      class="w-[100%] px-2 transform transition duration-200  hover:scale-[1.01] hover:drop-shadow-black"
       onClick={handleMoreInfo}
     >
       <div class="flex bg-white border-1 shadow rounded-xl overflow-hidden items-center justify-start w-[100%] ">

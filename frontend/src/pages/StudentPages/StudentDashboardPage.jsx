@@ -44,7 +44,7 @@ export const StudentDashboardPage = () => {
   return (
     <div className="w-[85vw] p-3 bg-gray-100 flex flex-col pb-10 ml-[15vw]">
       <div className=" md:flex w-[100%] bg-gray-100 flex flex-col px- md:p-4 overflow-x-scroll ">
-          <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%] space-x-4">
+          <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%] ">
           <StudentProgressCard
           title={"Active"}
           total={"250"}
@@ -115,8 +115,72 @@ export const StudentDashboardPage = () => {
             </div>
           </div>
         </div>
+
+       <div className="w-[100%] lg:px-6 bg-gray-100 ">
+       <div className="text-left text-xl font-semibold">
+                  Hours
+                </div>
+       <section class="grid gap-6 my-6 md:grid-cols-3">
+    <div class="p-6 bg-white shadow rounded-2xl">
+        <dl class="space-y-2">
+            <dt class="text-sm font-medium text-gray-500 2xl:text-xl">Total hours/day</dt>
+
+            <dd class="text-5xl font-light md:text-6xl">10</dd>
+
+            <dd class="flex items-center space-x-1 text-sm font-medium text-green-500">
+                <span>3h increase</span>
+
+                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M17.25 15.25V6.75H8.75"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M17 7L6.75 17.25"></path>
+                </svg>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="p-6 bg-white shadow rounded-2xl">
+        <dl class="space-y-2">
+            <dt class="text-sm font-medium text-gray-500 2xl:text-xl">Total hours/week</dt>
+
+            <dd class="text-5xl font-light md:text-6xl">43</dd>
+
+            <dd class="flex items-center space-x-1 text-sm font-medium text-red-500">
+                <span>10% decrease</span>
+
+                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M17.25 8.75V17.25H8.75"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M17 17L6.75 6.75"></path>
+                </svg>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="p-6 bg-white shadow rounded-2xl">
+        <dl class="space-y-2">
+            <dt class="text-sm font-medium text-gray-500 2xl:text-xl">Total hours</dt>
+
+            <dd class="text-5xl font-light md:text-6xl">439</dd>
+
+            <dd class="flex items-center space-x-1 text-sm font-medium text-green-500">
+                <span>3% increase</span>
+
+                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M17.25 15.25V6.75H8.75"></path>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M17 7L6.75 17.25"></path>
+                </svg>
+            </dd>
+        </dl>
+    </div>
+</section>
+       </div>  
       <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4 pl-2">
-        <h1 className="text-xl font-bold">Ongoing Events</h1>
+        <h1 className="text-xl font-bold 2xl:text-2xl">Ongoing Events</h1>
 
         <div>
           {
@@ -156,7 +220,7 @@ export const StudentDashboardPage = () => {
       </div>
 
       <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4 pl-2">
-        <h1 className="text-xl font-bold">Accepted Events</h1>
+        <h1 className="text-xl font-bold 2xl:text-2xl">Accepted Events</h1>
 
         <div>
           {
@@ -196,7 +260,7 @@ export const StudentDashboardPage = () => {
       </div>
 
       <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4 pl-2">
-        <h1 className="text-xl font-bold">Requested Events</h1>
+        <h1 className="text-xl font-bold 2xl:text-2xl">Requested Events</h1>
 
         <div>
           {

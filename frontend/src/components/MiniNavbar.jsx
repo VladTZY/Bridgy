@@ -14,7 +14,7 @@ export const MiniNavbar = () => {
             src={logo}
             alt="react logo"
             style={{
-              width: "4rem",
+              width: "4rem 2xl:w-[5rem]",
             }}
           />
           <div className="hover:text-[#2135D9] text-2xl">
@@ -27,7 +27,7 @@ export const MiniNavbar = () => {
             alt="react logo"
             style={{ width: "1.5rem" }}
           />
-          <div className="text-sm">Logged in as : {name}</div>
+          <div className="text-sm 2xl:text-lg">Logged in as : {name}</div>
         </div>
       </div>
     </div>

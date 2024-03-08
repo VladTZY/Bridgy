@@ -1,4 +1,5 @@
 import { Circle } from "rc-progress";
+import pic from "../../Bridgy_Assets/LOGO BRIDGY/fav icon/backgroundcard.png";
 
 export const SchoolProgressCard = ({
   color,
@@ -8,11 +9,12 @@ export const SchoolProgressCard = ({
   percentage,
 }) => {
   return (
-    <div className="w-[100%] flex flex-row overscroll-x-hidden rounded-xl bg-white m-3 justify-around shadow-md">
+    <div className="w-[100%]  relative flex flex-row overscroll-x-hidden rounded-xl bg-white m-3 justify-around shadow-md">
+    <div className="absolute top-0 left-0 w-full h-full bg-cover bg-no-repeat bg-center rounded-xl" style={{backgroundImage: `url(${pic})`}}></div>
       <div className="mt-6 flex flex-col space-y-2">
-        <div className="text-2xl text-bold">{title}·</div>
-        <div className="text-3xl">{total}·</div>
-        <div className="pt-6 text-xl text-gray-500">{description}</div>
+        <div className="text-2xl text-bold">{title}</div>
+        <div className="text-3xl">{total}</div>
+        <div className="pt- text-xl text-gray-500">{description}Test test</div>
       </div>
       <div className=" my-4 w-[30%] rounded-full flex relative items-center justify-center">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center text-xl" style={{ color: color }}>
