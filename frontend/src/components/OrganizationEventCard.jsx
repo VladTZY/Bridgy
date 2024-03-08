@@ -12,17 +12,7 @@ export const OrganizationEventCard = () => {
     <div className="text-2xl font-bold w-[20%] overflow-hidden truncate "><span>Park cleaning</span></div>
     <div className="w-[20%] overflow-hidden truncate "><span>Description</span></div>
     
-
-
-
-
     </div>
-
-
-
-
-
-
 </div>
 
   );
