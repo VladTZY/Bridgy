@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
-
+import { useState, useEffect } from "react";
 import { WriteExperienceCard } from "../../components/WriteExperienceCard";
 import { Card } from "../../components/Card";
+import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
 
 export const MyExperiencesPage = () => {
   const [events, setEvents] = useState([]);
@@ -43,7 +42,7 @@ export const MyExperiencesPage = () => {
                     event_type={"opportunity"}
                     photoUrl={
                       data.event.photoUrl == "NO_FILE"
-                        ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                        ? DefaultImage
                         : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
                             data.event.photoUrl
                           }`

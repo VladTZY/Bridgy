@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card } from "../../components/Card";
 import { SearchBar } from "../../components/SearchBar";
+import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
 
 export const FindOpportunitiesPage = () => {
   const [events, setEvents] = useState([]);
@@ -32,9 +33,7 @@ export const FindOpportunitiesPage = () => {
   return (
     <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw] px-6 pt-6">
       <SearchBar />
-      <h1 className="text-2xl font-bold  my-7">
-        Published Opportunities
-      </h1>
+      <h1 className="text-2xl font-bold  my-7">Published Opportunities</h1>
 
       <div className=" flex flex-wrap justify-center items-center overflow-x-scroll ">
         {events.slice(0, 6).map((event) => {
@@ -50,7 +49,7 @@ export const FindOpportunitiesPage = () => {
               event_type={"opportunity"}
               photoUrl={
                 event.photoUrl == "NO_FILE"
-                  ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                  ? DefaultImage
                   : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
                       event.photoUrl
                     }`

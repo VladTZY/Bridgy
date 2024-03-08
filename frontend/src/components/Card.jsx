@@ -1,7 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import ClockIcon from "../../Bridgy_Assets/icon/clock blue.svg";
-import LocationIcon from "../../Bridgy_Assets/icon/location blue.svg";
-import CalendarIcon from "../../Bridgy_Assets/icon/calender blue.svg";
 
 import dateToStr from "../misc/dateToStr";
 

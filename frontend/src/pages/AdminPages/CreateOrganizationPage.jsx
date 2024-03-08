@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import { CreationModal } from "../../components/CreationModal";
 import { ErrorModal } from "../../components/ErrorModal";
 
@@ -74,7 +73,9 @@ export const CreateOrganizationPage = () => {
     <div className="h-full bg-gray-100 ml-[15vw] px-4 pb-10">
       <div className="flex flex-col ">
         <div className="px-2 pt-6 bg-white rounded-xl">
-          <h1 className=" text-2xl lg:text-3xl font-semibold px-5 mb-4 text-center">Create organization</h1>
+          <h1 className=" text-2xl lg:text-3xl font-semibold px-5 mb-4 text-center">
+            Create organization
+          </h1>
           <form onSubmit={submitHandler}>
             <div className="p-2">
               <input

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Card } from "../../components/Card";
 import { SearchBar } from "../../components/SearchBar";
+import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
 
 export const MissionsPage = () => {
   const id = useSelector((state) => state.auth.id);
@@ -61,7 +62,7 @@ export const MissionsPage = () => {
                 event_type={"opportunity"}
                 photoUrl={
                   event.photoUrl == "NO_FILE"
-                    ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                    ? DefaultImage
                     : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
                         event.photoUrl
                       }`
@@ -73,7 +74,9 @@ export const MissionsPage = () => {
       </div>
 
       <div className="flex flex-col ">
-        <h1 className="text-2xl font-semibold my-4 text-center md:text-left">Past Opportunities</h1>
+        <h1 className="text-2xl font-semibold my-4 text-center md:text-left">
+          Past Opportunities
+        </h1>
 
         <div className="space-y-4 flex flex-wrap justify-center justify-items-left">
           {finishedEvents.map((event) => {
@@ -89,7 +92,7 @@ export const MissionsPage = () => {
                 event_type={"opportunity"}
                 photoUrl={
                   event.photoUrl == "NO_FILE"
-                    ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                    ? DefaultImage
                     : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
                         event.photoUrl
                       }`

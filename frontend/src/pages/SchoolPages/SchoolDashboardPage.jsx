@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import axios from "axios";
 
 import { StudentsTable } from "../../components/StudentsTable";
@@ -59,10 +58,40 @@ export const SchoolDashboardPage = () => {
   };
 
   return (
-      <div className="ml-[15vw]">
-        <div className=" md:flex w-[85vw] bg-gray-100 flex flex-col px- md:p-4 overflow-x-scroll ">
-          <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%]">
-            <SchoolProgressCard 
+    <div className="ml-[15vw]">
+      <div className=" md:flex w-[85vw] bg-gray-100 flex flex-col px- md:p-4 overflow-x-scroll ">
+        <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+          <SchoolProgressCard
+            title={"Objective"}
+            total={stats.actualObjective + "/" + stats.totalObjective}
+            description={""}
+            percentage={Math.round(
+              (stats.actualObjective / stats.totalObjective) * 100
+            )}
+            color={"#32cd32"}
+          />
+          <SchoolProgressCard
+            title={"Total Economy"}
+            total={stats.totalEconomy + "$"}
+            description={""}
+            percentage={100}
+            color={"#eed202"}
+          />
+          <SchoolProgressCard
+            title={"Nr. of Students"}
+            total={stats.completedStudents + "/" + stats.numberOfStudents}
+            description={""}
+            percentage={Math.round(
+              (stats.completedStudents / stats.numberOfStudents) * 100
+            )}
+            color={"#a40000"}
+          />
+        </div>
+
+        <div className=" w-[85vw] bg-gray-100 flex flex-col  md:p-4 overflow-x-scroll overscroll-contain md:hidden"></div>
+        <div className="  flex flex-row overflow-x-scroll  justify-center items-center w-[300%] md:hidden">
+          <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+            <SchoolProgressCard
               title={"Objective"}
               total={stats.actualObjective + "/" + stats.totalObjective}
               description={""}
@@ -71,6 +100,8 @@ export const SchoolDashboardPage = () => {
               )}
               color={"#32cd32"}
             />
+          </div>
+          <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
             <SchoolProgressCard
               title={"Total Economy"}
               total={stats.totalEconomy + "$"}
@@ -78,6 +109,8 @@ export const SchoolDashboardPage = () => {
               percentage={100}
               color={"#eed202"}
             />
+          </div>
+          <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
             <SchoolProgressCard
               title={"Nr. of Students"}
               total={stats.completedStudents + "/" + stats.numberOfStudents}
@@ -88,68 +121,36 @@ export const SchoolDashboardPage = () => {
               color={"#a40000"}
             />
           </div>
-
-          <div className=" w-[85vw] bg-gray-100 flex flex-col  md:p-4 overflow-x-scroll overscroll-contain md:hidden"></div>      
-          <div className="  flex flex-row overflow-x-scroll  justify-center items-center w-[300%] md:hidden"> 
-            <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
-              <SchoolProgressCard 
-                title={"Objective"}
-                total={stats.actualObjective + "/" + stats.totalObjective}
-                description={""}
-                percentage={Math.round(
-                  (stats.actualObjective / stats.totalObjective) * 100
-                )}
-                color={"#32cd32"}
-              />
-            </div>
-            <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
-              <SchoolProgressCard
-                title={"Total Economy"}
-                total={stats.totalEconomy + "$"}
-                description={""}
-                percentage={100}
-                color={"#eed202"}
-              />
-            </div>
-            <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
-              <SchoolProgressCard
-                title={"Nr. of Students"}
-                total={stats.completedStudents + "/" + stats.numberOfStudents}
-                description={""}
-                percentage={Math.round(
-                  (stats.completedStudents / stats.numberOfStudents) * 100
-                )}
-                color={"#a40000"}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="mt-6 flex flex-col md:flex md:flex-row justify-between  w-[100%] px-4">
-          <h1 className="text-2xl font-semibold text-center lg:text-left">Students</h1>
-          <div className="flex  mt-3 md:mt-0 justify-center text-center">
-            <select
-              value={sorted}
-              onChange={(e) => handleOrderChange(e.target.value)}
-              className="bg-white shadow-md p-2 rounded-xl mr-2 border"
-            >
-              <option value="none">Order</option>
-              <option value="alphabetical">Alphabetical</option>
-            </select>
-            <select
-              value={grade}
-              onChange={(e) => setGrade(e.target.value)}
-              className="bg-white shadow-md p-2 rounded-xl border"
-            >
-              <option value="9">9th Grade</option>
-              <option value="10">10th Grade</option>
-              <option value="11">11th Grade</option>
-              <option value="12">12th Grade</option>
-            </select>
-          </div>
-        </div>
-        <div className=" mx-3 mt-6  ">
-        <StudentsTable students={tableData} />
         </div>
       </div>
-    );
+      <div className="mt-6 flex flex-col md:flex md:flex-row justify-between  w-[100%] px-4">
+        <h1 className="text-2xl font-semibold text-center lg:text-left">
+          Students
+        </h1>
+        <div className="flex  mt-3 md:mt-0 justify-center text-center">
+          <select
+            value={sorted}
+            onChange={(e) => handleOrderChange(e.target.value)}
+            className="bg-white shadow-md p-2 rounded-xl mr-2 border"
+          >
+            <option value="none">Order</option>
+            <option value="alphabetical">Alphabetical</option>
+          </select>
+          <select
+            value={grade}
+            onChange={(e) => setGrade(e.target.value)}
+            className="bg-white shadow-md p-2 rounded-xl border"
+          >
+            <option value="9">9th Grade</option>
+            <option value="10">10th Grade</option>
+            <option value="11">11th Grade</option>
+            <option value="12">12th Grade</option>
+          </select>
+        </div>
+      </div>
+      <div className=" mx-3 mt-6  ">
+        <StudentsTable students={tableData} />
+      </div>
+    </div>
+  );
 };

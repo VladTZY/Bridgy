@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
@@ -241,6 +240,5 @@ export const AddPreviousEventsPage = () => {
         </div>
       </div>
     </div>
-
   );
 };

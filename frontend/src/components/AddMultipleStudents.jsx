@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 export const AddMultipleStudents = ({
@@ -39,7 +39,9 @@ export const AddMultipleStudents = ({
   return (
     <div className="mx-3 mt-5 lg:mt-0 rounded-3xl bg-white flex flex-col justify-between">
       <div className="flex flex-col justify-center items-center">
-        <h1 className="text-2xl font-semibold px-5 pt-6">Add Multiple Students</h1>
+        <h1 className="text-2xl font-semibold px-5 pt-6">
+          Add Multiple Students
+        </h1>
         <a
           className="mt-5"
           href={"../../BridgySampleTable.csv"}

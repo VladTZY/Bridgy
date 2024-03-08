@@ -2,10 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
-import { EventShortCard } from "../../components/EventShortCard";
 import { CompactCard } from "../../components/CompactCard";
-import { OrganizationEventCard } from "../../components/OrganizationEventCard";
 import { BarOpportunity } from "../../components/BarOpportunity";
+import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
+import RedCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/redcircle.png";
+import GreenCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/greencircle.png";
 
 export const OrganizationDashboardPage = () => {
   const id = useSelector((state) => state.auth.id);
@@ -114,7 +115,7 @@ export const OrganizationDashboardPage = () => {
                 event_type={"opportunity"}
                 photoUrl={
                   event.photoUrl == "NO_FILE"
-                    ? "../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+                    ? DefaultImage
                     : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
                         event.photoUrl
                       }`
@@ -162,9 +163,7 @@ export const OrganizationDashboardPage = () => {
                 time={event.time}
                 location={event.location.city}
                 event_type={"opportunity"}
-                circle_src={
-                  "../../Bridgy_Assets/LOGO BRIDGY/fav icon/redcircle.png"
-                }
+                circle_src={RedCircle}
               />
             );
           })}
@@ -182,9 +181,7 @@ export const OrganizationDashboardPage = () => {
                 time={event.time}
                 location={event.location.city}
                 event_type={"opportunity"}
-                circle_src={
-                  "../../Bridgy_Assets/LOGO BRIDGY/fav icon/greencircle.png"
-                }
+                circle_src={GreenCircle}
               />
             );
           })}

@@ -3,7 +3,6 @@ import { RequestedStudentsTable } from "./RequestedStudentsTable";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export const OrganizationPublishedMoreInfo = ({ eventId }) => {
   const [acceptedStudents, setAcceptedStudents] = useState([]);
