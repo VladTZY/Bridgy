@@ -120,17 +120,17 @@ export const StudentDashboardPage = () => {
        <div className="text-left text-xl font-semibold">
                   Hours
                 </div>
-       <section class="grid gap-6 my-6 md:grid-cols-3">
-    <div class="p-6 bg-white shadow rounded-2xl">
-        <dl class="space-y-2">
-            <dt class="text-sm font-medium text-gray-500 2xl:text-xl">Total hours/day</dt>
+       <section className="grid gap-6 my-6 md:grid-cols-3">
+    <div className="p-6 bg-white shadow rounded-2xl">
+        <dl className="space-y-2">
+            <dt className="text-sm font-medium text-gray-500 2xl:text-xl">Total hours/day</dt>
 
-            <dd class="text-5xl font-light md:text-6xl">10</dd>
+            <dd className="text-5xl font-light md:text-6xl">10</dd>
 
-            <dd class="flex items-center space-x-1 text-sm font-medium text-green-500">
+            <dd className="flex items-center space-x-1 text-sm font-medium text-green-500">
                 <span>3h increase</span>
 
-                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                         d="M17.25 15.25V6.75H8.75"></path>
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -140,13 +140,13 @@ export const StudentDashboardPage = () => {
         </dl>
     </div>
 
-    <div class="p-6 bg-white shadow rounded-2xl">
-        <dl class="space-y-2">
-            <dt class="text-sm font-medium text-gray-500 2xl:text-xl">Total hours/week</dt>
+    <div className="p-6 bg-white shadow rounded-2xl">
+        <dl className="space-y-2">
+            <dt className="text-sm font-medium text-gray-500 2xl:text-xl">Total hours/week</dt>
 
-            <dd class="text-5xl font-light md:text-6xl">43</dd>
+            <dd className="text-5xl font-light md:text-6xl">43</dd>
 
-            <dd class="flex items-center space-x-1 text-sm font-medium text-red-500">
+            <dd className="flex items-center space-x-1 text-sm font-medium text-red-500">
                 <span>10% decrease</span>
 
                 <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -159,16 +159,16 @@ export const StudentDashboardPage = () => {
         </dl>
     </div>
 
-    <div class="p-6 bg-white shadow rounded-2xl">
-        <dl class="space-y-2">
-            <dt class="text-sm font-medium text-gray-500 2xl:text-xl">Total hours</dt>
+    <div className="p-6 bg-white shadow rounded-2xl">
+        <dl className="space-y-2">
+            <dt className="text-sm font-medium text-gray-500 2xl:text-xl">Total hours</dt>
 
-            <dd class="text-5xl font-light md:text-6xl">439</dd>
+            <dd className="text-5xl font-light md:text-6xl">439</dd>
 
-            <dd class="flex items-center space-x-1 text-sm font-medium text-green-500">
+            <dd className="flex items-center space-x-1 text-sm font-medium text-green-500">
                 <span>3% increase</span>
 
-                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                         d="M17.25 15.25V6.75H8.75"></path>
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
