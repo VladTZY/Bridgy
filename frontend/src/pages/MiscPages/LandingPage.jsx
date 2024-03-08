@@ -19,7 +19,7 @@ export const LandingPage = () => {
         <div className="flex flex-col w-[100vw]  md:h-[100vh] 2xl:h-[85vh] bg-gray-100 pb-10 justify-center items-center">
           <div className="flex flex-col md:flex-row px-8 relative ">
             <img
-              className=" md:w-[50%] rounded-2xl drop-shadow-2xl opacity-0 transition opacity-100 ease-in duration-900 transform hover:scale-[101%] duration-300 "
+              className=" md:w-[50%] rounded-2xl drop-shadow-2xl transition opacity-100 ease-in duration-900 transform hover:scale-[101%] duration-300 "
               src={pic14}
               alt="charitieslove"
             />
@@ -106,7 +106,7 @@ export const LandingPage = () => {
             </div>
             <div className="relative md:w-[50%] bg-gray-100 ">
               <img
-                className="  rounded-2xl  bg-gray-100 opacity-0 transform ease-in-out duration-1500 opacity-100"
+                className="  rounded-2xl  bg-gray-100 transform ease-in-out duration-1500"
                 src={pic7}
                 alt="Dashboard"
               />

@@ -90,7 +90,7 @@ export const ProfilePage = () => {
                 />
                 <p className="pl-2 text-white hidden lg:block">Edit profile</p>
               </div>
-              <div className=" hidden bg-[#2135D9] p-1.5 lg:p-2 rounded-l lg:rounded-xl mr-2 flex flex-row justify-center items-center">
+              <div className="hidden bg-[#2135D9] p-1.5 lg:p-2 rounded-l lg:rounded-xl mr-2 flex flex-row justify-center items-center">
                 // Div pt save profile sa ii faci cod
                 <img
                   src={EditProfileIcon}
@@ -106,7 +106,9 @@ export const ProfilePage = () => {
                   className="w-4 h-4 cursor-pointer"
                   onClick={() => setPasswordModal(true)}
                 />
-                <p className="pl-2 text-white hidden lg:block">Change password</p>
+                <p className="pl-2 text-white hidden lg:block">
+                  Change password
+                </p>
               </div>
             </div>
           </div>
@@ -114,9 +116,9 @@ export const ProfilePage = () => {
       </div>
 
       <div className="w-[85vw] flex flex-col lg:flex-row ml-[15vw] px-4 ">
-      <div className="flex flex-col w-[100%] lg:w-[50%] bg-white rounded-xl p-4 lg:mr-2 mb-2 lg:mb-0">
-      <div >
-      {
+        <div className="flex flex-col w-[100%] lg:w-[50%] bg-white rounded-xl p-4 lg:mr-2 mb-2 lg:mb-0">
+          <div>
+            {
               {
                 STUDENT: (
                   <div className="flex-1 flex flex-col w-full">
@@ -155,20 +157,19 @@ export const ProfilePage = () => {
                   </div>
                 ),
               }[userInfo.role]
-            }              
-          
-          <div className="flex-1 flex flex-col w-full">
-            <label>Email</label>
-            <input
-              type="text"
-              value={userInfo.email}
-              readOnly={true}
-              disabled={true}
-              className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
-            ></input>
+            }
+
+            <div className="flex-1 flex flex-col w-full">
+              <label>Email</label>
+              <input
+                type="text"
+                value={userInfo.email}
+                readOnly={true}
+                disabled={true}
+                className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
+              ></input>
             </div>
-           
-           
+
             <div className="flex-1 flex flex-col w-full">
               <label>Phone number</label>
               <input
@@ -181,70 +182,66 @@ export const ProfilePage = () => {
                 }
                 className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
               ></input>
-              </div>
-
-      </div>
-      </div>
-      <div className="flex flex-col w-[100%] lg:w-[50%] bg-white rounded-xl p-4 lg:ml-2 mt-2 lg:mt-0">
-      <div className="flex-1 flex flex-col w-full">
-                <label>Location</label>
-                <input
-                  type="text"
-                  value={`${userInfo.location.city}, ${userInfo.location.country}`}
-                  readOnly={true}
-                  disabled={true}
-                  className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
-                ></input>
-              </div>
-              <div className="flex-1 flex flex-col w-full">
-                    <label>Objective Type</label>
-                    <select
-                      type="text"
-                      value={userInfo.objectiveType}
-                      onChange={(e) =>
-                        setUserInfo({
-                          ...userInfo,
-                          objectiveType: e.target.value,
-                        })
-                      }
-                      disabled={isDisabled}
-                      readOnly={isDisabled}
-                      className="my-2 rounded-xl w-full p-4 bg-white border border-gray-200 font-normal text-center"
-                    >
-                      <option value={"EVENT"}>Participating events</option>
-                      <option value={"HOURS"}>Working hours</option>
-                    </select>
-                  </div>
-
-                  <div className="flex-1 flex flex-col w-full">
-                    <label>Objective</label>
-                    <input
-                      type="text"
-                      value={userInfo.objective}
-                      onChange={(e) =>
-                        setUserInfo({ ...userInfo, objective: e.target.value })
-                      }
-                      disabled={isDisabled}
-                      readOnly={isDisabled}
-                      className="my-2 rounded-xl w-full p-4 bg-white border border-gray-200 font-normal text-center"
-                    ></input>
-                  </div>
-                </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col w-[85vw] ml-[15vw] px-4 mt-5 lg:mt-10 mb-10 lg:mb-0">
-            <label className="text-left">Bio</label>
-            <textarea
+        <div className="flex flex-col w-[100%] lg:w-[50%] bg-white rounded-xl p-4 lg:ml-2 mt-2 lg:mt-0">
+          <div className="flex-1 flex flex-col w-full">
+            <label>Location</label>
+            <input
               type="text"
-              value={userInfo.bio}
+              value={`${userInfo.location.city}, ${userInfo.location.country}`}
+              readOnly={true}
+              disabled={true}
+              className="my-2 rounded-xl w-full py-3 bg-white border border-gray-200 font-normal text-center"
+            ></input>
+          </div>
+          <div className="flex-1 flex flex-col w-full">
+            <label>Objective Type</label>
+            <select
+              type="text"
+              value={userInfo.objectiveType}
               onChange={(e) =>
-                setUserInfo({ ...userInfo, bio: e.target.value })
+                setUserInfo({
+                  ...userInfo,
+                  objectiveType: e.target.value,
+                })
               }
               disabled={isDisabled}
               readOnly={isDisabled}
-              className="my-2 rounded-lg w-full p-4 bg-white border border-gray-200 font-normal h-[150px]"
-            ></textarea>
+              className="my-2 rounded-xl w-full p-4 bg-white border border-gray-200 font-normal text-center"
+            >
+              <option value={"EVENT"}>Participating events</option>
+              <option value={"HOURS"}>Working hours</option>
+            </select>
           </div>
-      </div>
 
+          <div className="flex-1 flex flex-col w-full">
+            <label>Objective</label>
+            <input
+              type="text"
+              value={userInfo.objective}
+              onChange={(e) =>
+                setUserInfo({ ...userInfo, objective: e.target.value })
+              }
+              disabled={isDisabled}
+              readOnly={isDisabled}
+              className="my-2 rounded-xl w-full p-4 bg-white border border-gray-200 font-normal text-center"
+            ></input>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col w-[85vw] ml-[15vw] px-4 mt-5 lg:mt-10 mb-10 lg:mb-0">
+        <label className="text-left">Bio</label>
+        <textarea
+          type="text"
+          value={userInfo.bio}
+          onChange={(e) => setUserInfo({ ...userInfo, bio: e.target.value })}
+          disabled={isDisabled}
+          readOnly={isDisabled}
+          className="my-2 rounded-lg w-full p-4 bg-white border border-gray-200 font-normal h-[150px]"
+        ></textarea>
+      </div>
+    </div>
   );
 };

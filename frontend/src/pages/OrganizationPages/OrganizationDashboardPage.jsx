@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { CompactCard } from "../../components/CompactCard";
 import { BarOpportunity } from "../../components/BarOpportunity";
 import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
-import RedCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/redcircle.png";
+import OrangeCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/orangecircle.png";
 import GreenCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/greencircle.png";
 
 export const OrganizationDashboardPage = () => {
@@ -163,7 +163,7 @@ export const OrganizationDashboardPage = () => {
                 time={event.time}
                 location={event.location.city}
                 event_type={"opportunity"}
-                circle_src={RedCircle}
+                circle_src={OrangeCircle}
               />
             );
           })}
