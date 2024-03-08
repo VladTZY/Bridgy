@@ -4,11 +4,9 @@ import { MarkAttendanceModal } from "./MarkAttendanceModal";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export const OrganizationOngoingMoreInfo = ({ eventId }) => {
   const [acceptedStudents, setAcceptedStudents] = useState([]);
-  const [requestedStudents, setRequestedStudents] = useState([]);
   const [endModal, setEndModal] = useState(false);
   const [attendanceModal, setAttendanceModal] = useState(false);
 

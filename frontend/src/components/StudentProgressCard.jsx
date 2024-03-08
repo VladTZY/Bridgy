@@ -1,5 +1,4 @@
 import { Circle } from "rc-progress";
-import pic from "../../Bridgy_Assets/LOGO BRIDGY/fav icon/backgroundcard.png";  
 
 export const StudentProgressCard = ({
   color,

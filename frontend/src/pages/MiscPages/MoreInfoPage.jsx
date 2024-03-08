@@ -13,6 +13,7 @@ import { OrganizationFinishedMoreInfo } from "../../components/OrganizationFinis
 import ClockIcon from "../../../Bridgy_Assets/icon/clock blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
+import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
 
 import datetimeToStr from "../../misc/datetimeToStr";
 
@@ -75,67 +76,76 @@ export const MoreInfoPage = () => {
           className="rounded-lg self-center"
           src={
             event.photoUrl == "NO_FILE"
-              ? "../../../Bridgy_Assets/Images/Webpage/What we do 01.png"
+              ? DefaultImage
               : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${event.photoUrl}`
           }
-          style={{ height: "45vh",width:"100%", objectFit:"cover", aspectRatio: "16 / 9" }}
+          style={{
+            height: "45vh",
+            width: "100%",
+            objectFit: "cover",
+            aspectRatio: "16 / 9",
+          }}
         />
-        <div className="mt-4  text-xl font-bold text-center w-[100%] px-2">{event.name}</div>
-        <div className="mt-3 w-[100%] px-2 text-l text-center ">{event.description}</div>
+        <div className="mt-4  text-xl font-bold text-center w-[100%] px-2">
+          {event.name}
+        </div>
+        <div className="mt-3 w-[100%] px-2 text-l text-center ">
+          {event.description}
+        </div>
         <div className="flex flex-row w-[100%] px-3 justify-evenly  mt-3 space-x-4">
-        <div className="flex flex-col w-[50%] space-y-2">
-          <div className="flex  border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
-            <img src={CalendarIcon} style={{ height: "40%" }} />
-            <div className="text-l text-black truncate overflow-hidden">
-              {datetimeToStr(event.time)}
+          <div className="flex flex-col w-[50%] space-y-2">
+            <div className="flex  border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
+              <img src={CalendarIcon} style={{ height: "40%" }} />
+              <div className="text-l text-black truncate overflow-hidden">
+                {datetimeToStr(event.time)}
+              </div>
+            </div>
+            <div className="flex border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
+              <img src={LocationIcon} style={{ height: "40%" }} />
+              <div className="text-l text-black">{locationName}</div>
             </div>
           </div>
-          <div className="flex border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
-            <img src={LocationIcon} style={{ height: "40%" }} />
-            <div className="text-l text-black">{locationName}</div>
-          </div>
-          </div>
           <div className="flex flex-col w-[50%] space-y-2">
-          <div className="flex  border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
-            <img src={ClockIcon} style={{ height: "40%" }} />
-            <div className="text-l text-black">{event.hours} hours</div>
-          </div>
-          <div className="flex  border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
-            <img src={ClockIcon} style={{ height: "40%" }} />
-            <div className="text-l text-black">{event.capacity} places</div>
-          </div>
+            <div className="flex  border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
+              <img src={ClockIcon} style={{ height: "40%" }} />
+              <div className="text-l text-black">{event.hours} hours</div>
+            </div>
+            <div className="flex  border items-center justify-between md:justify-center space-x-2 px-2 rounded-xl">
+              <img src={ClockIcon} style={{ height: "40%" }} />
+              <div className="text-l text-black">{event.capacity} places</div>
+            </div>
           </div>
         </div>
         <div>
-        {role == "STUDENT" ? (
-          event.status == "PUBLISHED" ? (
-            <StudentPublishedMoreInfo
-              eventId={id}
-              placesLeft={event.placesLeft}
-            />
-          ) : event.status == "STUDENT_FINISHED" ? (
-            <StudentFinishedMoreInfo eventId={id} />
-          ) : event.status == "STUDENT_ONGOING" ? (
-            <StudentOngoingMoreInfo />
-          ) : event.status == "STUDENT_ACCEPTED" ? (
-            <StudentAcceptedMoreInfo />
+          {role == "STUDENT" ? (
+            event.status == "PUBLISHED" ? (
+              <StudentPublishedMoreInfo
+                eventId={id}
+                placesLeft={event.placesLeft}
+              />
+            ) : event.status == "STUDENT_FINISHED" ? (
+              <StudentFinishedMoreInfo eventId={id} />
+            ) : event.status == "STUDENT_ONGOING" ? (
+              <StudentOngoingMoreInfo />
+            ) : event.status == "STUDENT_ACCEPTED" ? (
+              <StudentAcceptedMoreInfo />
+            ) : (
+              <StudentRequestedMoreInfo />
+            )
+          ) : isAdmin ? (
+            event.status == "PUBLISHED" ? (
+              <OrganizationPublishedMoreInfo eventId={id} />
+            ) : event.status == "FINISHED" ? (
+              <OrganizationFinishedMoreInfo eventId={id} />
+            ) : (
+              <OrganizationOngoingMoreInfo eventId={id} />
+            )
           ) : (
-            <StudentRequestedMoreInfo />
-          )
-        ) : isAdmin ? (
-          event.status == "PUBLISHED" ? (
-            <OrganizationPublishedMoreInfo eventId={id} />
-          ) : event.status == "FINISHED" ? (
-            <OrganizationFinishedMoreInfo eventId={id} />
-          ) : (
-            <OrganizationOngoingMoreInfo eventId={id} />
-          )
-        ) : (
-          <div className="mt-5 text-xl font-extrabold">
-            You cannot access this event!
-          </div>
-        )}
-      </div>
+            <div className="mt-5 text-xl font-extrabold">
+              You cannot access this event!
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
