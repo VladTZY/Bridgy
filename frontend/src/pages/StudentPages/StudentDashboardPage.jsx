@@ -3,6 +3,7 @@ import axios from "axios";
 import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
 import { CompactCard } from "../../components/CompactCard";
 import { StudentProgressCard } from "../../components/StudentProgressCard";
+import { StudentStatsCard } from "../../components/StudentStatCard";
 
 export const StudentDashboardPage = () => {
   const [ongoingEvents, setOngoingEvents] = useState([]);
@@ -41,7 +42,7 @@ export const StudentDashboardPage = () => {
   return (
     <div className="w-[85vw] p-3 bg-gray-100 flex flex-col pb-10 ml-[15vw]">
       <div className=" md:flex w-[100%] bg-gray-100 flex flex-col px- md:p-4 overflow-x-scroll ">
-          <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%] ">
+        <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%] ">
           <StudentProgressCard
             title={"Active"}
             total={"250"}
@@ -68,7 +69,7 @@ export const StudentDashboardPage = () => {
             total={"10"}
             update={"A 10% increase"}
             percentage={20}
-            color={"#d8bfd8"}
+            color={"#e4007c"}
           />
         </div>
 
@@ -107,73 +108,123 @@ export const StudentDashboardPage = () => {
               total={"10"}
               update={"A 10% increase"}
               percentage={20}
-              color={"#d8bfd8"}
+              color={"#e4007c"}
             />
           </div>
         </div>
-       <div className="w-[100%] lg:px-6 bg-gray-100 ">
-       <div className="text-left text-xl font-semibold">
-                  Hours
-                </div>
-       <section className="grid gap-6 my-6 md:grid-cols-3">
-    <div className="p-6 bg-white shadow rounded-2xl">
-        <dl className="space-y-2">
-            <dt className="text-sm font-medium text-gray-500 2xl:text-xl">Total hours/day</dt>
+        <div className="w-[100%] lg:px-6 bg-gray-100 ">
+          <div className="text-left text-xl font-semibold">Hours</div>
+          <section className="grid gap-6 my-6 md:grid-cols-3">
+            <div className="p-6 bg-white shadow rounded-2xl">
+              <dl className="space-y-2">
+                <dt className="text-sm font-medium text-gray-500 2xl:text-xl">
+                  Total hours/day
+                </dt>
 
-            <dd className="text-5xl font-light md:text-6xl">10</dd>
+                <dd className="text-5xl font-light md:text-6xl">10</dd>
 
-            <dd className="flex items-center space-x-1 text-sm font-medium text-green-500">
-                <span>3h increase</span>
+                <dd className="flex items-center space-x-1 text-sm font-medium text-green-500">
+                  <span>3h increase</span>
 
-                <svg className="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17.25 15.25V6.75H8.75"></path>
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17 7L6.75 17.25"></path>
-                </svg>
-            </dd>
-        </dl>
-    </div>
+                  <svg
+                    className="w-7 h-7"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M17.25 15.25V6.75H8.75"
+                    ></path>
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M17 7L6.75 17.25"
+                    ></path>
+                  </svg>
+                </dd>
+              </dl>
+            </div>
 
-    <div className="p-6 bg-white shadow rounded-2xl">
-        <dl className="space-y-2">
-            <dt className="text-sm font-medium text-gray-500 2xl:text-xl">Total hours/week</dt>
+            <div className="p-6 bg-white shadow rounded-2xl">
+              <dl className="space-y-2">
+                <dt className="text-sm font-medium text-gray-500 2xl:text-xl">
+                  Total hours/week
+                </dt>
 
-            <dd className="text-5xl font-light md:text-6xl">43</dd>
+                <dd className="text-5xl font-light md:text-6xl">43</dd>
 
-            <dd className="flex items-center space-x-1 text-sm font-medium text-red-500">
-                <span>10% decrease</span>
+                <dd className="flex items-center space-x-1 text-sm font-medium text-red-500">
+                  <span>10% decrease</span>
 
-                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17.25 8.75V17.25H8.75"></path>
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17 17L6.75 6.75"></path>
-                </svg>
-            </dd>
-        </dl>
-    </div>
+                  <svg
+                    class="w-7 h-7"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M17.25 8.75V17.25H8.75"
+                    ></path>
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M17 17L6.75 6.75"
+                    ></path>
+                  </svg>
+                </dd>
+              </dl>
+            </div>
 
-    <div className="p-6 bg-white shadow rounded-2xl">
-        <dl className="space-y-2">
-            <dt className="text-sm font-medium text-gray-500 2xl:text-xl">Total hours</dt>
+            <div className="p-6 bg-white shadow rounded-2xl">
+              <dl className="space-y-2">
+                <dt className="text-sm font-medium text-gray-500 2xl:text-xl">
+                  Total hours
+                </dt>
 
-            <dd className="text-5xl font-light md:text-6xl">439</dd>
+                <dd className="text-5xl font-light md:text-6xl">439</dd>
 
-            <dd className="flex items-center space-x-1 text-sm font-medium text-green-500">
-                <span>3% increase</span>
+                <dd className="flex items-center space-x-1 text-sm font-medium text-green-500">
+                  <span>3% increase</span>
 
-                <svg className="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17.25 15.25V6.75H8.75"></path>
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17 7L6.75 17.25"></path>
-                </svg>
-            </dd>
-        </dl>
-    </div>
-</section>
-       </div>  
+                  <svg
+                    className="w-7 h-7"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M17.25 15.25V6.75H8.75"
+                    ></path>
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M17 7L6.75 17.25"
+                    ></path>
+                  </svg>
+                </dd>
+              </dl>
+            </div>
+          </section>
+        </div>
+      </div>
       <div className="mt-4 min-h-full bg-gray-100 flex flex-col space-y-4 pl-2">
         <h1 className="text-xl font-bold 2xl:text-2xl">Ongoing Events</h1>
 
