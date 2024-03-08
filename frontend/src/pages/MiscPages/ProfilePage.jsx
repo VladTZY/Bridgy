@@ -67,7 +67,7 @@ export const ProfilePage = () => {
           <div className="flex flex-row justify-between items-center pr-4">
             <div className=" pr-4 flex flex-row justify-around items-center py-">
               <img
-                className="w-[20vw] lg:w-[10vw] pr-4 rounded-xl 2xl:w-[5vw]"
+                className="w-[20vw] lg:w-[10vw] pr-4 rounded-xl xl:w-[10vw] 2xl:w-[7vw]"
                 src="https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png"
               ></img>
               <div className="flex flex-col">

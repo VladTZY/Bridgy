@@ -127,25 +127,25 @@ export const OrganizationDashboardPage = () => {
         <div className="flex justify-end mx-5 space-x-6">
           {ongoingPage > 1 ? (
             <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5"
+              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
               onClick={() => handleOngoingChangePage(-1)}
             >
               Previous Page
             </button>
           ) : (
-            <div className="bg-inherit text-transparent py-2 px-5">
+            <div className="bg-inherit text-transparent py-2 px-5 mt-4">
               Previous Page
             </div>
           )}
           {ongoingEvents.length > 4 ? (
             <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5"
+              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
               onClick={() => handleOngoingChangePage(1)}
             >
               Next Page
             </button>
           ) : (
-            <div className="bg-inherit text-transparent py-2 px-5">
+            <div className="bg-inherit text-transparent py-2 px-5 mt-4">
               Next Page
             </div>
           )}

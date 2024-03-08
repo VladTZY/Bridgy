@@ -3,7 +3,6 @@ import axios from "axios";
 
 import { StudentsTable } from "../../components/StudentsTable";
 import { SchoolProgressCard } from "../../components/SchoolProgressCard";
-
 export const SchoolDashboardPage = () => {
   const [students, setStudents] = useState([]);
   const [tableData, setTableData] = useState([]);
