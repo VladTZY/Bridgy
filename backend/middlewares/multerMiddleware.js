@@ -40,9 +40,7 @@ const imageUpload = multer({
     s3: s3,
     bucket: process.env.BUCKET_NAME,
     acl: "public-read",
-    metadata: function (req, file, cb) {
-      cb(null, { fieldName: file.fieldname });
-    },
+    contentType: multerS3.AUTO_CONTENT_TYPE,
     key: function (req, file, cb) {
       const uniqueSuffix = Date.now();
       cb(

@@ -43,8 +43,8 @@ export const MyExperiencesPage = () => {
                     photoUrl={
                       data.event.photoUrl == "NO_FILE"
                         ? DefaultImage
-                        : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
-                            data.event.photoUrl
+                        : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                            event.photoUrl
                           }`
                     }
                   />

@@ -116,7 +116,7 @@ export const OrganizationDashboardPage = () => {
                 photoUrl={
                   event.photoUrl == "NO_FILE"
                     ? DefaultImage
-                    : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
+                    : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
                         event.photoUrl
                       }`
                 }
