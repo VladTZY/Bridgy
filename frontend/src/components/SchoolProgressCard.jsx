@@ -10,7 +10,6 @@ export const SchoolProgressCard = ({
 }) => {
   return (
     <div className="w-[100%]  relative flex flex-row overscroll-x-hidden rounded-xl bg-white m-3 justify-around shadow-md">
-    <div className="absolute top-0 left-0 w-full h-full bg-cover bg-no-repeat bg-center rounded-xl" style={{backgroundImage: `url(${pic})`}}></div>
       <div className="mt-6 flex flex-col space-y-2">
         <div className="text-2xl text-bold">{title}</div>
         <div className="text-3xl">{total}</div>
@@ -37,6 +36,10 @@ export const SchoolProgressCard = ({
           />
         </div>
       </div>
+      <img
+        className="absolute w-full h-full rounded-3xl opacity-20"
+        src={pic}
+      />
     </div>
     
     

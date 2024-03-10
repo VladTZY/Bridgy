@@ -264,7 +264,7 @@ function WrappedApp() {
               <div className="h-[7vh] w-full fixed top-0 z-10">
                 <MiniNavbar />
               </div>
-              <div className="fixed  top-[9vh] bottom-16 left-0">
+              <div className="fixed  top-[7vh] bottom-16 left-0">
                 <Sidebar />
               </div>
               <div className="  pt-[7vh] ">
