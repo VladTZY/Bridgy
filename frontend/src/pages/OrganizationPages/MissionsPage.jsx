@@ -63,7 +63,7 @@ export const MissionsPage = () => {
                 photoUrl={
                   event.photoUrl == "NO_FILE"
                     ? DefaultImage
-                    : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
+                    : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
                         event.photoUrl
                       }`
                 }
@@ -93,7 +93,7 @@ export const MissionsPage = () => {
                 photoUrl={
                   event.photoUrl == "NO_FILE"
                     ? DefaultImage
-                    : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
+                    : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
                         event.photoUrl
                       }`
                 }

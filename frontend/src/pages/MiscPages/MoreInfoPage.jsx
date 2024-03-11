@@ -77,7 +77,7 @@ export const MoreInfoPage = () => {
           src={
             event.photoUrl == "NO_FILE"
               ? DefaultImage
-              : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${event.photoUrl}`
+              : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${event.photoUrl}`
           }
           style={{
             height: "45vh",

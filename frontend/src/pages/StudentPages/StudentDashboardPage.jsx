@@ -251,8 +251,8 @@ export const StudentDashboardPage = () => {
                         photoUrl={
                           data.event.photoUrl == null
                             ? DefaultImage
-                            : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
-                                data.event.photoUrl
+                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                                event.photoUrl
                               }`
                         }
                       />
@@ -291,8 +291,8 @@ export const StudentDashboardPage = () => {
                         photoUrl={
                           data.event.photoUrl == null
                             ? DefaultImage
-                            : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
-                                data.event.photoUrl
+                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                                event.photoUrl
                               }`
                         }
                       />
@@ -331,8 +331,8 @@ export const StudentDashboardPage = () => {
                         photoUrl={
                           data.event.photoUrl == null
                             ? DefaultImage
-                            : `${import.meta.env.VITE_UPLOAD_URL}/uploads/${
-                                data.event.photoUrl
+                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                                event.photoUrl
                               }`
                         }
                       />
