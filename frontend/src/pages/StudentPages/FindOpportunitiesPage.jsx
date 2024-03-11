@@ -35,7 +35,7 @@ export const FindOpportunitiesPage = () => {
       <SearchBar />
       <h1 className="text-2xl font-bold  my-7">Published Opportunities</h1>
 
-      <div className=" flex flex-wrap justify-center items-center overflow-x-scroll ">
+      <div className=" flex flex-wrap justify-center items-center overflow-x-scroll gap-y-2 ">
         {events.slice(0, 6).map((event) => {
           return (
             <Card
