@@ -112,8 +112,8 @@ export const StudentDashboardPage = () => {
             />
           </div>
         </div>
-        <div className="w-[100%] lg:px-6 bg-gray-100 ">
-          <div className="text-left text-xl font-semibold">Hours</div>
+        <div className="text-left text-xl font-bold px-4 2xl:text-2xl">Hours</div>
+        <div className="w-[100%] lg:px-6 bg-gray-100 pt-4 ">
           <section className="grid gap-6 my-6 md:grid-cols-3">
             <div className="p-6 bg-white shadow rounded-2xl">
               <dl className="space-y-2">
