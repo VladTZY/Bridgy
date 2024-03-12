@@ -18,7 +18,7 @@ export const WriteExperienceCard = ({ id, title, eventDescription }) => {
   };
 
   return (
-    <div className="w-[60%] flex flex-col rounded-xl bg-white m-3">
+    <div className="w-[100%] lg:w-[60%] flex flex-col rounded-xl bg-white pt-3 lg:pt-0 lg:m-3">
       <div className="ml-6 mt-6 text-xl font-semibold">Your feedback</div>
       <textarea
         type="text"

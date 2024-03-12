@@ -41,7 +41,7 @@ export const StudentDashboardPage = () => {
 
   return (
     <div className="w-[85vw] p-3 bg-gray-100 flex flex-col pb-10 ml-[15vw]">
-      <div className=" md:flex w-[100%] bg-gray-100 flex flex-col px- md:p-4 overflow-x-scroll ">
+      <div className=" md:flex w-[100%] bg-gray-100 flex flex-col px- md:p-4 overflow-x-scroll overflow-contain">
         <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%] ">
           <StudentProgressCard
             title={"Active"}
@@ -112,7 +112,7 @@ export const StudentDashboardPage = () => {
             />
           </div>
         </div>
-        <div className="text-left text-xl font-bold px-4 2xl:text-2xl">Hours</div>
+        <div className="text-left text-xl font-bold pt-4 2xl:text-2xl">Hours</div>
         <div className="w-[100%] lg:px-6 bg-gray-100 pt-4 ">
           <section className="grid gap-6 my-6 md:grid-cols-3">
             <div className="p-6 bg-white shadow rounded-2xl">

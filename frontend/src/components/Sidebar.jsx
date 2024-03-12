@@ -40,7 +40,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="h-[100vh] bg-white md: w-[15vw] rounded-xl">
+    <div className="h-[100vh] bg-white md: w-[15vw] ">
       <div className="h-[100%] flex flex-col justify-between pt-2">
         <div>
           {
@@ -590,7 +590,7 @@ export const Sidebar = () => {
             )}
           </div>
         </div>
-        <div className="mb-10 ml-4">
+        <div className="mb-[10vh] ml-4">
           <div className="flex items-center space-x-1">
             <img src={help} alt="react logo" style={{ width: "1.5rem" }} />
             <div className="hover:text-[#2135D9] hidden md:block text-lg">
