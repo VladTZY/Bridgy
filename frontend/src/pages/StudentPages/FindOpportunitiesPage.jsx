@@ -25,17 +25,17 @@ export const FindOpportunitiesPage = () => {
   }, [page]);
 
   const handleChangePage = (val) => {
-    if (val == -1 && page + val >= 1) setPage(page + val);
+    if (val == -1 && page + val > 0) setPage(page + val);
 
     if (val == 1 && events.length > 8) setPage(page + val);
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw] px-6 pt-6">
+    <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw] px-3 pt-6">
       <SearchBar />
       <h1 className="text-2xl font-bold  my-7">Published Opportunities</h1>
 
-      <div className="mx-2 flex flex-wrap overflow-x-scroll no-scrollbar space-x-4 md:px-2">
+      <div className="mx-2 flex flex-wrap overflow-x-scroll no-scrollbar space-x-2 space-y-4">
         {events.slice(0, 8).map((event) => {
           return (
             <Card
@@ -59,7 +59,7 @@ export const FindOpportunitiesPage = () => {
         })}
       </div>
 
-      <div className="flex justify-end mx-5 space-x-6">
+      <div className="flex justify-end mx-5 space-x-6 pb-6">
         {page > 1 ? (
           <button
             className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
@@ -72,7 +72,7 @@ export const FindOpportunitiesPage = () => {
             Previous Page
           </div>
         )}
-        {events.length > 4 ? (
+        {events.length > 8 ? (
           <button
             className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
             onClick={() => handleChangePage(1)}

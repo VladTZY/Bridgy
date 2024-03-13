@@ -251,7 +251,7 @@ export const StudentDashboardPage = () => {
                         title={data.event.name}
                         description={data.event.description}
                         time={data.event.time}
-                        location={data.event.location.city}
+                        location={data.event.location}
                         event_type={"opportunity"}
                         circle_src={OrangeCircle}
                       />
