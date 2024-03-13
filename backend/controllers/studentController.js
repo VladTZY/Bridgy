@@ -2,6 +2,7 @@ const {
   EventModel,
   UserToEvent,
   OrganizationModel,
+  LocationModel,
 } = require("../database/sequelize");
 const { createNotification } = require("./notificationController");
 
@@ -24,6 +25,7 @@ const getOngoingEvents = async (req, res) => {
             [Op.lt]: dateNow,
           },
         },
+        include: LocationModel,
       },
     });
 
@@ -50,6 +52,7 @@ const getAcceptedEvents = async (req, res) => {
             [Op.gt]: dateNow,
           },
         },
+        include: LocationModel,
       },
     });
 
@@ -71,6 +74,7 @@ const getRequestedEvents = async (req, res) => {
         where: {
           status: "PUBLISHED",
         },
+        include: LocationModel,
       },
     });
 
@@ -92,6 +96,7 @@ const getFinishedEvents = async (req, res) => {
         where: {
           status: "FINISHED",
         },
+        include: LocationModel,
       },
     });
 
