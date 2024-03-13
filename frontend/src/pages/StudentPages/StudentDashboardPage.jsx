@@ -244,14 +244,14 @@ export const StudentDashboardPage = () => {
               ),
               false: (
                 <div className="flex flex-col space-y-1">
-                  {ongoingEvents.slice(0, 4).map((event) => {
+                  {ongoingEvents.slice(0, 4).map((data) => {
                     return (
                       <BarOpportunity
-                        id={event.id}
-                        title={event.name}
-                        description={event.description}
-                        time={event.time}
-                        location={event.location.city}
+                        id={data.event.id}
+                        title={data.event.name}
+                        description={data.event.description}
+                        time={data.event.time}
+                        location={data.event.location.city}
                         event_type={"opportunity"}
                         circle_src={OrangeCircle}
                       />
@@ -277,14 +277,14 @@ export const StudentDashboardPage = () => {
               ),
               false: (
                 <div className="flex flex-col space-y-1">
-                  {acceptedEvents.slice(0, 4).map((event) => {
+                  {acceptedEvents.slice(0, 4).map((data) => {
                     return (
                       <BarOpportunity
-                        id={event.id}
-                        title={event.name}
-                        description={event.description}
-                        time={event.time}
-                        location={event.location}
+                        id={data.event.id}
+                        title={data.event.name}
+                        description={data.event.description}
+                        time={data.event.time}
+                        location={data.event.location}
                         event_type={"opportunity"}
                         circle_src={GreenCircle}
                       />
@@ -310,14 +310,14 @@ export const StudentDashboardPage = () => {
               ),
               false: (
                 <div className="flex flex-col space-y-1">
-                  {requestedEvents.slice(0, 4).map((event) => {
+                  {requestedEvents.slice(0, 4).map((data) => {
                     return (
                       <BarOpportunity
-                        id={event.id}
-                        title={event.name}
-                        description={event.description}
-                        time={event.time}
-                        location={event.location}
+                        id={data.event.id}
+                        title={data.event.name}
+                        description={data.event.description}
+                        time={data.event.time}
+                        location={data.event.location}
                         event_type={"opportunity"}
                         circle_src={OrangeCircle}
                       />
