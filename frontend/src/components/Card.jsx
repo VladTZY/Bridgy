@@ -21,12 +21,12 @@ export const Card = ({
   if (location == "") location = "Remote";
 
   return (
-    <div class="mx-auto max-w-sm overflow-hidden rounded-lg bg-white shadow">
+    <div class="max-w-sm overflow-hidden rounded-lg bg-white shadow">
       <img src={photoUrl} class="aspect-video w-full object-cover" alt="" />
       <div class="p-4  ">
         <p class="mb-1 text-sm text-primary-500 ">
-          Organization Name • <time>{dateToStr(time)}</time> •{" "}
-          <location>{location}</location>
+          <time>{dateToStr(time)}</time> • <location>{location}</location> •{" "}
+          {duration} hours
         </p>
         <h3 class="text-xl font-medium text-gray-900 truncate overflow-hidden">
           {title}

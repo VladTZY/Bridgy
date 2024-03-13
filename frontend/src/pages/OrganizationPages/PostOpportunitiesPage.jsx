@@ -297,7 +297,10 @@ export const PostOpportunitiesPage = () => {
                       : "border-gray-200"
                   } rounded-lg w-full border flex`}
                 >
-                  <img className="ml-2 w-[5vw] md:w-[1.8vw]" src={CalendarIcon} />
+                  <img
+                    className="ml-2 w-[5vw] md:w-[1.8vw]"
+                    src={CalendarIcon}
+                  />
                   <input
                     type="datetime-local"
                     name="time"
@@ -325,7 +328,10 @@ export const PostOpportunitiesPage = () => {
                         : "border-gray-200"
                     } rounded-lg w-full border flex`}
                   >
-                    <img className="ml-2 w-[5vw] md:w-[1.8vw]" src={LocationIcon} />
+                    <img
+                      className="ml-2 w-[5vw] md:w-[1.8vw]"
+                      src={LocationIcon}
+                    />
                     <input
                       type="text"
                       name="country"
@@ -349,7 +355,10 @@ export const PostOpportunitiesPage = () => {
                         : "border-gray-200"
                     } rounded-lg w-full border flex`}
                   >
-                    <img className="ml-2 w-[5vw] md:w-[1.8vw]" src={LocationIcon} />
+                    <img
+                      className="ml-2 w-[5vw] md:w-[1.8vw]"
+                      src={LocationIcon}
+                    />
                     <input
                       type="text"
                       name="city"
@@ -373,7 +382,10 @@ export const PostOpportunitiesPage = () => {
                         : "border-gray-200"
                     } rounded-lg w-full border flex`}
                   >
-                    <img className="ml-2 w-[5vw] md:w-[1.8vw]" src={LocationIcon} />
+                    <img
+                      className="ml-2 w-[5vw] md:w-[1.8vw]"
+                      src={LocationIcon}
+                    />
                     <input
                       type="text"
                       name="address"
