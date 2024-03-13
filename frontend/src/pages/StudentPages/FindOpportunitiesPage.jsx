@@ -13,7 +13,7 @@ export const FindOpportunitiesPage = () => {
       .get(
         `${
           import.meta.env.VITE_API_URL
-        }/events/by_status?status=PUBLISHED&offset=${page - 1}&pageSize=6`,
+        }/events/by_status?status=PUBLISHED&offset=${page - 1}&pageSize=8`,
         { withCredentials: true }
       )
       .then((res) => {
@@ -27,7 +27,7 @@ export const FindOpportunitiesPage = () => {
   const handleChangePage = (val) => {
     if (val == -1 && page + val >= 1) setPage(page + val);
 
-    if (val == 1 && events.length > 6) setPage(page + val);
+    if (val == 1 && events.length > 8) setPage(page + val);
   };
 
   return (
@@ -35,8 +35,8 @@ export const FindOpportunitiesPage = () => {
       <SearchBar />
       <h1 className="text-2xl font-bold  my-7">Published Opportunities</h1>
 
-      <div className=" flex flex-wrap justify-center items-center overflow-x-scroll gap-y-2 ">
-        {events.slice(0, 6).map((event) => {
+      <div className="mx-2 flex flex-wrap overflow-x-scroll no-scrollbar space-x-4 md:px-2">
+        {events.slice(0, 8).map((event) => {
           return (
             <Card
               key={event.id}
@@ -59,27 +59,30 @@ export const FindOpportunitiesPage = () => {
         })}
       </div>
 
-      <div className="flex justify-between  mx-5 my-7">
+      <div className="flex justify-end mx-5 space-x-6">
         {page > 1 ? (
           <button
-            className="bg-[#2EA0FB] rounded-xl text-white py-1 px-4"
+            className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
             onClick={() => handleChangePage(-1)}
           >
             Previous Page
           </button>
         ) : (
-          <button className="bg-[#c8d2da] rounded-xl text-white py-1 px-4">
+          <div className="bg-inherit text-transparent py-2 px-5 mt-4">
             Previous Page
-          </button>
+          </div>
         )}
-
-        {events.length >= 6 && (
+        {events.length > 4 ? (
           <button
-            className="bg-[#2EA0FB] rounded-xl text-white py-1 px-4"
+            className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
             onClick={() => handleChangePage(1)}
           >
             Next Page
           </button>
+        ) : (
+          <div className="bg-inherit text-transparent py-2 px-5 mt-4">
+            Next Page
+          </div>
         )}
       </div>
     </div>
