@@ -251,7 +251,7 @@ export const StudentDashboardPage = () => {
                         title={data.event.name}
                         description={data.event.description}
                         time={data.event.time}
-                        location={data.event.location}
+                        location={data.event.location.city}
                         event_type={"opportunity"}
                         circle_src={OrangeCircle}
                       />
@@ -284,7 +284,7 @@ export const StudentDashboardPage = () => {
                         title={data.event.name}
                         description={data.event.description}
                         time={data.event.time}
-                        location={data.event.location}
+                        location={data.event.location.city}
                         event_type={"opportunity"}
                         circle_src={GreenCircle}
                       />
@@ -317,7 +317,7 @@ export const StudentDashboardPage = () => {
                         title={data.event.name}
                         description={data.event.description}
                         time={data.event.time}
-                        location={data.event.location}
+                        location={data.event.location.city}
                         event_type={"opportunity"}
                         circle_src={OrangeCircle}
                       />
