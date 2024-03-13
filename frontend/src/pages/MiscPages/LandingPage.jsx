@@ -169,7 +169,7 @@ export const LandingPage = () => {
         </div>
         <div className="flex flex-col md:flex  md:flex-row w-[100vw]  bg-gray-100 justify-center items-center text-center pb-10">
           <div className="text-4xl md:text-6xl mb-10 lg:mb-0 text-black font-bold flex flex-col justify-center items-center text-center md:w-[50%]">
-            <span>Perks of using Birdgy </span>
+            <span>Perks of using Bridgy </span>
             <a
               href="login"
               class=" hidden md:block mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
