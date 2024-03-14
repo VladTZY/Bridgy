@@ -4,10 +4,6 @@ import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.
 import { CompactCard } from "../../components/CompactCard";
 import { StudentProgressCard } from "../../components/StudentProgressCard";
 import { StudentStatsCard } from "../../components/StudentStatCard";
-import OrangeCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/orangecircle.png";
-import GreenCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/greencircle.png";
-import RedCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/redcircle.png";
-import { BarOpportunity } from "../../components/BarOpportunity";
 
 export const StudentDashboardPage = () => {
   const [ongoingEvents, setOngoingEvents] = useState([]);
@@ -116,9 +112,7 @@ export const StudentDashboardPage = () => {
             />
           </div>
         </div>
-        <div className="text-left text-xl font-bold pt-4 2xl:text-2xl">
-          Hours
-        </div>
+        <div className="text-left text-xl font-bold pt-4 2xl:text-2xl">Hours</div>
         <div className="w-[100%] lg:px-6 bg-gray-100 pt-4 ">
           <section className="grid gap-6 my-6 md:grid-cols-3">
             <div className="p-6 bg-white shadow rounded-2xl">
@@ -243,20 +237,27 @@ export const StudentDashboardPage = () => {
                 </div>
               ),
               false: (
-                <div className="flex flex-col space-y-1">
-                  {ongoingEvents.slice(0, 4).map((data) => {
+                <div className="flex flex-wrap">
+                  {ongoingEvents.map((data) => {
                     return (
-                      <BarOpportunity
+                      <CompactCard
                         id={data.event.id}
                         title={data.event.name}
                         description={data.event.description}
-                        time={data.event.time}
+                        date={data.event.time}
                         location={data.event.location}
+                        duration={data.event.hours}
                         event_type={"opportunity"}
-                        circle_src={OrangeCircle}
+                        photoUrl={
+                          data.event.photoUrl == null
+                            ? DefaultImage
+                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                                event.photoUrl
+                              }`
+                        }
                       />
                     );
-                  })}
+                  })}{" "}
                 </div>
               ),
             }[ongoingEvents.length == 0]
@@ -276,20 +277,27 @@ export const StudentDashboardPage = () => {
                 </div>
               ),
               false: (
-                <div className="flex flex-col space-y-1">
-                  {acceptedEvents.slice(0, 4).map((data) => {
+                <div className="flex flex-wrap">
+                  {acceptedEvents.map((data) => {
                     return (
-                      <BarOpportunity
+                      <CompactCard
                         id={data.event.id}
                         title={data.event.name}
                         description={data.event.description}
-                        time={data.event.time}
+                        date={data.event.time}
                         location={data.event.location}
+                        duration={data.event.hours}
                         event_type={"opportunity"}
-                        circle_src={GreenCircle}
+                        photoUrl={
+                          data.event.photoUrl == null
+                            ? DefaultImage
+                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                                event.photoUrl
+                              }`
+                        }
                       />
                     );
-                  })}
+                  })}{" "}
                 </div>
               ),
             }[acceptedEvents.length == 0]
@@ -309,20 +317,27 @@ export const StudentDashboardPage = () => {
                 </div>
               ),
               false: (
-                <div className="flex flex-col space-y-1">
-                  {requestedEvents.slice(0, 4).map((data) => {
+                <div className="flex flex-wrap">
+                  {requestedEvents.map((data) => {
                     return (
-                      <BarOpportunity
+                      <CompactCard
                         id={data.event.id}
                         title={data.event.name}
                         description={data.event.description}
-                        time={data.event.time}
+                        date={data.event.time}
                         location={data.event.location}
+                        duration={data.event.hours}
                         event_type={"opportunity"}
-                        circle_src={OrangeCircle}
+                        photoUrl={
+                          data.event.photoUrl == null
+                            ? DefaultImage
+                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                                event.photoUrl
+                              }`
+                        }
                       />
                     );
-                  })}
+                  })}{" "}
                 </div>
               ),
             }[requestedEvents.length == 0]

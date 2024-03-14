@@ -270,7 +270,7 @@ function WrappedApp() {
               <div className="  pt-[7vh] ">
                 <App />
               </div>
-              <div className=" items-end sticky top-[100vh]">
+              <div className="  fixed inset-x-0 bottom-0">
                 <MiniFooter />
               </div>
             </div>

@@ -11,7 +11,7 @@ export const SchoolProgressCard = ({
   return (
     <div className="w-[100%]  relative flex flex-row overscroll-x-hidden rounded-xl bg-white m-3 justify-around shadow-md">
     <img
-        className="absolute w-full h-full  opacity-20"
+        className="absolute w-full h-full  opacity-30"
         src={pic}
       />
       <div className="mt-6 flex flex-col space-y-2">
