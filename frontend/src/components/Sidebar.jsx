@@ -589,21 +589,22 @@ export const Sidebar = () => {
               </Link>
             )}
           </div>
-        </div>
-        <div className="mb-[10vh] ml-4">
-          <div className="flex items-center space-x-1">
+          <div className=" flex flex-col items-center lg:items-start lg:pl-4">
+          <div className="flex items-center space-1 my-2">
             <img src={help} alt="react logo" style={{ width: "1.5rem" }} />
             <div className="hover:text-[#2135D9] hidden md:block text-lg">
               <Link to="/help">Help</Link>
             </div>
           </div>
-          <div className="flex items-center space-x-1 pb-[8vh]">
-            <img src={lo} alt="react logo" style={{ width: "1.5rem" }} />
+          <div className="flex items-center space-1 my-2 lg:pl-1">
+            <img src={lo} alt="react logo" style={{ width: "1.4rem" }} />
             <div className="hover:text-[#2135D9] hidden md:block text-lg">
               <button onClick={() => logoutUser()}>Logout</button>
             </div>
           </div>
         </div>
+        </div>
+        
       </div>
     </div>
   );

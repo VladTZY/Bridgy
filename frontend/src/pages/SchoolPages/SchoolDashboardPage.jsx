@@ -57,8 +57,8 @@ export const SchoolDashboardPage = () => {
   };
 
   return (
-    <div className="ml-[15vw]">
-      <div className=" md:flex w-[85vw] bg-gray-100 flex flex-col px- md:p-4 overflow-x-scroll  ">
+    <div className="ml-[15vw] pb-[8vh]">
+      <div className=" md:flex w-[85vw] bg-gray-100 flex flex-col  overflow-x-scroll  ">
         <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%]">
           <SchoolProgressCard
             title={"Objective"}
@@ -87,9 +87,9 @@ export const SchoolDashboardPage = () => {
           />
         </div>
 
-        <div className=" w-[85vw] bg-gray-100 flex flex-col  md:p-4 overflow-x-scroll overscroll-contain md:hidden"></div>
-        <div className="  flex flex-row overflow-x-scroll  justify-center items-center w-[300%] md:hidden">
-          <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
+        <div className=" w-[85vw] bg-gray-100 flex flex-col overflow-x-scroll overscroll-contain md:hidden"></div>
+        <div className="  flex flex-row overflow-x-scroll justify-center items-center w-[300%] md:hidden">
+          <div className="flex flex-row overflow-x-scroll justify-center items-center w-[100%]">
             <SchoolProgressCard
               title={"Objective"}
               total={stats.actualObjective + "/" + stats.totalObjective}

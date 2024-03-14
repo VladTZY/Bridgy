@@ -27,8 +27,8 @@ export const BarOpportunity = ({
         <div class=" w-[10%] lg:w-[3%] pl-4 ">
           <img className="w-[100%] lg:w-[50%]" loading="lazy" src={circle_src} />
         </div>
-        <div className="flex justify-between w-[100%] mx-5">
-          <div class="flex flex-col  py-2">
+        <div className="flex justify-between w-[80%] xl:w-[100%] mx-5">
+          <div class="flex flex-col  py-2 truncate">
             <p class="text-l text-left font-bold">{title}</p>
 
             <p class="text-gray-500 text-left text-sm w-[100%] truncate">{description}</p>

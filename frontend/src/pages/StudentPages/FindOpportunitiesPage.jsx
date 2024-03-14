@@ -31,11 +31,11 @@ export const FindOpportunitiesPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw] px-3 pt-6">
+    <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw] px-3 pt-6 pb-[8vh]">
       <SearchBar />
-      <h1 className="text-2xl font-bold  my-7">Published Opportunities</h1>
+      <h1 className="text-2xl font-bold  my-7 text-center lg:text-left">Published Opportunities</h1>
 
-      <div className="mx-2 flex flex-wrap overflow-x-scroll no-scrollbar space-x-2 space-y-4">
+      <div className=" flex flex-wrap overflow-x-scroll no-scrollbar space-x-2 space-y-4">
         {events.slice(0, 8).map((event) => {
           return (
             <Card
