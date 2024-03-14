@@ -25,8 +25,10 @@ export const Card = ({
       <div className="p-4  ">
         <p className="mb-1 text-sm text-primary-500 ">
           {dateToStr(time)} •{" "}
-          {location.city == "" ? (location.city, location.country) : "Remote"} •{" "}
-          {duration} hours
+          {location.city == ""
+            ? "Remote"
+            : `${location.city}, ${location.country}`}{" "}
+          • {duration} hours
         </p>
         <h3 className="text-xl font-medium text-gray-900 truncate overflow-hidden">
           {title}
