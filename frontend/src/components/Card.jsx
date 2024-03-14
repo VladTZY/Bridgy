@@ -24,8 +24,9 @@ export const Card = ({
       <img src={photoUrl} className="aspect-video w-full object-cover" alt="" />
       <div className="p-4  ">
         <p className="mb-1 text-sm text-primary-500 ">
-          {dateToStr(time)} • {location.city}, {location.city} • {duration}{" "}
-          hours
+          {dateToStr(time)} •{" "}
+          {location.city == "" ? (location.city, location.country) : "Remote"} •{" "}
+          {duration} hours
         </p>
         <h3 className="text-xl font-medium text-gray-900 truncate overflow-hidden">
           {title}
