@@ -20,23 +20,29 @@ export const BarOpportunity = ({
 
   return (
     <button
-      class="w-[100%] px-2 transform transition duration-200  hover:scale-[1.01] hover:drop-shadow-black"
+      className="w-[100%] px-2 transform transition duration-200  hover:scale-[1.01] hover:drop-shadow-black"
       onClick={handleMoreInfo}
     >
-      <div class="flex bg-white border-1 shadow rounded-xl overflow-hidden items-center justify-start w-[100%] ">
-        <div class=" w-[10%] lg:w-[3%] pl-4 ">
-          <img className="w-[100%] lg:w-[50%]" loading="lazy" src={circle_src} />
+      <div className="flex bg-white border-1 shadow rounded-xl overflow-hidden items-center justify-start w-[100%] ">
+        <div className=" w-[10%] lg:w-[3%] pl-4 ">
+          <img
+            className="w-[100%] lg:w-[50%]"
+            loading="lazy"
+            src={circle_src}
+          />
         </div>
         <div className="flex justify-between w-[100%] mx-5">
-          <div class="flex flex-col  py-2">
-            <p class="text-l text-left font-bold">{title}</p>
+          <div className="flex flex-col  py-2">
+            <p className="text-l text-left font-bold">{title}</p>
 
-            <p class="text-gray-500 text-left text-sm w-[100%] truncate">{description}</p>
+            <p className="text-gray-500 text-left text-sm w-[100%] truncate">
+              {description}
+            </p>
           </div>
-          <div class="flex flex-col  py-2">
-            <p class="text-l text-right">{location}</p>
+          <div className="flex flex-col  py-2">
+            <p className="text-l text-right">{location}</p>
 
-            <p class="text-l text-right">
+            <p className="text-l text-right">
               <time>{dateToStr(time)}</time>
             </p>
           </div>

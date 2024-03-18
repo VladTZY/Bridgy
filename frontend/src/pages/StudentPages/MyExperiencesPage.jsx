@@ -31,8 +31,12 @@ export const MyExperiencesPage = () => {
           false: (
             <div>
               {events.map((data) => (
-                <div className="flex flex-col lg:flex lg:flex-row justify-between" key={data.event.id}>
-                  <Card style="w-[100%] lg:max-w-sm"
+                <div
+                  className="flex flex-col lg:flex lg:flex-row justify-between"
+                  key={data.event.id}
+                >
+                  <Card
+                    style="w-[100%] lg:max-w-sm"
                     id={data.event.id}
                     title={data.event.name}
                     description={data.event.description}
@@ -56,7 +60,7 @@ export const MyExperiencesPage = () => {
                     />
                   }
                 </div>
-              ))}{" "}
+              ))}
             </div>
           ),
         }[events.length == 0]

@@ -1,11 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import { CreationModal } from "../../components/CreationModal";
-
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
-import ClockIcon from "../../../Bridgy_Assets/icon/clock blue.svg";
 import TimeIcon from "../../../Bridgy_Assets/icon/timeplap blue.svg";
 
 export const PostOpportunitiesPage = () => {
@@ -120,8 +117,6 @@ export const PostOpportunitiesPage = () => {
 
     let formData = new FormData();
 
-    formData.append("muie", 5);
-
     if (form["file"] != null) formData.append("photoUrl", form["file"][0]);
 
     for (const key in form)
@@ -130,7 +125,6 @@ export const PostOpportunitiesPage = () => {
     formData.append("remote", form["isRemote"]);
 
     if (validate()) {
-      //setErrorModal(false);
       axios
         .post(
           `${import.meta.env.VITE_API_URL}/organization/create_event`,
@@ -165,30 +159,11 @@ export const PostOpportunitiesPage = () => {
         <div className="bg-white p-5 rounded-3xl">
           <h1 className="text-xl font-semibold">Create New Opportunity</h1>
           <form
-            className="mt-4 flex flex-col space-y-8"
+            className="mt-4 flex flex-col space-y-6"
             onSubmit={submitHandler}
           >
-            <label className="flex flex-col space-y-2">
-              <p className="text-l">Description</p>
-              <textarea
-                type="text"
-                name="description"
-                onChange={(e) => {
-                  handleChange(e);
-                  handleErrorChange(e);
-                }}
-                value={form["description"]}
-                placeholder="Write a short description for the event..."
-                className={`${
-                  formError["descriptionError"]
-                    ? "border-red-500"
-                    : "border-gray-200"
-                } rounded-lg p-4 border h-40 outline-none`}
-                style={{ width: "100%" }}
-              />
-            </label>
             <div className="flex flex-col md:flex-row justify-between md:space-x-10">
-              <label className="flex-1 flex flex-col space-y-2 mb-2">
+              <label className="flex-1 flex flex-col">
                 <p className="text-l">Mission Title</p>
                 <input
                   type="text"
@@ -207,7 +182,7 @@ export const PostOpportunitiesPage = () => {
                   style={{ width: "100%" }}
                 />
               </label>
-              <label className=" flex-1 flex flex-col space-y-2">
+              <label className=" flex-1 flex flex-col">
                 <p className="text-l">Supervisor Contact</p>
                 <input
                   type="text"
@@ -226,21 +201,28 @@ export const PostOpportunitiesPage = () => {
                   style={{ width: "100%" }}
                 />
               </label>
-              <label className="flex-1 flex items-center justify-center mt-4">
-                <p className="text-xl">Is the event remote?</p>
-                <input
-                  className="m-2"
-                  type="checkbox"
-                  checked={form.isRemote}
-                  onChange={(e) => {
-                    handleRemote();
-                  }}
-                />
-              </label>
             </div>
-
+            <label className="flex flex-col">
+              <p className="text-l">Description</p>
+              <textarea
+                type="text"
+                name="description"
+                onChange={(e) => {
+                  handleChange(e);
+                  handleErrorChange(e);
+                }}
+                value={form["description"]}
+                placeholder="Write a short description for the event..."
+                className={`${
+                  formError["descriptionError"]
+                    ? "border-red-500"
+                    : "border-gray-200"
+                } rounded-lg p-4 border h-40 outline-none`}
+                style={{ width: "100%" }}
+              />
+            </label>
             <div className="flex justify-between flex-col md:flex-row md:space-x-10 ">
-              <label className=" flex flex-1 flex-col space-y-2 mb-2">
+              <label className=" flex flex-1 flex-col">
                 <p className="text-l">Number of students</p>
                 <div
                   className={`${
@@ -264,7 +246,7 @@ export const PostOpportunitiesPage = () => {
                 </div>
               </label>
 
-              <label className=" flex-1 flex flex-col space-y-2 mb-2">
+              <label className=" flex-1 flex flex-col">
                 <p className="text-l">Required hours</p>
                 <div
                   className={`${
@@ -288,7 +270,7 @@ export const PostOpportunitiesPage = () => {
                 </div>
               </label>
 
-              <label className=" flex-1 flex flex-col space-y-2 mb-2">
+              <label className=" flex-1 flex flex-col">
                 <p className="text-l">Date and time</p>
                 <div
                   className={`${
@@ -314,12 +296,22 @@ export const PostOpportunitiesPage = () => {
                 </div>
               </label>
             </div>
-
+            <label className="flex-1 flex items-center justify-center">
+              <p className="text-xl">Is the event remote?</p>
+              <input
+                className="m-2"
+                type="checkbox"
+                checked={form.isRemote}
+                onChange={(e) => {
+                  handleRemote();
+                }}
+              />
+            </label>
             {form["isRemote"] ? (
               <></>
             ) : (
               <div className="flex justify-between flex-col md:flex-row md:space-x-10">
-                <label className="flex-1 flex flex-col space-y-2 mb-2">
+                <label className="flex-1 flex flex-col">
                   <p className="text-l">Country</p>
                   <div
                     className={`${
@@ -346,7 +338,7 @@ export const PostOpportunitiesPage = () => {
                   </div>
                 </label>
 
-                <label className="flex-1 flex flex-col space-y-2 mb-2">
+                <label className="flex-1 flex flex-col">
                   <p className="text-l">City</p>
                   <div
                     className={`${
@@ -373,7 +365,7 @@ export const PostOpportunitiesPage = () => {
                   </div>
                 </label>
 
-                <label className="flex-1 flex flex-col space-y-2 mb-2">
+                <label className="flex-1 flex flex-col">
                   <p className="text-l">Address</p>
                   <div
                     className={`${
@@ -402,16 +394,16 @@ export const PostOpportunitiesPage = () => {
               </div>
             )}
             <div className="flex flex-col md:flex-row">
-              <div className="flex-1 flex flex-col space-y-2">
+              <div className="flex-1 flex flex-col">
                 <p className="text-l">Cover Image*</p>
-                <div class="flex items-center justify-center w-full">
+                <div className="flex items-center justify-center w-full">
                   <label
-                    for="dropzone-file"
-                    class="flex flex-col items-center justify-center w-full h-64 border border-[#2135D9] border-dashed rounded-lg cursor-pointer bg-[#f8fcfd] hover:bg-[#e9f5f8]"
+                    htmlFor="dropzone-file"
+                    className="flex flex-col items-center justify-center w-full h-64 border border-[#2135D9] border-dashed rounded-lg cursor-pointer bg-[#f8fcfd] hover:bg-[#e9f5f8]"
                   >
-                    <div class="flex flex-col items-center justify-center pt-5 pb-6 text-center">
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6 text-center">
                       <svg
-                        class="w-10 h-10 mb-4 text-gray-500 dark:text-gray-400"
+                        className="w-10 h-10 mb-4 text-gray-500 dark:text-gray-400"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -419,21 +411,21 @@ export const PostOpportunitiesPage = () => {
                       >
                         <path
                           stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                         />
                       </svg>
-                      <p class="mb-2 text-lg text-gray-500 dark:text-gray-400">
-                        <span class="font-semibold">Click to upload</span> or
-                        drag and drop
+                      <p className="mb-2 text-lg text-gray-500 dark:text-gray-400">
+                        <span className="font-semibold">Click to upload</span>{" "}
+                        or drag and drop
                       </p>
                     </div>
                     <input
                       id="dropzone-file"
                       type="file"
-                      class="hidden"
+                      className="hidden"
                       ref={fileRef}
                       name="file"
                       onChange={(e) => handleChange(e)}
