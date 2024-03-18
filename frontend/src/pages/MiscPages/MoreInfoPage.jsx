@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 import { StudentPublishedMoreInfo } from "../../components/StudentPublishedMoreInfo";
@@ -18,8 +19,8 @@ import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.
 import datetimeToStr from "../../misc/datetimeToStr";
 
 export const MoreInfoPage = () => {
+  let history = useNavigate();
   const role = useSelector((state) => state.auth.role);
-  const userId = useSelector((state) => state.auth.id);
   const [isAdmin, setIsAdmin] = useState(false);
   const { id } = useParams();
   const [event, setEvent] = useState({
@@ -69,6 +70,19 @@ export const MoreInfoPage = () => {
       .catch((error) => console.log(error));
   }, [id, role]);
 
+  const deleteMission = () => {
+    axios
+      .post(
+        `${import.meta.env.VITE_API_URL}/organization/hide_event?eventId=${id}`,
+        {},
+        { withCredentials: true }
+      )
+      .then((res) => {
+        history(-1);
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className=" bg-gray-100 flex flex-col w-[85vw] ml-[15vw]">
       <div className="mx-3 mb-10  rounded-lg bg-white flex flex-col">
@@ -115,6 +129,16 @@ export const MoreInfoPage = () => {
               <div className="text-l text-black">{event.capacity} places</div>
             </div>
           </div>
+        </div>
+        <div>
+          {role == "ORGANIZATION" && isAdmin && (
+            <button
+              className="m-5 py-3 px-20 rounded-full bg-[#2EA0FB] hover:bg-[#2135D9] text-white text-xl"
+              onClick={() => deleteMission()}
+            >
+              Delete event
+            </button>
+          )}
         </div>
         <div>
           {role == "STUDENT" ? (

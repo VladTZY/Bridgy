@@ -355,6 +355,31 @@ const finishEvent = async (req, res) => {
   }
 };
 
+const hideEvent = async (req, res) => {
+  try {
+    const eventId = req.query.eventId;
+
+    if (!eventId) throw Error("Event id not specified");
+
+    const event = await EventModel.findOne({
+      where: {
+        id: eventId,
+      },
+      include: OrganizationModel,
+    });
+
+    if (event.organization.adminId != req.user.id)
+      throw Error("Not admin for this event");
+
+    event.status = "HIDDEN";
+    await event.save();
+
+    res.status(200).json({ message: "Event hid" });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 const checkAdmin = async (req, res) => {
   try {
     const eventId = req.query.eventId;
@@ -387,5 +412,6 @@ module.exports = {
   rejectStudent,
   checkStudent,
   finishEvent,
+  hideEvent,
   checkAdmin,
 };

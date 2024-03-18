@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
-import { CompactCard } from "../../components/CompactCard";
 import { StudentProgressCard } from "../../components/StudentProgressCard";
 import { StudentStatsCard } from "../../components/StudentStatCard";
 import OrangeCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/orangecircle.png";
 import GreenCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/greencircle.png";
-import RedCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/redcircle.png";
 import { BarOpportunity } from "../../components/BarOpportunity";
 
 export const StudentDashboardPage = () => {
@@ -140,16 +137,16 @@ export const StudentDashboardPage = () => {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M17.25 15.25V6.75H8.75"
                     ></path>
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M17 7L6.75 17.25"
                     ></path>
                   </svg>
@@ -169,23 +166,23 @@ export const StudentDashboardPage = () => {
                   <span>10% decrease</span>
 
                   <svg
-                    class="w-7 h-7"
+                    className="w-7 h-7"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M17.25 8.75V17.25H8.75"
                     ></path>
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M17 17L6.75 6.75"
                     ></path>
                   </svg>
@@ -212,16 +209,16 @@ export const StudentDashboardPage = () => {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M17.25 15.25V6.75H8.75"
                     ></path>
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M17 7L6.75 17.25"
                     ></path>
                   </svg>
@@ -243,20 +240,27 @@ export const StudentDashboardPage = () => {
                 </div>
               ),
               false: (
-                <div className="flex flex-col space-y-1">
-                  {ongoingEvents.slice(0, 4).map((data) => {
+                <div className="flex flex-wrap">
+                  {ongoingEvents.map((data) => {
                     return (
                       <BarOpportunity
+                        key={data.event.id}
                         id={data.event.id}
                         title={data.event.name}
                         description={data.event.description}
                         time={data.event.time}
                         location={data.event.location.city}
                         event_type={"opportunity"}
-                        circle_src={OrangeCircle}
+                        photoUrl={
+                          data.event.photoUrl == null
+                            ? DefaultImage
+                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                                event.photoUrl
+                              }`
+                        }
                       />
                     );
-                  })}
+                  })}{" "}
                 </div>
               ),
             }[ongoingEvents.length == 0]
@@ -276,20 +280,27 @@ export const StudentDashboardPage = () => {
                 </div>
               ),
               false: (
-                <div className="flex flex-col space-y-1">
-                  {acceptedEvents.slice(0, 4).map((data) => {
+                <div className="flex flex-wrap">
+                  {acceptedEvents.map((data) => {
                     return (
                       <BarOpportunity
+                        key={data.event.id}
                         id={data.event.id}
                         title={data.event.name}
                         description={data.event.description}
                         time={data.event.time}
                         location={data.event.location.city}
                         event_type={"opportunity"}
-                        circle_src={GreenCircle}
+                        photoUrl={
+                          data.event.photoUrl == null
+                            ? DefaultImage
+                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                                event.photoUrl
+                              }`
+                        }
                       />
                     );
-                  })}
+                  })}{" "}
                 </div>
               ),
             }[acceptedEvents.length == 0]
@@ -309,20 +320,27 @@ export const StudentDashboardPage = () => {
                 </div>
               ),
               false: (
-                <div className="flex flex-col space-y-1">
-                  {requestedEvents.slice(0, 4).map((data) => {
+                <div className="flex flex-wrap">
+                  {requestedEvents.map((data) => {
                     return (
                       <BarOpportunity
+                        key={data.event.id}
                         id={data.event.id}
                         title={data.event.name}
                         description={data.event.description}
                         time={data.event.time}
                         location={data.event.location.city}
                         event_type={"opportunity"}
-                        circle_src={OrangeCircle}
+                        photoUrl={
+                          data.event.photoUrl == null
+                            ? DefaultImage
+                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                                event.photoUrl
+                              }`
+                        }
                       />
                     );
-                  })}
+                  })}{" "}
                 </div>
               ),
             }[requestedEvents.length == 0]

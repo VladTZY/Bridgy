@@ -63,7 +63,7 @@ export const MissionsPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col pb-10 ml-[15vw] px-3 w-[85vw] pt-6">
+    <div className="min-h-full bg-gray-100 flex flex-col pb-[8vh] ml-[15vw] px-3 w-[85vw] pt-6">
       <SearchBar />
       <div className="flex flex-col overflow-x-scroll overflow-hidden">
         <h1 className="text-2xl font-semibold  mt-4 mb-3 text-center md:text-left">
@@ -79,7 +79,7 @@ export const MissionsPage = () => {
                 title={event.name}
                 description={event.description}
                 time={event.time}
-                location={event.location.city}
+                location={event.location}
                 duration={event.hours}
                 event_type={"opportunity"}
                 photoUrl={
@@ -135,7 +135,7 @@ export const MissionsPage = () => {
                 title={event.name}
                 description={event.description}
                 time={event.time}
-                location={event.location.city}
+                location={event.location}
                 duration={event.hours}
                 event_type={"opportunity"}
                 photoUrl={
