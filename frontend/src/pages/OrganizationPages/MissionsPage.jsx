@@ -70,7 +70,7 @@ export const MissionsPage = () => {
           Future Opportunities
         </h1>
 
-        <div className="mx-2 flex flex-row overflow-x-scroll no-scrollbar space-x-4 md:px-2">
+        <div className=" flex flex-row overflow-x-scroll no-scrollbar space-x-4">
           {publishedEvents.slice(0, 4).map((event) => {
             return (
               <Card

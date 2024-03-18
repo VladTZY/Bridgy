@@ -57,9 +57,9 @@ export const AddPreviousEventsPage = () => {
   };
 
   return (
-    <div className="h-full p-3 bg-gray-100 flex flex-col ml-[15vw]">
+    <div className="h-full p-3 bg-gray-100 flex flex-col ml-[15vw] pb-[8vh]">
       <div className="bg-white p-5 rounded-3xl">
-        <h1 className="text-2xl font-bold">Add a previous event</h1>
+        <h1 className="text-2xl font-bold text-center lg:text-left">Add a previous event</h1>
         <div className="">
           <form onSubmit={submitHandler}>
             <div className="flex flex-col lg:flex-row">
@@ -116,10 +116,10 @@ export const AddPreviousEventsPage = () => {
                 </div>
 
                 <div className="my-6">
-                  <label className="flex">
+                  <label className="flex flex-col xl:flex xl:flex-row">
                     <p className="text-l">Cover Image*</p>
                     <input
-                      className="m-2"
+                      className="xl:m-2 truncate"
                       type="file"
                       value={""}
                       onChange={(e) => setFile(e.target.files[0])}

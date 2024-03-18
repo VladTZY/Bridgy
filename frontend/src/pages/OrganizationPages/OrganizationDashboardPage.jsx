@@ -153,7 +153,7 @@ export const OrganizationDashboardPage = () => {
         <div className="text-xl md:text-2xl font-semibold mx-5 mt-7 mb-4">
           Upcoming Events
         </div>
-        <div className="flex flex-col space-y-1">
+        <div className="flex flex-col space-y-1 px-2">
           {publishedEvents.slice(0, 4).map((event) => {
             return (
               <BarOpportunity
@@ -171,7 +171,7 @@ export const OrganizationDashboardPage = () => {
         <div className="text-xl md:text-2xl font-semibold mx-5 mt-7 mb-4">
           Recently Completed
         </div>
-        <div className="flex flex-col space-y-1">
+        <div className="flex flex-col space-y-1 px-2">
           {finishedEvents.slice(0, 4).map((event) => {
             return (
               <BarOpportunity
