@@ -17,6 +17,7 @@ const {
   rejectStudent,
   checkStudent,
   finishEvent,
+  hideEvent,
   checkAdmin,
 } = require("../controllers/organizationController");
 
@@ -28,6 +29,7 @@ router.post("/confirm_student", acceptStudent);
 router.post("/reject_student", rejectStudent);
 router.post("/check_student", checkStudent);
 router.post("/finish_event", finishEvent);
+router.post("/hide_event", hideEvent);
 router.get("/check_admin", checkAdmin);
 
 module.exports = router;
