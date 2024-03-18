@@ -90,7 +90,7 @@ export const OrganizationDashboardPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col pb-5 ml-[15vw]">
+    <div className="min-h-full bg-gray-100 flex flex-col pb-[8vh] ml-[15vw]">
       <div className="flex flex-col">
         <div className="mx-5 my-7 flex justify-between items-center ">
           <div className="text-xl md:text-2xl font-semibold">
