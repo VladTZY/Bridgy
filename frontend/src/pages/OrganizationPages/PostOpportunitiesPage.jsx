@@ -7,6 +7,7 @@ import TimeIcon from "../../../Bridgy_Assets/icon/timeplap blue.svg";
 
 export const PostOpportunitiesPage = () => {
   const [creationModal, setCreationModal] = useState(false);
+  const [chCounter, setChCounter] = useState(0);
 
   const emptyForm = {
     name: "",
@@ -129,7 +130,11 @@ export const PostOpportunitiesPage = () => {
         .post(
           `${import.meta.env.VITE_API_URL}/organization/create_event`,
           formData,
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            maxBodyLength: Infinity,
+            maxContentLength: Infinity,
+          }
         )
         .then((res) => {
           setForm(emptyForm);
@@ -151,6 +156,11 @@ export const PostOpportunitiesPage = () => {
         errorSetter(form["address"], "", "addressError");
       }
     }
+  };
+
+  const counter = () => {
+    let total = document.getElementById("description").value;
+    setChCounter(total.length);
   };
 
   return (
@@ -207,7 +217,9 @@ export const PostOpportunitiesPage = () => {
               <textarea
                 type="text"
                 name="description"
+                id="description"
                 onChange={(e) => {
+                  counter();
                   handleChange(e);
                   handleErrorChange(e);
                 }}
@@ -219,7 +231,9 @@ export const PostOpportunitiesPage = () => {
                     : "border-gray-200"
                 } rounded-lg p-4 border h-40 outline-none`}
                 style={{ width: "100%" }}
+                maxLength={2000}
               />
+              <div className="self-end">{chCounter} / 2000 characters</div>
             </label>
             <div className="flex justify-between flex-col md:flex-row md:space-x-10 ">
               <label className=" flex flex-1 flex-col">
