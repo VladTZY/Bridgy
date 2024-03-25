@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const { UserModel } = require("../database/sequelize");
 
 const requireAuth = async (req, res, next) => {
-  const token = req.cookies.token;
+  const token = req.cookies.access_token;
 
   if (!token) return res.status(401).json({ error: "Auth token required" });
 
