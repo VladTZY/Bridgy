@@ -104,7 +104,7 @@ const loginUser = async (req, res) => {
       httpOnly: true,
       sameSite: "None",
       secure: true,
-      path: "/api/refresh",
+      path: "/api/user/refresh",
     });
 
     res.status(200).json({
@@ -121,7 +121,7 @@ const loginUser = async (req, res) => {
 const logoutUser = (req, res) => {
   try {
     res.clearCookie("access_token");
-    res.clearCookie("refresh_token", { path: "/api/refresh" });
+    res.clearCookie("refresh_token", { path: "/api/user/refresh" });
     res.status(200).json({ message: "Logout successful" });
   } catch (error) {
     res.status(500).json(error.message);
@@ -337,6 +337,27 @@ const changePassword = async (req, res) => {
   }
 };
 
+const refreshToken = (req, res) => {
+  try {
+    const refreshToken = req.cookies.refresh_token;
+
+    if (!refreshToken) throw Error("Refresh token missing");
+
+    const { id } = jwt.verify(refreshToken, process.env.SECRET);
+    const accessToken = createToken(id, "3m");
+
+    res.cookie("access_token", accessToken, {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    });
+
+    res.status(200).json({ message: "Token refreshed" });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 module.exports = {
   loginUser,
   signupUser,
@@ -344,4 +365,5 @@ module.exports = {
   getProfileInfo,
   updateProfileInfo,
   changePassword,
+  refreshToken,
 };
