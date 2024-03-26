@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
@@ -19,14 +19,11 @@ export const OrganizationDashboardPage = () => {
   const [finishedPage, setFinishedPage] = useState(1);
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get(
-        `${
-          import.meta.env.VITE_API_URL
-        }/events/by_admin_and_status?adminId=${id}&status=ONGOING&offset=${
+        `/events/by_admin_and_status?adminId=${id}&status=ONGOING&offset=${
           ongoingPage - 1
-        }&pageSize=4`,
-        { withCredentials: true }
+        }&pageSize=4`
       )
       .then((res) => {
         setOngoingEvents(res.data);
@@ -37,14 +34,11 @@ export const OrganizationDashboardPage = () => {
   }, [organizationId, ongoingPage]);
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get(
-        `${
-          import.meta.env.VITE_API_URL
-        }/events/by_admin_and_status?adminId=${id}&status=PUBLISHED&offset=${
+        `/events/by_admin_and_status?adminId=${id}&status=PUBLISHED&offset=${
           upcomingPage - 1
-        }&pageSize=4`,
-        { withCredentials: true }
+        }&pageSize=4`
       )
       .then((res) => {
         setPublishedEvents(res.data);
@@ -55,14 +49,11 @@ export const OrganizationDashboardPage = () => {
   }, [organizationId, upcomingPage]);
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get(
-        `${
-          import.meta.env.VITE_API_URL
-        }/events/by_admin_and_status?adminId=${id}&status=FINISHED&offset=${
+        `/events/by_admin_and_status?adminId=${id}&status=FINISHED&offset=${
           finishedPage - 1
-        }&pageSize=4`,
-        { withCredentials: true }
+        }&pageSize=4`
       )
       .then((res) => {
         setFinishedEvents(res.data);

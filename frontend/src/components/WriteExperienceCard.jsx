@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 export const WriteExperienceCard = ({ id, title, eventDescription }) => {
   const [description, setDescription] = useState(eventDescription);
@@ -7,12 +7,8 @@ export const WriteExperienceCard = ({ id, title, eventDescription }) => {
 
   const handleClick = () => {
     setcanEdit(false);
-    axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/student/post_feedback/${id}`,
-        { feedback: description },
-        { withCredentials: true }
-      )
+    axiosInstance
+      .post(`/student/post_feedback/${id}`, { feedback: description })
       .catch((error) => console.log(error));
   };
 

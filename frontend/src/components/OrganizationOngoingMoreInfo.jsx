@@ -2,7 +2,7 @@ import { AcceptedStudentsTable } from "./AcceptedStudentsTable";
 import { EndEventModal } from "./EndEventModal";
 import { MarkAttendanceModal } from "./MarkAttendanceModal";
 
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { useState, useEffect } from "react";
 
 export const OrganizationOngoingMoreInfo = ({ eventId }) => {
@@ -11,13 +11,8 @@ export const OrganizationOngoingMoreInfo = ({ eventId }) => {
   const [attendanceModal, setAttendanceModal] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(
-        `${
-          import.meta.env.VITE_API_URL
-        }/organization/joined_students?eventId=${eventId}`,
-        { withCredentials: true }
-      )
+    axiosInstance
+      .get(`/organization/joined_students?eventId=${eventId}`)
       .then((res) => setAcceptedStudents(res.data))
       .catch((error) => console.log(error));
   }, [eventId]);

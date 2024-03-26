@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 
 import { StudentsTable } from "../../components/StudentsTable";
 import { SchoolProgressCard } from "../../components/SchoolProgressCard";
@@ -17,10 +17,8 @@ export const SchoolDashboardPage = () => {
   });
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/school/students?grade=${grade}`, {
-        withCredentials: true,
-      })
+    axiosInstance
+      .get(`/school/students?grade=${grade}`)
       .then((res) => {
         setStudents(res.data);
         setTableData(res.data);
@@ -29,10 +27,8 @@ export const SchoolDashboardPage = () => {
   }, [grade]);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/school/stats`, {
-        withCredentials: true,
-      })
+    axiosInstance
+      .get(`/school/stats`)
       .then((res) => {
         setStats(res.data);
       })

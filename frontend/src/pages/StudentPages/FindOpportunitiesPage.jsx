@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import { useEffect, useState } from "react";
 import { Card } from "../../components/Card";
 import { SearchBar } from "../../components/SearchBar";
@@ -9,13 +9,8 @@ export const FindOpportunitiesPage = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    axios
-      .get(
-        `${
-          import.meta.env.VITE_API_URL
-        }/events/by_status?status=PUBLISHED&offset=${page - 1}&pageSize=8`,
-        { withCredentials: true }
-      )
+    axiosInstance
+      .get(`/events/by_status?status=PUBLISHED&offset=${page - 1}&pageSize=8`)
       .then((res) => {
         setEvents(res.data);
       })
@@ -33,7 +28,9 @@ export const FindOpportunitiesPage = () => {
   return (
     <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw] px-3 pt-6 pb-[8vh]">
       <SearchBar />
-      <h1 className="text-2xl font-bold  my-7 text-center lg:text-left">Published Opportunities</h1>
+      <h1 className="text-2xl font-bold  my-7 text-center lg:text-left">
+        Published Opportunities
+      </h1>
 
       <div className=" flex flex-wrap overflow-x-scroll no-scrollbar space-x-2 space-y-4">
         {events.slice(0, 8).map((event) => {

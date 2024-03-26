@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import { CreationModal } from "../../components/CreationModal";
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
@@ -126,16 +126,11 @@ export const PostOpportunitiesPage = () => {
     formData.append("remote", form["isRemote"]);
 
     if (validate()) {
-      axios
-        .post(
-          `${import.meta.env.VITE_API_URL}/organization/create_event`,
-          formData,
-          {
-            withCredentials: true,
-            maxBodyLength: Infinity,
-            maxContentLength: Infinity,
-          }
-        )
+      axiosInstance
+        .post(`/organization/create_event`, formData, {
+          maxBodyLength: Infinity,
+          maxContentLength: Infinity,
+        })
         .then((res) => {
           setForm(emptyForm);
           setFormError(emptyFormError);

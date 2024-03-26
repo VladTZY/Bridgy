@@ -8,6 +8,7 @@ const {
   getProfileInfo,
   updateProfileInfo,
   changePassword,
+  refreshToken,
 } = require("../controllers/userController");
 
 const { requireAuth } = require("../middlewares/requireAuth");
@@ -15,6 +16,7 @@ const { requireAuth } = require("../middlewares/requireAuth");
 router.post("/login", loginUser);
 router.post("/signup", signupUser);
 router.post("/logout", logoutUser);
+router.post("/refresh", refreshToken);
 router.get("/profile/:id", getProfileInfo);
 
 router.use(requireAuth);

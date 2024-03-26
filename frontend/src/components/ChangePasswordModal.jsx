@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 export const ChangePasswordModal = ({ setModal }) => {
   const [password, setPassword] = useState("");
@@ -13,15 +13,11 @@ export const ChangePasswordModal = ({ setModal }) => {
       return;
     }
 
-    axios
-      .put(
-        `${import.meta.env.VITE_API_URL}/user/change_password`,
-        {
-          password,
-          newPassword,
-        },
-        { withCredentials: true }
-      )
+    axiosInstance
+      .put(`/user/change_password`, {
+        password,
+        newPassword,
+      })
       .catch((err) => console.log(err));
     setModal(false);
   };

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 import { NotificationCard } from "./NotificationCard";
 
@@ -7,10 +7,8 @@ export const NotificationsList = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/notification/get_all`, {
-        withCredentials: true,
-      })
+    axiosInstance
+      .get(`/notification/get_all`)
       .then((res) => setNotifications(res.data))
       .catch((error) => console.log(error));
   }, []);

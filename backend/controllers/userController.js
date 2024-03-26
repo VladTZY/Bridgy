@@ -8,9 +8,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 
-const createToken = (id) => {
+const createToken = (id, expirationTime) => {
   return jwt.sign({ id }, process.env.SECRET, {
-    expiresIn: "3d",
+    expiresIn: expirationTime,
   });
 };
 
@@ -64,9 +64,6 @@ const signupUser = async (req, res) => {
       locationId: location.id,
     });
 
-    const token = createToken(user.id);
-
-    res.cookie("token", token, { httpOnly: true });
     res.status(200).json({
       message: "Sign up successful",
       id: user.id,
@@ -94,13 +91,22 @@ const loginUser = async (req, res) => {
 
     if (!match) throw Error("Incorect password");
 
-    const token = createToken(user.id);
+    const accessToken = createToken(user.id, process.env.ACCESS_TOKEN_TIME);
+    const refreshToken = createToken(user.id, process.env.REFRESH_TOKEN_TIME);
 
-    res.cookie("token", token, {
+    res.cookie("access_token", accessToken, {
       httpOnly: true,
       sameSite: "None",
       secure: true,
     });
+
+    res.cookie("refresh_token", refreshToken, {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+      path: "/api/user/refresh",
+    });
+
     res.status(200).json({
       message: "Login successful",
       id: user.id,
@@ -114,7 +120,17 @@ const loginUser = async (req, res) => {
 
 const logoutUser = (req, res) => {
   try {
-    res.clearCookie("token");
+    res.clearCookie("access_token", {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    });
+    res.clearCookie("refresh_token", {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+      path: "/api/user/refresh",
+    });
     res.status(200).json({ message: "Logout successful" });
   } catch (error) {
     res.status(500).json(error.message);
@@ -330,6 +346,27 @@ const changePassword = async (req, res) => {
   }
 };
 
+const refreshToken = (req, res) => {
+  try {
+    const refreshToken = req.cookies.refresh_token;
+
+    if (!refreshToken) throw Error("Refresh token missing");
+
+    const { id } = jwt.verify(refreshToken, process.env.SECRET);
+    const accessToken = createToken(id, process.env.REFRESH_TOKEN_TIME);
+
+    res.cookie("access_token", accessToken, {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    });
+
+    res.status(200).json({ message: "Token refreshed" });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 module.exports = {
   loginUser,
   signupUser,
@@ -337,4 +374,5 @@ module.exports = {
   getProfileInfo,
   updateProfileInfo,
   changePassword,
+  refreshToken,
 };

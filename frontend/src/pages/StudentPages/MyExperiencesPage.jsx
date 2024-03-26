@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import { useState, useEffect } from "react";
 import { WriteExperienceCard } from "../../components/WriteExperienceCard";
 import { Card } from "../../components/Card";
@@ -8,10 +8,8 @@ export const MyExperiencesPage = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/student/finished_events`, {
-        withCredentials: true,
-      })
+    axiosInstance
+      .get(`/student/finished_events`)
       .then((res) => {
         setEvents(res.data);
       })

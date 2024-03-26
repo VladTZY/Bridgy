@@ -2,17 +2,22 @@ import { Link } from "react-router-dom";
 
 export const StudentsTable = ({ students }) => {
   return (
-
-<div className="rounded-xl shadow overflow-hidden mt-10 ">
+    <div className="rounded-xl shadow overflow-hidden mt-10 ">
       <table className="min-w-full">
         <thead className="bg-[#2135D9] text-white">
           <tr>
-            <th className="px-4 py-2 text-left text-l font-medium w-[25%] text-center">Username</th>
-            <th className=" hidden lg:table-cell px-4 py-2 text-left text-l font-medium w-[25%] text-center">Email</th>
-            <th className="hidden lg:table-cell px-4 py-2 text-left text-l font-medium w-[25%] text-center">
+            <th className="px-4 py-2  text-l font-medium w-[25%] text-center">
+              Username
+            </th>
+            <th className=" hidden lg:table-cell px-4 py-2  text-l font-medium w-[25%] text-center">
+              Email
+            </th>
+            <th className="hidden lg:table-cell px-4 py-2  text-l font-medium w-[25%] text-center">
               Phone number
             </th>
-            <th className="px-6 py-3 text-left text-l font-medium text-center">Profile</th>
+            <th className="px-6 py-3  text-l font-medium text-center">
+              Profile
+            </th>
           </tr>
         </thead>
 
@@ -20,8 +25,12 @@ export const StudentsTable = ({ students }) => {
           {students.map((student) => {
             return (
               <tr key={student.id} className="hover:bg-gray-100">
-                <td className="px-4 py-2 font-semibold text-center">{student.username}</td>
-                <td className="hidden lg:table-cell px-4 py-2 font-semibold w-[25%] text-center">{student.email}</td>
+                <td className="px-4 py-2 font-semibold text-center">
+                  {student.username}
+                </td>
+                <td className="hidden lg:table-cell px-4 py-2 font-semibold w-[25%] text-center">
+                  {student.email}
+                </td>
                 <td className="hidden lg:table-cell px-4 py-2 font-semibold w-[25%] text-center">
                   {student.phoneNumber}
                 </td>
@@ -39,7 +48,5 @@ export const StudentsTable = ({ students }) => {
         </tbody>
       </table>
     </div>
-
-
   );
 };

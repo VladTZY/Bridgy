@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import { CreationModal } from "../../components/CreationModal";
 import { ErrorModal } from "../../components/ErrorModal";
 
@@ -37,21 +37,17 @@ export const CreateOrganizationPage = () => {
       setCreationModal(true);
       setErrorModal(false);
 
-      axios
-        .post(
-          `${import.meta.env.VITE_API_URL}/admin/create_organization`,
-          {
-            organizationName,
-            organizationEmail,
-            organizationPhoneNumber,
-            organizationCity,
-            organizationCountry,
-            username,
-            email,
-            phoneNumber,
-          },
-          { withCredentials: true }
-        )
+      axiosInstance
+        .post(`/admin/create_organization`, {
+          organizationName,
+          organizationEmail,
+          organizationPhoneNumber,
+          organizationCity,
+          organizationCountry,
+          username,
+          email,
+          phoneNumber,
+        })
         .then((res) => {
           setOrganizationName("");
           setOrganizationEmail("");

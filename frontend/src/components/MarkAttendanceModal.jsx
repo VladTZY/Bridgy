@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 export const MarkAttendanceModal = ({
   setAttendanceModal,
@@ -7,13 +7,10 @@ export const MarkAttendanceModal = ({
   eventId,
 }) => {
   const handleChange = (index, userId) => {
-    axios
+    axiosInstance
       .post(
-        `${
-          import.meta.env.VITE_API_URL
-        }/organization/check_student?userId=${userId}&eventId=${eventId}`,
-        {},
-        { withCredentials: true }
+        `/organization/check_student?userId=${userId}&eventId=${eventId}`,
+        {}
       )
       .then((res) => {
         const newArray = students.map((student, indexNow) => {

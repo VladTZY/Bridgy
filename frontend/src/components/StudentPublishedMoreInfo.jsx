@@ -1,16 +1,12 @@
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 export const StudentPublishedMoreInfo = ({ eventId, placesLeft }) => {
   const navigate = useNavigate();
 
   const joinEvent = () => {
-    axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/student/join_event/${eventId}`,
-        {},
-        { withCredentials: true }
-      )
+    axiosInstance
+      .post(`/student/join_event/${eventId}`, {})
       .then((res) => {
         navigate("/student/dashboard");
       })

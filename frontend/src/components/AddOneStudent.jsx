@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 export const AddOneStudent = ({
   setCreationModal,
@@ -55,19 +55,15 @@ export const AddOneStudent = ({
     e.preventDefault();
 
     if (validate()) {
-      axios
-        .post(
-          `${import.meta.env.VITE_API_URL}/school/create_one_student`,
-          {
-            username: student.username,
-            email: student.email,
-            phoneNumber: student.phoneNumber,
-            country: student.country,
-            city: student.city,
-            grade: student.grade,
-          },
-          { withCredentials: true }
-        )
+      axiosInstance
+        .post(`/school/create_one_student`, {
+          username: student.username,
+          email: student.email,
+          phoneNumber: student.phoneNumber,
+          country: student.country,
+          city: student.city,
+          grade: student.grade,
+        })
         .then((res) => {
           resetStudent();
           resetError();
