@@ -354,7 +354,7 @@ const refreshToken = (req, res) => {
     if (!refreshToken) throw Error("Refresh token missing");
 
     const { id } = jwt.verify(refreshToken, process.env.SECRET);
-    const accessToken = createToken(id, process.env.REFRESH_TOKEN_TIME);
+    const accessToken = createToken(id, process.env.ACCESS_TOKEN_TIME);
 
     res.cookie("access_token", accessToken, {
       httpOnly: true,
