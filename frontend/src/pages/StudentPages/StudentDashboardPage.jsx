@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import { StudentProgressCard } from "../../components/StudentProgressCard";
-import { StudentStatsCard } from "../../components/StudentStatCard";
 import OrangeCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/orangecircle.png";
 import GreenCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/greencircle.png";
+import YellowCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/yellowcircle.png";
 import { BarOpportunity } from "../../components/BarOpportunity";
 
 export const StudentDashboardPage = () => {
@@ -245,13 +245,7 @@ export const StudentDashboardPage = () => {
                         time={data.event.time}
                         location={data.event.location.city}
                         event_type={"opportunity"}
-                        photoUrl={
-                          data.event.photoUrl == null
-                            ? DefaultImage
-                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                                event.photoUrl
-                              }`
-                        }
+                        circle_src={GreenCircle}
                       />
                     );
                   })}{" "}
@@ -285,13 +279,7 @@ export const StudentDashboardPage = () => {
                         time={data.event.time}
                         location={data.event.location.city}
                         event_type={"opportunity"}
-                        photoUrl={
-                          data.event.photoUrl == null
-                            ? DefaultImage
-                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                                event.photoUrl
-                              }`
-                        }
+                        circle_src={YellowCircle}
                       />
                     );
                   })}{" "}
@@ -325,13 +313,7 @@ export const StudentDashboardPage = () => {
                         time={data.event.time}
                         location={data.event.location.city}
                         event_type={"opportunity"}
-                        photoUrl={
-                          data.event.photoUrl == null
-                            ? DefaultImage
-                            : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                                event.photoUrl
-                              }`
-                        }
+                        circle_src={OrangeCircle}
                       />
                     );
                   })}{" "}
