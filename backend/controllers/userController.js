@@ -120,8 +120,17 @@ const loginUser = async (req, res) => {
 
 const logoutUser = (req, res) => {
   try {
-    res.clearCookie("access_token");
-    res.clearCookie("refresh_token", { path: "/api/user/refresh" });
+    res.clearCookie("access_token", {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    });
+    res.clearCookie("refresh_token", {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+      path: "/api/user/refresh",
+    });
     res.status(200).json({ message: "Logout successful" });
   } catch (error) {
     res.status(500).json(error.message);
