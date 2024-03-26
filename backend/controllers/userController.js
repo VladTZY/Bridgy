@@ -91,8 +91,8 @@ const loginUser = async (req, res) => {
 
     if (!match) throw Error("Incorect password");
 
-    const accessToken = createToken(user.id, "3m");
-    const refreshToken = createToken(user.id, "1d");
+    const accessToken = createToken(user.id, process.env.ACCESS_TOKEN_TIME);
+    const refreshToken = createToken(user.id, process.env.REFRESH_TOKEN_TIME);
 
     res.cookie("access_token", accessToken, {
       httpOnly: true,
@@ -344,7 +344,7 @@ const refreshToken = (req, res) => {
     if (!refreshToken) throw Error("Refresh token missing");
 
     const { id } = jwt.verify(refreshToken, process.env.SECRET);
-    const accessToken = createToken(id, "3m");
+    const accessToken = createToken(id, process.env.REFRESH_TOKEN_TIME);
 
     res.cookie("access_token", accessToken, {
       httpOnly: true,
