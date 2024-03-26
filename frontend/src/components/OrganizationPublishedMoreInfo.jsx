@@ -14,13 +14,8 @@ export const OrganizationPublishedMoreInfo = ({ eventId }) => {
       .then((res) => setAcceptedStudents(res.data))
       .catch((error) => console.log(error));
 
-    axios
-      .get(
-        `${
-          import.meta.env.VITE_API_URL
-        }/organization/requested_students?eventId=${eventId}`,
-        { withCredentials: true }
-      )
+    axiosInstance
+      .get(`/organization/requested_students?eventId=${eventId}`)
       .then((res) => setRequestedStudents(res.data))
       .catch((error) => console.log(error));
   }, [eventId]);
