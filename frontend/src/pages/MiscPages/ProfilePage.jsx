@@ -90,7 +90,7 @@ export const ProfilePage = () => {
                 />
                 <p className="pl-2 text-white hidden lg:block">Edit profile</p>
               </div>
-              <div className="hidden bg-[#2135D9] p-1.5 lg:p-2 rounded-l lg:rounded-xl mr-2 flex flex-row justify-center items-center">
+              <div className="bg-[#2135D9] p-1.5 lg:p-2 rounded-l lg:rounded-xl mr-2 flex flex-row justify-center items-center">
                 // Div pt save profile sa ii faci cod
                 <img
                   src={EditProfileIcon}

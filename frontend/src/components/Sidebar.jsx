@@ -52,7 +52,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className="hidden sm:block text-white hidden md:block text-l 2xl:text-xl">
+                          <div className=" sm:block text-white hidden md:block text-l 2xl:text-xl">
                             Dashboard
                           </div>
                         </div>
@@ -294,7 +294,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className=" hidden md:block text-white hidden md:block text-l 2xl:text-xl ">
+                          <div className=" hidden md:block text-white  text-l 2xl:text-xl ">
                             Dashboard
                           </div>
                         </div>
@@ -307,7 +307,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className="hidden md:block hidden md:block text-l 2xl:text-xl ">
+                          <div className="hidden md:block  text-l 2xl:text-xl ">
                             Dashboard
                           </div>
                         </div>
@@ -323,7 +323,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className="hidden md:block text-white hidden md:block text-l 2xl:text-xl ">
+                          <div className="hidden md:block text-white  text-l 2xl:text-xl ">
                             Add Student
                           </div>
                         </div>
@@ -336,7 +336,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className="hidden md:block hidden md:block text-l 2xl:text-xl ">
+                          <div className="hidden md:block  text-l 2xl:text-xl ">
                             Add Student
                           </div>
                         </div>
@@ -352,7 +352,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className="hidden md:block text-white hidden md:block text-l 2xl:text-xl ">
+                          <div className="hidden md:block text-white  text-l 2xl:text-xl ">
                             Updates
                           </div>
                         </div>
@@ -365,7 +365,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className="hidden md:block hidden md:block text-l 2xl:text-xl ">
+                          <div className="hidden md:block text-l 2xl:text-xl ">
                             Updates
                           </div>
                         </div>
@@ -385,7 +385,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className=" hidden md:block text-white hidden md:block text-l 2xl:text-xl ">
+                          <div className=" hidden md:block text-white  text-l 2xl:text-xl ">
                             Create School
                           </div>
                         </div>
@@ -398,7 +398,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className="hidden md:block hidden md:block text-l 2xl:text-xl ">
+                          <div className="hidden md:block  text-l 2xl:text-xl ">
                             Create School
                           </div>
                         </div>
@@ -414,7 +414,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className="hidden md:block text-white hidden md:block text-l 2xl:text-xl">
+                          <div className="hidden md:block text-white  text-l 2xl:text-xl">
                             Create Organization
                           </div>
                         </div>
@@ -427,7 +427,7 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className="hidden md:block hidden md:block text-l 2xl:text-xl ">
+                          <div className="hidden md:block  text-l 2xl:text-xl ">
                             Create Organization
                           </div>
                         </div>
