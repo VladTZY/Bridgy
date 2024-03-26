@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import dateToStr from "../misc/dateToStr";
+import dateToStr from "../utils/dateToStr";
 
 export const CompactCard = ({
   id,

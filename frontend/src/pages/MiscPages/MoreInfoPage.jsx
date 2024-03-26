@@ -16,7 +16,7 @@ import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
 import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
 
-import datetimeToStr from "../../misc/datetimeToStr";
+import datetimeToStr from "../../utils/datetimeToStr";
 
 export const MoreInfoPage = () => {
   let history = useNavigate();
