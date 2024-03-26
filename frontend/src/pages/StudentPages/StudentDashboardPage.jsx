@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import { StudentProgressCard } from "../../components/StudentProgressCard";
 import { StudentStatsCard } from "../../components/StudentStatCard";
 import OrangeCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/orangecircle.png";
@@ -12,28 +12,22 @@ export const StudentDashboardPage = () => {
   const [acceptedEvents, setAcceptedEvents] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/student/accepted_events`, {
-        withCredentials: true,
-      })
+    axiosInstance
+      .get(`/student/accepted_events`)
       .then((res) => {
         setAcceptedEvents(res.data);
       })
       .catch((error) => console.log(error));
 
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/student/ongoing_events`, {
-        withCredentials: true,
-      })
+    axiosInstance
+      .get(`/student/ongoing_events`)
       .then((res) => {
         setOngoingEvents(res.data);
       })
       .catch((error) => console.log(error));
 
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/student/requested_events`, {
-        withCredentials: true,
-      })
+    axiosInstance
+      .get(`/student/requested_events`)
       .then((res) => {
         setRequestedEvents(res.data);
       })

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { Link } from "react-router-dom";
 
 export const RequestedStudentsTable = ({
@@ -9,13 +9,10 @@ export const RequestedStudentsTable = ({
   setAcceptedStudents,
 }) => {
   const acceptStudent = (id, index) => {
-    axios
+    axiosInstance
       .post(
-        `${
-          import.meta.env.VITE_API_URL
-        }/organization/confirm_student?studentId=${id}&eventId=${eventId}`,
-        {},
-        { withCredentials: true }
+        `/organization/confirm_student?studentId=${id}&eventId=${eventId}`,
+        {}
       )
       .then((res) => {
         setAcceptedStudents([...acceptedStudents, students[index]]);
@@ -26,13 +23,10 @@ export const RequestedStudentsTable = ({
   };
 
   const rejectStudent = (id, index) => {
-    axios
+    axiosInstance
       .post(
-        `${
-          import.meta.env.VITE_API_URL
-        }/organization/reject_student?studentId=${id}&eventId=${eventId}`,
-        {},
-        { withCredentials: true }
+        `/organization/reject_student?studentId=${id}&eventId=${eventId}`,
+        {}
       )
       .then((res) => {
         setRequestedStudents(

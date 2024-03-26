@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 export const AddMultipleStudents = ({
   setCreationModal,
@@ -19,12 +19,8 @@ export const AddMultipleStudents = ({
     const formData = new FormData();
     formData.append("file", file);
 
-    axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/school/create_multiple_students`,
-        formData,
-        { withCredentials: true }
-      )
+    axiosInstance
+      .post(`/school/create_multiple_students`, formData)
       .then((res) => {
         setFile(null);
         setCreationModal(true);

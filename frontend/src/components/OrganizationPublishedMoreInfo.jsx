@@ -1,7 +1,7 @@
 import { AcceptedStudentsTable } from "./AcceptedStudentsTable";
 import { RequestedStudentsTable } from "./RequestedStudentsTable";
 
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { useState, useEffect } from "react";
 
 export const OrganizationPublishedMoreInfo = ({ eventId }) => {
@@ -9,13 +9,8 @@ export const OrganizationPublishedMoreInfo = ({ eventId }) => {
   const [requestedStudents, setRequestedStudents] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `${
-          import.meta.env.VITE_API_URL
-        }/organization/joined_students?eventId=${eventId}`,
-        { withCredentials: true }
-      )
+    axiosInstance
+      .get(`/organization/joined_students?eventId=${eventId}`)
       .then((res) => setAcceptedStudents(res.data))
       .catch((error) => console.log(error));
 

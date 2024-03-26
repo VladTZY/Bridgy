@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 export const EndEventModal = ({ setEndModal, students, eventId }) => {
   const [presentArray, setPresentArray] = useState(
@@ -39,14 +39,8 @@ export const EndEventModal = ({ setEndModal, students, eventId }) => {
       };
     });
 
-    axios
-      .post(
-        `${
-          import.meta.env.VITE_API_URL
-        }/organization/finish_event?eventId=${eventId}`,
-        finalArray,
-        { withCredentials: true }
-      )
+    axiosInstance
+      .post(`/organization/finish_event?eventId=${eventId}`, finalArray)
       .then(setEndModal(false));
   };
 

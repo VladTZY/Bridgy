@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import { StudentPublishedMoreInfo } from "../../components/StudentPublishedMoreInfo";
 import { StudentFinishedMoreInfo } from "../../components/StudentFinishedMoreInfo";
 import { StudentOngoingMoreInfo } from "../../components/StudentOngoingMoreInfo";
@@ -41,23 +41,16 @@ export const MoreInfoPage = () => {
 
   useEffect(() => {
     if (role == "ORGANIZATION") {
-      axios
-        .get(
-          `${
-            import.meta.env.VITE_API_URL
-          }/organization/check_admin?eventId=${id}`,
-          { withCredentials: true }
-        )
+      axiosInstance
+        .get(`/organization/check_admin?eventId=${id}`)
         .then((res) => {
           setIsAdmin(res.data.isAdmin);
         })
         .catch((error) => console.log(error));
     }
 
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/events/id?id=${id}`, {
-        withCredentials: true,
-      })
+    axiosInstance
+      .get(`/events/id?id=${id}`)
       .then((res) => {
         setEvent(res.data);
 
@@ -71,12 +64,8 @@ export const MoreInfoPage = () => {
   }, [id, role]);
 
   const deleteMission = () => {
-    axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/organization/hide_event?eventId=${id}`,
-        {},
-        { withCredentials: true }
-      )
+    axiosInstance
+      .post(`/organization/hide_event?eventId=${id}`, {})
       .then((res) => {
         history(-1);
       })

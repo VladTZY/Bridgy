@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { logout } from "../store/authSlice";
 import dash_white from "../../Bridgy_Assets/icon/Dashboard white.svg";
 import dash_black from "../../Bridgy_Assets/icon/Dashboard black.svg";
@@ -29,12 +29,8 @@ export const Sidebar = () => {
   const location = useLocation();
 
   const logoutUser = async () => {
-    await axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/user/logout`,
-        {},
-        { withCredentials: true }
-      )
+    await axiosInstance
+      .post(`/user/logout`, {})
       .then(dispatch(logout()))
       .catch((error) => console.log(error));
   };
@@ -278,7 +274,9 @@ export const Sidebar = () => {
                             alt="react logo"
                             style={{ width: "1.7rem" }}
                           />
-                          <div className="hidden md:block text-l 2xl:text-xl">Missions</div>
+                          <div className="hidden md:block text-l 2xl:text-xl">
+                            Missions
+                          </div>
                         </div>
                       </Link>
                     )}
@@ -299,7 +297,6 @@ export const Sidebar = () => {
                           <div className=" hidden md:block text-white hidden md:block text-l 2xl:text-xl ">
                             Dashboard
                           </div>
-
                         </div>
                       </Link>
                     ) : (
@@ -313,7 +310,6 @@ export const Sidebar = () => {
                           <div className="hidden md:block hidden md:block text-l 2xl:text-xl ">
                             Dashboard
                           </div>
-
                         </div>
                       </Link>
                     )}
@@ -556,7 +552,9 @@ export const Sidebar = () => {
                     alt="react logo"
                     style={{ width: "1.7rem" }}
                   />
-                  <div className="hidden md:block text-l 2xl:text-xl">Notifications</div>
+                  <div className="hidden md:block text-l 2xl:text-xl">
+                    Notifications
+                  </div>
                 </div>
               </Link>
             )}
@@ -584,27 +582,28 @@ export const Sidebar = () => {
                     alt="react logo"
                     style={{ width: "1.7rem" }}
                   />
-                  <div className="hidden md:block text-l 2xl:text-xl">Profile</div>
+                  <div className="hidden md:block text-l 2xl:text-xl">
+                    Profile
+                  </div>
                 </div>
               </Link>
             )}
           </div>
           <div className=" flex flex-col items-center lg:items-start lg:pl-4">
-          <div className="flex items-center space-1 my-2">
-            <img src={help} alt="react logo" style={{ width: "1.5rem" }} />
-            <div className="hover:text-[#2135D9] hidden md:block text-lg">
-              <Link to="/help">Help</Link>
+            <div className="flex items-center space-1 my-2">
+              <img src={help} alt="react logo" style={{ width: "1.5rem" }} />
+              <div className="hover:text-[#2135D9] hidden md:block text-lg">
+                <Link to="/help">Help</Link>
+              </div>
             </div>
-          </div>
-          <div className="flex items-center space-1 my-2 lg:pl-1">
-            <img src={lo} alt="react logo" style={{ width: "1.4rem" }} />
-            <div className="hover:text-[#2135D9] hidden md:block text-lg">
-              <button onClick={() => logoutUser()}>Logout</button>
+            <div className="flex items-center space-1 my-2 lg:pl-1">
+              <img src={lo} alt="react logo" style={{ width: "1.4rem" }} />
+              <div className="hover:text-[#2135D9] hidden md:block text-lg">
+                <button onClick={() => logoutUser()}>Logout</button>
+              </div>
             </div>
           </div>
         </div>
-        </div>
-        
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 
 import CalendarIcon from "../../../Bridgy_Assets/icon/calender blue.svg";
 import LocationIcon from "../../../Bridgy_Assets/icon/location blue.svg";
@@ -35,12 +35,8 @@ export const AddPreviousEventsPage = () => {
     formData.append("address", address);
     formData.append("supervisorContact", supervisorContact);
 
-    axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/organization/create_event`,
-        formData,
-        { withCredentials: true }
-      )
+    axiosInstance
+      .post(`/organization/create_event`, formData)
       .then((res) => {
         setName("");
         setDescription("");
@@ -59,7 +55,9 @@ export const AddPreviousEventsPage = () => {
   return (
     <div className="h-full p-3 bg-gray-100 flex flex-col ml-[15vw] pb-[8vh]">
       <div className="bg-white p-5 rounded-3xl">
-        <h1 className="text-2xl font-bold text-center lg:text-left">Add a previous event</h1>
+        <h1 className="text-2xl font-bold text-center lg:text-left">
+          Add a previous event
+        </h1>
         <div className="">
           <form onSubmit={submitHandler}>
             <div className="flex flex-col lg:flex-row">

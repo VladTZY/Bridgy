@@ -14,7 +14,9 @@ export const NotificationCard = ({ type, message, studentId, eventId }) => {
           }
           <div className="lg:py-4 text-xl 2xl:text-2xl font-bold">{type}</div>
         </div>
-        <div className="text-l 2xl:text-xl text-center items-center justify-center">{message}</div>
+        <div className="text-l 2xl:text-xl text-center items-center justify-center">
+          {message}
+        </div>
       </div>
     </div>
   );
