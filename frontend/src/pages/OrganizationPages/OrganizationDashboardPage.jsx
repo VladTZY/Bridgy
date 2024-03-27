@@ -97,6 +97,7 @@ export const OrganizationDashboardPage = () => {
           {ongoingEvents.slice(0, 4).map((event) => {
             return (
               <CompactCard
+                key={event.id}
                 id={event.id}
                 title={event.name}
                 description={event.description}
@@ -148,6 +149,7 @@ export const OrganizationDashboardPage = () => {
           {publishedEvents.slice(0, 4).map((event) => {
             return (
               <BarOpportunity
+                key={event.id}
                 id={event.id}
                 title={event.name}
                 description={event.description}
@@ -166,6 +168,7 @@ export const OrganizationDashboardPage = () => {
           {finishedEvents.slice(0, 4).map((event) => {
             return (
               <BarOpportunity
+                key={event.id}
                 id={event.id}
                 title={event.name}
                 description={event.description}

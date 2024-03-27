@@ -32,8 +32,8 @@ export const BarOpportunity = ({
           />
         </div>
         <div className="flex justify-between w-[80%] xl:w-[100%] mx-5">
-          <div class="flex flex-col  py-2 truncate">
-            <p class="text-l text-left font-bold">{title}</p>
+          <div className="flex flex-col  py-2 truncate">
+            <p className="text-l text-left font-bold">{title}</p>
 
             <p className="text-gray-500 text-left text-sm w-[100%] truncate">
               {description}
