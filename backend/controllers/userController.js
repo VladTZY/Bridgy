@@ -104,7 +104,7 @@ const loginUser = async (req, res) => {
       httpOnly: true,
       sameSite: "None",
       secure: true,
-      path: "/api/user/refresh",
+      path: `${process.env.APP_EXTENSION}/api/user/refresh`,
     });
 
     res.status(200).json({
@@ -129,8 +129,9 @@ const logoutUser = (req, res) => {
       httpOnly: true,
       sameSite: "None",
       secure: true,
-      path: "/api/user/refresh",
+      path: `${process.env.APP_EXTENSION}/api/user/refresh`,
     });
+
     res.status(200).json({ message: "Logout successful" });
   } catch (error) {
     res.status(500).json(error.message);
@@ -363,7 +364,7 @@ const refreshToken = (req, res) => {
 
     res.status(200).json({ message: "Token refreshed" });
   } catch (error) {
-    console.log(error.message);
+    //console.log(error.message);
     res.status(500).json(error.message);
   }
 };
