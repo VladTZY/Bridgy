@@ -12,26 +12,34 @@ axiosInstance.interceptors.response.use(
   (response) => {
     return response;
   },
-  (error) => {
+  async (error) => {
+    const originalRequest = error.config;
+
     // if we have auth error
     if (error.response.status == 401) {
       // try to refresh the token
-      axios
+      await axios
         .post(
           `${import.meta.env.VITE_API_URL}/user/refresh`,
           {},
           { withCredentials: true }
         )
-        .then((res) => console.log(res))
+        .then((res) => {
+          originalRequest._retry = true;
+        })
         .catch(async (error) => {
+          // if refresh token has error, we logout
           await axios.post(
             `${import.meta.env.VITE_API_URL}/user/logout`,
             {},
             { withCredentials: true }
           );
           store.dispatch(logout());
-          console.log("sugi pula");
         });
+    }
+
+    if (originalRequest._retry) {
+      return axiosInstance(originalRequest);
     }
 
     return Promise.reject(error);
