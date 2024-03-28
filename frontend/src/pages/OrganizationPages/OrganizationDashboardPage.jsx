@@ -1,12 +1,9 @@
 import axiosInstance from "../../utils/axiosInstance";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { Link } from "react-router-dom";
-import { CompactCard } from "../../components/CompactCard";
-import { BarOpportunity } from "../../components/BarOpportunity";
-import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
-import OrangeCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/orangecircle.png";
-import GreenCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/greencircle.png";
+
+import { Box, Button, Toolbar, Typography } from "@mui/material";
+import { MissionCard } from "../../components/sharedComponents/MissionCard";
 
 export const OrganizationDashboardPage = () => {
   const id = useSelector((state) => state.auth.id);
@@ -81,106 +78,28 @@ export const OrganizationDashboardPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col pb-[8vh] ml-[15vw]">
-      <div className="flex flex-col">
-        <div className="mx-5 my-7 flex justify-between items-center ">
-          <div className="text-xl md:text-2xl font-semibold">
-            Ongoing Events
-          </div>
-          <Link to="/organization/post_opportunities">
-            <button className="text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-xl py-1 px-3 md:py-2 md:px-6 text-l">
-              Add New
-            </button>
-          </Link>
-        </div>
-        <div className="mx-2 flex flex-row overflow-x-scroll no-scrollbar space-x-4 md:px-2">
-          {ongoingEvents.slice(0, 4).map((event) => {
-            return (
-              <CompactCard
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                description={event.description}
-                time={event.time}
-                location={event.location.city}
-                duration={event.hours}
-                event_type={"opportunity"}
-                photoUrl={
-                  event.photoUrl == "NO_FILE"
-                    ? DefaultImage
-                    : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                        event.photoUrl
-                      }`
-                }
-              />
-            );
-          })}
-        </div>
-        <div className="flex justify-end mx-5 space-x-6">
-          {ongoingPage > 1 ? (
-            <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
-              onClick={() => handleOngoingChangePage(-1)}
-            >
-              Previous Page
-            </button>
-          ) : (
-            <div className="bg-inherit text-transparent py-2 px-5 mt-4">
-              Previous Page
-            </div>
-          )}
-          {ongoingEvents.length > 4 ? (
-            <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
-              onClick={() => handleOngoingChangePage(1)}
-            >
-              Next Page
-            </button>
-          ) : (
-            <div className="bg-inherit text-transparent py-2 px-5 mt-4">
-              Next Page
-            </div>
-          )}
-        </div>
-        <div className="text-xl md:text-2xl font-semibold mx-5 mt-7 mb-4">
-          Upcoming Events
-        </div>
-        <div className="flex flex-col space-y-1 px-2">
-          {publishedEvents.slice(0, 4).map((event) => {
-            return (
-              <BarOpportunity
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                description={event.description}
-                time={event.time}
-                location={event.location.city}
-                event_type={"opportunity"}
-                circle_src={OrangeCircle}
-              />
-            );
-          })}
-        </div>
-        <div className="text-xl md:text-2xl font-semibold mx-5 mt-7 mb-4">
-          Recently Completed
-        </div>
-        <div className="flex flex-col space-y-1 px-2">
-          {finishedEvents.slice(0, 4).map((event) => {
-            return (
-              <BarOpportunity
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                description={event.description}
-                time={event.time}
-                location={event.location.city}
-                event_type={"opportunity"}
-                circle_src={GreenCircle}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </div>
+    <Box sx={{ width: 1 }}>
+      {/*Lasam spatiu pt navbar*/}
+      <Toolbar />
+      {/*Butoanele de sus*/}
+      <Toolbar sx={{ mt: 4 }}>
+        <Typography variant="h4" fontWeight="550" sx={{ flexGrow: 1 }}>
+          Ongoing Events
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{ bgcolor: "blue.light", color: "blue.contrastText" }}
+        >
+          Add new
+        </Button>
+      </Toolbar>
+      {/*Lista de carduri*/}
+      <Toolbar sx={{ mt: 4 }}>
+        <MissionCard />
+        <MissionCard />
+        <MissionCard />
+        <MissionCard />
+      </Toolbar>
+    </Box>
   );
 };
