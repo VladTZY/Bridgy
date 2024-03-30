@@ -1,31 +1,94 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 import {
   Card,
-  CardHeader,
-  Avatar,
-  IconButton,
+  Button,
   CardMedia,
   CardContent,
   Typography,
   CardActions,
+  Stack,
+  Toolbar,
 } from "@mui/material";
-import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
-export const MissionCard = () => {
+import dateToStr from "../../utils/dateToStr";
+
+export const MissionCard = ({
+  id,
+  title,
+  description,
+  photoUrl,
+  time,
+  location,
+  duration,
+}) => {
   return (
-    <Card sx={{ maxWidth: 1 / 4.2, mx: 2, bgcolor: "primary.main" }}>
-      <CardMedia
-        sx={{ p: 2 }}
-        component="img"
-        height="190"
-        image="../../../assets/defaultMission.png"
-        alt="Paella dish"
-      />
-
+    <Card
+      sx={{
+        maxWidth: 1 / 4.2,
+        mx: 2,
+        bgcolor: "primary.main",
+        borderRadius: 2,
+      }}
+    >
+      <CardMedia sx={{ pb: 3 }} component="img" height="190" image={photoUrl} />
+      <Stack direction="row">
+        <Stack
+          direction="row"
+          sx={{
+            border: 1,
+            borderColor: "gray",
+            borderRadius: "4px",
+            width: "40%",
+            p: 1,
+            mx: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <CalendarMonthIcon sx={{ color: "blue.main" }} />
+          <Typography color="gray" fontSize="16px">
+            {dateToStr(time)}
+          </Typography>
+        </Stack>
+        <Stack
+          direction="row"
+          sx={{
+            border: 1,
+            borderColor: "gray",
+            borderRadius: "4px",
+            width: "40%",
+            p: 1,
+            mx: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <LocationOnIcon sx={{ color: "blue.main" }} />
+          <Typography color="gray">
+            {location.city == "" ? "Remote" : `${location.city}`}
+          </Typography>
+        </Stack>
+        <Stack
+          direction="row"
+          sx={{
+            border: 1,
+            borderColor: "gray",
+            borderRadius: "4px",
+            width: "40%",
+            p: 1,
+            mx: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <AccessTimeIcon sx={{ color: "blue.main" }} />
+          <Typography color="gray">{duration} hours</Typography>
+        </Stack>
+      </Stack>
       <CardContent>
         <Typography
           variant="h6"
@@ -33,25 +96,37 @@ export const MissionCard = () => {
           fontWeight="bold"
           sx={{ letterSpacing: 2 }}
         >
-          Title
+          {title}
         </Typography>
-        <Typography sx={{ mt: 1 }}>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
+        <Typography
+          sx={{
+            mt: 1,
+            height: "65px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {description}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
+      <CardActions
+        sx={{ alignItems: "center", justifyContent: "center", pb: 1 }}
+      >
+        <Link to={`/opportunity/${id}`}>
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "blue.light",
+              color: "blue.contrastText",
+              borderRadius: 4,
+              ":hover": {
+                bgcolor: "blue.main",
+              },
+            }}
+          >
+            More info
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );

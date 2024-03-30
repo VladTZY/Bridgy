@@ -24,8 +24,10 @@ import { UpdatesPage } from "./pages/SchoolPages/UpdatesPage";
 import { OrganizationDashboardPage } from "./pages/OrganizationPages/OrganizationDashboardPage";
 import { AddPreviousEventsPage } from "./pages/StudentPages/AddPreviousEventsPage";
 import { NotificationsPage } from "./pages/MiscPages/NotificationsPage";
+
 import NavBar from "./components/sharedComponents/NavBar";
 import SideBar from "./components/sharedComponents/SideBar";
+import Footer from "./components/sharedComponents/Footer";
 
 import { Box } from "@mui/material";
 
@@ -260,10 +262,13 @@ function WrappedApp() {
       {
         {
           true: (
-            <Box sx={{ display: "flex", bgcolor: "background" }}>
+            <Box sx={{ bgcolor: "background", height: "100vh" }}>
               <NavBar />
-              <SideBar />
-              <App />
+              <Box sx={{ display: "flex" }}>
+                <SideBar />
+                <App />
+              </Box>
+              <Footer />
             </Box>
           ),
           false: <App />,

@@ -36,10 +36,9 @@ axiosInstance.interceptors.response.use(
           );
           store.dispatch(logout());
         });
-    }
-
-    if (originalRequest._retry) {
-      return axiosInstance(originalRequest);
+      if (originalRequest._retry) {
+        return axiosInstance(originalRequest);
+      }
     }
 
     return Promise.reject(error);

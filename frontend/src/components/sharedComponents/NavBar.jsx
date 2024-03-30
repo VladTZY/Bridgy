@@ -47,6 +47,7 @@ function ResponsiveAppBar() {
   return (
     <AppBar
       position="fixed"
+      elevation={0}
       sx={{
         zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
@@ -67,11 +68,9 @@ function ResponsiveAppBar() {
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
+                fontWeight: "bold",
+                letterSpacing: ".1rem",
                 color: "inherit",
-                textDecoration: "none",
               }}
             >
               Bridgy
