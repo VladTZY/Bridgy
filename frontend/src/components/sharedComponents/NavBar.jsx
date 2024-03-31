@@ -37,7 +37,7 @@ function stringAvatar(name) {
     sx: {
       bgcolor: stringToColor(name),
     },
-    children: `${name[0]}`,
+    children: `${name[0].toUpperCase()}`,
   };
 }
 
