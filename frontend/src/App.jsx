@@ -263,7 +263,7 @@ function WrappedApp() {
         {
           true: (
             <Box sx={{ bgcolor: "background", height: "100vh" }}>
-              <NavBar />
+              <Footer />
             </Box>
           ),
           false: <App />,
