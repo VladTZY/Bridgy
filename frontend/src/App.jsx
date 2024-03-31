@@ -261,7 +261,11 @@ function WrappedApp() {
     <BrowserRouter>
       {
         {
-          true: <Box sx={{ bgcolor: "background", height: "100vh" }}>hei</Box>,
+          true: (
+            <Box sx={{ bgcolor: "background", height: "100vh" }}>
+              <NavBar />
+            </Box>
+          ),
           false: <App />,
         }[isLoggedIn]
       }
