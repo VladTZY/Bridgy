@@ -72,7 +72,7 @@ export const OrganizationDashboardPage = () => {
   };
 
   return (
-    <Box sx={{ width: 1, height: "95vh" }}>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background", pb: "7vh" }}>
       {/*Lasam spatiu pt navbar*/}
       <Toolbar />
       {/*Butoanele de sus*/}
