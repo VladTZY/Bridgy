@@ -20,7 +20,7 @@ import MissionIcon from "@mui/icons-material/AutoAwesomeMotion";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-const drawerWidth = 260;
+const drawerWidth = "14vw";
 
 const buttonMapping = {
   ORGANIZATION: [
@@ -126,6 +126,10 @@ const SideBar = () => {
                       sx={{
                         py: 1,
                         pr: 1,
+                        fontSize: {
+                          lg: "13px",
+                          xl: "16px",
+                        },
                       }}
                     >
                       {value.text}
@@ -170,6 +174,10 @@ const SideBar = () => {
                   sx={{
                     py: 1,
                     pr: 1,
+                    fontSize: {
+                      lg: "13px",
+                      xl: "16px",
+                    },
                   }}
                 >
                   Profile

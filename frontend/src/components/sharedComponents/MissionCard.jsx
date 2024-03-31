@@ -28,7 +28,7 @@ export const MissionCard = ({
   return (
     <Card
       sx={{
-        maxWidth: 1 / 4.2,
+        maxWidth: 1,
         mx: 2,
         bgcolor: "primary.main",
         borderRadius: 2,

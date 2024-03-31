@@ -71,6 +71,10 @@ function ResponsiveAppBar() {
                 fontWeight: "bold",
                 letterSpacing: ".1rem",
                 color: "inherit",
+                fontSize: {
+                  lg: "16px",
+                  xl: "21px",
+                },
               }}
             >
               Bridgy

@@ -11,6 +11,8 @@ import {
   Typography,
   IconButton,
   Icon,
+  Grid,
+  Select,
 } from "@mui/material";
 import { MissionCard } from "../../components/sharedComponents/MissionCard";
 import { BarCard } from "../../components/sharedComponents/BarCard";
@@ -103,29 +105,33 @@ export const OrganizationDashboardPage = () => {
         </Link>
       </Toolbar>
       {/*Lista de carduri*/}
-      <Toolbar sx={{ mt: 1 }}>
-        {publishedEvents.slice(0, 4).map((event) => {
-          return (
-            <MissionCard
-              key={event.id}
-              id={event.id}
-              title={event.name}
-              description={event.description}
-              time={event.time}
-              location={event.location}
-              duration={event.hours}
-              event_type={"opportunity"}
-              photoUrl={
-                event.photoUrl == "NO_FILE"
-                  ? DefaultImage
-                  : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                      event.photoUrl
-                    }`
-              }
-            />
-          );
-        })}
-      </Toolbar>
+      <Grid container sx={{ mt: 1 }}>
+        <Grid item container direction="row">
+          {publishedEvents.slice(0, 4).map((event) => {
+            return (
+              <Grid item sx={12} md={6} lg={3}>
+                <MissionCard
+                  key={event.id}
+                  id={event.id}
+                  title={event.name}
+                  description={event.description}
+                  time={event.time}
+                  location={event.location}
+                  duration={event.hours}
+                  event_type={"opportunity"}
+                  photoUrl={
+                    event.photoUrl == "NO_FILE"
+                      ? DefaultImage
+                      : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                          event.photoUrl
+                        }`
+                  }
+                />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Grid>
       <Stack direction="row" sx={{ mx: 5, mt: 1 }}>
         <Box sx={{ flexGrow: 1 }}>
           <IconButton onClick={() => handleUpcomingChangePage(-1)}>
