@@ -263,6 +263,7 @@ function WrappedApp() {
         {
           true: (
             <Box sx={{ bgcolor: "background", height: "100vh" }}>
+              <NavBar />
               <Box sx={{ display: "flex" }}>
                 <SideBar />
                 <App />

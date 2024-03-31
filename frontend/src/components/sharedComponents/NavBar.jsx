@@ -84,7 +84,6 @@ function ResponsiveAppBar() {
             >
               <NotificationsIcon />
             </Badge>
-            <Avatar {...stringAvatar(name)} />
           </Toolbar>
         </Toolbar>
       </Container>
