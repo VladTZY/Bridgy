@@ -78,6 +78,9 @@ const signupUser = async (req, res) => {
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    console.log(req.body);
+
     if (!email) throw Error("No email sent");
     if (!password) throw Error("No password sent");
 
