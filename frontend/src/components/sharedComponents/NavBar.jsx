@@ -37,7 +37,7 @@ function stringAvatar(name) {
     sx: {
       bgcolor: stringToColor(name),
     },
-    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+    children: `${name[0]}`,
   };
 }
 
@@ -84,6 +84,7 @@ function ResponsiveAppBar() {
             >
               <NotificationsIcon />
             </Badge>
+            <Avatar {...stringAvatar(name)} />
           </Toolbar>
         </Toolbar>
       </Container>
