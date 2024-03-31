@@ -79,8 +79,6 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    console.log(req.body);
-
     if (!email) throw Error("No email sent");
     if (!password) throw Error("No password sent");
 
@@ -90,9 +88,9 @@ const loginUser = async (req, res) => {
       },
     });
 
-    const match = await bcrypt.compare(password, user.password);
+    if (!user) throw Error("Email is not associated with a user");
 
-    console.log("aici");
+    const match = await bcrypt.compare(password, user.password);
 
     if (!match) throw Error("Incorect password");
 
@@ -119,7 +117,6 @@ const loginUser = async (req, res) => {
       role: user.role,
     });
   } catch (error) {
-    console.log(error.message);
     res.status(500).json(error.message);
   }
 };
