@@ -11,6 +11,9 @@ export const login = createAsyncThunk(
         {
           email: email,
           password: password,
+        },
+        {
+          withCredentials: true,
         }
       );
       return res.data;

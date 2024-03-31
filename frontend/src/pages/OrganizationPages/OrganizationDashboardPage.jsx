@@ -69,9 +69,6 @@ export const OrganizationDashboardPage = () => {
     if (val == 1 && ongoingEvents.length > 3) setOngoinPage(ongoingPage + 1);
   };
 
-  console.log(publishedEvents);
-  console.log(ongoingEvents);
-
   return (
     <Box sx={{ width: 1, height: "95vh" }}>
       {/*Lasam spatiu pt navbar*/}
