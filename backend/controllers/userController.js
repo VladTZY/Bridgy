@@ -90,7 +90,9 @@ const loginUser = async (req, res) => {
       },
     });
 
-    const match = await bcrypt.compare(req.body.password, user.password);
+    const match = await bcrypt.compare(password, user.password);
+
+    console.log("aici");
 
     if (!match) throw Error("Incorect password");
 
@@ -117,6 +119,7 @@ const loginUser = async (req, res) => {
       role: user.role,
     });
   } catch (error) {
+    console.log(error.message);
     res.status(500).json(error.message);
   }
 };
