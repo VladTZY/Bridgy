@@ -80,7 +80,15 @@ export const OrganizationDashboardPage = () => {
         <Typography
           variant="h4"
           fontWeight="600"
-          sx={{ flexGrow: 1, letterSpacing: 1 }}
+          sx={{
+            flexGrow: 1,
+            letterSpacing: 1,
+            fontSize: {
+              xs: "22px",
+              lg: "26px",
+              xl: "30px",
+            },
+          }}
         >
           Upcoming Opportunities
         </Typography>
@@ -105,7 +113,7 @@ export const OrganizationDashboardPage = () => {
         </Link>
       </Toolbar>
       {/*Lista de carduri*/}
-      <Grid container sx={{ mt: 1 }}>
+      <Grid container sx={{ mt: 1, px: 2 }}>
         <Grid item container direction="row">
           {publishedEvents.slice(0, 4).map((event) => {
             return (
@@ -165,7 +173,17 @@ export const OrganizationDashboardPage = () => {
           <Typography
             variant="h4"
             fontWeight="550"
-            sx={{ px: 4, pt: 2, letterSpacing: 1, flexGrow: 1 }}
+            sx={{
+              px: 4,
+              pt: 2,
+              letterSpacing: 1,
+              flexGrow: 1,
+              fontSize: {
+                xs: "22px",
+                lg: "26px",
+                xl: "30px",
+              },
+            }}
           >
             Ongoing Opportunities
           </Typography>

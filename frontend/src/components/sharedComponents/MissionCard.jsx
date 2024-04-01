@@ -7,8 +7,7 @@ import {
   CardContent,
   Typography,
   CardActions,
-  Stack,
-  Toolbar,
+  Box,
 } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -32,63 +31,23 @@ export const MissionCard = ({
         mx: 2,
         bgcolor: "primary.main",
         borderRadius: 2,
+        ":hover": {
+          boxShadow: 6,
+        },
       }}
     >
-      <CardMedia sx={{ pb: 3 }} component="img" height="190" image={photoUrl} />
-      <Stack direction="row">
-        <Stack
-          direction="row"
-          sx={{
-            border: 1,
-            borderColor: "gray",
-            borderRadius: "4px",
-            width: "40%",
-            p: 1,
-            mx: 1,
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <CalendarMonthIcon sx={{ color: "blue.main" }} />
-          <Typography color="gray" fontSize="16px">
-            {dateToStr(time)}
-          </Typography>
-        </Stack>
-        <Stack
-          direction="row"
-          sx={{
-            border: 1,
-            borderColor: "gray",
-            borderRadius: "4px",
-            width: "40%",
-            p: 1,
-            mx: 1,
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <LocationOnIcon sx={{ color: "blue.main" }} />
-          <Typography color="gray">
-            {location.city == "" ? "Remote" : `${location.city}`}
-          </Typography>
-        </Stack>
-        <Stack
-          direction="row"
-          sx={{
-            border: 1,
-            borderColor: "gray",
-            borderRadius: "4px",
-            width: "40%",
-            p: 1,
-            mx: 1,
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <AccessTimeIcon sx={{ color: "blue.main" }} />
-          <Typography color="gray">{duration} hours</Typography>
-        </Stack>
-      </Stack>
+      <CardMedia sx={{ pb: 2 }} component="img" image={photoUrl} />
+      <Box
+        sx={{
+          width: 1,
+        }}
+      >
+        <Typography color="gray" align="center">
+          {dateToStr(time)} •{" "}
+          {location.city == "" ? "Remote" : `${location.city}`} • {duration}{" "}
+          hours
+        </Typography>
+      </Box>
       <CardContent>
         <Typography
           variant="h6"
@@ -101,7 +60,7 @@ export const MissionCard = ({
         <Typography
           sx={{
             mt: 1,
-            height: "65px",
+            height: "5vh",
             overflow: "hidden",
             textOverflow: "ellipsis",
           }}

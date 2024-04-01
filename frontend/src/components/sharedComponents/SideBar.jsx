@@ -175,7 +175,7 @@ const SideBar = () => {
                     py: 1,
                     pr: 1,
                     fontSize: {
-                      lg: "12px",
+                      lg: "13px",
                       xl: "16px",
                     },
                   }}

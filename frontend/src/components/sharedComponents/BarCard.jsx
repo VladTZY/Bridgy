@@ -6,13 +6,35 @@ import { Link } from "react-router-dom";
 export const BarCard = ({ id, title, description, location }) => {
   return (
     <Link to={`/opportunity/${id}`}>
-      <Box sx={{ mx: 4, p: 1 }}>
+      <Box
+        sx={{
+          transition: "all .5s ease",
+          mx: 4,
+          p: 1,
+          borderBottom: 1,
+          borderColor: "gray",
+          ":hover": {
+            boxShadow: 5,
+            borderRadius: 5,
+            border: 0,
+            my: 2,
+          },
+        }}
+      >
         <Toolbar disableGutters>
           <CircleIcon sx={{ color: "green" }} />
           <Typography
             variant="h5"
             fontWeight="bold"
-            sx={{ width: 1 / 3, letterSpacing: 1, ml: 2 }}
+            sx={{
+              width: 1 / 3,
+              letterSpacing: 1,
+              ml: 2,
+              fontSize: {
+                lg: "21px",
+                xl: "26px",
+              },
+            }}
           >
             {title}
           </Typography>
@@ -45,7 +67,6 @@ export const BarCard = ({ id, title, description, location }) => {
             </Typography>
           </Box>
         </Toolbar>
-        <Divider color="gray" />
       </Box>
     </Link>
   );
