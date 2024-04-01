@@ -28,7 +28,6 @@ export const MissionCard = ({
     <Card
       sx={{
         maxWidth: 1,
-        mx: 2,
         bgcolor: "primary.main",
         borderRadius: 2,
         ":hover": {
@@ -60,7 +59,7 @@ export const MissionCard = ({
         <Typography
           sx={{
             mt: 1,
-            height: "5vh",
+            height: "4vh",
             overflow: "hidden",
             textOverflow: "ellipsis",
           }}

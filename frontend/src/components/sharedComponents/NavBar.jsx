@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../store/authSlice";
 import {
   AppBar,
   Toolbar,
@@ -10,7 +11,7 @@ import {
   SvgIcon,
 } from "@mui/material";
 import BridgyLogo from "../../../assets/logo.svg?react";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 function stringToColor(string) {
   let hash = 0;
@@ -43,6 +44,7 @@ function stringAvatar(name) {
 
 function ResponsiveAppBar() {
   const name = useSelector((state) => state.auth.username);
+  const dispatch = useDispatch();
 
   return (
     <AppBar
@@ -82,13 +84,14 @@ function ResponsiveAppBar() {
           </Toolbar>
 
           <Toolbar disableGutters sx={{ mr: 2 }}>
-            <Badge
-              color="primary"
-              sx={{ display: { xs: "none", md: "flex" }, mr: 2 }}
-            >
-              <NotificationsIcon />
-            </Badge>
             <Avatar {...stringAvatar(name)} />
+            <Badge
+              onClick={() => dispatch(logout())}
+              color="primary"
+              sx={{ ml: 2 }}
+            >
+              <LogoutIcon />
+            </Badge>
           </Toolbar>
         </Toolbar>
       </Container>

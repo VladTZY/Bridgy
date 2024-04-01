@@ -72,7 +72,7 @@ export const OrganizationDashboardPage = () => {
   };
 
   return (
-    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background", pb: "7vh" }}>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
       {/*Lasam spatiu pt navbar*/}
       <Toolbar />
       {/*Butoanele de sus*/}
@@ -113,8 +113,8 @@ export const OrganizationDashboardPage = () => {
         </Link>
       </Toolbar>
       {/*Lista de carduri*/}
-      <Grid container sx={{ mt: 1, px: 2 }}>
-        <Grid item container direction="row">
+      <Grid container sx={{ mt: 2, px: 5 }}>
+        <Grid item container direction="row" spacing={2}>
           {publishedEvents.slice(0, 4).map((event) => {
             return (
               <Grid item sx={12} md={6} lg={3}>

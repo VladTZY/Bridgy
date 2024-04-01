@@ -17,9 +17,6 @@ const Footer = () => {
     <Toolbar
       sx={{
         bgcolor: "blue.main",
-        position: "fixed",
-        bottom: 0,
-        left: 0,
         width: 1,
         height: "5vh",
       }}

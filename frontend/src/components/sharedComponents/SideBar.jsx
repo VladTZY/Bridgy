@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../../store/authSlice";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import {
   Drawer,
   List,
@@ -18,9 +18,8 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import AddOpIcon from "@mui/icons-material/DashboardCustomize";
 import MissionIcon from "@mui/icons-material/AutoAwesomeMotion";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import LogoutIcon from "@mui/icons-material/Logout";
 
-const drawerWidth = "14vw";
+const drawerWidth = "15vw";
 
 const buttonMapping = {
   ORGANIZATION: [
@@ -63,8 +62,8 @@ const buttonStyle = {
 const SideBar = () => {
   const userRole = useSelector((state) => state.auth.role);
   const userId = useSelector((state) => state.auth.id);
-  const dispatch = useDispatch();
   const location = useLocation();
+
   const profileActive =
     location.pathname == `/profile/${userId}` ? "active" : "inactive";
 
@@ -187,16 +186,6 @@ const SideBar = () => {
           </ListItem>
         </List>
       </Box>
-      <Toolbar
-        disableGutters
-        sx={{ ml: 2, mb: 8 }}
-        onClick={() => dispatch(logout())}
-      >
-        <LogoutIcon />
-        <Typography variant="h6" color="primary.contrastText" fontWeight="550">
-          Logout
-        </Typography>
-      </Toolbar>
     </Drawer>
   );
 };
