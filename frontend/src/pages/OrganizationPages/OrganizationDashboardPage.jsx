@@ -117,9 +117,8 @@ export const OrganizationDashboardPage = () => {
         <Grid item container direction="row" spacing={2}>
           {publishedEvents.slice(0, 4).map((event) => {
             return (
-              <Grid item sx={12} md={6} lg={3}>
+              <Grid item xs={12} md={6} lg={3} key={event.id}>
                 <MissionCard
-                  key={event.id}
                   id={event.id}
                   title={event.name}
                   description={event.description}
