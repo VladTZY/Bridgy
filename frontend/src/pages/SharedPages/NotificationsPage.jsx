@@ -35,7 +35,22 @@ export const NotificationsPage = () => {
       {/*Lasam spatiu pt navbar*/}
       <Toolbar />
       <Grid item xs={12} md={6}>
-        <Typography sx={{ ml: 4, mt: 2, mb: 2 }} variant="h6" component="div">
+        <Typography
+          variant="h4"
+          fontWeight="600"
+          sx={{
+            flexGrow: 1,
+            letterSpacing: 1,
+            pt: 4,
+            pl: 4,
+            pb: 2,
+            fontSize: {
+              xs: "22px",
+              lg: "26px",
+              xl: "30px",
+            },
+          }}
+        >
           Notifications
         </Typography>
         <List sx={{ mx: 4 }}>
