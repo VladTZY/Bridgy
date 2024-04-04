@@ -1,11 +1,56 @@
-import { NotificationsList } from "../../components/NotificationsList";
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import FolderIcon from "@mui/icons-material/Folder";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { Toolbar } from "@mui/material";
+import { NotificationCard } from "../../components/sharedComponents/NotificationCard";
+import { useState, useEffect } from "react";
+import axiosInstance from "../../utils/axiosInstance";
 
 export const NotificationsPage = () => {
+  const [notifications, setNotifications] = useState([]);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/notification/get_all`)
+      .then((res) => setNotifications(res.data))
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
-    <div className=" bg-gray-100 ml-[15vw] w-[85vw] pb-10">
-      <div className="bg-white my-5 mx-2 xl:mx-3 rounded-3xl justify-between items-center ">
-        <NotificationsList />
-      </div>
-    </div>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
+      {/*Lasam spatiu pt navbar*/}
+      <Toolbar />
+      <Grid item xs={12} md={6}>
+        <Typography sx={{ ml: 4, mt: 2, mb: 2 }} variant="h6" component="div">
+          Notifications
+        </Typography>
+        <List sx={{ mx: 4 }}>
+          {notifications.map((notification) => {
+            return (
+              <NotificationCard
+                type={notification.type}
+                message={notification.message}
+                studentId={notification.studentId}
+                eventId={notification.eventId}
+              />
+            );
+          })}
+        </List>
+      </Grid>
+    </Box>
   );
 };

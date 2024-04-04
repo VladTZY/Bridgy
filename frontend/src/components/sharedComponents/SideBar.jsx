@@ -40,7 +40,7 @@ const buttonMapping = {
     },
     {
       text: "Notifications",
-      route: "/organization/notifications",
+      route: "/notifications",
       icon: NotificationsActiveIcon,
     },
   ],
