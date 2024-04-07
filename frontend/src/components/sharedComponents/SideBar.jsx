@@ -18,6 +18,10 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import AddOpIcon from "@mui/icons-material/DashboardCustomize";
 import MissionIcon from "@mui/icons-material/AutoAwesomeMotion";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
+import SearchIcon from "@mui/icons-material/Search";
+import FactCheckIcon from "@mui/icons-material/FactCheck";
 
 const drawerWidth = "15vw";
 
@@ -37,6 +41,50 @@ const buttonMapping = {
       text: "Missions",
       route: "/organization/missions",
       icon: MissionIcon,
+    },
+    {
+      text: "Notifications",
+      route: "/notifications",
+      icon: NotificationsActiveIcon,
+    },
+  ],
+  SCHOOL: [
+    {
+      text: "Dashboard",
+      route: "/school/dashboard",
+      icon: DashboardIcon,
+    },
+    {
+      text: "Add student",
+      route: "/school/add_student",
+      icon: PersonAddIcon,
+    },
+    {
+      text: "Updates",
+      route: "/school/updates",
+      icon: EqualizerIcon,
+    },
+    {
+      text: "Notifications",
+      route: "/notifications",
+      icon: NotificationsActiveIcon,
+    },
+  ],
+  STUDENT: [
+    {
+      text: "Dashboard",
+      route: "/student/dashboard",
+      icon: DashboardIcon,
+    },
+    {
+      text: "Find Opportunities",
+      route: "/student/find_opportunities",
+      icon: SearchIcon,
+    },
+    {
+      text: "My Experiences",
+      route: "/student/my_experiences",
+      icon: FactCheckIcon,
     },
     {
       text: "Notifications",

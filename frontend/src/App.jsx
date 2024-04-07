@@ -31,6 +31,9 @@ import Footer from "./components/sharedComponents/Footer";
 
 import { Box } from "@mui/material";
 
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
@@ -258,23 +261,25 @@ function WrappedApp() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   return (
-    <BrowserRouter>
-      {
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <BrowserRouter>
         {
-          true: (
-            <Box>
-              <NavBar />
-              <Box sx={{ display: "flex" }}>
-                <SideBar />
-                <App />
+          {
+            true: (
+              <Box>
+                <NavBar />
+                <Box sx={{ display: "flex" }}>
+                  <SideBar />
+                  <App />
+                </Box>
+                <Footer />
               </Box>
-              <Footer />
-            </Box>
-          ),
-          false: <App />,
-        }[isLoggedIn]
-      }
-    </BrowserRouter>
+            ),
+            false: <App />,
+          }[isLoggedIn]
+        }
+      </BrowserRouter>
+    </LocalizationProvider>
   );
 }
 
