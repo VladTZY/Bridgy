@@ -120,7 +120,7 @@ const SideBar = () => {
       variant="permanent"
       sx={{
         width: drawerWidth,
-        height: "100vh",
+        minHeight: "95vh",
         bgcolor: "primary.main",
         flexShrink: 0,
         [`& .MuiDrawer-paper`]: {

@@ -87,7 +87,6 @@ export const PostOpportunitiesPage = () => {
 
   const handleSubmit = async () => {
     let error = false;
-    let formValidate = formError;
 
     for (let i = 0; i < errorFields.length; i++) {
       let field = errorFields[i];
@@ -98,16 +97,19 @@ export const PostOpportunitiesPage = () => {
           (field == "country" || field == "city" || field == "address")
         )
       ) {
+        if (field == "description" && formData[field].length > 255) {
+          setFormError((prev) => ({ ...prev, [field]: true }));
+          error = true;
+        }
+
         if (formData[field] == "" || formData[field] == 0) {
-          formValidate[field] = true;
+          setFormError((prev) => ({ ...prev, [field]: true }));
           error = true;
         } else {
-          formValidate[field] = false;
+          setFormError((prev) => ({ ...prev, [field]: false }));
         }
       }
     }
-
-    setFormError(formValidate);
 
     if (error) return;
 
@@ -126,9 +128,6 @@ export const PostOpportunitiesPage = () => {
       })
       .catch((error) => console.log(error));
   };
-
-  //console.log(formData.time.$d);
-  //console.log(formError);
 
   return (
     <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
@@ -195,6 +194,7 @@ export const PostOpportunitiesPage = () => {
                 name="Number of Students"
                 value={formData.capacity}
                 error={formError.capacity}
+                type="number"
                 icon={<TimelapseIcon sx={{ color: "blue.main" }} />}
                 updateFormData={updateFormData}
               />
@@ -205,6 +205,7 @@ export const PostOpportunitiesPage = () => {
                 name="Required Hours"
                 value={formData.hours}
                 error={formError.hours}
+                type="number"
                 icon={<PeopleAltIcon sx={{ color: "blue.main" }} />}
                 updateFormData={updateFormData}
               />
@@ -246,6 +247,7 @@ export const PostOpportunitiesPage = () => {
                         name={info.name}
                         value={formData[info.id]}
                         error={formError[info.id]}
+                        type="text"
                         icon={<info.icon sx={{ color: "blue.main" }} />}
                         updateFormData={updateFormData}
                       />
@@ -270,7 +272,7 @@ export const PostOpportunitiesPage = () => {
                 bgcolor: "blue.main",
               },
             }}
-            onClick={() => handleSubmit()}
+            onClick={handleSubmit}
           >
             Create Opportunity
           </Button>
