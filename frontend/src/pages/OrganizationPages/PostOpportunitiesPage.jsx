@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
+import { styled } from "@mui/material/styles";
 
 import {
   Box,
@@ -22,6 +23,7 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PublicIcon from "@mui/icons-material/Public";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import MapIcon from "@mui/icons-material/Map";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const locationsInfo = [
   {
@@ -53,6 +55,18 @@ const errorFields = [
   "address",
 ];
 
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
+
 export const PostOpportunitiesPage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -78,11 +92,20 @@ export const PostOpportunitiesPage = () => {
     city: false,
     address: false,
   });
+  const [colors, setColors] = useState({
+    color: "blue.light",
+    hoverColor: "blue.main",
+  });
   const navigate = useNavigate();
 
   const updateFormData = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
     setFormError({ ...formError, [e.target.id]: false });
+  };
+
+  const addFile = (e) => {
+    setFormData({ ...formData, file: e.target.files[0] });
+    setColors({ color: "green", hoverColor: "green" });
   };
 
   const handleSubmit = async () => {
@@ -120,6 +143,7 @@ export const PostOpportunitiesPage = () => {
         formSend.append(key, formData[key]);
     formSend.append("time", formData.time.$d);
     formSend.append("remote", formData.isRemote);
+    formSend.append("photoUrl", formData.file);
 
     axiosInstance
       .post(`/organization/create_event`, formSend)
@@ -172,7 +196,9 @@ export const PostOpportunitiesPage = () => {
                 id="description"
                 name="Description"
                 value={formData.description}
-                error={formError.description}
+                error={
+                  formError.description || formData.description.length > 255
+                }
                 updateFormData={updateFormData}
               />
               <Box
@@ -258,24 +284,47 @@ export const PostOpportunitiesPage = () => {
             )}
           </Grid>
         </Box>
-        <Box sx={{ mx: 2, mt: 4 }}>
-          <Button
-            variant="contained"
-            sx={{
-              bgcolor: "blue.light",
-              color: "blue.contrastText",
-              px: 4,
-              py: 2,
-              fontSize: "18px",
-              borderRadius: 8,
-              ":hover": {
-                bgcolor: "blue.main",
-              },
-            }}
-            onClick={handleSubmit}
-          >
-            Create Opportunity
-          </Button>
+        <Box sx={{ mx: 2, mt: 4, display: "flex" }}>
+          <Box sx={{ width: 1 / 2, flexGrow: 1 }}>
+            <Button
+              component="label"
+              variant="contained"
+              sx={{
+                bgcolor: colors.color,
+                color: "blue.contrastText",
+                px: 4,
+                py: 2,
+                fontSize: "18px",
+                borderRadius: 8,
+                ":hover": {
+                  bgcolor: colors.hoverColor,
+                },
+              }}
+              startIcon={<CloudUploadIcon />}
+            >
+              Upload Cover Image*
+              <VisuallyHiddenInput type="file" onChange={addFile} />
+            </Button>
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              sx={{
+                bgcolor: "blue.light",
+                color: "blue.contrastText",
+                px: 4,
+                py: 2,
+                fontSize: "18px",
+                borderRadius: 8,
+                ":hover": {
+                  bgcolor: "blue.main",
+                },
+              }}
+              onClick={handleSubmit}
+            >
+              Create Opportunity
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>
