@@ -24,7 +24,6 @@ import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 export const OrganizationDashboardPage = () => {
   const id = useSelector((state) => state.auth.id);
-  const organizationId = useSelector((state) => state.auth.institutionId);
   const [ongoingEvents, setOngoingEvents] = useState([]);
   const [publishedEvents, setPublishedEvents] = useState([]);
   const [ongoingPage, setOngoinPage] = useState(1);
@@ -43,7 +42,7 @@ export const OrganizationDashboardPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [organizationId, upcomingPage]);
+  }, [upcomingPage]);
 
   const handleUpcomingChangePage = (val) => {
     if (val == -1 && upcomingPage + val > 0) setUpcomingPage(upcomingPage - 1);
@@ -64,7 +63,7 @@ export const OrganizationDashboardPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [organizationId, ongoingPage]);
+  }, [ongoingPage]);
 
   const handleOngoingChangePage = (val) => {
     if (val == -1 && ongoingPage + val > 0) setOngoinPage(ongoingPage - 1);
