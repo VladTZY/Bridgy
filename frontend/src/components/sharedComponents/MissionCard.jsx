@@ -35,7 +35,11 @@ export const MissionCard = ({
         },
       }}
     >
-      <CardMedia sx={{ pb: 2 }} component="img" image={photoUrl} />
+      <CardMedia
+        sx={{ pb: 2, height: "22vh" }}
+        component="img"
+        image={photoUrl}
+      />
       <Box
         sx={{
           width: 1,
