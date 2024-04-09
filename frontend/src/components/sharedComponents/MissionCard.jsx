@@ -45,13 +45,22 @@ export const MissionCard = ({
           width: 1,
         }}
       >
-        <Typography color="gray" align="center">
+        <Typography
+          color="gray"
+          align="center"
+          sx={{
+            fontSize: {
+              lg: "16px",
+              xl: "18px",
+            },
+          }}
+        >
           {dateToStr(time)} •{" "}
           {location.city == "" ? "Remote" : `${location.city}`} • {duration}{" "}
           hours
         </Typography>
       </Box>
-      <Box sx={{ mx: 2, mt: 2 }}>
+      <CardContent>
         <Typography
           variant="h6"
           color="primary.contrastText"
@@ -69,14 +78,13 @@ export const MissionCard = ({
         >
           {description}
         </Typography>
-      </Box>
+      </CardContent>
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           mb: 1,
-          mt: 2,
         }}
       >
         <Link to={`/opportunity/${id}`}>

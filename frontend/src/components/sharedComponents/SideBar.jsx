@@ -119,6 +119,10 @@ const SideBar = () => {
     <Drawer
       variant="permanent"
       sx={{
+        display: {
+          xs: "none",
+          lg: "flex",
+        },
         width: drawerWidth,
         minHeight: "95vh",
         bgcolor: "primary.main",

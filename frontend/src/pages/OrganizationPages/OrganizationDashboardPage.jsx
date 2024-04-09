@@ -99,7 +99,10 @@ export const OrganizationDashboardPage = () => {
               color: "blue.contrastText",
               px: 3,
               py: 1,
-              fontSize: "16px",
+              fontSize: {
+                lg: "16px",
+                xl: "21px",
+              },
               borderRadius: 6,
               textTransform: "none",
               ":hover": {
