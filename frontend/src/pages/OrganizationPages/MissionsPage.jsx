@@ -70,10 +70,9 @@ export const MissionsPage = () => {
         <Toolbar sx={{ mt: 1 }}>
           <Typography
             variant="h4"
-            fontWeight="600"
+            fontWeight="700"
             sx={{
               flexGrow: 1,
-              letterSpacing: 1,
               fontSize: {
                 xs: "22px",
                 lg: "26px",
@@ -135,10 +134,9 @@ export const MissionsPage = () => {
         <Toolbar sx={{ mt: 1 }}>
           <Typography
             variant="h4"
-            fontWeight="600"
+            fontWeight="700"
             sx={{
               flexGrow: 1,
-              letterSpacing: 1,
               fontSize: {
                 xs: "22px",
                 lg: "26px",

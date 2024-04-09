@@ -7,7 +7,7 @@ import {
 import { Link } from "react-router-dom";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 
 const notificationsMapping = {
   ACCEPTED: {
@@ -19,7 +19,7 @@ const notificationsMapping = {
     secondary: "Try joining other similar events!",
   },
   STUDENT_REQUESTED: {
-    icon: HelpOutlineIcon,
+    icon: AssignmentIndIcon,
     secondary: "Make sure to accept or reject the request!",
   },
 };
@@ -41,7 +41,7 @@ export const NotificationCard = ({ type, message, studentId, eventId }) => {
           }}
         >
           <ListItemIcon>
-            <value.icon />
+            <value.icon sx={{ color: "blue.main" }} />
           </ListItemIcon>
           <ListItemText primary={message} secondary={value.secondary} />
         </ListItem>

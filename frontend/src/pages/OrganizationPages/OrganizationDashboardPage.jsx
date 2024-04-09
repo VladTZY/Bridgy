@@ -78,10 +78,9 @@ export const OrganizationDashboardPage = () => {
       <Toolbar sx={{ mt: 1 }}>
         <Typography
           variant="h4"
-          fontWeight="600"
+          fontWeight="700"
           sx={{
             flexGrow: 1,
-            letterSpacing: 1,
             fontSize: {
               xs: "22px",
               lg: "26px",
@@ -98,10 +97,11 @@ export const OrganizationDashboardPage = () => {
             sx={{
               bgcolor: "blue.light",
               color: "blue.contrastText",
-              px: 4,
+              px: 3,
               py: 1,
               fontSize: "16px",
               borderRadius: 6,
+              textTransform: "none",
               ":hover": {
                 bgcolor: "blue.main",
               },
@@ -112,7 +112,7 @@ export const OrganizationDashboardPage = () => {
         </Link>
       </Toolbar>
       {/*Lista de carduri*/}
-      <Grid container sx={{ mt: 2, px: 5 }}>
+      <Grid container sx={{ mt: 2, px: 2 }}>
         <Grid item container direction="row" spacing={2}>
           {publishedEvents.slice(0, 4).map((event) => {
             return (
@@ -138,7 +138,7 @@ export const OrganizationDashboardPage = () => {
           })}
         </Grid>
       </Grid>
-      <Stack direction="row" sx={{ mx: 5, mt: 1 }}>
+      <Stack direction="row" sx={{ mx: 2, mt: 1 }}>
         <Box sx={{ flexGrow: 1 }}>
           <IconButton onClick={() => handleUpcomingChangePage(-1)}>
             <ArrowCircleLeftIcon
@@ -161,7 +161,7 @@ export const OrganizationDashboardPage = () => {
       <Box
         sx={{
           my: 2,
-          mx: 4,
+          mx: 2,
           bgcolor: "primary.main",
           borderRadius: "16px",
           pb: 2,
@@ -170,11 +170,10 @@ export const OrganizationDashboardPage = () => {
         <Toolbar disableGutters>
           <Typography
             variant="h4"
-            fontWeight="550"
+            fontWeight="700"
             sx={{
               px: 4,
               pt: 2,
-              letterSpacing: 1,
               flexGrow: 1,
               fontSize: {
                 xs: "22px",

@@ -37,10 +37,9 @@ export const NotificationsPage = () => {
       <Grid item xs={12} md={6}>
         <Typography
           variant="h4"
-          fontWeight="600"
+          fontWeight="700"
           sx={{
             flexGrow: 1,
-            letterSpacing: 1,
             pt: 4,
             pl: 4,
             pb: 2,
@@ -54,9 +53,10 @@ export const NotificationsPage = () => {
           Notifications
         </Typography>
         <List sx={{ mx: 4 }}>
-          {notifications.map((notification) => {
+          {notifications.map((notification, index) => {
             return (
               <NotificationCard
+                key={index}
                 type={notification.type}
                 message={notification.message}
                 studentId={notification.studentId}

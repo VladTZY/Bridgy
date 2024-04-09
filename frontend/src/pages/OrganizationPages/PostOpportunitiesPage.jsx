@@ -12,6 +12,7 @@ import {
   Checkbox,
   FormControlLabel,
   Button,
+  Stack,
 } from "@mui/material";
 import { TextInput } from "../../components/organizationComponents/TextInput";
 import { MultilineInput } from "../../components/organizationComponents/MultilineInput";
@@ -159,9 +160,8 @@ export const PostOpportunitiesPage = () => {
       <Box sx={{ m: 4, p: 2, bgcolor: "white.main", borderRadius: 5 }}>
         <Typography
           variant="h4"
-          fontWeight="600"
+          fontWeight="700"
           sx={{
-            letterSpacing: 1,
             fontSize: {
               xs: "22px",
               lg: "26px",
@@ -284,8 +284,8 @@ export const PostOpportunitiesPage = () => {
             )}
           </Grid>
         </Box>
-        <Box sx={{ mx: 2, mt: 4, display: "flex" }}>
-          <Box sx={{ width: 1 / 2, flexGrow: 1 }}>
+        <Stack sx={{ mx: 2, mt: 4 }} direction={{ xs: "column", md: "row" }}>
+          <Box sx={{ flexGrow: 1 }}>
             <Button
               component="label"
               variant="contained"
@@ -296,6 +296,7 @@ export const PostOpportunitiesPage = () => {
                 py: 2,
                 fontSize: "18px",
                 borderRadius: 8,
+                textTransform: "none",
                 ":hover": {
                   bgcolor: colors.hoverColor,
                 },
@@ -316,6 +317,7 @@ export const PostOpportunitiesPage = () => {
                 py: 2,
                 fontSize: "18px",
                 borderRadius: 8,
+                textTransform: "none",
                 ":hover": {
                   bgcolor: "blue.main",
                 },
@@ -325,7 +327,7 @@ export const PostOpportunitiesPage = () => {
               Create Opportunity
             </Button>
           </Box>
-        </Box>
+        </Stack>
       </Box>
     </Box>
   );

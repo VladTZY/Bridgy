@@ -142,7 +142,6 @@ const SideBar = () => {
                 key={value.text}
                 disablePadding
                 sx={{
-                  my: 1,
                   width: 1,
                 }}
               >
@@ -151,7 +150,7 @@ const SideBar = () => {
                     mx: 2,
                     width: 1,
                     textTransform: "none",
-                    borderRadius: 6,
+                    borderRadius: 5,
                     textAlign: "left",
                     justifyContent: "left",
                     bgcolor: buttonStyle[status].bgcolor,
@@ -167,15 +166,14 @@ const SideBar = () => {
                 >
                   <Link to={value.route} style={{ width: "100%" }}>
                     <Typography
-                      variant="h6"
                       color={buttonStyle[status].text}
-                      fontWeight="550"
+                      fontWeight="600"
                       sx={{
                         py: 1,
                         pr: 1,
                         fontSize: {
-                          lg: "13px",
-                          xl: "16px",
+                          lg: "16px",
+                          xl: "21px",
                         },
                       }}
                     >
@@ -187,19 +185,13 @@ const SideBar = () => {
             );
           })}
 
-          <ListItem
-            disablePadding
-            key={"Profile"}
-            sx={{
-              my: 1,
-            }}
-          >
+          <ListItem disablePadding key={"Profile"} sx={{}}>
             <Button
               sx={{
                 mx: 2,
                 width: 1,
                 textTransform: "none",
-                borderRadius: 6,
+                borderRadius: 5,
                 textAlign: "left",
                 justifyContent: "left",
                 bgcolor: buttonStyle[profileActive].bgcolor,
@@ -215,15 +207,14 @@ const SideBar = () => {
             >
               <Link to={`/profile/${userId}`} style={{ width: "100%" }}>
                 <Typography
-                  variant="h6"
                   color={buttonStyle[profileActive].text}
-                  fontWeight="550"
+                  fontWeight="600"
                   sx={{
                     py: 1,
                     pr: 1,
                     fontSize: {
-                      lg: "13px",
-                      xl: "16px",
+                      lg: "16px",
+                      xl: "21px",
                     },
                   }}
                 >

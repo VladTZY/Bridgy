@@ -36,7 +36,7 @@ export const MissionCard = ({
       }}
     >
       <CardMedia
-        sx={{ pb: 2, height: "22vh" }}
+        sx={{ pb: 2, height: "24vh" }}
         component="img"
         image={photoUrl}
       />
@@ -51,7 +51,7 @@ export const MissionCard = ({
           hours
         </Typography>
       </Box>
-      <CardContent>
+      <Box sx={{ mx: 2, mt: 2 }}>
         <Typography
           variant="h6"
           color="primary.contrastText"
@@ -62,7 +62,6 @@ export const MissionCard = ({
         </Typography>
         <Typography
           sx={{
-            mt: 1,
             height: "4vh",
             overflow: "hidden",
             textOverflow: "ellipsis",
@@ -70,9 +69,15 @@ export const MissionCard = ({
         >
           {description}
         </Typography>
-      </CardContent>
-      <CardActions
-        sx={{ alignItems: "center", justifyContent: "center", pb: 1 }}
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          mb: 1,
+          mt: 2,
+        }}
       >
         <Link to={`/opportunity/${id}`}>
           <Button
@@ -81,6 +86,12 @@ export const MissionCard = ({
               bgcolor: "blue.light",
               color: "blue.contrastText",
               borderRadius: 4,
+              px: 3,
+              textTransform: "none",
+              fontSize: {
+                lg: "16px",
+                xl: "18px",
+              },
               ":hover": {
                 bgcolor: "blue.main",
               },
@@ -89,7 +100,7 @@ export const MissionCard = ({
             More info
           </Button>
         </Link>
-      </CardActions>
+      </Box>
     </Card>
   );
 };

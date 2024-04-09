@@ -43,13 +43,10 @@ function ResponsiveAppBar() {
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
-                fontWeight: "bold",
+                fontWeight: "700",
                 letterSpacing: ".1rem",
                 color: "inherit",
-                fontSize: {
-                  lg: "16px",
-                  xl: "21px",
-                },
+                fontSize: "24px",
               }}
             >
               Bridgy

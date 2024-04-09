@@ -21,23 +21,12 @@ const theme = createTheme({
       main: "#fff",
       contrastText: "#000",
     },
-    background: "#e8e8e8",
+    background: "#f3f4f6",
     gray: "#808080",
     green: "#3ccf63",
   },
   typography: {
-    fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
+    fontFamily: ["Nunito"],
   },
 });
 
