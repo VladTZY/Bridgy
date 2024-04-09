@@ -85,12 +85,12 @@ export const ProfilePage = () => {
         }}
       >
         <Toolbar />
-        <Box sx={{ m: 4, bgcolor: "white.main", borderRadius: 2 }}>
+        <Box sx={{ m: 3, bgcolor: "background" }}>
           <Card
             sx={{
               maxWidth: 1,
               bgcolor: "primary.main",
-              borderRadius: 2,
+              borderRadius: 6,
             }}
           >
             <CardMedia
@@ -99,7 +99,7 @@ export const ProfilePage = () => {
               image={defaultBanner}
               height="1vh"
             />
-            <Box>
+            <Box sx={{ m: 1 }}>
               <Toolbar>
                 <Toolbar sx={{ flexGrow: 1 }}>
                   <Avatar
@@ -141,7 +141,16 @@ export const ProfilePage = () => {
               </Toolbar>
             </Box>
           </Card>
-          <Box sx={{ my: 2, mx: 3 }}>
+          <Box
+            sx={{
+              py: 2,
+              px: 3,
+              my: 2,
+              bgcolor: "white.main",
+              borderRadius: 6,
+              boxShadow: 2,
+            }}
+          >
             <Typography variant="h6" fontWeight="bold" sx={{ pt: 2 }}>
               Account Information
             </Typography>
@@ -169,6 +178,7 @@ export const ProfilePage = () => {
               <Grid item xs={12}>
                 <ProfileLabel
                   text={"Bio"}
+                  rows={5}
                   value={userInfo.bio ? userInfo.bio : "No bio"}
                 />
               </Grid>
