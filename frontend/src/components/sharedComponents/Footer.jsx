@@ -6,7 +6,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="blue.contrastText">
       {"Copyright © "}
-      <Link color="inherit">Bridgy</Link> {new Date().getFullYear()}
+      <Link color="inherit">Bridgy, Inc.</Link> {new Date().getFullYear()}
       {" | All rights reserved."}
     </Typography>
   );
