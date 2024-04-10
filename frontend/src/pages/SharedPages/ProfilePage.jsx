@@ -20,7 +20,19 @@ import {
 import stringAvatar from "../../utils/stringAvatar.js";
 import defaultBanner from "../../../assets/Banner.png";
 import EditIcon from "@mui/icons-material/Edit";
+import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import { ProfileLabel } from "../../components/sharedComponents/ProfileLabel.jsx";
+
+const ButtonSwitch = {
+  true: {
+    startIcon: EditIcon,
+    text: "Edit Profile",
+  },
+  false: {
+    startIcon: SaveAltIcon,
+    text: "Save Profile",
+  },
+};
 
 export const ProfilePage = () => {
   const userId = useSelector((state) => state.auth.id);
@@ -52,6 +64,7 @@ export const ProfilePage = () => {
   }, [id]);
 
   const onClickHandler = () => {
+    console.log(userInfo.phoneNumber);
     if (!isDisabled) {
       let payload = { bio: userInfo.bio, phoneNumber: userInfo.phoneNumber };
 
@@ -74,6 +87,8 @@ export const ProfilePage = () => {
     }
     setIsDisabled(!isDisabled);
   };
+
+  const button = ButtonSwitch[isDisabled];
 
   if (userInfo.email) {
     return (
@@ -122,7 +137,8 @@ export const ProfilePage = () => {
                 {userId == id && (
                   <Button
                     variant="contained"
-                    startIcon={<EditIcon />}
+                    startIcon={<button.startIcon />}
+                    onClick={onClickHandler}
                     sx={{
                       bgcolor: "blue.light",
                       color: "blue.contrastText",
@@ -135,7 +151,7 @@ export const ProfilePage = () => {
                       },
                     }}
                   >
-                    Edit profile
+                    {button.text}
                   </Button>
                 )}
               </Toolbar>
@@ -157,21 +173,38 @@ export const ProfilePage = () => {
             <Grid container sx={{ px: 2, pt: 2, pb: 4 }} spacing={3}>
               <Grid item container direction="row" spacing={3}>
                 <Grid item xs={12} lg={6}>
-                  <ProfileLabel text={"Username"} value={userInfo.username} />
+                  <ProfileLabel
+                    text={"Username"}
+                    value={userInfo.username}
+                    setValue={setUserInfo}
+                    disabled={true}
+                  />
                 </Grid>
                 <Grid item xs={12} lg={6}>
-                  <ProfileLabel text={"Email"} value={userInfo.email} />
+                  <ProfileLabel
+                    text={"Email"}
+                    value={userInfo.email}
+                    disabled={true}
+                  />
                 </Grid>
                 <Grid item xs={12} lg={6}>
                   <ProfileLabel
                     text={"Location"}
                     value={`${userInfo.location.city}, ${userInfo.location.country}`}
+                    disabled={true}
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
                   <ProfileLabel
                     text={"Phone Number"}
                     value={userInfo.phoneNumber}
+                    disabled={isDisabled}
+                    setValue={(e) =>
+                      setUserInfo({
+                        ...userInfo,
+                        phoneNumber: e.target.value,
+                      })
+                    }
                   />
                 </Grid>
               </Grid>
@@ -180,6 +213,13 @@ export const ProfilePage = () => {
                   text={"Bio"}
                   rows={5}
                   value={userInfo.bio ? userInfo.bio : "No bio"}
+                  disabled={isDisabled}
+                  setValue={(e) =>
+                    setUserInfo({
+                      ...userInfo,
+                      bio: e.target.value,
+                    })
+                  }
                 />
               </Grid>
             </Grid>

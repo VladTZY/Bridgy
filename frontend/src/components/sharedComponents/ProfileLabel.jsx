@@ -1,19 +1,19 @@
 import { Typography, Stack, TextField } from "@mui/material";
 import React from "react";
 
-export const ProfileLabel = ({ text, value, rows }) => {
+export const ProfileLabel = ({ text, value, setValue, rows, disabled }) => {
   return (
     <Stack direction="column">
       <Typography variant="h8" fontWeight="bold" color="gray">
         {text}
       </Typography>
       <TextField
-        id="outlined-basic"
-        variant="outlined"
+        color={"secondary"}
         value={value}
+        onChange={(e) => setValue(e)}
         multiline
         rows={rows}
-        inputProps={{ disabled: true }}
+        inputProps={{ readOnly: disabled }}
         sx={{
           pt: 0.5,
           input: {
