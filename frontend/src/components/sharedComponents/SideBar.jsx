@@ -125,7 +125,7 @@ const SideBar = () => {
         },
         width: drawerWidth,
         minHeight: "95vh",
-        bgcolor: "primary.main",
+        bgcolor: "secondary.main",
         flexShrink: 0,
         [`& .MuiDrawer-paper`]: {
           width: drawerWidth,

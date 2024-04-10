@@ -1,12 +1,27 @@
 import axiosInstance from "../../utils/axiosInstance";
 import { useEffect, useState } from "react";
-import { Card } from "../../components/Card";
-import { SearchBar } from "../../components/SearchBar";
-import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
+
+import {
+  Box,
+  Toolbar,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormControl,
+  Grid,
+  Stack,
+  IconButton,
+} from "@mui/material";
+import { SearchBar } from "../../components/sharedComponents/SearchBar";
+import { MissionCard } from "../../components/sharedComponents/MissionCard";
+import DefaultImage from "../../../assets/defaultMission.png";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 export const FindOpportunitiesPage = () => {
   const [events, setEvents] = useState([]);
   const [page, setPage] = useState(1);
+  const [sort, setSort] = useState("none");
 
   useEffect(() => {
     axiosInstance
@@ -26,62 +41,85 @@ export const FindOpportunitiesPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col ml-[15vw] px-3 pt-6 pb-[8vh]">
-      <SearchBar />
-      <h1 className="text-2xl font-bold  my-7 text-center lg:text-left">
-        Published Opportunities
-      </h1>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
+      <Toolbar />
+      <Box sx={{ mx: 3, mt: 1 }}>
+        <Toolbar disableGutters>
+          <Box sx={{ flexGrow: 1 }}>
+            <SearchBar />
+          </Box>
+          <Box sx={{ width: { xs: 0, md: "150px" } }}>
+            <FormControl
+              sx={{
+                width: 1,
+                display: {
+                  xs: "none",
+                  md: "flex",
+                },
+              }}
+            >
+              <InputLabel id="demo-simple-select-label">Sort by</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Sort by"
+                sx={{ color: "blue.main" }}
+              >
+                <MenuItem value="no sort">No sort</MenuItem>
+                <MenuItem value="earliest">Earliest</MenuItem>
+                <MenuItem value="latest">Latest</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+        </Toolbar>
 
-      <div className=" flex flex-wrap overflow-x-scroll no-scrollbar space-x-2 space-y-4">
-        {events.slice(0, 8).map((event) => {
-          return (
-            <Card
-              key={event.id}
-              id={event.id}
-              title={event.name}
-              description={event.description}
-              time={event.time}
-              location={event.location}
-              duration={event.hours}
-              event_type={"opportunity"}
-              photoUrl={
-                event.photoUrl == "NO_FILE"
-                  ? DefaultImage
-                  : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                      event.photoUrl
-                    }`
-              }
-            />
-          );
-        })}
-      </div>
+        <Box sx={{ mt: 2 }}>
+          <Grid container direction="row" spacing={2}>
+            {events.slice(0, 8).map((event) => {
+              return (
+                <Grid item xs={12} md={6} lg={3} key={event.id}>
+                  <MissionCard
+                    id={event.id}
+                    title={event.name}
+                    description={event.description}
+                    time={event.time}
+                    location={event.location}
+                    duration={event.hours}
+                    event_type={"opportunity"}
+                    photoUrl={
+                      event.photoUrl == "NO_FILE"
+                        ? DefaultImage
+                        : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                            event.photoUrl
+                          }`
+                    }
+                  />
+                </Grid>
+              );
+            })}
+          </Grid>
 
-      <div className="flex justify-end mx-5 space-x-6 pb-6">
-        {page > 1 ? (
-          <button
-            className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
-            onClick={() => handleChangePage(-1)}
-          >
-            Previous Page
-          </button>
-        ) : (
-          <div className="bg-inherit text-transparent py-2 px-5 mt-4">
-            Previous Page
-          </div>
-        )}
-        {events.length > 8 ? (
-          <button
-            className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
-            onClick={() => handleChangePage(1)}
-          >
-            Next Page
-          </button>
-        ) : (
-          <div className="bg-inherit text-transparent py-2 px-5 mt-4">
-            Next Page
-          </div>
-        )}
-      </div>
-    </div>
+          <Stack direction="row" sx={{ mx: 2, mt: 1 }}>
+            <Box sx={{ flexGrow: 1 }}>
+              <IconButton onClick={() => handleChangePage(-1)}>
+                <ArrowCircleLeftIcon
+                  fontSize="large"
+                  sx={{
+                    color: "blue.light",
+                    ":hover": { color: "blue.main" },
+                  }}
+                />
+              </IconButton>
+            </Box>
+            <IconButton onClick={() => handleChangePage(1)}>
+              <ArrowCircleRightIcon
+                fontSize="large"
+                sx={{ color: "blue.light", ":hover": { color: "blue.main" } }}
+              />
+            </IconButton>
+          </Stack>
+        </Box>
+      </Box>
+    </Box>
   );
 };
