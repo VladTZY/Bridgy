@@ -50,7 +50,7 @@ export const LandingPage = () => {
             <span>Our Founding Story</span>
           </div>
           <div className="flex flex-col text-black text-lg md:text-2xl pt-10 w-[100%] md:w-[60%] px-6 xs:font-light md:font-semibold ">
-            <span>
+            <span className="text-justify">
               Our team created charities, led government-sponsored initiatives
               in community service, and ran their high school community service
               clubs. We experienced how grossly inefficient community service
@@ -63,20 +63,20 @@ export const LandingPage = () => {
           </div>
           <div className="flex flex-col md:flex-row w-[100%] bg-gray-100 pt-5 justify-center items-center md:px-6">
             <div className="flex flex-col w-[80%] h-[30vh]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-center">
-              <span className="text-center font-semibold md:text-xl">
+              <span className="text-justify font-semibold md:text-xl">
                 Finding and obtaining the right community service missions takes
                 an average of 15 hours per opportunity for students.
               </span>
             </div>
             <div className="flex flex-col w-[80%] h-[30vh] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-center">
-              <span className="text-center font-semibold md:text-xl">
+              <span className="text-justify font-semibold md:text-xl">
                 Charities struggle to find a consistent source of dynamic and
                 motivated volunteers for their missions, hampering their scale
                 and operational capabilities.
               </span>
             </div>
             <div className="flex flex-col w-[80%]   h-[30vh] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-center">
-              <span className="text-center font-semibold md:text-xl">
+              <span className="text-justify font-semibold md:text-xl">
                 School advisors take an absurdly long time reconciling their
                 students' data and scheduling support.
               </span>
@@ -91,7 +91,7 @@ export const LandingPage = () => {
               </span>
               <span>is your specialized ecosystem</span>
               <div className="flex flex-col text-black text-lg md:text-xl pt-10 w-[100%] md:w-[80%] px-6 xs:font-light md:font-semibold pb-5">
-                <span>
+                <span className="text-justify">
                   Welcome to Bridgy, where connecting passion with purpose is
                   our mission. This platform bridges the gap between high school
                   students eager to make a difference, charities in need of
@@ -125,7 +125,7 @@ export const LandingPage = () => {
               <div className="flex flex-col items-center">
                 <img className="w-[20%] pb-2" src={pic10} alt="schoolicon" />
               </div>
-              <span className="text-center font-semibold md:text-l">
+              <span className="text-justify font-semibold md:text-l">
                 Bridgy offers schools a seamless way to integrate service
                 learning into their curriculum. Our tools reduce the
                 administrative load dramatically. This enables counselors to
@@ -141,7 +141,7 @@ export const LandingPage = () => {
               <div className="flex flex-col items-center">
                 <img className="w-[20%] pb-2" src={pic9} alt="charityicon" />
               </div>
-              <span className="text-center font-semibold md:text-l">
+              <span className="text-justify font-semibold md:text-l">
                 {" "}
                 Your cause deserves the spotlight and dedicated volunteers ready
                 to take action. Bridgy simplifies the volunteer-matching
@@ -157,7 +157,7 @@ export const LandingPage = () => {
               <div className="flex flex-col items-center">
                 <img className="w-[20%] pb-2" src={pic8} alt="studenticon" />
               </div>
-              <span className="text-center font-semibold md:text-l">
+              <span className="text-justify font-semibold md:text-l">
                 As a student Bridgy is your digital compass to finding
                 opportunities that resonate with your interests and aspirations.
                 With our hub, you can connect with meaningful projects in a
