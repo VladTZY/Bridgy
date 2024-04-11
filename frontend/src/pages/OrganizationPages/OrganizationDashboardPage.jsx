@@ -165,7 +165,7 @@ export const OrganizationDashboardPage = () => {
         sx={{
           my: 2,
           mx: 2,
-          bgcolor: "primary.main",
+          bgcolor: "secondary.main",
           borderRadius: "16px",
           pb: 2,
         }}

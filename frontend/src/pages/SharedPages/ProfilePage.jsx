@@ -133,7 +133,7 @@ export const ProfilePage = () => {
           <Card
             sx={{
               maxWidth: 1,
-              bgcolor: "primary.main",
+              bgcolor: "secondary.main",
               borderRadius: 6,
             }}
           >

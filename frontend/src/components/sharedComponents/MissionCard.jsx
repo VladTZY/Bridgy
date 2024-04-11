@@ -28,7 +28,7 @@ export const MissionCard = ({
     <Card
       sx={{
         maxWidth: 1,
-        bgcolor: "primary.main",
+        bgcolor: "secondary.main",
         borderRadius: 2,
         ":hover": {
           boxShadow: 6,
@@ -61,12 +61,7 @@ export const MissionCard = ({
         </Typography>
       </Box>
       <CardContent>
-        <Typography
-          variant="h6"
-          color="primary.contrastText"
-          fontWeight="bold"
-          sx={{ letterSpacing: 2 }}
-        >
+        <Typography variant="h6" color="primary.contrastText" fontWeight="bold">
           {title}
         </Typography>
         <Typography
