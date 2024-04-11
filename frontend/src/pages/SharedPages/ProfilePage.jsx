@@ -16,12 +16,17 @@ import {
   Stack,
   Grid,
   TextField,
+  Modal,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import stringAvatar from "../../utils/stringAvatar.js";
 import defaultBanner from "../../../assets/Banner.png";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
+import LockResetIcon from "@mui/icons-material/LockReset";
 import { ProfileLabel } from "../../components/sharedComponents/ProfileLabel.jsx";
+import { ChangePasswordModal } from "../../components/sharedComponents/ChangePasswordModal.jsx";
 
 const ButtonSwitch = {
   true: {
@@ -31,6 +36,29 @@ const ButtonSwitch = {
   false: {
     startIcon: SaveAltIcon,
     text: "Save Profile",
+  },
+};
+
+const NameField = {
+  STUDENT: {
+    username: "Username",
+  },
+  SCHOOL: {
+    username: "Name of the school",
+  },
+  ORGANIZATION: {
+    username: "Organization name",
+  },
+};
+
+const AdditionalInformation = {
+  STUDENT: {
+    label1: "Full Name",
+    label2: "School Name",
+  },
+  SCHOOL: {
+    label1: "Objective Type",
+    label2: "Objective",
   },
 };
 
@@ -89,6 +117,7 @@ export const ProfilePage = () => {
   };
 
   const button = ButtonSwitch[isDisabled];
+  const name = NameField[userInfo.role];
 
   if (userInfo.email) {
     return (
@@ -154,6 +183,28 @@ export const ProfilePage = () => {
                     {button.text}
                   </Button>
                 )}
+                <Button
+                  variant="contained"
+                  startIcon={<LockResetIcon />}
+                  onClick={() => setPasswordModal(true)}
+                  sx={{
+                    bgcolor: "blue.light",
+                    color: "blue.contrastText",
+                    px: 4,
+                    py: 2,
+                    ml: 2,
+                    fontSize: "16px",
+                    borderRadius: 8,
+                    ":hover": {
+                      bgcolor: "blue.main",
+                    },
+                  }}
+                >
+                  Change Password
+                </Button>
+                {passwordModal && (
+                  <ChangePasswordModal setModal={setPasswordModal} />
+                )}
               </Toolbar>
             </Box>
           </Card>
@@ -174,7 +225,7 @@ export const ProfilePage = () => {
               <Grid item container direction="row" spacing={3}>
                 <Grid item xs={12} lg={6}>
                   <ProfileLabel
-                    text={"Username"}
+                    text={name.username}
                     value={userInfo.username}
                     setValue={setUserInfo}
                     disabled={true}
@@ -208,6 +259,56 @@ export const ProfilePage = () => {
                   />
                 </Grid>
               </Grid>
+              {userInfo.role == "SCHOOL" && (
+                <Grid item container direction="row" spacing={3}>
+                  <Grid item xs={12} lg={6}>
+                    <Stack direction="column">
+                      <Typography variant="h8" fontWeight="bold" color="gray">
+                        Objective Type
+                      </Typography>
+                      <Select
+                        inputProps={{ readOnly: isDisabled }}
+                        value={userInfo.objectiveType}
+                        onChange={(e) =>
+                          setUserInfo({
+                            ...userInfo,
+                            objectiveType: e.target.value,
+                          })
+                        }
+                        color="secondary"
+                        sx={{
+                          mt: 0.5,
+                          input: {
+                            color: "black",
+                            fontWeight: 650,
+                          },
+                        }}
+                        MenuProps={{
+                          children: { bgcolor: "white.main" },
+                        }}
+                      >
+                        <MenuItem value={"EVENT"}>
+                          Participating Events
+                        </MenuItem>
+                        <MenuItem value={"HOURS"}>Working Hours</MenuItem>
+                      </Select>
+                    </Stack>
+                  </Grid>
+                  <Grid item xs={12} lg={6}>
+                    <ProfileLabel
+                      text={"Objective"}
+                      value={userInfo.objective}
+                      disabled={isDisabled}
+                      setValue={(e) =>
+                        setUserInfo({
+                          ...userInfo,
+                          objective: e.target.value,
+                        })
+                      }
+                    />
+                  </Grid>
+                </Grid>
+              )}
               <Grid item xs={12}>
                 <ProfileLabel
                   text={"Bio"}
