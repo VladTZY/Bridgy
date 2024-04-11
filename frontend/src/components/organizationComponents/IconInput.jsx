@@ -15,7 +15,6 @@ export const IconInput = ({
       id={id}
       label={name}
       type={type}
-      color="secondary"
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">{icon}</InputAdornment>

@@ -7,7 +7,6 @@ export const TextInput = ({ id, name, value, error, updateFormData }) => {
       id={id}
       label={name}
       variant="outlined"
-      color="secondary"
       sx={{
         width: 1,
       }}

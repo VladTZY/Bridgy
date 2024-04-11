@@ -12,11 +12,9 @@ export const DateInput = ({ id, name, value, error, updateFormData }) => {
       disableOpenPicker
       sx={{
         width: 1,
-        color: "secondary",
       }}
       slotProps={{
         textField: {
-          color: "secondary",
           InputProps: {
             startAdornment: (
               <InputAdornment position="start">

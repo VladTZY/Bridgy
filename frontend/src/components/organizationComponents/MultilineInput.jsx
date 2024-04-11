@@ -7,7 +7,6 @@ export const MultilineInput = ({ id, name, value, error, updateFormData }) => {
       id={id}
       label={name}
       variant="outlined"
-      color="secondary"
       multiline
       rows={4}
       sx={{

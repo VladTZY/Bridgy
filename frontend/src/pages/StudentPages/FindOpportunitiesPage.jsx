@@ -63,7 +63,6 @@ export const FindOpportunitiesPage = () => {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Sort by"
-                sx={{ color: "blue.main" }}
               >
                 <MenuItem value="no sort">No sort</MenuItem>
                 <MenuItem value="earliest">Earliest</MenuItem>
