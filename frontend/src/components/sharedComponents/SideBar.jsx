@@ -147,6 +147,7 @@ const SideBar = () => {
                 disablePadding
                 sx={{
                   width: 1,
+                  pb: 1,
                 }}
               >
                 <Button

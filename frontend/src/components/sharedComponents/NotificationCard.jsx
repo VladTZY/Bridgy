@@ -36,7 +36,7 @@ export const NotificationCard = ({ type, message, studentId, eventId }) => {
             borderRadius: 6,
             mb: 2,
             ":hover": {
-              boxShadow: 10,
+              boxShadow: 4,
             },
           }}
         >

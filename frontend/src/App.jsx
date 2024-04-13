@@ -1,9 +1,5 @@
 import { useSelector } from "react-redux";
 import { LoginPage } from "./pages/SharedPages/LoginPage";
-import { HomePage } from "./pages/SharedPages/HomePage";
-import { MiniNavbar } from "./components/MiniNavbar";
-import { Sidebar } from "./components/Sidebar";
-import { MiniFooter } from "./components/MiniFooter";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { NotFoundPage } from "./pages/SharedPages/NotFoundPage";
 import { ErrorPage } from "./pages/SharedPages/ErrorPage";
@@ -22,7 +18,6 @@ import { CreateSchoolPage } from "./pages/AdminPages/CreateSchoolPage";
 import { MyExperiencesPage } from "./pages/StudentPages/MyExperiencesPage";
 import { UpdatesPage } from "./pages/SchoolPages/UpdatesPage";
 import { OrganizationDashboardPage } from "./pages/OrganizationPages/OrganizationDashboardPage";
-import { AddPreviousEventsPage } from "./pages/StudentPages/AddPreviousEventsPage";
 import { NotificationsPage } from "./pages/SharedPages/NotificationsPage";
 
 import NavBar from "./components/sharedComponents/NavBar";
@@ -89,18 +84,6 @@ function App() {
         element={
           role == "STUDENT" ? (
             <MyExperiencesPage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/student/add_previous_events"
-        element={
-          role == "STUDENT" ? (
-            <AddPreviousEventsPage />
           ) : isLoggedIn ? (
             <ErrorPage />
           ) : (
