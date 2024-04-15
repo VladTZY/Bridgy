@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 
 import { StudentsTable } from "../../components/StudentsTable";
-import { SchoolProgressCard } from "../../components/SchoolProgressCard";
 export const SchoolDashboardPage = () => {
   const [students, setStudents] = useState([]);
   const [tableData, setTableData] = useState([]);
@@ -55,67 +54,13 @@ export const SchoolDashboardPage = () => {
   return (
     <div className="ml-[15vw] pb-[8vh]">
       <div className=" md:flex w-[85vw] bg-gray-100 flex flex-col  overflow-x-scroll  ">
-        <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%]">
-          <SchoolProgressCard
-            title={"Objective"}
-            total={stats.actualObjective + "/" + stats.totalObjective}
-            description={""}
-            percentage={Math.round(
-              (stats.actualObjective / stats.totalObjective) * 100
-            )}
-            color={"#32cd32"}
-          />
-          <SchoolProgressCard
-            title={"Total Economy"}
-            total={stats.totalEconomy + "$"}
-            description={""}
-            percentage={100}
-            color={"#eed202"}
-          />
-          <SchoolProgressCard
-            title={"Nr. of Students"}
-            total={stats.completedStudents + "/" + stats.numberOfStudents}
-            description={""}
-            percentage={Math.round(
-              (stats.completedStudents / stats.numberOfStudents) * 100
-            )}
-            color={"#a40000"}
-          />
-        </div>
+        <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%]"></div>
 
         <div className=" w-[85vw] bg-gray-100 flex flex-col overflow-x-scroll overscroll-contain md:hidden"></div>
         <div className="  flex flex-row overflow-x-scroll justify-center items-center w-[300%] md:hidden">
-          <div className="flex flex-row overflow-x-scroll justify-center items-center w-[100%]">
-            <SchoolProgressCard
-              title={"Objective"}
-              total={stats.actualObjective + "/" + stats.totalObjective}
-              description={""}
-              percentage={Math.round(
-                (stats.actualObjective / stats.totalObjective) * 100
-              )}
-              color={"#32cd32"}
-            />
-          </div>
-          <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
-            <SchoolProgressCard
-              title={"Total Economy"}
-              total={stats.totalEconomy + "$"}
-              description={""}
-              percentage={100}
-              color={"#eed202"}
-            />
-          </div>
-          <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
-            <SchoolProgressCard
-              title={"Nr. of Students"}
-              total={stats.completedStudents + "/" + stats.numberOfStudents}
-              description={""}
-              percentage={Math.round(
-                (stats.completedStudents / stats.numberOfStudents) * 100
-              )}
-              color={"#a40000"}
-            />
-          </div>
+          <div className="flex flex-row overflow-x-scroll justify-center items-center w-[100%]"></div>
+          <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]"></div>
+          <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]"></div>
         </div>
       </div>
       <div className="mt-6 flex flex-col md:flex md:flex-row justify-between  w-[100%] px-4">

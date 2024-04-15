@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 
-import { Box, Toolbar, Typography } from "@mui/material";
+import { Box, Grid, Toolbar, Typography } from "@mui/material";
 import { BarCard2 } from "../../components/sharedComponents/BarCard2";
 import AlarmIcon from "@mui/icons-material/Alarm";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import PendingIcon from "@mui/icons-material/Pending";
+import { ProgressCard } from "../../components/sharedComponents/ProgressCard";
 
 export const StudentDashboardPage = () => {
   const [ongoingEvents, setOngoingEvents] = useState([]);
@@ -38,7 +39,39 @@ export const StudentDashboardPage = () => {
   return (
     <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
       <Toolbar />
-      <Box sx={{ mx: 3, mt: 3 }}>
+      <Box sx={{ mx: 3, mt: 5 }}>
+        <Grid container direction="row" spacing={3} sx={{ mb: 3 }}>
+          <Grid item xs={12} md={6} lg={4}>
+            <ProgressCard
+              title="Objective"
+              value="100"
+              finalValue="120"
+              description=""
+              percentage="72"
+              color="green"
+            />
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <ProgressCard
+              title="Completed Projects"
+              value="10"
+              finalValue="20"
+              description=""
+              percentage="50"
+              color="orange"
+            />
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <ProgressCard
+              title="Completed hours"
+              value="100"
+              finalValue="110"
+              description=""
+              percentage="90"
+              color="lightskyblue"
+            />
+          </Grid>
+        </Grid>
         <Box>
           <Typography
             variant="h4"

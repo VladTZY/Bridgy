@@ -24,7 +24,7 @@ import NavBar from "./components/sharedComponents/NavBar";
 import SideBar from "./components/sharedComponents/SideBar";
 import Footer from "./components/sharedComponents/Footer";
 
-import { Box } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -250,6 +250,7 @@ function WrappedApp() {
           {
             true: (
               <Box>
+                <CssBaseline />
                 <NavBar />
                 <Box sx={{ display: "flex" }}>
                   <SideBar />
