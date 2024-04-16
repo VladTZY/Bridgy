@@ -24,6 +24,7 @@ const theme = createTheme({
     background: "#f3f4f6",
     gray: "#bdbdbd",
     green: "#3ccf63",
+    red: "#FF0000",
   },
   typography: {
     fontFamily: ["Nunito"],
