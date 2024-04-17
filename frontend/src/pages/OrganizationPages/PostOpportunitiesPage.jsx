@@ -14,10 +14,10 @@ import {
   Button,
   Stack,
 } from "@mui/material";
-import { TextInput } from "../../components/organizationComponents/TextInput";
-import { MultilineInput } from "../../components/organizationComponents/MultilineInput";
-import { IconInput } from "../../components/organizationComponents/IconInput";
-import { DateInput } from "../../components/organizationComponents/DateInput";
+import { TextInput } from "../../components/sharedComponents/TextInput";
+import { MultilineInput } from "../../components/sharedComponents/MultilineInput";
+import { IconInput } from "../../components/sharedComponents/IconInput";
+import { DateInput } from "../../components/sharedComponents/DateInput";
 
 import TimelapseIcon from "@mui/icons-material/Timelapse";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";

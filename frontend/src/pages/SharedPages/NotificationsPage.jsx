@@ -54,6 +54,7 @@ export const NotificationsPage = () => {
         </Typography>
         <List sx={{ mx: 4 }}>
           {notifications.map((notification, index) => {
+            console.log("aici");
             return (
               <NotificationCard
                 key={index}

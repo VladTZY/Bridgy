@@ -60,11 +60,6 @@ const buttonMapping = {
       icon: PersonAddIcon,
     },
     {
-      text: "Updates",
-      route: "/school/updates",
-      icon: EqualizerIcon,
-    },
-    {
       text: "Notifications",
       route: "/notifications",
       icon: NotificationsActiveIcon,
@@ -147,6 +142,7 @@ const SideBar = () => {
                 disablePadding
                 sx={{
                   width: 1,
+                  pb: 1,
                 }}
               >
                 <Button

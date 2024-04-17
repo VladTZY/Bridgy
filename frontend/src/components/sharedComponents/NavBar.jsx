@@ -61,7 +61,14 @@ function ResponsiveAppBar() {
               color="primary"
               sx={{ ml: 2 }}
             >
-              <LogoutIcon style:hover={{ fill: "#2135D9" }} />
+              <LogoutIcon
+                sx={{
+                  cursor: "pointer",
+                  ":hover": {
+                    color: "blue.main",
+                  },
+                }}
+              />
             </Badge>
           </Toolbar>
         </Toolbar>
