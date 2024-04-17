@@ -155,7 +155,7 @@ export const PostOpportunitiesPage = () => {
   };
 
   return (
-    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
       <Toolbar />
       <Box sx={{ m: 4, p: 2, bgcolor: "white.main", borderRadius: 5 }}>
         <Typography

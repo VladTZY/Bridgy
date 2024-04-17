@@ -31,7 +31,7 @@ export const NotificationsPage = () => {
   }, []);
 
   return (
-    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
       {/*Lasam spatiu pt navbar*/}
       <Toolbar />
       <Grid item xs={12} md={6}>

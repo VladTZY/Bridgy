@@ -21,7 +21,7 @@ const theme = createTheme({
       main: "#fff",
       contrastText: "#000",
     },
-    background: "#f3f4f6",
+    pageBackground: "#f3f4f6",
     gray: "#bdbdbd",
     green: "#3ccf63",
     red: "#FF0000",

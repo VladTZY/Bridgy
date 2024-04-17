@@ -19,6 +19,8 @@ const Footer = () => {
         bgcolor: "blue.main",
         width: 1,
         height: "5vh",
+
+        zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
     >
       <Box sx={{ flexGrow: 1 }}>

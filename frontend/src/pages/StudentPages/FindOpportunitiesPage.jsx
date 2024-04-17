@@ -41,7 +41,7 @@ export const FindOpportunitiesPage = () => {
   };
 
   return (
-    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
       <Toolbar />
       <Box sx={{ mx: 3, mt: 1 }}>
         <Toolbar disableGutters>

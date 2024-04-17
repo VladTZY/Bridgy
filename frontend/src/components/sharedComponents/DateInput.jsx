@@ -9,7 +9,6 @@ export const DateInput = ({ id, name, value, error, updateFormData }) => {
       id={id}
       label={name}
       value={value}
-      disableOpenPicker
       sx={{
         width: 1,
       }}

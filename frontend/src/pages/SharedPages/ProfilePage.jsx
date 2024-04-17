@@ -125,11 +125,11 @@ export const ProfilePage = () => {
         sx={{
           width: 1,
           minHeight: "95vh",
-          bgcolor: "background",
+          bgcolor: "pageBackground",
         }}
       >
         <Toolbar />
-        <Box sx={{ m: 3, bgcolor: "background" }}>
+        <Box sx={{ m: 3, bgcolor: "pageBackground" }}>
           <Card
             sx={{
               maxWidth: 1,
@@ -331,7 +331,7 @@ export const ProfilePage = () => {
   }
 
   return (
-    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
       <Backdrop
         open={true}
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}

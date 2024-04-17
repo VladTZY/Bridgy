@@ -64,7 +64,7 @@ export const MissionsPage = () => {
   };
 
   return (
-    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
       <Toolbar />
       <Box>
         <Toolbar sx={{ mt: 1 }}>

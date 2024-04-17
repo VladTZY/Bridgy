@@ -4,7 +4,7 @@ import { AddMultipleStudentsCard } from "../../components/schoolComponents/AddMu
 
 export const AddStudentPage = () => {
   return (
-    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
       <Toolbar />
       <Box sx={{ m: 4 }}>
         <Grid container spacing={3}>

@@ -6,7 +6,6 @@ import { Box, Stack, Typography } from "@mui/material";
 export const ProgressCard = ({
   title,
   value,
-  finalValue,
   percentage,
   description,
   color,
@@ -18,9 +17,7 @@ export const ProgressCard = ({
         <Typography variant="h4" sx={{ fontWeight: 600 }}>
           {title}
         </Typography>
-        <Typography variant="h6">
-          {value} / {finalValue}
-        </Typography>
+        <Typography variant="h6">{value}</Typography>
       </div>
       <div className=" my-4 w-[30%] rounded-full flex relative items-center justify-center mr-4">
         <div

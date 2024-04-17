@@ -37,36 +37,30 @@ export const StudentDashboardPage = () => {
   }, []);
 
   return (
-    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "background" }}>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
       <Toolbar />
       <Box sx={{ mx: 3, mt: 5 }}>
         <Grid container direction="row" spacing={3} sx={{ mb: 3 }}>
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} lg={4}>
             <ProgressCard
               title="Objective"
-              value="100"
-              finalValue="120"
-              description=""
+              value="100 / 120"
               percentage="72"
               color="green"
             />
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} lg={4}>
             <ProgressCard
               title="Completed Projects"
-              value="10"
-              finalValue="20"
-              description=""
+              value="10 / 20"
               percentage="50"
               color="orange"
             />
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} lg={4}>
             <ProgressCard
               title="Completed hours"
-              value="100"
-              finalValue="110"
-              description=""
+              value="100 / 110"
               percentage="90"
               color="lightskyblue"
             />
