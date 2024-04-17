@@ -8,7 +8,6 @@ export const ProfileLabel = ({ text, value, setValue, rows, disabled }) => {
         {text}
       </Typography>
       <TextField
-        color={"secondary"}
         value={value}
         onChange={(e) => setValue(e)}
         multiline
