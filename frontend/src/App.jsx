@@ -15,6 +15,7 @@ import { SchoolDashboardPage } from "./pages/SchoolPages/SchoolDashboardPage";
 import { AddStudentPage } from "./pages/SchoolPages/AddStudentPage";
 import { StudentDashboardPage } from "./pages/StudentPages/StudentDashboardPage";
 import { MoreInfoPage } from "./pages/SharedPages/MoreInfoPage";
+import { InfoPage } from "./pages/SharedPages/InfoPage";
 import { LandingPage } from "./pages/SharedPages/LandingPage";
 import { CreateAdminPage } from "./pages/SuperAdminPages/CreateAdminPage";
 import { CreateOrganizationPage } from "./pages/AdminPages/CreateOrganizationPage";
@@ -250,7 +251,7 @@ function App() {
       />
       <Route
         path="/opportunity/:id"
-        element={isLoggedIn ? <MoreInfoPage /> : <Navigate to="/login" />}
+        element={isLoggedIn ? <InfoPage /> : <Navigate to="/login" />}
       />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
