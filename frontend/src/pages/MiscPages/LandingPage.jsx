@@ -16,7 +16,7 @@ export const LandingPage = () => {
     <div>
       <Navbar />
       <div className="flex flex-col items-center justify-center w-[100vw] bg-gray-100 pt-[10vh]  md:mt-0">
-        <div className="flex flex-col w-[100vw]  md:h-[90vh] 2xl:h-[70vh] bg-gray-100 justify-center items-center">
+        <div className="flex flex-col w-[100vw]  md:h-[100vh] 2xl:h-[80vh] bg-gray-100 justify-center items-center">
           <div className="flex flex-col md:flex-row px-8 relative ">
             <img
               className=" md:w-[50%] rounded-2xl drop-shadow-2xl transition opacity-100 ease-in duration-900 transform hover:scale-[101%] duration-300 "
@@ -45,49 +45,100 @@ export const LandingPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-[100vw] md:h-[50vh] bg-gray-100 justify-center items-center text-center">
-          <div className="text-4xl md:text-6xl text-black font-bold flex flex-col justify-center items-center text-center">
-            <span>Our Founding Story</span>
-          </div>
-          <div className="flex flex-col text-black text-lg md:text-2xl pt-10 w-[100%] md:w-[60%] px-6 xs:font-light md:font-semibold ">
-            <span className="text-justify">
-              We are a team of college students at Oxford and the University of
-              Chicago. We experienced first hand how impractical community
-              service can be for high school students, school counselors and
-              charities.
-            </span>
-          </div>
-        </div>
-        <div className="flex flex-col w-[100vw] md:h-[50vh] bg-gray-100 justify-center items-center text-center">
+        <div className="flex flex-col w-[100vw] md:h-[90vh] bg-gray-100 justify-center items-center text-center">
           <div className="text-4xl md:text-6xl text-black font-bold flex flex-col justify-center items-center text-center">
             <span>We solve three major problems</span>
           </div>
-          <div className="flex flex-col md:flex-row w-[100%] bg-gray-100 pt-10 justify-center items-center md:px-6">
-            <div className="flex flex-col w-[80%] h-[20vh]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-center">
-              <div className="font-bold text-2xl animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent pb-2">
+          <div className="flex flex-col md:flex-row w-[100%] bg-gray-100 pt-5 px-4 justify-center items-center md:px-6">
+            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+              <div className="text-3xl text-center font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
+                {" "}
                 ACCESS
               </div>
-              <span className="text-justify font-semibold md:text-xl">
+              <div className="flex flex-col items-center">
+                <img className="w-[20%] pb-2" src={pic10} alt="schoolicon" />
+              </div>
+              <span className="text-justify font-semibold md:text-l">
                 It is impossible to find service opportunities that fit
                 students' interests and skills in less than 15 minutes
               </span>
             </div>
-            <div className="flex flex-col w-[80%] h-[20vh] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-center">
-              <div className="font-bold text-2xl animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent pb-2">
+            <div className="flex flex-col w-[100%] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+              <div className="text-3xl text-center font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 MANAGEMENT
               </div>
-              <span className="text-justify font-semibold md:text-xl">
+              <div className="flex flex-col items-center">
+                <img className="w-[20%] pb-2" src={pic9} alt="charityicon" />
+              </div>
+              <span className="text-justify font-semibold md:text-l">
+                {" "}
                 It is impossible for charities to efficiently vet and recruit
                 high school students
               </span>
             </div>
-            <div className="flex flex-col w-[80%]  h-[20vh] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-center">
-              <div className="font-bold text-2xl animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent pb-2">
+            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+              <div className="text-3xl font-extrabold text-center animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
+                {" "}
                 ADVISE
               </div>
-              <span className="text-justify font-semibold md:text-xl">
+              <div className="flex flex-col items-center">
+                <img className="w-[20%] pb-2" src={pic8} alt="studenticon" />
+              </div>
+              <span className="text-justify font-semibold md:text-l">
                 It is impossible for school counselors to monitor and manage
                 their students' service effortlessly
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col w-[100vw] md:h-[90vh] bg-gray-100 justify-center items-center text-center pb-10">
+          <div className="text-4xl md:text-6xl text-black font-bold flex flex-col justify-center items-center text-center">
+            <span>What We Offer </span>
+          </div>
+          <div className="flex flex-col md:flex-row w-[100%] bg-gray-100 pt-5 px-4 justify-center items-center md:px-6">
+            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+              <div className="text-3xl text-center font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
+                {" "}
+                Educational and service oriented
+              </div>
+              <div className="flex flex-col items-center">
+                <img className="w-[20%] pb-2" src={pic10} alt="schoolicon" />
+              </div>
+              <span className="text-justify font-semibold md:text-l">
+                Bridgy seamlessly integrates service learning into curriculum,
+                dramatically reducing the associated administrative load.
+                Counselors can spend more time guiding students than on
+                paperwork.
+              </span>
+            </div>
+            <div className="flex flex-col w-[100%] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+              <div className="text-3xl text-center font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
+                Solving your recruitment management
+              </div>
+              <div className="flex flex-col items-center">
+                <img className="w-[20%] pb-2" src={pic9} alt="charityicon" />
+              </div>
+              <span className="text-justify font-semibold md:text-l">
+                {" "}
+                Your cause deserves the spotlight and dedicated volunteers ready
+                to take action. Bridgy simplifies the volunteer-matching
+                process, connecting your charity with students who share your
+                passion for impact.
+              </span>
+            </div>
+            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+              <div className="text-3xl font-extrabold text-center animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
+                {" "}
+                Access to opportunity{" "}
+              </div>
+              <div className="flex flex-col items-center">
+                <img className="w-[20%] pb-2" src={pic8} alt="studenticon" />
+              </div>
+              <span className="text-justify font-semibold md:text-l">
+                Bridgy allows you to find opportunities that resonate with your
+                interests and aspirations. You can connect with meaningful
+                projects in a snap, track your accomplishments, and get
+                real-time reports of your impact.
               </span>
             </div>
           </div>
@@ -120,56 +171,17 @@ export const LandingPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-[100vw] md:h-[90vh] bg-gray-100 justify-center items-center text-center pb-10">
+        <div className="flex flex-col w-[100vw] md:h-[50vh] bg-gray-100 justify-center items-center text-center">
           <div className="text-4xl md:text-6xl text-black font-bold flex flex-col justify-center items-center text-center">
-            <span>What We Offer </span>
+            <span>Our Founding Story</span>
           </div>
-          <div className="flex flex-col md:flex-row w-[100%] bg-gray-100 pt-5 px-4 justify-center items-center md:px-6">
-            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
-              <div className="text-3xl text-justify font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
-                {" "}
-                Educational and service oriented
-              </div>
-              <div className="flex flex-col items-center">
-                <img className="w-[20%] pb-2" src={pic10} alt="schoolicon" />
-              </div>
-              <span className="text-justify font-semibold md:text-l">
-                Bridgy seamlessly integrates service learning into curriculum,
-                dramatically reducing the associated administrative load.
-                Counselors can spend more time guiding students than on
-                paperwork.
-              </span>
-            </div>
-            <div className="flex flex-col w-[100%] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
-              <div className="text-3xl text-justify font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
-                Solving recruitment management
-              </div>
-              <div className="flex flex-col items-center">
-                <img className="w-[20%] pb-2" src={pic9} alt="charityicon" />
-              </div>
-              <span className="text-justify font-semibold md:text-l">
-                {" "}
-                Your cause deserves the spotlight and dedicated volunteers ready
-                to take action. Bridgy simplifies the volunteer-matching
-                process, connecting your charity with students who share your
-                passion for impact.
-              </span>
-            </div>
-            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
-              <div className="text-3xl font-extrabold text-justify animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
-                {" "}
-                Access to opportunity{" "}
-              </div>
-              <div className="flex flex-col items-center">
-                <img className="w-[20%] pb-2" src={pic8} alt="studenticon" />
-              </div>
-              <span className="text-justify font-semibold md:text-l">
-                Bridgy allows you to find opportunities that resonate with your
-                interests and aspirations. You can connect with meaningful
-                projects in a snap, track your accomplishments, and get
-                real-time reports of your impact.
-              </span>
-            </div>
+          <div className="flex flex-col text-black text-lg md:text-2xl pt-10 w-[100%] md:w-[60%] px-6 xs:font-light md:font-semibold ">
+            <span className="text-justify">
+              We are a team of college students at Oxford and the University of
+              Chicago. We experienced first hand how impractical community
+              service can be for high school students, school counselors and
+              charities.
+            </span>
           </div>
         </div>
         <div className="flex flex-col md:flex  md:flex-row w-[100vw]  bg-gray-100 justify-center items-center text-center pb-10">
