@@ -27,10 +27,10 @@ export const LandingPage = () => {
               Welcome to Bridgy
               <div className="text-black text-2xl md:text-3xl pt-5 ">
                 <span className="animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent transition duration-100">
-                  Connecting passion with purpose!{" "}
+                  Connecting passion with purpose{" "}
                 </span>
               </div>
-              <div className="text-black text-lg md:text-xl pt-5 w-[100%] md:w-[80%] font-light md:font-semibold">
+              <div className="text-black text-lg md:text-xl pt-5 w-[100%] md:w-[80%] font-light md:font-semibold text-justify">
                 <span>
                   Connecting high-schools to the highest performing charities
                   with optimal efficiency and reliability
@@ -38,7 +38,7 @@ export const LandingPage = () => {
               </div>
               <a
                 href="login"
-                class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transform hover:scale-[105%] duration-300"
+                class="mt-4 text-white bg-[#2EA0FB] hover:bg-[#2135D9] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none dark:focus:ring-blue-800 transform hover:scale-[105%] duration-300"
               >
                 Sign me up
               </a>
@@ -59,24 +59,24 @@ export const LandingPage = () => {
             </span>
           </div>
           <div className="text-3xl md:text-2xl text-black font-bold flex flex-col justify-center items-center text-center pt-5">
-            <span>We solve three major problems:</span>
+            <span>We solve three major problems</span>
           </div>
           <div className="flex flex-col md:flex-row w-[100%] bg-gray-100 pt-5 justify-center items-center md:px-6">
-            <div className="flex flex-col w-[80%] h-[30vh]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-center">
-              <span className="text-justify font-semibold md:text-xl">
+            <div className="flex flex-col w-[80%] h-[20vh]  bg-[#2135D9] rounded-2xl m-5 p-5 items-center justify-center">
+              <span className="text-justify font-semibold md:text-xl text-white">
                 Finding and obtaining the right community service missions takes
                 an average of 15 hours per opportunity for students.
               </span>
             </div>
-            <div className="flex flex-col w-[80%] h-[30vh] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-center">
-              <span className="text-justify font-semibold md:text-xl">
+            <div className="flex flex-col w-[80%] h-[20vh] bg-[#2135D9] rounded-2xl m-5 p-5 items-center justify-center">
+              <span className="text-justify font-semibold md:text-xl text-white">
                 Charities struggle to find a consistent source of dynamic and
                 motivated volunteers for their missions, hampering their scale
                 and operational capabilities.
               </span>
             </div>
-            <div className="flex flex-col w-[80%]   h-[30vh] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-center">
-              <span className="text-justify font-semibold md:text-xl">
+            <div className="flex flex-col w-[80%]   h-[20vh] bg-[#2135D9] rounded-2xl m-5 p-5 items-center justify-center">
+              <span className="text-justify font-semibold md:text-xl text-white">
                 School advisors take an absurdly long time reconciling their
                 students' data and scheduling support.
               </span>
@@ -117,7 +117,7 @@ export const LandingPage = () => {
           </div>
           <div className="flex flex-col md:flex-row w-[100%] bg-gray-100 pt-5 px-4 justify-center items-center md:px-6">
             <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
-              <div className="text-3xl font-extrabold text-center animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
+              <div className="text-3xl text-justify font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 {" "}
                 Embrace a new era of educational excellence and community
                 service with Bridgy{" "}
@@ -135,7 +135,7 @@ export const LandingPage = () => {
               </span>
             </div>
             <div className="flex flex-col w-[100%] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
-              <div className="text-3xl font-extrabold text-center animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
+              <div className="text-3xl text-justify font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 Solving your recruitment management
               </div>
               <div className="flex flex-col items-center">
@@ -150,7 +150,7 @@ export const LandingPage = () => {
               </span>
             </div>
             <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
-              <div className="text-3xl font-extrabold text-center animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
+              <div className="text-3xl font-extrabold text-justify animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 {" "}
                 Access to opportunity{" "}
               </div>
