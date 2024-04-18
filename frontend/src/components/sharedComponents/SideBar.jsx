@@ -19,9 +19,10 @@ import AddOpIcon from "@mui/icons-material/DashboardCustomize";
 import MissionIcon from "@mui/icons-material/AutoAwesomeMotion";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import EqualizerIcon from "@mui/icons-material/Equalizer";
 import SearchIcon from "@mui/icons-material/Search";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
+import DomainAddIcon from "@mui/icons-material/DomainAdd";
+import AddchartIcon from "@mui/icons-material/Addchart";
 
 const drawerWidth = "15vw";
 
@@ -85,6 +86,35 @@ const buttonMapping = {
       text: "Notifications",
       route: "/notifications",
       icon: NotificationsActiveIcon,
+    },
+  ],
+  ADMIN: [
+    {
+      text: "Create organization",
+      route: "/admin/create_organization",
+      icon: AddchartIcon,
+    },
+    {
+      text: "Create school",
+      route: "/admin/create_school",
+      icon: DomainAddIcon,
+    },
+  ],
+  SUPER_ADMIN: [
+    {
+      text: "Create admin",
+      route: "/super_admin/create_admin",
+      icon: PersonAddIcon,
+    },
+    {
+      text: "Create organization",
+      route: "/admin/create_organization",
+      icon: AddchartIcon,
+    },
+    {
+      text: "Create school",
+      route: "/admin/create_school",
+      icon: DomainAddIcon,
     },
   ],
 };

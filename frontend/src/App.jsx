@@ -167,7 +167,7 @@ function App() {
       <Route
         path="/admin/create_school"
         element={
-          role == "ADMIN" ? (
+          role == "ADMIN" || role == "SUPER_ADMIN" ? (
             <CreateSchoolPage />
           ) : isLoggedIn ? (
             <ErrorPage />
@@ -179,31 +179,7 @@ function App() {
       <Route
         path="/admin/create_organization"
         element={
-          role == "ADMIN" ? (
-            <CreateOrganizationPage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/super_admin/create_school"
-        element={
-          role == "SUPER_ADMIN" ? (
-            <CreateSchoolPage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/super_admin/create_organization"
-        element={
-          role == "SUPER_ADMIN" ? (
+          role == "ADMIN" || role == "SUPER_ADMIN" ? (
             <CreateOrganizationPage />
           ) : isLoggedIn ? (
             <ErrorPage />

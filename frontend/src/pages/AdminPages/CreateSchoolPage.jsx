@@ -1,171 +1,152 @@
 import { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
-import { CreationModal } from "../../components/CreationModal";
-import { ErrorModal } from "../../components/ErrorModal";
+
+import { Box, Toolbar, Typography, Grid, Button } from "@mui/material";
+import { TextInput } from "../../components/sharedComponents/TextInput";
+
+const schoolFields = [
+  "schoolName",
+  "schoolEmail",
+  "schoolPhoneNumber",
+  "schoolCountry",
+  "schoolCity",
+  "username",
+  "email",
+  "phoneNumber",
+];
 
 export const CreateSchoolPage = () => {
-  const [schoolName, setSchoolName] = useState("");
-  const [schoolEmail, setSchoolEmail] = useState("");
-  const [schoolPhoneNumber, setSchoolPhoneNumber] = useState("");
-  const [schoolCountry, setSchoolCountry] = useState("");
-  const [schoolCity, setSchoolCity] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [creationModal, setCreationModal] = useState(false);
-  const [errorModal, setErrorModal] = useState(false);
+  const [school, setSchool] = useState({
+    schoolName: "",
+    schoolEmail: "",
+    schoolPhoneNumber: "",
+    schoolCountry: "",
+    schoolCity: "",
+    username: "",
+    email: "",
+    phoneNumber: "",
+  });
 
-  const validate = () => {
-    if (
-      schoolName == "" ||
-      schoolEmail == "" ||
-      schoolPhoneNumber == "" ||
-      schoolCountry == "" ||
-      schoolCity == "" ||
-      username == "" ||
-      email == "" ||
-      phoneNumber == ""
-    )
-      return false;
-    return true;
+  const [schoolError, setSchoolError] = useState({
+    schoolName: false,
+    schoolEmail: false,
+    schoolPhoneNumber: false,
+    schoolCountry: false,
+    schoolCity: false,
+    username: false,
+    email: false,
+    phoneNumber: false,
+  });
+
+  const updateSchool = (e) => {
+    setSchool({ ...school, [e.target.id]: e.target.value });
+    setSchoolError({ ...schoolError, [e.target.id]: false });
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const validate = () => {
+    let error = false;
 
-    if (validate()) {
-      setCreationModal(true);
-      setErrorModal(false);
-
-      axiosInstance
-        .post(`/admin/create_school`, {
-          schoolName,
-          schoolEmail,
-          schoolPhoneNumber,
-          schoolCity,
-          schoolCountry,
-          username,
-          email,
-          phoneNumber,
-        })
-        .then((res) => {
-          setSchoolName("");
-          setSchoolEmail("");
-          setSchoolPhoneNumber("");
-          setSchoolCountry("");
-          setSchoolCity("");
-          setUsername("");
-          setEmail("");
-          setPhoneNumber("");
-        })
-        .catch((error) => console.log(error.message));
-    } else {
-      setCreationModal(false);
-      setErrorModal(true);
+    for (let i = 0; i < schoolFields.length; i++) {
+      if (school[schoolFields[i]] == "") {
+        setSchoolError((prev) => ({
+          ...prev,
+          [schoolFields[i]]: true,
+        }));
+        error = true;
+      }
     }
+
+    return !error;
+  };
+
+  const handleSubmit = (e) => {
+    if (!validate()) return;
+
+    axiosInstance
+      .post(`/admin/create_school`, {
+        schoolName: school.schoolName,
+        schoolEmail: school.schoolEmail,
+        schoolPhoneNumber: school.schoolPhoneNumber,
+        schoolCity: school.schoolCity,
+        schoolCountry: school.schoolCountry,
+        username: school.username,
+        email: school.email,
+        phoneNumber: school.phoneNumber,
+      })
+      .then((res) => {
+        console.log("success");
+        setSchool({
+          schoolName: "",
+          schoolEmail: "",
+          schoolPhoneNumber: "",
+          schoolCountry: "",
+          schoolCity: "",
+          username: "",
+          email: "",
+          phoneNumber: "",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
-    <div className="h-full bg-gray-100 ml-[15vw] px-4 pb-10">
-      <div className="flex flex-col">
-        <div className="p-5 bg-white rounded-xl">
-          <h1 className="text-2xl lg:text-3xl font-semibold px-5 mb-4 text-center">
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
+      <Toolbar />
+      <Box sx={{ m: 4 }}>
+        <Box sx={{ p: 2, bgcolor: "white.main", borderRadius: 5 }}>
+          <Typography
+            variant="h4"
+            fontWeight="700"
+            sx={{
+              fontSize: {
+                xs: "22px",
+                lg: "26px",
+                xl: "30px",
+              },
+            }}
+          >
             Create school
-          </h1>
-          <form onSubmit={submitHandler}>
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="School name"
-                value={schoolName}
-                onChange={(e) => setSchoolName(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
+          </Typography>
+          <Box sx={{ my: 3 }}>
+            <Grid container spacing={3}>
+              {schoolFields.map((field) => {
+                return (
+                  <Grid item xs={12} lg={6} key={field}>
+                    <TextInput
+                      id={field}
+                      name={field}
+                      value={school[field]}
+                      error={schoolError[field]}
+                      updateFormData={updateSchool}
+                    />
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Box>
 
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="School Email"
-                value={schoolEmail}
-                onChange={(e) => setSchoolEmail(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="School Phone Number"
-                value={schoolPhoneNumber}
-                onChange={(e) => setSchoolPhoneNumber(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="School Country of origin"
-                value={schoolCountry}
-                onChange={(e) => setSchoolCountry(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="School City of origin"
-                value={schoolCity}
-                onChange={(e) => setSchoolCity(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Account username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Account email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Account phone number"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="bg-[#2EA0FB] text-white text-ll py-2 px-5 rounded-xl m-5 hover:bg-[#2135D9]"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
-      {creationModal ? (
-        <CreationModal setCreationModal={setCreationModal} type={"School"} />
-      ) : null}
-      {errorModal ? <ErrorModal setErrorModal={setErrorModal} /> : null}
-    </div>
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "blue.light",
+              color: "blue.contrastText",
+              px: 4,
+              py: 2,
+              fontSize: "18px",
+              borderRadius: 8,
+              textTransform: "none",
+              ":hover": {
+                bgcolor: "blue.main",
+              },
+            }}
+            onClick={handleSubmit}
+          >
+            Create school
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
