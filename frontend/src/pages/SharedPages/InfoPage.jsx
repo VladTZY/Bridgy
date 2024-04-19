@@ -27,6 +27,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import GroupIcon from "@mui/icons-material/Group";
 import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
+import Image from "mui-image";
 
 import { RequestsTable } from "../../components/organizationComponents/RequestsTable";
 
@@ -90,85 +91,118 @@ export const InfoPage = () => {
     <Box sx={{ width: 1, bgcolor: "background" }}>
       <Toolbar />
       <Card sx={{ m: 4, bgcolor: "white.main", borderRadius: 10 }}>
-        <CardMedia
-          sx={{ height: 500 }}
-          image={
-            event.photoUrl == "NO_FILE"
-              ? DefaultImage
-              : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${event.photoUrl}`
-          }
-        />
         <CardContent>
-          <Typography variant="h3" component="div" sx={{ textAlign: "center" }}>
+          <Grid container direction="row" spacing={6}>
+            <Grid item sx={{ width: "50%" }}>
+              <Image
+                sx={{ borderRadius: 6 }}
+                src={
+                  event.photoUrl == "NO_FILE"
+                    ? DefaultImage
+                    : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                        event.photoUrl
+                      }`
+                }
+              ></Image>
+            </Grid>
+            <Grid
+              item
+              container
+              direction="column"
+              sx={{ width: "50%", justifyContent: "space-between" }}
+            >
+              <Grid item>
+                <Box
+                  sx={{
+                    border: 1,
+                    borderColor: "gray",
+                    borderRadius: 4,
+                    textAlign: "center",
+                    p: 3,
+                  }}
+                >
+                  <Typography variant="h4">
+                    <DateRangeIcon
+                      fontSize="large"
+                      sx={{ color: "blue.main", mr: 1 }}
+                    />
+                    {datetimeToStr(event.time)}
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item>
+                <Box
+                  sx={{
+                    border: 1,
+                    borderColor: "gray",
+                    borderRadius: 4,
+                    textAlign: "center",
+                    p: 3,
+                  }}
+                >
+                  <Typography variant="h4">
+                    <LocationOnIcon
+                      fontSize="large"
+                      sx={{ color: "blue.main", mr: 1 }}
+                    />
+                    {locationName}
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item>
+                <Box
+                  sx={{
+                    border: 1,
+                    borderColor: "gray",
+                    borderRadius: 4,
+                    textAlign: "center",
+                    p: 3,
+                  }}
+                >
+                  <Typography variant="h4">
+                    <AccessTimeIcon
+                      fontSize="large"
+                      sx={{ color: "blue.main", mr: 1 }}
+                    />
+                    {event.hours} hours
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item>
+                <Box
+                  sx={{
+                    border: 1,
+                    borderColor: "gray",
+                    borderRadius: 4,
+                    textAlign: "center",
+                    p: 3,
+                  }}
+                >
+                  <Typography variant="h4">
+                    <GroupIcon
+                      fontSize="large"
+                      sx={{ color: "blue.main", mr: 1 }}
+                    />
+                    {event.capacity} places
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Typography
+            variant="h2"
+            component="div"
+            sx={{ textAlign: "center", mt: 4 }}
+          >
             {event.name}
           </Typography>
           <Typography
-            variant="h5"
+            variant="h4"
             color="text.secondary"
             sx={{ textAlign: "center" }}
           >
             {event.description}
           </Typography>
-          <Grid item container direction="row" spacing={1} sx={{ mt: 2 }}>
-            <Grid item xs={12} lg={6}>
-              <Box
-                sx={{
-                  border: 1,
-                  borderColor: "gray",
-                  borderRadius: 4,
-                  textAlign: "center",
-                  p: 1,
-                }}
-              >
-                <DateRangeIcon sx={{ color: "blue.main", mr: 1 }} />
-                <Typography variant="h7">
-                  {datetimeToStr(event.time)}
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} lg={6}>
-              <Box
-                sx={{
-                  border: 1,
-                  borderColor: "gray",
-                  borderRadius: 4,
-                  textAlign: "center",
-                  p: 1,
-                }}
-              >
-                <LocationOnIcon sx={{ color: "blue.main", mr: 1 }} />
-                <Typography variant="h7">{locationName}</Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} lg={6}>
-              <Box
-                sx={{
-                  border: 1,
-                  borderColor: "gray",
-                  borderRadius: 4,
-                  textAlign: "center",
-                  p: 1,
-                }}
-              >
-                <AccessTimeIcon sx={{ color: "blue.main", mr: 1 }} />
-                <Typography variant="h7">{event.hours} hours</Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} lg={6}>
-              <Box
-                sx={{
-                  border: 1,
-                  borderColor: "gray",
-                  borderRadius: 4,
-                  textAlign: "center",
-                  p: 1,
-                }}
-              >
-                <GroupIcon sx={{ color: "blue.main", mr: 1 }} />
-                <Typography variant="h7">{event.capacity} places</Typography>
-              </Box>
-            </Grid>
-          </Grid>
         </CardContent>
       </Card>
       {role == "STUDENT" ? (

@@ -45,12 +45,12 @@ export const LandingPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-[100vw] md:h-[90vh] bg-gray-100 justify-center items-center text-center">
+        <div className="flex flex-col w-[100vw] md:h-[100vh] bg-gray-100 justify-center items-center text-center">
           <div className="text-4xl md:text-6xl text-black font-bold flex flex-col justify-center items-center text-center">
             <span>We solve three major problems</span>
           </div>
           <div className="flex flex-col md:flex-row w-[100%] bg-gray-100 pt-5 px-4 justify-center items-center md:px-6">
-            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-around h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
               <div className="text-3xl text-center font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 {" "}
                 ACCESS
@@ -63,7 +63,7 @@ export const LandingPage = () => {
                 students' interests and skills in less than 15 minutes
               </span>
             </div>
-            <div className="flex flex-col w-[100%] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+            <div className="flex flex-col w-[100%] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-around h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
               <div className="text-3xl text-center font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 MANAGEMENT
               </div>
@@ -76,10 +76,10 @@ export const LandingPage = () => {
                 high school students
               </span>
             </div>
-            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-around h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
               <div className="text-3xl font-extrabold text-center animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 {" "}
-                ADVISE
+                ADVISING
               </div>
               <div className="flex flex-col items-center">
                 <img className="w-[20%] pb-2" src={pic8} alt="studenticon" />
@@ -91,12 +91,12 @@ export const LandingPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-[100vw] md:h-[90vh] bg-gray-100 justify-center items-center text-center pb-10">
+        <div className="flex flex-col w-[100vw] md:h-[100vh] bg-gray-100 justify-center items-center text-center pb-10">
           <div className="text-4xl md:text-6xl text-black font-bold flex flex-col justify-center items-center text-center">
             <span>What We Offer </span>
           </div>
           <div className="flex flex-col md:flex-row w-[100%] bg-gray-100 pt-5 px-4 justify-center items-center md:px-6">
-            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-around h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
               <div className="text-3xl text-center font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 {" "}
                 Educational and service oriented
@@ -111,9 +111,9 @@ export const LandingPage = () => {
                 paperwork.
               </span>
             </div>
-            <div className="flex flex-col w-[100%] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+            <div className="flex flex-col w-[100%] bg-gray-200 rounded-2xl m-5 p-5 items-center justify-around h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
               <div className="text-3xl text-center font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
-                Solving your recruitment management
+                Solving recruitment management
               </div>
               <div className="flex flex-col items-center">
                 <img className="w-[20%] pb-2" src={pic9} alt="charityicon" />
@@ -126,7 +126,7 @@ export const LandingPage = () => {
                 passion for impact.
               </span>
             </div>
-            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-evenly h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+            <div className="flex flex-col w-[100%]  bg-gray-200 rounded-2xl m-5 p-5 items-center justify-around h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
               <div className="text-3xl font-extrabold text-center animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 {" "}
                 Access to opportunity{" "}
