@@ -183,25 +183,27 @@ export const ProfilePage = () => {
                     {button.text}
                   </Button>
                 )}
-                <Button
-                  variant="contained"
-                  startIcon={<LockResetIcon />}
-                  onClick={() => setPasswordModal(true)}
-                  sx={{
-                    bgcolor: "blue.light",
-                    color: "blue.contrastText",
-                    px: 4,
-                    py: 2,
-                    ml: 2,
-                    fontSize: "16px",
-                    borderRadius: 8,
-                    ":hover": {
-                      bgcolor: "blue.main",
-                    },
-                  }}
-                >
-                  Change Password
-                </Button>
+                {userId == id && (
+                  <Button
+                    variant="contained"
+                    startIcon={<LockResetIcon />}
+                    onClick={() => setPasswordModal(true)}
+                    sx={{
+                      bgcolor: "blue.light",
+                      color: "blue.contrastText",
+                      px: 4,
+                      py: 2,
+                      ml: 2,
+                      fontSize: "16px",
+                      borderRadius: 8,
+                      ":hover": {
+                        bgcolor: "blue.main",
+                      },
+                    }}
+                  >
+                    Change Password
+                  </Button>
+                )}
                 {passwordModal && (
                   <ChangePasswordModal setModal={setPasswordModal} />
                 )}

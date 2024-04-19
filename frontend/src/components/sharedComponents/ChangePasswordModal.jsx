@@ -58,7 +58,7 @@ export const ChangePasswordModal = ({ setModal }) => {
           id="outlined-basic"
           label="Password"
           variant="outlined"
-          color="secondary"
+          color="blue"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           sx={{
@@ -76,7 +76,7 @@ export const ChangePasswordModal = ({ setModal }) => {
           id="outlined-basic"
           label="New Password"
           variant="outlined"
-          color="secondary"
+          color="blue"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
           sx={{
@@ -94,7 +94,7 @@ export const ChangePasswordModal = ({ setModal }) => {
           id="outlined-basic"
           label="Confirm New Password"
           variant="outlined"
-          color="secondary"
+          color="blue"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           sx={{

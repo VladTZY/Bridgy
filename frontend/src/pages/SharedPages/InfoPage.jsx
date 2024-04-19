@@ -15,11 +15,20 @@ import {
   Grid,
 } from "@mui/material";
 import { OrganizationFinishedMoreInfo } from "../../components/organizationComponents/OrganizationFinishedMoreInfo";
+import { OrganizationPublishedMoreInfo } from "../../components/organizationComponents/OrganizationPublishedMoreInfo";
+import { OrganizationOngoingMoreInfo } from "../../components/organizationComponents/OrganizationOngoingMoreInfo";
+import { StudentPublishedMoreInfo } from "../../components/studentComponents/StudentPublishedMoreInfo";
+import { StudentFinishedMoreInfo } from "../../components/studentComponents/StudentFinishedMoreInfo";
+import { StudentOngoingMoreInfo } from "../../components/studentComponents/StudentOngoingMoreInfo";
+import { StudentAcceptedMoreInfo } from "../../components/studentComponents/StudentAcceptedMoreInfo";
+import { StudentRequestedMoreInfo } from "../../components/studentComponents/StudentRequestedMoreInfo";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import GroupIcon from "@mui/icons-material/Group";
 import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
+
+import { RequestsTable } from "../../components/organizationComponents/RequestsTable";
 
 import datetimeToStr from "../../utils/datetimeToStr";
 
@@ -162,7 +171,40 @@ export const InfoPage = () => {
           </Grid>
         </CardContent>
       </Card>
-      <OrganizationFinishedMoreInfo />
+      {role == "STUDENT" ? (
+        event.status == "PUBLISHED" ? (
+          <StudentPublishedMoreInfo
+            eventId={id}
+            placesLeft={event.placesLeft}
+          />
+        ) : event.status == "STUDENT_FINISHED" ? (
+          <StudentFinishedMoreInfo eventId={id} />
+        ) : event.status == "STUDENT_ONGOING" ? (
+          <StudentOngoingMoreInfo />
+        ) : event.status == "STUDENT_ACCEPTED" ? (
+          <StudentAcceptedMoreInfo />
+        ) : (
+          <StudentRequestedMoreInfo />
+        )
+      ) : isAdmin ? (
+        event.status == "PUBLISHED" ? (
+          <OrganizationPublishedMoreInfo eventId={id} />
+        ) : event.status == "FINISHED" ? (
+          <OrganizationFinishedMoreInfo eventId={id} />
+        ) : (
+          <OrganizationOngoingMoreInfo eventId={id} />
+        )
+      ) : (
+        <Box sx={{ mt: 4 }}>
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{ textAlign: "center", mb: 2 }}
+          >
+            You cannot access this event!
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };

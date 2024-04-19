@@ -21,24 +21,24 @@ export const StudentsTable = ({ title, students }) => {
         <Table>
           <TableHead sx={{ backgroundColor: "blue.main" }}>
             <TableRow>
-              <TableCell>
+              <TableCell align="center">
                 <Typography variant="h6" color="white.main">
                   Username
                 </Typography>
               </TableCell>
-              <TableCell align="right">
+              <TableCell align="center">
                 {" "}
                 <Typography variant="h6" color="white.main">
                   Email
                 </Typography>
               </TableCell>
-              <TableCell align="right">
+              <TableCell align="center">
                 {" "}
                 <Typography variant="h6" color="white.main">
                   Phone Number
                 </Typography>
               </TableCell>
-              <TableCell align="right">
+              <TableCell align="center">
                 {" "}
                 <Typography variant="h6" color="white.main">
                   Profile
@@ -50,12 +50,21 @@ export const StudentsTable = ({ title, students }) => {
             {students.map((student) => {
               return (
                 <TableRow>
-                  <TableCell align="right">{student.user.username}</TableCell>
-                  <TableCell align="right">{student.user.email}</TableCell>
-                  <TableCell align="right">
-                    {student.user.phoneNumber}
+                  <TableCell align="center">
+                    <Typography vairant="h7">
+                      {student.user.username}
+                    </Typography>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center">
+                    {" "}
+                    <Typography vairant="h7">{student.user.email}</Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Typography vairant="h7">
+                      {student.user.phoneNumber}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="center">
                     <Link
                       to={`/profile/${student.user.id}`}
                       className="hover:bg-[#2135D9] bg-[#2EA0FB] py-2 px-5 rounded-[50px] text-white text-l"
