@@ -76,8 +76,9 @@ const signupUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const { email, password } = req.body;
   try {
+    const { email, password } = req.body;
+
     if (!email) throw Error("No email sent");
     if (!password) throw Error("No password sent");
 
@@ -87,7 +88,9 @@ const loginUser = async (req, res) => {
       },
     });
 
-    const match = await bcrypt.compare(req.body.password, user.password);
+    if (!user) throw Error("Email is not associated with a user");
+
+    const match = await bcrypt.compare(password, user.password);
 
     if (!match) throw Error("Incorect password");
 
