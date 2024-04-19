@@ -1,13 +1,25 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 
-import { StudentsTable } from "../../components/StudentsTable";
-import { SchoolProgressCard } from "../../components/SchoolProgressCard";
+import {
+  Box,
+  Toolbar,
+  Grid,
+  Stack,
+  Typography,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Backdrop,
+  CircularProgress,
+} from "@mui/material";
+import { ProgressCard } from "../../components/sharedComponents/ProgressCard";
+import { StudentsTable } from "../../components/schoolComponents/StudentsTable";
+
 export const SchoolDashboardPage = () => {
-  const [students, setStudents] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [grade, setGrade] = useState("9");
-  const [sorted, setSorted] = useState("none");
   const [stats, setStats] = useState({
     numberOfStudents: 0,
     completedStudents: 0,
@@ -20,7 +32,6 @@ export const SchoolDashboardPage = () => {
     axiosInstance
       .get(`/school/students?grade=${grade}`)
       .then((res) => {
-        setStudents(res.data);
         setTableData(res.data);
       })
       .catch((error) => console.log(error));
@@ -35,117 +46,78 @@ export const SchoolDashboardPage = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  const handleOrderChange = (value) => {
-    if (value == "none") setTableData(students);
-
-    if (value == "alphabetical") {
-      const sortedArray = [...students].sort((a, b) =>
-        a.username.toLowerCase() > b.username.toLowerCase()
-          ? 1
-          : b.username.toLowerCase() > a.username.toLowerCase()
-          ? -1
-          : 0
-      );
-      setTableData(sortedArray);
-    }
-
-    setSorted(value);
-  };
+  if (tableData.length == 0) {
+    return (
+      <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
+        <Backdrop
+          open={true}
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      </Box>
+    );
+  }
 
   return (
-    <div className="ml-[15vw] pb-[8vh]">
-      <div className=" md:flex w-[85vw] bg-gray-100 flex flex-col  overflow-x-scroll  ">
-        <div className=" hidden md:flex md:flex-row overflow-x-scroll  justify-center items-center w-[100%]">
-          <SchoolProgressCard
-            title={"Objective"}
-            total={stats.actualObjective + "/" + stats.totalObjective}
-            description={""}
-            percentage={Math.round(
-              (stats.actualObjective / stats.totalObjective) * 100
-            )}
-            color={"#32cd32"}
-          />
-          <SchoolProgressCard
-            title={"Total Economy"}
-            total={stats.totalEconomy + "$"}
-            description={""}
-            percentage={100}
-            color={"#eed202"}
-          />
-          <SchoolProgressCard
-            title={"Nr. of Students"}
-            total={stats.completedStudents + "/" + stats.numberOfStudents}
-            description={""}
-            percentage={Math.round(
-              (stats.completedStudents / stats.numberOfStudents) * 100
-            )}
-            color={"#a40000"}
-          />
-        </div>
-
-        <div className=" w-[85vw] bg-gray-100 flex flex-col overflow-x-scroll overscroll-contain md:hidden"></div>
-        <div className="  flex flex-row overflow-x-scroll justify-center items-center w-[300%] md:hidden">
-          <div className="flex flex-row overflow-x-scroll justify-center items-center w-[100%]">
-            <SchoolProgressCard
-              title={"Objective"}
-              total={stats.actualObjective + "/" + stats.totalObjective}
-              description={""}
-              percentage={Math.round(
-                (stats.actualObjective / stats.totalObjective) * 100
-              )}
-              color={"#32cd32"}
-            />
-          </div>
-          <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
-            <SchoolProgressCard
-              title={"Total Economy"}
-              total={stats.totalEconomy + "$"}
-              description={""}
-              percentage={100}
-              color={"#eed202"}
-            />
-          </div>
-          <div className="flex flex-row overflow-x-scroll  justify-center items-center w-[100%]">
-            <SchoolProgressCard
-              title={"Nr. of Students"}
-              total={stats.completedStudents + "/" + stats.numberOfStudents}
-              description={""}
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
+      <Toolbar />
+      <Box sx={{ m: 4 }}>
+        <Grid container direction="row" spacing={3} sx={{ mb: 3 }}>
+          <Grid item xs={12} lg={4}>
+            <ProgressCard
+              title="Students status"
+              value={stats.completedStudents + " / " + stats.numberOfStudents}
               percentage={Math.round(
                 (stats.completedStudents / stats.numberOfStudents) * 100
               )}
-              color={"#a40000"}
+              color="green"
             />
-          </div>
-        </div>
-      </div>
-      <div className="mt-6 flex flex-col md:flex md:flex-row justify-between  w-[100%] px-4">
-        <h1 className="text-2xl font-semibold text-center lg:text-left">
-          Students
-        </h1>
-        <div className="flex  mt-3 md:mt-0 justify-center text-center">
-          <select
-            value={sorted}
-            onChange={(e) => handleOrderChange(e.target.value)}
-            className="bg-white shadow-md p-2 rounded-xl mr-2 border"
-          >
-            <option value="none">Order</option>
-            <option value="alphabetical">Alphabetical</option>
-          </select>
-          <select
-            value={grade}
-            onChange={(e) => setGrade(e.target.value)}
-            className="bg-white shadow-md p-2 rounded-xl border"
-          >
-            <option value="9">9th Grade</option>
-            <option value="10">10th Grade</option>
-            <option value="11">11th Grade</option>
-            <option value="12">12th Grade</option>
-          </select>
-        </div>
-      </div>
-      <div className=" mx-3 mt-6  ">
-        <StudentsTable students={tableData} />
-      </div>
-    </div>
+          </Grid>
+          <Grid item xs={12} lg={4}>
+            <ProgressCard
+              title="Objective status"
+              value={stats.actualObjective + " / " + stats.totalObjective}
+              percentage={Math.round(
+                (stats.actualObjective / stats.totalObjective) * 100
+              )}
+              color="orange"
+            />
+          </Grid>
+          <Grid item xs={12} lg={4}>
+            <ProgressCard
+              title="Total Economy"
+              value={stats.totalEconomy + " $"}
+              percentage="100"
+              color="lightskyblue"
+            />
+          </Grid>
+        </Grid>
+        <Box sx={{ mt: 4 }}>
+          <Stack direction="row">
+            <Box sx={{ flexGrow: 1 }}></Box>
+            <FormControl sx={{ minWidth: 120 }} size="small">
+              <InputLabel>Grade</InputLabel>
+              <Select
+                id="grade"
+                value={grade}
+                label="Grade"
+                onChange={(e) => {
+                  setGrade(e.target.value);
+                }}
+              >
+                <MenuItem value={9}>9</MenuItem>
+                <MenuItem value={10}>10</MenuItem>
+                <MenuItem value={11}>11</MenuItem>
+                <MenuItem value={12}>12</MenuItem>
+              </Select>
+            </FormControl>
+          </Stack>
+          <Box sx={{ mt: 3 }}>
+            <StudentsTable rows={tableData} />
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };

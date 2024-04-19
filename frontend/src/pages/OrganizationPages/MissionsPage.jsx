@@ -1,32 +1,46 @@
 import axiosInstance from "../../utils/axiosInstance";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { Card } from "../../components/Card";
-import { SearchBar } from "../../components/SearchBar";
-import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
+
+import {
+  Box,
+  Toolbar,
+  Grid,
+  Stack,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { MissionCard } from "../../components/sharedComponents/MissionCard";
+import DefaultImage from "../../../assets/defaultMission.png";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 export const MissionsPage = () => {
   const id = useSelector((state) => state.auth.id);
-  const organizationId = useSelector((state) => state.auth.institutionId);
-  const [publishedEvents, setPublishedEvents] = useState([]);
+  const [ongoingEvents, setOngoingEvents] = useState([]);
   const [finishedEvents, setFinishedEvents] = useState([]);
-  const [publishedPage, setPublishedPage] = useState(1);
+  const [ongoingPage, setOngoingPage] = useState(1);
   const [finishedPage, setFinishedPage] = useState(1);
 
   useEffect(() => {
     axiosInstance
       .get(
-        `/events/by_admin_and_status?adminId=${id}&status=PUBLISHED&offset=${
-          publishedPage - 1
-        }&pageSize=4`
+        `/events/by_admin_and_status?adminId=${id}&status=ONGOING&offset=${
+          ongoingPage - 1
+        }&pageSize=3`
       )
       .then((res) => {
-        setPublishedEvents(res.data);
+        setOngoingEvents(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [organizationId, publishedPage]);
+  }, [ongoingPage]);
+
+  const handleOngoingChangePage = (val) => {
+    if (val == -1 && ongoingPage + val > 0) setOngoinPage(ongoingPage - 1);
+    if (val == 1 && ongoingEvents.length > 3) setOngoinPage(ongoingPage + 1);
+  };
 
   useEffect(() => {
     axiosInstance
@@ -41,14 +55,7 @@ export const MissionsPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [organizationId, finishedPage]);
-
-  const handlePublishedChangePage = (val) => {
-    if (val == -1 && publishedPage + val > 0)
-      setPublishedPage(publishedPage - 1);
-    if (val == 1 && publishedEvents.length > 4)
-      setPublishedPage(publishedPage + 1);
-  };
+  }, [finishedPage]);
 
   const handleFinishedChangePage = (val) => {
     if (val == -1 && finishedPage + val > 0) setFinishedPage(finishedPage - 1);
@@ -57,119 +64,135 @@ export const MissionsPage = () => {
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col pb-[8vh] ml-[15vw] px-3 w-[85vw] pt-6">
-      <SearchBar />
-      <div className="flex flex-col overflow-x-scroll overflow-hidden">
-        <h1 className="text-2xl font-semibold  mt-4 mb-3 text-center md:text-left">
-          Future Opportunities
-        </h1>
-
-        <div className=" flex flex-row overflow-x-scroll no-scrollbar space-x-4">
-          {publishedEvents.slice(0, 4).map((event) => {
-            return (
-              <Card
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                description={event.description}
-                time={event.time}
-                location={event.location}
-                duration={event.hours}
-                event_type={"opportunity"}
-                photoUrl={
-                  event.photoUrl == "NO_FILE"
-                    ? DefaultImage
-                    : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                        event.photoUrl
-                      }`
-                }
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
+      <Toolbar />
+      <Box>
+        <Toolbar sx={{ mt: 1 }}>
+          <Typography
+            variant="h4"
+            fontWeight="700"
+            sx={{
+              flexGrow: 1,
+              fontSize: {
+                xs: "22px",
+                lg: "26px",
+                xl: "30px",
+              },
+            }}
+          >
+            Ongoing Opportunities
+          </Typography>
+        </Toolbar>
+        <Grid container sx={{ mt: 2, px: 5 }}>
+          <Grid item container direction="row" spacing={2}>
+            {ongoingEvents.slice(0, 4).map((event) => {
+              return (
+                <Grid item xs={12} md={6} lg={3} key={event.id}>
+                  <MissionCard
+                    id={event.id}
+                    title={event.name}
+                    description={event.description}
+                    time={event.time}
+                    location={event.location}
+                    duration={event.hours}
+                    event_type={"opportunity"}
+                    photoUrl={
+                      event.photoUrl == "NO_FILE"
+                        ? DefaultImage
+                        : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                            event.photoUrl
+                          }`
+                    }
+                  />
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Grid>
+        <Stack direction="row" sx={{ mx: 5, mt: 1 }}>
+          <Box sx={{ flexGrow: 1 }}>
+            <IconButton onClick={() => handleOngoingChangePage(-1)}>
+              <ArrowCircleLeftIcon
+                fontSize="large"
+                sx={{
+                  color: "blue.light",
+                  ":hover": { color: "blue.main" },
+                }}
               />
-            );
-          })}
-        </div>
-        <div className="flex justify-end mx-5 space-x-6">
-          {publishedPage > 1 ? (
-            <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
-              onClick={() => handlePublishedChangePage(-1)}
-            >
-              Previous Page
-            </button>
-          ) : (
-            <div className="bg-inherit text-transparent py-2 px-5 mt-4">
-              Previous Page
-            </div>
-          )}
-          {publishedEvents.length > 4 ? (
-            <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
-              onClick={() => handlePublishedChangePage(1)}
-            >
-              Next Page
-            </button>
-          ) : (
-            <div className="bg-inherit text-transparent py-2 px-5 mt-4">
-              Next Page
-            </div>
-          )}
-        </div>
-      </div>
+            </IconButton>
+          </Box>
+          <IconButton onClick={() => handleOngoingChangePage(1)}>
+            <ArrowCircleRightIcon
+              fontSize="large"
+              sx={{ color: "blue.light", ":hover": { color: "blue.main" } }}
+            />
+          </IconButton>
+        </Stack>
+      </Box>
 
-      <div className="flex flex-col ">
-        <h1 className="text-2xl font-semibold my-4 text-center md:text-left">
-          Past Opportunities
-        </h1>
-
-        <div className="mx-2 flex flex-row overflow-x-scroll no-scrollbar space-x-4 md:px-2">
-          {finishedEvents.slice(0, 4).map((event) => {
-            return (
-              <Card
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                description={event.description}
-                time={event.time}
-                location={event.location}
-                duration={event.hours}
-                event_type={"opportunity"}
-                photoUrl={
-                  event.photoUrl == "NO_FILE"
-                    ? DefaultImage
-                    : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                        event.photoUrl
-                      }`
-                }
+      <Box>
+        <Toolbar sx={{ mt: 1 }}>
+          <Typography
+            variant="h4"
+            fontWeight="700"
+            sx={{
+              flexGrow: 1,
+              fontSize: {
+                xs: "22px",
+                lg: "26px",
+                xl: "30px",
+              },
+            }}
+          >
+            Finished Opportunities
+          </Typography>
+        </Toolbar>
+        <Grid container sx={{ mt: 2, px: 5 }}>
+          <Grid item container direction="row" spacing={2}>
+            {finishedEvents.slice(0, 4).map((event) => {
+              return (
+                <Grid item xs={12} md={6} lg={3} key={event.id}>
+                  <MissionCard
+                    id={event.id}
+                    title={event.name}
+                    description={event.description}
+                    time={event.time}
+                    location={event.location}
+                    duration={event.hours}
+                    event_type={"opportunity"}
+                    photoUrl={
+                      event.photoUrl == "NO_FILE"
+                        ? DefaultImage
+                        : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                            event.photoUrl
+                          }`
+                    }
+                  />
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Grid>
+        <Stack direction="row" sx={{ mx: 5, mt: 1 }}>
+          <Box sx={{ flexGrow: 1 }}>
+            <IconButton onClick={() => handleFinishedChangePage(-1)}>
+              <ArrowCircleLeftIcon
+                fontSize="large"
+                sx={{
+                  color: "blue.light",
+                  ":hover": { color: "blue.main" },
+                }}
               />
-            );
-          })}
-        </div>
-        <div className="flex justify-end mx-5 space-x-6">
-          {finishedPage > 1 ? (
-            <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
-              onClick={() => handleFinishedChangePage(-1)}
-            >
-              Previous Page
-            </button>
-          ) : (
-            <div className="bg-inherit text-transparent py-2 px-5 mt-4">
-              Previous Page
-            </div>
-          )}
-          {finishedEvents.length > 4 ? (
-            <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
-              onClick={() => handleFinishedChangePage(1)}
-            >
-              Next Page
-            </button>
-          ) : (
-            <div className="bg-inherit text-transparent py-2 px-5 mt-4">
-              Next Page
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+            </IconButton>
+          </Box>
+          <IconButton onClick={() => handleFinishedChangePage(1)}>
+            <ArrowCircleRightIcon
+              fontSize="large"
+              sx={{ color: "blue.light", ":hover": { color: "blue.main" } }}
+            />
+          </IconButton>
+        </Stack>
+      </Box>
+    </Box>
   );
 };

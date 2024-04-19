@@ -1,174 +1,152 @@
 import { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
-import { CreationModal } from "../../components/CreationModal";
-import { ErrorModal } from "../../components/ErrorModal";
+
+import { Box, Toolbar, Typography, Grid, Button } from "@mui/material";
+import { TextInput } from "../../components/sharedComponents/TextInput";
+
+const organizationFields = [
+  "organizationName",
+  "organizationEmail",
+  "organizationPhoneNumber",
+  "organizationCountry",
+  "organizationCity",
+  "username",
+  "email",
+  "phoneNumber",
+];
 
 export const CreateOrganizationPage = () => {
-  const [organizationName, setOrganizationName] = useState("");
-  const [organizationEmail, setOrganizationEmail] = useState("");
-  const [organizationPhoneNumber, setOrganizationPhoneNumber] = useState("");
-  const [organizationCountry, setOrganizationCountry] = useState("");
-  const [organizationCity, setOrganizationCity] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [creationModal, setCreationModal] = useState(false);
-  const [errorModal, setErrorModal] = useState(false);
+  const [organization, setOrganization] = useState({
+    organizationName: "",
+    organizationEmail: "",
+    organizationPhoneNumber: "",
+    organizationCountry: "",
+    organizationCity: "",
+    username: "",
+    email: "",
+    phoneNumber: "",
+  });
 
-  const validate = () => {
-    if (
-      organizationName == "" ||
-      organizationEmail == "" ||
-      organizationPhoneNumber == "" ||
-      organizationCountry == "" ||
-      organizationCity == "" ||
-      username == "" ||
-      email == "" ||
-      phoneNumber == ""
-    )
-      return false;
-    return true;
+  const [organizationError, setOrganizationError] = useState({
+    organizationName: false,
+    organizationEmail: false,
+    organizationPhoneNumber: false,
+    organizationCountry: false,
+    organizationCity: false,
+    username: false,
+    email: false,
+    phoneNumber: false,
+  });
+
+  const updateOrganization = (e) => {
+    setOrganization({ ...organization, [e.target.id]: e.target.value });
+    setOrganizationError({ ...organizationError, [e.target.id]: false });
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const validate = () => {
+    let error = false;
 
-    if (validate()) {
-      setCreationModal(true);
-      setErrorModal(false);
-
-      axiosInstance
-        .post(`/admin/create_organization`, {
-          organizationName,
-          organizationEmail,
-          organizationPhoneNumber,
-          organizationCity,
-          organizationCountry,
-          username,
-          email,
-          phoneNumber,
-        })
-        .then((res) => {
-          setOrganizationName("");
-          setOrganizationEmail("");
-          setOrganizationPhoneNumber("");
-          setOrganizationCountry("");
-          setOrganizationCity("");
-          setUsername("");
-          setEmail("");
-          setPhoneNumber("");
-        })
-        .catch((error) => console.log(error));
-    } else {
-      setErrorModal(true);
-      setCreationModal(false);
+    for (let i = 0; i < organizationFields.length; i++) {
+      if (organization[organizationFields[i]] == "") {
+        setOrganizationError((prev) => ({
+          ...prev,
+          [organizationFields[i]]: true,
+        }));
+        error = true;
+      }
     }
+
+    return !error;
+  };
+
+  const handleSubmit = (e) => {
+    if (!validate()) return;
+
+    axiosInstance
+      .post(`/admin/create_organization`, {
+        organizationName: organization.organizationName,
+        organizationEmail: organization.organizationEmail,
+        organizationPhoneNumber: organization.organizationPhoneNumber,
+        organizationCity: organization.organizationCity,
+        organizationCountry: organization.organizationCountry,
+        username: organization.username,
+        email: organization.email,
+        phoneNumber: organization.phoneNumber,
+      })
+      .then((res) => {
+        console.log("success");
+        setOrganization({
+          organizationName: "",
+          organizationEmail: "",
+          organizationPhoneNumber: "",
+          organizationCountry: "",
+          organizationCity: "",
+          username: "",
+          email: "",
+          phoneNumber: "",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
-    <div className="h-full bg-gray-100 ml-[15vw] px-4 pb-10">
-      <div className="flex flex-col ">
-        <div className="px-2 pt-6 bg-white rounded-xl">
-          <h1 className=" text-2xl lg:text-3xl font-semibold px-5 mb-4 text-center">
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
+      <Toolbar />
+      <Box sx={{ m: 4 }}>
+        <Box sx={{ p: 2, bgcolor: "white.main", borderRadius: 5 }}>
+          <Typography
+            variant="h4"
+            fontWeight="700"
+            sx={{
+              fontSize: {
+                xs: "22px",
+                lg: "26px",
+                xl: "30px",
+              },
+            }}
+          >
             Create organization
-          </h1>
-          <form onSubmit={submitHandler}>
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Organization name"
-                value={organizationName}
-                onChange={(e) => setOrganizationName(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
+          </Typography>
+          <Box sx={{ my: 3 }}>
+            <Grid container spacing={3}>
+              {organizationFields.map((field) => {
+                return (
+                  <Grid item xs={12} lg={6} key={field}>
+                    <TextInput
+                      id={field}
+                      name={field}
+                      value={organization[field]}
+                      error={organizationError[field]}
+                      updateFormData={updateOrganization}
+                    />
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Box>
 
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Organization Email"
-                value={organizationEmail}
-                onChange={(e) => setOrganizationEmail(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Organization Phone Number"
-                value={organizationPhoneNumber}
-                onChange={(e) => setOrganizationPhoneNumber(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Organization Country of origin"
-                value={organizationCountry}
-                onChange={(e) => setOrganizationCountry(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Organization City of origin"
-                value={organizationCity}
-                onChange={(e) => setOrganizationCity(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Account username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Account email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <div className="p-2">
-              <input
-                type="text"
-                placeholder="Account phone number"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                className="appearance-none border-2 border-gray-200 rounded-xl w-full py-4 px-4 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:border-[#2EA0FB]"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="bg-[#2EA0FB] text-white text-l py-2 px-5 rounded-xl m-5 hover:bg-[#2135D9]"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
-      {creationModal ? (
-        <CreationModal
-          setCreationModal={setCreationModal}
-          type={"Organization"}
-        />
-      ) : null}
-      {errorModal ? <ErrorModal setErrorModal={setErrorModal} /> : null}
-    </div>
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "blue.light",
+              color: "blue.contrastText",
+              px: 4,
+              py: 2,
+              fontSize: "18px",
+              borderRadius: 8,
+              textTransform: "none",
+              ":hover": {
+                bgcolor: "blue.main",
+              },
+            }}
+            onClick={handleSubmit}
+          >
+            Create organization
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };

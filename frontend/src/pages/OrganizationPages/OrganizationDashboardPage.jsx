@@ -2,36 +2,32 @@ import axiosInstance from "../../utils/axiosInstance";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Link } from "react-router-dom";
-import { CompactCard } from "../../components/CompactCard";
-import { BarOpportunity } from "../../components/BarOpportunity";
-import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
-import OrangeCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/orangecircle.png";
-import GreenCircle from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/greencircle.png";
+
+import {
+  Box,
+  Button,
+  Stack,
+  Toolbar,
+  Typography,
+  IconButton,
+  Icon,
+  Grid,
+  Select,
+} from "@mui/material";
+import { MissionCard } from "../../components/sharedComponents/MissionCard";
+import { BarCard } from "../../components/sharedComponents/BarCard";
+import DefaultImage from "../../../assets/defaultMission.png";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 export const OrganizationDashboardPage = () => {
   const id = useSelector((state) => state.auth.id);
-  const organizationId = useSelector((state) => state.auth.institutionId);
   const [ongoingEvents, setOngoingEvents] = useState([]);
   const [publishedEvents, setPublishedEvents] = useState([]);
-  const [finishedEvents, setFinishedEvents] = useState([]);
   const [ongoingPage, setOngoinPage] = useState(1);
   const [upcomingPage, setUpcomingPage] = useState(1);
-  const [finishedPage, setFinishedPage] = useState(1);
-
-  useEffect(() => {
-    axiosInstance
-      .get(
-        `/events/by_admin_and_status?adminId=${id}&status=ONGOING&offset=${
-          ongoingPage - 1
-        }&pageSize=4`
-      )
-      .then((res) => {
-        setOngoingEvents(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [organizationId, ongoingPage]);
 
   useEffect(() => {
     axiosInstance
@@ -46,27 +42,7 @@ export const OrganizationDashboardPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [organizationId, upcomingPage]);
-
-  useEffect(() => {
-    axiosInstance
-      .get(
-        `/events/by_admin_and_status?adminId=${id}&status=FINISHED&offset=${
-          finishedPage - 1
-        }&pageSize=4`
-      )
-      .then((res) => {
-        setFinishedEvents(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [organizationId, finishedPage]);
-
-  const handleOngoingChangePage = (val) => {
-    if (val == -1 && ongoingPage + val > 0) setOngoinPage(ongoingPage - 1);
-    if (val == 1 && ongoingEvents.length > 4) setOngoinPage(ongoingPage + 1);
-  };
+  }, [upcomingPage]);
 
   const handleUpcomingChangePage = (val) => {
     if (val == -1 && upcomingPage + val > 0) setUpcomingPage(upcomingPage - 1);
@@ -74,113 +50,168 @@ export const OrganizationDashboardPage = () => {
       setUpcomingPage(upcomingPage + 1);
   };
 
-  const handleFinishedChangePage = (val) => {
-    if (val == -1 && finishedPage + val > 0) setFinishedPage(finishedPage - 1);
-    if (val == 1 && finishedEvents.length > 4)
-      setFinishedPage(finishedPage + 1);
+  useEffect(() => {
+    axiosInstance
+      .get(
+        `/events/by_admin_and_status?adminId=${id}&status=ONGOING&offset=${
+          ongoingPage - 1
+        }&pageSize=3`
+      )
+      .then((res) => {
+        setOngoingEvents(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [ongoingPage]);
+
+  const handleOngoingChangePage = (val) => {
+    if (val == -1 && ongoingPage + val > 0) setOngoinPage(ongoingPage - 1);
+    if (val == 1 && ongoingEvents.length > 3) setOngoinPage(ongoingPage + 1);
   };
 
   return (
-    <div className="min-h-full bg-gray-100 flex flex-col pb-[8vh] ml-[15vw]">
-      <div className="flex flex-col">
-        <div className="mx-5 my-7 flex justify-between items-center ">
-          <div className="text-xl md:text-2xl font-semibold">
-            Ongoing Events
-          </div>
-          <Link to="/organization/post_opportunities">
-            <button className="text-white bg-[#2EA0FB] hover:bg-[#2135D9] rounded-xl py-1 px-3 md:py-2 md:px-6 text-l">
-              Add New
-            </button>
-          </Link>
-        </div>
-        <div className="mx-2 flex flex-row overflow-x-scroll no-scrollbar space-x-4 md:px-2">
-          {ongoingEvents.slice(0, 4).map((event) => {
-            return (
-              <CompactCard
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                description={event.description}
-                time={event.time}
-                location={event.location.city}
-                duration={event.hours}
-                event_type={"opportunity"}
-                photoUrl={
-                  event.photoUrl == "NO_FILE"
-                    ? DefaultImage
-                    : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                        event.photoUrl
-                      }`
-                }
-              />
-            );
-          })}
-        </div>
-        <div className="flex justify-end mx-5 space-x-6">
-          {ongoingPage > 1 ? (
-            <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
-              onClick={() => handleOngoingChangePage(-1)}
-            >
-              Previous Page
-            </button>
-          ) : (
-            <div className="bg-inherit text-transparent py-2 px-5 mt-4">
-              Previous Page
-            </div>
-          )}
-          {ongoingEvents.length > 4 ? (
-            <button
-              className="bg-white hover:bg-[#2EA0FB] rounded-xl border-2 text-black hover:text-white shadow-md hover:shadow-2xl py-2 px-5 mt-4"
-              onClick={() => handleOngoingChangePage(1)}
-            >
-              Next Page
-            </button>
-          ) : (
-            <div className="bg-inherit text-transparent py-2 px-5 mt-4">
-              Next Page
-            </div>
-          )}
-        </div>
-        <div className="text-xl md:text-2xl font-semibold mx-5 mt-7 mb-4">
-          Upcoming Events
-        </div>
-        <div className="flex flex-col space-y-1 px-2">
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
+      {/*Lasam spatiu pt navbar*/}
+      <Toolbar />
+      {/*Butoanele de sus*/}
+      <Toolbar sx={{ mt: 1 }}>
+        <Typography
+          variant="h4"
+          fontWeight="700"
+          sx={{
+            flexGrow: 1,
+            fontSize: {
+              xs: "22px",
+              lg: "26px",
+              xl: "30px",
+            },
+          }}
+        >
+          Upcoming Opportunities
+        </Typography>
+
+        <Link to="/organization/post_opportunities">
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "blue.light",
+              color: "blue.contrastText",
+              px: 3,
+              py: 1,
+              fontSize: {
+                lg: "16px",
+                xl: "21px",
+              },
+              borderRadius: 6,
+              textTransform: "none",
+              ":hover": {
+                bgcolor: "blue.main",
+              },
+            }}
+          >
+            Add new
+          </Button>
+        </Link>
+      </Toolbar>
+      {/*Lista de carduri*/}
+      <Grid container sx={{ mt: 2, px: 2 }}>
+        <Grid item container direction="row" spacing={2}>
           {publishedEvents.slice(0, 4).map((event) => {
             return (
-              <BarOpportunity
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                description={event.description}
-                time={event.time}
-                location={event.location.city}
-                event_type={"opportunity"}
-                circle_src={OrangeCircle}
-              />
+              <Grid item xs={12} md={6} lg={3} key={event.id}>
+                <MissionCard
+                  id={event.id}
+                  title={event.name}
+                  description={event.description}
+                  time={event.time}
+                  location={event.location}
+                  duration={event.hours}
+                  event_type={"opportunity"}
+                  photoUrl={
+                    event.photoUrl == "NO_FILE"
+                      ? DefaultImage
+                      : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                          event.photoUrl
+                        }`
+                  }
+                />
+              </Grid>
             );
           })}
-        </div>
-        <div className="text-xl md:text-2xl font-semibold mx-5 mt-7 mb-4">
-          Recently Completed
-        </div>
-        <div className="flex flex-col space-y-1 px-2">
-          {finishedEvents.slice(0, 4).map((event) => {
-            return (
-              <BarOpportunity
-                key={event.id}
-                id={event.id}
-                title={event.name}
-                description={event.description}
-                time={event.time}
-                location={event.location.city}
-                event_type={"opportunity"}
-                circle_src={GreenCircle}
+        </Grid>
+      </Grid>
+      <Stack direction="row" sx={{ mx: 2, mt: 1 }}>
+        <Box sx={{ flexGrow: 1 }}>
+          <IconButton onClick={() => handleUpcomingChangePage(-1)}>
+            <ArrowCircleLeftIcon
+              fontSize="large"
+              sx={{
+                color: "blue.light",
+                ":hover": { color: "blue.main" },
+              }}
+            />
+          </IconButton>
+        </Box>
+        <IconButton onClick={() => handleUpcomingChangePage(1)}>
+          <ArrowCircleRightIcon
+            fontSize="large"
+            sx={{ color: "blue.light", ":hover": { color: "blue.main" } }}
+          />
+        </IconButton>
+      </Stack>
+
+      <Box
+        sx={{
+          my: 2,
+          mx: 2,
+          bgcolor: "secondary.main",
+          borderRadius: "16px",
+          pb: 2,
+        }}
+      >
+        <Toolbar disableGutters>
+          <Typography
+            variant="h4"
+            fontWeight="700"
+            sx={{
+              px: 4,
+              pt: 2,
+              flexGrow: 1,
+              fontSize: {
+                xs: "22px",
+                lg: "26px",
+                xl: "30px",
+              },
+            }}
+          >
+            Ongoing Opportunities
+          </Typography>
+          <Toolbar>
+            <IconButton onClick={() => handleOngoingChangePage(-1)}>
+              <ArrowBackIosIcon
+                sx={{ color: "blue.light", ":hover": { color: "blue.main" } }}
               />
-            );
-          })}
-        </div>
-      </div>
-    </div>
+            </IconButton>
+            <IconButton onClick={() => handleOngoingChangePage(1)}>
+              <ArrowForwardIosIcon
+                sx={{ color: "blue.light", ":hover": { color: "blue.main" } }}
+              />
+            </IconButton>
+          </Toolbar>
+        </Toolbar>
+        {ongoingEvents.slice(0, 3).map((event) => {
+          return (
+            <BarCard
+              key={event.id}
+              id={event.id}
+              title={event.name}
+              location={event.location}
+              description={event.description}
+            />
+          );
+        })}
+      </Box>
+    </Box>
   );
 };

@@ -1,37 +1,21 @@
-import { useState } from "react";
-
-import { AddMultipleStudents } from "../../components/AddMultipleStudents";
-import { AddOneStudent } from "../../components/AddOneStudent";
-import { CreationModal } from "../../components/CreationModal";
-import { ErrorModal } from "../../components/ErrorModal";
+import { Box, Toolbar, Grid } from "@mui/material";
+import { AddStudentCard } from "../../components/schoolComponents/AddStudentCard";
+import { AddMultipleStudentsCard } from "../../components/schoolComponents/AddMultipleStudentsCard";
 
 export const AddStudentPage = () => {
-  const [creationModal, setCreationModal] = useState(false);
-  const [errorModal, setErrorModal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
   return (
-    <>
-      <div className="flex flex-col lg:flex-row justify-between bg-gray-100 ml-[15vw] pb-10 pt-6">
-        <AddOneStudent
-          setCreationModal={setCreationModal}
-          setErrorModal={setErrorModal}
-          setErrorMessage={setErrorMessage}
-        />
-        <AddMultipleStudents
-          setCreationModal={setCreationModal}
-          setErrorModal={setErrorModal}
-          setErrorMessage={setErrorMessage}
-        />
-      </div>
-
-      {creationModal ? (
-        <CreationModal setCreationModal={setCreationModal} type={"Student"} />
-      ) : null}
-
-      {errorModal ? (
-        <ErrorModal setErrorModal={setErrorModal} errorMessage={errorMessage} />
-      ) : null}
-    </>
+    <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
+      <Toolbar />
+      <Box sx={{ m: 4 }}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} lg={8}>
+            <AddStudentCard />
+          </Grid>
+          <Grid item xs={12} lg={4}>
+            <AddMultipleStudentsCard />
+          </Grid>
+        </Grid>
+      </Box>
+    </Box>
   );
 };

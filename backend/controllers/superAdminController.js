@@ -4,10 +4,11 @@ const validator = require("validator");
 const bcrypt = require("bcrypt");
 
 const createAdmin = async (req, res) => {
-  const { username, email, password, phoneNumber, country, city, address } =
-    req.body;
+  const { username, email, phoneNumber, country, city, address } = req.body;
 
   try {
+    const password = "adminPassword@123";
+
     if (!username || !email || !password || !phoneNumber)
       throw Error("All fields need to be filled");
 
