@@ -13,10 +13,13 @@ import {
 import { TextInput } from "../sharedComponents/TextInput";
 import axiosInstance from "../../utils/axiosInstance";
 
+import { AddOneModal } from "./AddOneModal";
+
 const studentFields = ["username", "email", "phoneNumber", "country", "city"];
 
 export const AddStudentCard = () => {
   const navigate = useNavigate();
+  const [addModal, setAddModal] = useState(false);
   const [student, setStudent] = useState({
     username: "",
     email: "",
@@ -66,6 +69,7 @@ export const AddStudentCard = () => {
       })
       .then((res) => {
         console.log("Student create succesfully");
+        setAddModal(true);
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -175,6 +179,7 @@ export const AddStudentCard = () => {
       >
         Create Student
       </Button>
+      {addModal ? <AddOneModal setModal={setAddModal} /> : null}
     </Box>
   );
 };
