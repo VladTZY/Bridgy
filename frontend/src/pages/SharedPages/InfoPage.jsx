@@ -93,7 +93,7 @@ export const InfoPage = () => {
       <Card sx={{ m: 4, bgcolor: "white.main", borderRadius: 10 }}>
         <CardContent>
           <Grid container direction="row" spacing={6}>
-            <Grid item sx={{ width: "50%" }}>
+            <Grid item xs={12} lg={6} sx={{ height: { xl: false, lg: 300 } }}>
               <Image
                 sx={{ borderRadius: 6 }}
                 src={
@@ -108,8 +108,10 @@ export const InfoPage = () => {
             <Grid
               item
               container
+              xs={12}
+              lg={6}
               direction="column"
-              sx={{ width: "50%", justifyContent: "space-between" }}
+              sx={{ justifyContent: "space-between" }}
             >
               <Grid item>
                 <Box
@@ -118,10 +120,18 @@ export const InfoPage = () => {
                     borderColor: "gray",
                     borderRadius: 4,
                     textAlign: "center",
-                    p: 3,
+                    p: { lg: 1, xl: 3 },
                   }}
                 >
-                  <Typography variant="h4">
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: {
+                        lg: "26px",
+                        xl: "36px",
+                      },
+                    }}
+                  >
                     <DateRangeIcon
                       fontSize="large"
                       sx={{ color: "blue.main", mr: 1 }}
@@ -137,10 +147,18 @@ export const InfoPage = () => {
                     borderColor: "gray",
                     borderRadius: 4,
                     textAlign: "center",
-                    p: 3,
+                    p: { lg: 1, xl: 3 },
                   }}
                 >
-                  <Typography variant="h4">
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: {
+                        lg: "26px",
+                        xl: "36px",
+                      },
+                    }}
+                  >
                     <LocationOnIcon
                       fontSize="large"
                       sx={{ color: "blue.main", mr: 1 }}
@@ -156,10 +174,18 @@ export const InfoPage = () => {
                     borderColor: "gray",
                     borderRadius: 4,
                     textAlign: "center",
-                    p: 3,
+                    p: { lg: 1, xl: 3 },
                   }}
                 >
-                  <Typography variant="h4">
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: {
+                        lg: "26px",
+                        xl: "36px",
+                      },
+                    }}
+                  >
                     <AccessTimeIcon
                       fontSize="large"
                       sx={{ color: "blue.main", mr: 1 }}
@@ -175,10 +201,18 @@ export const InfoPage = () => {
                     borderColor: "gray",
                     borderRadius: 4,
                     textAlign: "center",
-                    p: 3,
+                    p: { lg: 1, xl: 3 },
                   }}
                 >
-                  <Typography variant="h4">
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: {
+                        lg: "26px",
+                        xl: "36px",
+                      },
+                    }}
+                  >
                     <GroupIcon
                       fontSize="large"
                       sx={{ color: "blue.main", mr: 1 }}
