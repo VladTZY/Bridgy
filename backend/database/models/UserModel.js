@@ -4,6 +4,12 @@ module.exports = (sequelize) => {
   const User = sequelize.define(
     "user",
     {
+      id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        primaryKey: true,
+      },
       username: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -12,24 +18,20 @@ module.exports = (sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      phoneNumber: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      grade: {
-        type: Sequelize.STRING,
-      },
-      bio: {
-        type: Sequelize.STRING,
-      },
-      lastMeet: {
-        type: Sequelize.DATE,
-      },
       password: {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      phoneNumber: {
+        type: Sequelize.STRING,
+      },
+      bio: {
+        type: Sequelize.TEXT,
+      },
       iconUrl: {
+        type: Sequelize.STRING,
+      },
+      resumeUrl: {
         type: Sequelize.STRING,
       },
       role: {

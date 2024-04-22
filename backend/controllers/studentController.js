@@ -21,7 +21,7 @@ const getOngoingEvents = async (req, res) => {
         model: EventModel,
         where: {
           status: "PUBLISHED",
-          time: {
+          datetime: {
             [Op.lt]: dateNow,
           },
         },
@@ -48,7 +48,7 @@ const getAcceptedEvents = async (req, res) => {
         model: EventModel,
         where: {
           status: "PUBLISHED",
-          time: {
+          datetime: {
             [Op.gt]: dateNow,
           },
         },

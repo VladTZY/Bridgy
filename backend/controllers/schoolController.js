@@ -4,7 +4,9 @@ const {
   LocationModel,
   UserToEvent,
   EventModel,
+  UserToSchool,
 } = require("../database/sequelize");
+const Sequelize = require("sequelize");
 const studentValidator = require("../misc/studentValidator");
 const readCSV = require("../misc/readCSV");
 const readXLSX = require("../misc/readXLSX");
@@ -30,19 +32,23 @@ const createStudent = async (
     const user = await UserModel.create({
       username: username,
       email: email,
-      grade: grade,
       phoneNumber: phoneNumber,
       bio: bio,
       password: hash,
-      schoolId: schoolId,
       locationId: location.id,
       role: "STUDENT",
+    });
+
+    const userToSchool = await UserToSchool.create({
+      grade: grade,
+      userId: user.id,
+      schoolId: schoolId,
     });
 
     return {
       username,
       email,
-      grade,
+      grade: userToSchool.grade,
       phoneNumber,
       bio,
       schoolId: user.schoolId,
@@ -154,14 +160,64 @@ const getStudents = async (req, res) => {
       },
     });
 
-    const students = await UserModel.findAll({
-      attributes: { exclude: ["password", "role"] },
-      where: {
-        schoolId: school.id,
-        role: "STUDENT",
-        grade: grade,
-      },
-    });
+    let students = [];
+
+    if (grade) {
+      students = await UserModel.findAll({
+        where: {
+          role: "STUDENT",
+        },
+        attributes: [
+          "id",
+          "username",
+          "email",
+          "phoneNumber",
+          [Sequelize.literal("UserToSchools.grade"), "grade"],
+          [Sequelize.literal("UserToSchools.lastMeet"), "lastMeet"],
+        ],
+        include: [
+          {
+            model: UserToSchool,
+            where: {
+              schoolId: school.id,
+              grade: grade,
+            },
+            attributes: [],
+          },
+          {
+            model: LocationModel,
+            attributes: { exclude: ["id"] },
+          },
+        ],
+      });
+    } else {
+      students = await UserModel.findAll({
+        where: {
+          role: "STUDENT",
+        },
+        attributes: [
+          "id",
+          "username",
+          "email",
+          "phoneNumber",
+          [Sequelize.literal("UserToSchools.grade"), "grade"],
+          [Sequelize.literal("UserToSchools.lastMeet"), "lastMeet"],
+        ],
+        include: [
+          {
+            model: UserToSchool,
+            where: {
+              schoolId: school.id,
+            },
+            attributes: [],
+          },
+          {
+            model: LocationModel,
+            attributes: { exclude: ["id"] },
+          },
+        ],
+      });
+    }
 
     res.status(200).json(students);
   } catch (error) {
@@ -226,12 +282,20 @@ const getStats = async (req, res) => {
       },
     });
 
-    const students = await UserModel.findAll({
-      attributes: ["id"],
+    students = await UserModel.findAll({
       where: {
-        schoolId: school.id,
         role: "STUDENT",
       },
+      attributes: ["id"],
+      include: [
+        {
+          model: UserToSchool,
+          where: {
+            schoolId: school.id,
+          },
+          attributes: [],
+        },
+      ],
     });
 
     payload.numberOfStudents = students.length;

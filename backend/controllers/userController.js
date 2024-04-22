@@ -3,6 +3,7 @@ const {
   SchoolModel,
   OrganizationModel,
   LocationModel,
+  UserToSchool,
 } = require("../database/sequelize");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -148,7 +149,7 @@ const getProfileInfo = async (req, res) => {
     if (!id) throw Error("Id required");
 
     const user = await UserModel.findByPk(id);
-    const userLocation = await LocationModel.findByPk(id, {
+    const userLocation = await LocationModel.findByPk(user.locationId, {
       attributes: { exclude: ["id"] },
     });
 
@@ -180,8 +181,15 @@ const getProfileInfo = async (req, res) => {
         userInfo.role = "Administrator";
 
       if (user.role == "STUDENT") {
-        const school = await SchoolModel.findByPk(user.schoolId, {
+        const school = await SchoolModel.findOne({
           attributes: ["name"],
+          include: {
+            model: UserToSchool,
+            attributes: [],
+            where: {
+              userId: user.id,
+            },
+          },
         });
         userInfo.schoolName = school.name;
       }
@@ -261,6 +269,9 @@ const updateProfileInfo = async (req, res) => {
     const user = await UserModel.findByPk(id, {
       attributes: { exclude: ["password", "role", "locationId", "schoolId"] },
     });
+
+    if (bio && bio.length > 2000)
+      throw Error("Bio is too long, limit is 2000 characters");
 
     if (bio) {
       user.bio = bio;

@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const UserToEvent = sequelize.define(
-    "UserToEvent",
+  const UserToSchool = sequelize.define(
+    "UserToSchool",
     {
       id: {
         type: Sequelize.UUID,
@@ -10,16 +10,16 @@ module.exports = (sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
-      status: {
-        type: Sequelize.STRING,
+      grade: {
+        type: Sequelize.TINYINT,
         allowNull: false,
       },
-      feedback: {
-        type: Sequelize.STRING,
+      lastMeet: {
+        type: Sequelize.DATE,
       },
     },
     { timestamps: false }
   );
 
-  return UserToEvent;
+  return UserToSchool;
 };
