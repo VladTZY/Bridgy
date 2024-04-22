@@ -49,7 +49,7 @@ const errorFields = [
   "description",
   "supervisorContact",
   "hours",
-  "time",
+  "datetime",
   "capacity",
   "country",
   "city",
@@ -76,7 +76,7 @@ export const PostOpportunitiesPage = () => {
     isRemote: false,
     file: null,
     hours: 0,
-    time: dayjs("2022-02-02"),
+    datetime: dayjs("2022-02-02"),
     capacity: 0,
     country: "",
     city: "",
@@ -87,7 +87,7 @@ export const PostOpportunitiesPage = () => {
     description: false,
     supervisorContact: false,
     hours: false,
-    time: false,
+    datetime: false,
     capacity: false,
     country: false,
     city: false,
@@ -121,7 +121,7 @@ export const PostOpportunitiesPage = () => {
           (field == "country" || field == "city" || field == "address")
         )
       ) {
-        if (field == "description" && formData[field].length > 255) {
+        if (field == "description" && formData[field].length > 2000) {
           setFormError((prev) => ({ ...prev, [field]: true }));
           error = true;
         }
@@ -140,9 +140,9 @@ export const PostOpportunitiesPage = () => {
     let formSend = new FormData();
 
     for (const key in formData)
-      if (key != "file" && key != "isRemote" && key != "time")
+      if (key != "file" && key != "isRemote" && key != "datetime")
         formSend.append(key, formData[key]);
-    formSend.append("time", formData.time.$d);
+    formSend.append("datetime", formData.datetime.$d);
     formSend.append("remote", formData.isRemote);
     formSend.append("photoUrl", formData.file);
 
@@ -197,7 +197,7 @@ export const PostOpportunitiesPage = () => {
                 name="Description"
                 value={formData.description}
                 error={
-                  formError.description || formData.description.length > 255
+                  formError.description || formData.description.length > 2000
                 }
                 updateFormData={updateFormData}
               />
@@ -209,8 +209,7 @@ export const PostOpportunitiesPage = () => {
                 }}
               >
                 <Typography>
-                  {formData.description.length} / 255 characters (will increse
-                  this soon){" "}
+                  {formData.description.length} / 2000 characters
                 </Typography>
               </Box>
             </Grid>
@@ -238,10 +237,10 @@ export const PostOpportunitiesPage = () => {
             </Grid>
             <Grid item xs={12} lg={4}>
               <DateInput
-                id="time"
+                id="datetime"
                 name="Date and Time"
-                value={formData.time}
-                error={formError.time}
+                value={formData.datetime}
+                error={formError.datetime}
                 updateFormData={updateFormData}
               />
             </Grid>

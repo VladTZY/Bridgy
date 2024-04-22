@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const Location = sequelize.define(
-    "location",
+  const UserToPersonalEvent = sequelize.define(
+    "UserToPersonalEvent",
     {
       id: {
         type: Sequelize.UUID,
@@ -10,20 +10,12 @@ module.exports = (sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
-      country: {
+      feedback: {
         type: Sequelize.STRING,
-        defaultValue: "",
-      },
-      city: {
-        type: Sequelize.STRING,
-        defaultValue: "",
-      },
-      address: {
-        type: Sequelize.STRING,
-        defaultValue: "",
       },
     },
     { timestamps: false }
   );
-  return Location;
+
+  return UserToPersonalEvent;
 };

@@ -46,19 +46,6 @@ export const SchoolDashboardPage = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  if (tableData.length == 0) {
-    return (
-      <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
-        <Backdrop
-          open={true}
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      </Box>
-    );
-  }
-
   return (
     <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
       <Toolbar />

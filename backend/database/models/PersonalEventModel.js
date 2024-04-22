@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const Event = sequelize.define("event", {
+  const PersonalEvent = sequelize.define("personalEvent", {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
@@ -27,10 +27,6 @@ module.exports = (sequelize) => {
     hours: {
       type: Sequelize.INTEGER,
     },
-    capacity: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
     remote: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
@@ -42,11 +38,6 @@ module.exports = (sequelize) => {
       type: Sequelize.STRING,
       defaultValue: "no category",
     },
-    status: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
   });
-
-  return Event;
+  return PersonalEvent;
 };

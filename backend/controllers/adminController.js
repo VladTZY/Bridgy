@@ -16,7 +16,8 @@ const createSchool = async (req, res) => {
     schoolCountry,
     schoolCity,
     schoolAddress,
-    schoolObjective,
+    objective,
+    objectiveType,
     username,
     email,
     phoneNumber,
@@ -40,6 +41,9 @@ const createSchool = async (req, res) => {
     if (!validator.isEmail(schoolEmail)) {
       throw Error("School Email invalid");
     }
+
+    if (bio && bio.length > 2000)
+      throw Error("Bio is too long, limit is 2000 characters");
 
     const exists = await UserModel.findOne({
       where: {
@@ -72,7 +76,8 @@ const createSchool = async (req, res) => {
       name: schoolName,
       email: schoolEmail,
       phoneNumber: schoolPhoneNumber,
-      objective: schoolObjective,
+      objective: objective,
+      objectiveType: objectiveType,
       locationId: location.id,
       adminId: user.id,
     });
@@ -116,6 +121,9 @@ const createOrganization = async (req, res) => {
     if (!validator.isEmail(organizationEmail)) {
       throw Error("Organization Email invalid");
     }
+
+    if (bio && bio.length > 2000)
+      throw Error("Bio is too long, limit is 2000 characters");
 
     const exists = await UserModel.findOne({
       where: {

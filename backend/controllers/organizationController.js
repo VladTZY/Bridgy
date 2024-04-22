@@ -15,7 +15,7 @@ const createEvent = async (req, res) => {
     name,
     description,
     hours,
-    time,
+    datetime,
     capacity,
     country,
     city,
@@ -25,11 +25,14 @@ const createEvent = async (req, res) => {
   } = req.body;
 
   try {
-    if (!name || !description || !capacity)
+    if (!name || !description || !capacity || !datetime)
       throw Error("All fields need to be filled");
 
     if (!remote && (!country || !city || !address))
       throw Error("You need to fill the address if the event is not remote");
+
+    if (description.length > 2000)
+      throw Error("Description is too long, limit is 2000 characters");
 
     const location = await LocationModel.create({
       country: country,
@@ -52,7 +55,7 @@ const createEvent = async (req, res) => {
       name: name,
       description: description,
       hours: hours,
-      time: time,
+      datetime: datetime,
       capacity: capacity,
       remote: remote,
       supervisorContact: supervisorContact,
