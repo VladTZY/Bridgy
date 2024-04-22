@@ -19,6 +19,8 @@ import { MultilineInput } from "../../components/sharedComponents/MultilineInput
 import { IconInput } from "../../components/sharedComponents/IconInput";
 import { DateInput } from "../../components/sharedComponents/DateInput";
 
+import { CreationModal } from "../../components/organizationComponents/CreationModal";
+
 import TimelapseIcon from "@mui/icons-material/Timelapse";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PublicIcon from "@mui/icons-material/Public";
@@ -69,6 +71,8 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 export const PostOpportunitiesPage = () => {
+  const [creationModal, setCreationModal] = useState(false);
+  const [nav, setNav] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -149,7 +153,8 @@ export const PostOpportunitiesPage = () => {
     axiosInstance
       .post(`/organization/create_event`, formSend)
       .then((res) => {
-        navigate(`/opportunity/${res.data.id}`);
+        setNav(res.data.id);
+        setCreationModal(true);
       })
       .catch((error) => console.log(error));
   };
@@ -328,6 +333,9 @@ export const PostOpportunitiesPage = () => {
           </Box>
         </Stack>
       </Box>
+      {creationModal ? (
+        <CreationModal id={nav} setModal={setCreationModal} />
+      ) : null}
     </Box>
   );
 };

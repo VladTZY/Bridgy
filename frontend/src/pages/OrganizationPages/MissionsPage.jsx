@@ -38,8 +38,8 @@ export const MissionsPage = () => {
   }, [ongoingPage]);
 
   const handleOngoingChangePage = (val) => {
-    if (val == -1 && ongoingPage + val > 0) setOngoinPage(ongoingPage - 1);
-    if (val == 1 && ongoingEvents.length > 3) setOngoinPage(ongoingPage + 1);
+    if (val == -1 && ongoingPage + val > 0) setOngoingPage(ongoingPage - 1);
+    if (val == 1 && ongoingEvents.length > 3) setOngoingPage(ongoingPage + 1);
   };
 
   useEffect(() => {

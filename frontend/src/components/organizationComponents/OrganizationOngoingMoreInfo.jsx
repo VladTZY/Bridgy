@@ -24,7 +24,7 @@ export const OrganizationOngoingMoreInfo = ({ eventId }) => {
           <Button
             onClick={() => setAttendanceModal(true)}
             sx={{
-              py: 4,
+              py: { lg: 3, xl: 4 },
               width: 1,
               bgcolor: "white.main",
               borderRadius: 15,
@@ -35,14 +35,24 @@ export const OrganizationOngoingMoreInfo = ({ eventId }) => {
               ":hover": { bgcolor: "blue.main", color: "white.main" },
             }}
           >
-            <Typography variant="h4">Mark attendance</Typography>
+            <Typography
+              variant="h4"
+              sx={{
+                fontSize: {
+                  lg: "26px",
+                  xl: "36px",
+                },
+              }}
+            >
+              Mark attendance
+            </Typography>
           </Button>
         </Grid>
         <Grid item xs={10} lg={5}>
           <Button
             onClick={() => setEndModal(true)}
             sx={{
-              py: 4,
+              py: { lg: 3, xl: 4 },
               width: 1,
               bgcolor: "white.main",
               borderRadius: 15,
@@ -53,7 +63,17 @@ export const OrganizationOngoingMoreInfo = ({ eventId }) => {
               ":hover": { bgcolor: "blue.main", color: "white.main" },
             }}
           >
-            <Typography variant="h4">Finish Event</Typography>
+            <Typography
+              variant="h4"
+              sx={{
+                fontSize: {
+                  lg: "26px",
+                  xl: "36px",
+                },
+              }}
+            >
+              Finish Event
+            </Typography>
           </Button>
         </Grid>
       </Grid>
