@@ -224,19 +224,49 @@ export const InfoPage = () => {
             </Grid>
           </Grid>
           <Typography
-            variant="h2"
-            component="div"
-            sx={{ textAlign: "center", mt: 4 }}
+            sx={{
+              mt: 4,
+              ml: 2,
+              fontSize: {
+                lg: "40px",
+                xl: "60px",
+              },
+            }}
           >
             {event.name}
           </Typography>
           <Typography
-            variant="h4"
             color="text.secondary"
-            sx={{ textAlign: "center" }}
+            sx={{
+              fontSize: {
+                lg: "15px",
+                xl: "20px",
+              },
+              mx: 2,
+            }}
           >
             {event.description}
           </Typography>
+          <Grid container sx={{ mt: 2, justifyContent: "end" }}>
+            <Button
+              onClick={deleteMission}
+              sx={{
+                px: { lg: 2, xl: 4 },
+                py: { lg: 1, xl: 2 },
+                bgcolor: "red.light",
+                textTransform: "none",
+                ":hover": { bgcolor: "red.main" },
+                borderRadius: 10,
+              }}
+            >
+              <Typography
+                color="white.main"
+                sx={{ fontSize: { lg: "15px", xl: "25px" } }}
+              >
+                Delete event
+              </Typography>
+            </Button>
+          </Grid>
         </CardContent>
       </Card>
       {role == "STUDENT" ? (
