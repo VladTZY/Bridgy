@@ -28,7 +28,7 @@ const theme = createTheme({
       main: "#008000",
     },
     red: {
-      light: "#ff5349",
+      light: "#ef3038",
       main: "#FF0000",
     },
   },
