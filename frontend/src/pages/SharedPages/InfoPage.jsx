@@ -247,26 +247,28 @@ export const InfoPage = () => {
           >
             {event.description}
           </Typography>
-          <Grid container sx={{ mt: 2, justifyContent: "end" }}>
-            <Button
-              onClick={deleteMission}
-              sx={{
-                px: { lg: 2, xl: 4 },
-                py: { lg: 1, xl: 2 },
-                bgcolor: "red.light",
-                textTransform: "none",
-                ":hover": { bgcolor: "red.main" },
-                borderRadius: 10,
-              }}
-            >
-              <Typography
-                color="white.main"
-                sx={{ fontSize: { lg: "15px", xl: "25px" } }}
+          {isAdmin && (
+            <Grid container sx={{ mt: 2, justifyContent: "end" }}>
+              <Button
+                onClick={deleteMission}
+                sx={{
+                  px: { lg: 2, xl: 4 },
+                  py: { lg: 1, xl: 2 },
+                  bgcolor: "red.light",
+                  textTransform: "none",
+                  ":hover": { bgcolor: "red.main" },
+                  borderRadius: 10,
+                }}
               >
-                Delete event
-              </Typography>
-            </Button>
-          </Grid>
+                <Typography
+                  color="white.main"
+                  sx={{ fontSize: { lg: "15px", xl: "25px" } }}
+                >
+                  Delete event
+                </Typography>
+              </Button>
+            </Grid>
+          )}
         </CardContent>
       </Card>
       {role == "STUDENT" ? (
