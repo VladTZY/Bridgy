@@ -46,7 +46,7 @@ export const StudentDashboardPage = () => {
               title="Objective"
               value="100 / 120"
               percentage="72"
-              color="green"
+              color="green.light"
             />
           </Grid>
           <Grid item xs={12} lg={4}>
@@ -155,7 +155,7 @@ export const StudentDashboardPage = () => {
                     location={event.event.location}
                     icon={
                       <CheckCircleOutlineIcon
-                        sx={{ color: "green", fontSize: "30px" }}
+                        sx={{ color: "green.light", fontSize: "30px" }}
                       />
                     }
                   />

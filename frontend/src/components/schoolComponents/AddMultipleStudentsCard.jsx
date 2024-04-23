@@ -38,12 +38,12 @@ export const AddMultipleStudentsCard = () => {
     const extension = getExtension(filename);
 
     if (extension != "xlsx" && extension != "csv") {
-      setColors({ color: "red", hoverColor: "red" });
+      setColors({ color: "red.light", hoverColor: "red.main" });
       return;
     }
 
     setFile(e.target.files[0]);
-    setColors({ color: "green", hoverColor: "green" });
+    setColors({ color: "green.light", hoverColor: "green.main" });
   };
 
   const submitTable = () => {

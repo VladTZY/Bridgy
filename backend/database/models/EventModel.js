@@ -40,7 +40,7 @@ module.exports = (sequelize) => {
     },
     category: {
       type: Sequelize.STRING,
-      defaultValue: "no category",
+      defaultValue: "No Category",
     },
     status: {
       type: Sequelize.STRING,

@@ -10,14 +10,12 @@ import { PostOpportunitiesPage } from "./pages/OrganizationPages/PostOpportuniti
 import { SchoolDashboardPage } from "./pages/SchoolPages/SchoolDashboardPage";
 import { AddStudentPage } from "./pages/SchoolPages/AddStudentPage";
 import { StudentDashboardPage } from "./pages/StudentPages/StudentDashboardPage";
-import { MoreInfoPage } from "./pages/SharedPages/MoreInfoPage";
 import { InfoPage } from "./pages/SharedPages/InfoPage";
 import { LandingPage } from "./pages/SharedPages/LandingPage";
 import { CreateAdminPage } from "./pages/SuperAdminPages/CreateAdminPage";
 import { CreateOrganizationPage } from "./pages/AdminPages/CreateOrganizationPage";
 import { CreateSchoolPage } from "./pages/AdminPages/CreateSchoolPage";
 import { MyExperiencesPage } from "./pages/StudentPages/MyExperiencesPage";
-import { UpdatesPage } from "./pages/SchoolPages/UpdatesPage";
 import { OrganizationDashboardPage } from "./pages/OrganizationPages/OrganizationDashboardPage";
 import { NotificationsPage } from "./pages/SharedPages/NotificationsPage";
 
@@ -145,18 +143,6 @@ function App() {
         element={
           role == "SCHOOL" ? (
             <AddStudentPage />
-          ) : isLoggedIn ? (
-            <ErrorPage />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-      <Route
-        path="/school/updates"
-        element={
-          role == "SCHOOL" ? (
-            <UpdatesPage />
           ) : isLoggedIn ? (
             <ErrorPage />
           ) : (
