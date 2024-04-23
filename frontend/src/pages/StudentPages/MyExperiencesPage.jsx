@@ -30,7 +30,7 @@ export const MyExperiencesPage = () => {
   return (
     <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
       <Toolbar />
-      <Box sx={{ mx: 3, mt: 1, mb: 2 }}>
+      <Box sx={{ mx: 3, mt: 2, mb: 2 }}>
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1 }}>
             <SearchBar />

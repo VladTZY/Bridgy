@@ -4,6 +4,7 @@ const {
   OrganizationModel,
   UserToEvent,
   UserModel,
+  UserToSchool,
   SchoolModel,
 } = require("../database/sequelize");
 
@@ -13,15 +14,16 @@ const { createNotification } = require("./notificationController");
 const createEvent = async (req, res) => {
   const {
     name,
+    supervisorContact,
     description,
+    category,
     hours,
-    datetime,
     capacity,
+    datetime,
+    remote,
     country,
     city,
     address,
-    supervisorContact,
-    remote,
   } = req.body;
 
   try {
@@ -33,6 +35,8 @@ const createEvent = async (req, res) => {
 
     if (description.length > 2000)
       throw Error("Description is too long, limit is 2000 characters");
+
+    if (!category) throw Error("Please select a category, or No Category");
 
     const location = await LocationModel.create({
       country: country,
@@ -53,12 +57,13 @@ const createEvent = async (req, res) => {
 
     const event = await EventModel.create({
       name: name,
-      description: description,
-      hours: hours,
-      datetime: datetime,
-      capacity: capacity,
-      remote: remote,
       supervisorContact: supervisorContact,
+      description: description,
+      category: category,
+      hours: hours,
+      capacity: capacity,
+      datetime: datetime,
+      remote: remote,
       photoUrl: photoUrl,
       status: "PUBLISHED",
       locationId: location.id,
@@ -333,11 +338,18 @@ const finishEvent = async (req, res) => {
       await userToEvent.save();
 
       const studentEnt = await UserModel.findByPk(student.userId, {
-        attributes: { include: ["username", "schoolId"] },
+        attributes: ["username"],
       });
 
-      const schoolEnt = await SchoolModel.findByPk(studentEnt.schoolId, {
-        attributes: { include: ["adminId"] },
+      const schoolEnt = await SchoolModel.findOne({
+        attributes: ["adminId"],
+        include: {
+          model: UserToSchool,
+          attributes: [],
+          where: {
+            userId: student.userId,
+          },
+        },
       });
 
       createNotification(

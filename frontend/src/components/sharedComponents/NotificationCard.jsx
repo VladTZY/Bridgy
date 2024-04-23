@@ -14,12 +14,12 @@ const notificationsMapping = {
   ACCEPTED: {
     icon: CheckCircleOutlineIcon,
     secondary: "Do not forget to show up!",
-    color: "green",
+    color: "green.light",
   },
   REJECTED: {
     icon: DoNotDisturbIcon,
     secondary: "Try joining other similar events!",
-    color: "red",
+    color: "red.light",
   },
   STUDENT_REQUESTED: {
     icon: AssignmentIndIcon,
@@ -29,7 +29,7 @@ const notificationsMapping = {
   STUDENT_FINISHES: {
     icon: CheckBoxIcon,
     secondary: "Your student finished",
-    color: "green",
+    color: "green.light",
   },
 };
 

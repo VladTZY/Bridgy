@@ -92,6 +92,7 @@ const getEventById = async (req, res) => {
 const getEventsByStatus = async (req, res) => {
   try {
     const status = req.query.status;
+    const category = req.query.category;
 
     let offset = 0;
     let pageSize = 1000;
@@ -109,43 +110,33 @@ const getEventsByStatus = async (req, res) => {
     )
       throw Error("Wrong status name");
 
-    let events = [];
+    let conditional = {
+      status: status,
+    };
     const dateNow = new Date();
 
     if (status == "ONGOING") {
-      events = await EventModel.findAll({
-        where: {
-          status: "PUBLISHED",
-          datetime: {
-            [Op.lt]: dateNow,
-          },
-        },
-        offset: offset * pageSize,
-        limit: pageSize + 1,
-        include: LocationModel,
-      });
-    } else if (status == "PUBLISHED") {
-      events = await EventModel.findAll({
-        where: {
-          status: status,
-          datetime: {
-            [Op.gt]: dateNow,
-          },
-        },
-        offset: offset * pageSize,
-        limit: pageSize + 1,
-        include: LocationModel,
-      });
-    } else {
-      events = await EventModel.findAll({
-        where: {
-          status: status,
-        },
-        offset: offset * pageSize,
-        limit: pageSize + 1,
-        include: LocationModel,
-      });
+      conditional.status = "PUBLISHED";
+      conditional.datetime = {
+        [Op.lt]: dateNow,
+      };
     }
+
+    if (status == "PUBLISHED") {
+      conditional.datetime = {
+        [Op.gt]: dateNow,
+      };
+    }
+
+    if (category && category != "All categories")
+      conditional.category = category;
+
+    const events = await EventModel.findAll({
+      where: conditional,
+      offset: offset * pageSize,
+      limit: pageSize + 1,
+      include: LocationModel,
+    });
 
     res.status(200).json(events);
   } catch (error) {

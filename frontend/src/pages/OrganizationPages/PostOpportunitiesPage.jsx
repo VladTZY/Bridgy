@@ -13,6 +13,10 @@ import {
   FormControlLabel,
   Button,
   Stack,
+  FormControl,
+  Select,
+  MenuItem,
+  InputLabel,
 } from "@mui/material";
 import { TextInput } from "../../components/sharedComponents/TextInput";
 import { MultilineInput } from "../../components/sharedComponents/MultilineInput";
@@ -46,10 +50,44 @@ const locationsInfo = [
   },
 ];
 
+const categories = [
+  "No category",
+  "Advocay & Human Rights",
+  "Animlas",
+  "Arts & Culture",
+  "Board Development",
+  "Children & Youth",
+  "Community",
+  "Computers & Tehnology",
+  "Crisis Support",
+  "Disaster Relief",
+  "Education & Literacy",
+  "Emergency & Safety",
+  "Employment",
+  "Environment",
+  "Faith-Based",
+  "Health & Medicine",
+  "Homeless & Housing",
+  "Hunger",
+  "Immigrants & Refugees",
+  "International",
+  "Justice & Legal",
+  "LGBTQ+",
+  "Media & Broadcasting",
+  "People with Disabilities",
+  "Politics",
+  "Race & Ethnicity",
+  "Seniors",
+  "Sports & Recreation",
+  "Veterans & Military Families",
+  "Women",
+];
+
 const errorFields = [
   "name",
-  "description",
   "supervisorContact",
+  "description",
+  "category",
   "hours",
   "datetime",
   "capacity",
@@ -75,12 +113,13 @@ export const PostOpportunitiesPage = () => {
   const [nav, setNav] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
-    description: "",
     supervisorContact: "",
+    description: "",
+    category: "No category",
     isRemote: false,
     file: null,
     hours: 0,
-    datetime: dayjs("2022-02-02"),
+    datetime: dayjs(),
     capacity: 0,
     country: "",
     city: "",
@@ -88,8 +127,9 @@ export const PostOpportunitiesPage = () => {
   });
   const [formError, setFormError] = useState({
     name: false,
-    description: false,
     supervisorContact: false,
+    description: false,
+    category: false,
     hours: false,
     datetime: false,
     capacity: false,
@@ -101,7 +141,6 @@ export const PostOpportunitiesPage = () => {
     color: "blue.light",
     hoverColor: "blue.main",
   });
-  const navigate = useNavigate();
 
   const updateFormData = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -110,7 +149,7 @@ export const PostOpportunitiesPage = () => {
 
   const addFile = (e) => {
     setFormData({ ...formData, file: e.target.files[0] });
-    setColors({ color: "green", hoverColor: "green" });
+    setColors({ color: "green.light", hoverColor: "green.main" });
   };
 
   const handleSubmit = async () => {
@@ -218,6 +257,34 @@ export const PostOpportunitiesPage = () => {
                 </Typography>
               </Box>
             </Grid>
+
+            <Grid item container xs={12} spacing={3} sx={{ mb: 2 }}>
+              <Grid item xs={12} lg={4}>
+                <FormControl fullWidth id="category">
+                  <InputLabel>Category</InputLabel>
+                  <Select
+                    value={formData.category}
+                    label="Category"
+                    onChange={(e) => {
+                      setFormData({
+                        ...formData,
+                        category: e.target.value,
+                      });
+                      setFormError({ ...formError, category: false });
+                    }}
+                  >
+                    {categories.map((category) => {
+                      return (
+                        <MenuItem id="category" key={category} value={category}>
+                          {category}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+
             <Grid item xs={12} lg={4}>
               <IconInput
                 id="capacity"

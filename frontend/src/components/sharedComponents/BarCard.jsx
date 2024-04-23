@@ -22,7 +22,7 @@ export const BarCard = ({ id, title, description, location }) => {
         }}
       >
         <Toolbar disableGutters>
-          <CircleIcon sx={{ color: "green" }} />
+          <CircleIcon sx={{ color: "green.light" }} />
           <Typography
             variant="h5"
             fontWeight="bold"
