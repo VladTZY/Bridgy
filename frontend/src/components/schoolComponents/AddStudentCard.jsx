@@ -14,12 +14,15 @@ import { TextInput } from "../sharedComponents/TextInput";
 import axiosInstance from "../../utils/axiosInstance";
 
 import { AddOneModal } from "./AddOneModal";
+import { ErrorModal } from "../sharedComponents/ErrorModal";
 
 const studentFields = ["username", "email", "phoneNumber", "country", "city"];
 
 export const AddStudentCard = () => {
   const navigate = useNavigate();
   const [addModal, setAddModal] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [student, setStudent] = useState({
     username: "",
     email: "",
@@ -73,6 +76,8 @@ export const AddStudentCard = () => {
       })
       .catch((error) => {
         console.log(error.response.data);
+        setErrorMessage(error.response.data);
+        setErrorModal(true);
       });
   };
 
@@ -180,6 +185,9 @@ export const AddStudentCard = () => {
         Create Student
       </Button>
       {addModal ? <AddOneModal setModal={setAddModal} /> : null}
+      {errorModal ? (
+        <ErrorModal setModal={setErrorModal} errorMessage={errorMessage} />
+      ) : null}
     </Box>
   );
 };
