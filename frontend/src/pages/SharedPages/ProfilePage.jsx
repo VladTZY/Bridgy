@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance.js";
 import { useSelector } from "react-redux";
 
 import {
@@ -24,9 +25,12 @@ import stringAvatar from "../../utils/stringAvatar.js";
 import defaultBanner from "../../../assets/Banner.png";
 import EditIcon from "@mui/icons-material/Edit";
 import LockResetIcon from "@mui/icons-material/LockReset";
+import DefaultImage from "../../../assets/defaultMission.png";
 import { ProfileLabel } from "../../components/sharedComponents/ProfileLabel.jsx";
 import { ChangePasswordModal } from "../../components/sharedComponents/ChangePasswordModal.jsx";
 import { EditProfileModal } from "../../components/sharedComponents/EditProfileModal.jsx";
+import { StatCard } from "../../components/studentComponents/StatCard.jsx";
+import { MissionCard } from "../../components/sharedComponents/MissionCard.jsx";
 
 const NameField = {
   STUDENT: {
@@ -38,16 +42,11 @@ const NameField = {
   ORGANIZATION: {
     username: "Organization name",
   },
-};
-
-const AdditionalInformation = {
-  STUDENT: {
-    label1: "Full Name",
-    label2: "School Name",
+  ADMIN: {
+    username: "Username",
   },
-  SCHOOL: {
-    label1: "Objective Type",
-    label2: "Objective",
+  SUPER_ADMIN: {
+    useername: "Username",
   },
 };
 
@@ -56,6 +55,7 @@ export const ProfilePage = () => {
   let { id } = useParams();
   const [passwordModal, setPasswordModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
+  const [lastEvents, setLastEvents] = useState([]);
 
   const [userInfo, setUserInfo] = useState({
     username: "",
@@ -79,6 +79,15 @@ export const ProfilePage = () => {
         setUserInfo(res.data);
       });
   }, [id]);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/student/finished_events`)
+      .then((res) => {
+        setLastEvents(res.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const name = NameField[userInfo.role];
 
@@ -246,6 +255,19 @@ export const ProfilePage = () => {
                   </Grid>
                 </Grid>
               )}
+              {userInfo.role == "STUDENT" && (
+                <Grid item container direction="row" spacing={3}>
+                  <Grid item xs={12} lg={4}>
+                    <StatCard title="Events completed" total={1000} />
+                  </Grid>
+                  <Grid item xs={12} lg={4}>
+                    <StatCard title="Charities Helped" total={200} />
+                  </Grid>
+                  <Grid item xs={12} lg={4}>
+                    <StatCard title="Hours Worked" total={2000} />
+                  </Grid>
+                </Grid>
+              )}
               <Grid item xs={12}>
                 <ProfileLabel
                   text={"Bio"}
@@ -254,6 +276,33 @@ export const ProfilePage = () => {
                   disabled={true}
                 />
               </Grid>
+            </Grid>
+            <Typography variant="h6" fontWeight="bold" sx={{ pt: 2 }}>
+              Last events attended
+            </Typography>
+            <Grid container direction="row" spacing={2} sx={{ my: 2 }}>
+              {lastEvents.slice(0, 4).map((data) => {
+                return (
+                  <Grid item xs={12} md={6} lg={3} key={event.id}>
+                    <MissionCard
+                      id={data.event.id}
+                      title={data.event.name}
+                      description={data.event.description}
+                      time={data.event.time}
+                      location={data.event.location}
+                      duration={data.event.hours}
+                      event_type={"opportunity"}
+                      photoUrl={
+                        data.event.photoUrl == "NO_FILE"
+                          ? DefaultImage
+                          : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                              data.event.photoUrl
+                            }`
+                      }
+                    />
+                  </Grid>
+                );
+              })}
             </Grid>
           </Box>
         </Box>
