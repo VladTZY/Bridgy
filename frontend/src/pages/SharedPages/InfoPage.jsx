@@ -136,7 +136,7 @@ export const InfoPage = () => {
                       fontSize="large"
                       sx={{ color: "blue.main", mr: 1 }}
                     />
-                    {datetimeToStr(event.time)}
+                    {datetimeToStr(event.datetime)}
                   </Typography>
                 </Box>
               </Grid>

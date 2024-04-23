@@ -20,7 +20,7 @@ export const MissionCard = ({
   title,
   description,
   photoUrl,
-  time,
+  datetime,
   location,
   duration,
 }) => {
@@ -55,7 +55,7 @@ export const MissionCard = ({
             },
           }}
         >
-          {dateToStr(time)} •{" "}
+          {dateToStr(datetime)} •{" "}
           {location.city == "" ? "Remote" : `${location.city}`} • {duration}{" "}
           hours
         </Typography>

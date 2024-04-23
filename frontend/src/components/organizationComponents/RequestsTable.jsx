@@ -54,7 +54,7 @@ export const RequestsTable = ({
       </Typography>
       <TableContainer component={Paper}>
         <Table>
-          <TableHead sx={{ backgroundColor: "blue.main" }}>
+          <TableHead sx={{ backgroundColor: "blue.light" }}>
             <TableRow>
               <TableCell align="center">
                 <Typography variant="h6" color="white.main">

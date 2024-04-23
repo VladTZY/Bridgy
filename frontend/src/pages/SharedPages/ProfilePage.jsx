@@ -290,7 +290,7 @@ export const ProfilePage = () => {
                           id={data.event.id}
                           title={data.event.name}
                           description={data.event.description}
-                          time={data.event.time}
+                          datetime={data.event.datetime}
                           location={data.event.location}
                           duration={data.event.hours}
                           event_type={"opportunity"}

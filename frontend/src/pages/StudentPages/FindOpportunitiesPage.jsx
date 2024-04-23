@@ -81,7 +81,7 @@ export const FindOpportunitiesPage = () => {
                     id={event.id}
                     title={event.name}
                     description={event.description}
-                    time={event.time}
+                    datetime={event.datetime}
                     location={event.location}
                     duration={event.hours}
                     event_type={"opportunity"}
