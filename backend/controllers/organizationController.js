@@ -27,7 +27,14 @@ const createEvent = async (req, res) => {
   } = req.body;
 
   try {
-    if (!name || !description || !capacity || !datetime)
+    if (
+      !name ||
+      !description ||
+      !capacity ||
+      !datetime ||
+      !supervisorContact ||
+      !hours
+    )
       throw Error("All fields need to be filled");
 
     if (!remote && (!country || !city || !address))
@@ -36,7 +43,7 @@ const createEvent = async (req, res) => {
     if (description.length > 2000)
       throw Error("Description is too long, limit is 2000 characters");
 
-    if (!category) throw Error("Please select a category, or No Category");
+    if (!category) category = "No category";
 
     const location = await LocationModel.create({
       country: country,

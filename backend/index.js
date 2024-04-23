@@ -33,6 +33,9 @@ app.use("/api/user", userRouter);
 const eventRouter = require("./routes/eventRoutes");
 app.use("/api/events", eventRouter);
 
+const personalEventRouter = require("./routes/personalEventRoutes");
+app.use("/api/personal_events", personalEventRouter);
+
 const studentRouter = require("./routes/studentRoutes");
 app.use("/api/student", studentRouter);
 
