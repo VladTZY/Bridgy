@@ -277,33 +277,37 @@ export const ProfilePage = () => {
                 />
               </Grid>
             </Grid>
-            <Typography variant="h6" fontWeight="bold" sx={{ pt: 2 }}>
-              Last events attended
-            </Typography>
-            <Grid container direction="row" spacing={2} sx={{ my: 2 }}>
-              {lastEvents.slice(0, 4).map((data) => {
-                return (
-                  <Grid item xs={12} md={6} lg={3} key={event.id}>
-                    <MissionCard
-                      id={data.event.id}
-                      title={data.event.name}
-                      description={data.event.description}
-                      time={data.event.time}
-                      location={data.event.location}
-                      duration={data.event.hours}
-                      event_type={"opportunity"}
-                      photoUrl={
-                        data.event.photoUrl == "NO_FILE"
-                          ? DefaultImage
-                          : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                              data.event.photoUrl
-                            }`
-                      }
-                    />
-                  </Grid>
-                );
-              })}
-            </Grid>
+            {userInfo.role == "STUDENT" && (
+              <Box>
+                <Typography variant="h6" fontWeight="bold" sx={{ pt: 2 }}>
+                  Last events attended
+                </Typography>
+                <Grid container direction="row" spacing={2} sx={{ my: 2 }}>
+                  {lastEvents.slice(0, 4).map((data) => {
+                    return (
+                      <Grid item xs={12} md={6} lg={3} key={event.id}>
+                        <MissionCard
+                          id={data.event.id}
+                          title={data.event.name}
+                          description={data.event.description}
+                          time={data.event.time}
+                          location={data.event.location}
+                          duration={data.event.hours}
+                          event_type={"opportunity"}
+                          photoUrl={
+                            data.event.photoUrl == "NO_FILE"
+                              ? DefaultImage
+                              : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                                  data.event.photoUrl
+                                }`
+                          }
+                        />
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+              </Box>
+            )}
           </Box>
         </Box>
       </Box>
