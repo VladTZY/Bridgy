@@ -23,8 +23,14 @@ const theme = createTheme({
     },
     pageBackground: "#f3f4f6",
     gray: "#bdbdbd",
-    green: "#3ccf63",
-    red: "#FF0000",
+    green: {
+      light: "#3ccf63",
+      main: "#008000",
+    },
+    red: {
+      light: "#ff5349",
+      main: "#FF0000",
+    },
   },
   typography: {
     fontFamily: ["Nunito"],

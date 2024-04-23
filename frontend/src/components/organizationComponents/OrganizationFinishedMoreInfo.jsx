@@ -14,7 +14,7 @@ export const OrganizationFinishedMoreInfo = ({ eventId }) => {
   }, [eventId]);
 
   return (
-    <Box>
+    <Box sx={{ mx: 4 }}>
       <Typography
         variant="h5"
         component="div"
