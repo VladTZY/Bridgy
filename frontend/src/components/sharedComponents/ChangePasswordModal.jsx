@@ -69,9 +69,7 @@ export const ChangePasswordModal = ({ setModal }) => {
               fontWeight: 650,
             },
           }}
-        >
-          Password
-        </TextField>
+        ></TextField>
         <TextField
           id="outlined-basic"
           label="New Password"
@@ -87,9 +85,7 @@ export const ChangePasswordModal = ({ setModal }) => {
               fontWeight: 650,
             },
           }}
-        >
-          Password
-        </TextField>
+        ></TextField>
         <TextField
           id="outlined-basic"
           label="Confirm New Password"
@@ -105,9 +101,7 @@ export const ChangePasswordModal = ({ setModal }) => {
               fontWeight: 650,
             },
           }}
-        >
-          Password
-        </TextField>
+        ></TextField>
         <Button
           onClick={() => changePassword()}
           variant="contained"
