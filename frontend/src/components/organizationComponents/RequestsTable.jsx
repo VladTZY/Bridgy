@@ -124,9 +124,9 @@ export const RequestsTable = ({
                         px: 3,
                         borderRadius: 6,
                         color: "white.main",
-                        bgcolor: "blue.light",
+                        bgcolor: "green.light",
                         textTransform: "none",
-                        ":hover": { bgcolor: "blue.main" },
+                        ":hover": { bgcolor: "green.main" },
                       }}
                     >
                       <Typography variant="h7"> Accept</Typography>
@@ -139,9 +139,9 @@ export const RequestsTable = ({
                         px: 3,
                         borderRadius: 6,
                         color: "white.main",
-                        bgcolor: "blue.light",
+                        bgcolor: "red.light",
                         textTransform: "none",
-                        ":hover": { bgcolor: "blue.main" },
+                        ":hover": { bgcolor: "red.main" },
                       }}
                     >
                       <Typography variant="h7"> Reject</Typography>

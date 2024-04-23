@@ -23,21 +23,10 @@ import {
 import stringAvatar from "../../utils/stringAvatar.js";
 import defaultBanner from "../../../assets/Banner.png";
 import EditIcon from "@mui/icons-material/Edit";
-import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import LockResetIcon from "@mui/icons-material/LockReset";
 import { ProfileLabel } from "../../components/sharedComponents/ProfileLabel.jsx";
 import { ChangePasswordModal } from "../../components/sharedComponents/ChangePasswordModal.jsx";
-
-const ButtonSwitch = {
-  true: {
-    startIcon: EditIcon,
-    text: "Edit Profile",
-  },
-  false: {
-    startIcon: SaveAltIcon,
-    text: "Save Profile",
-  },
-};
+import { EditProfileModal } from "../../components/sharedComponents/EditProfileModal.jsx";
 
 const NameField = {
   STUDENT: {
@@ -65,8 +54,8 @@ const AdditionalInformation = {
 export const ProfilePage = () => {
   const userId = useSelector((state) => state.auth.id);
   let { id } = useParams();
-  const [isDisabled, setIsDisabled] = useState(true);
   const [passwordModal, setPasswordModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
     username: "",
@@ -91,32 +80,6 @@ export const ProfilePage = () => {
       });
   }, [id]);
 
-  const onClickHandler = () => {
-    console.log(userInfo.phoneNumber);
-    if (!isDisabled) {
-      let payload = { bio: userInfo.bio, phoneNumber: userInfo.phoneNumber };
-
-      if (userInfo.role == "SCHOOL") {
-        payload.objective = userInfo.objective;
-        payload.objectiveType = userInfo.objectiveType;
-      }
-
-      axios
-        .put(`${import.meta.env.VITE_API_URL}/user/update_profile`, payload, {
-          withCredentials: true,
-        })
-        .then((res) => {
-          setUserInfo({
-            ...userInfo,
-            bio: res.data.bio,
-            phoneNumber: res.data.phoneNumber,
-          });
-        });
-    }
-    setIsDisabled(!isDisabled);
-  };
-
-  const button = ButtonSwitch[isDisabled];
   const name = NameField[userInfo.role];
 
   if (userInfo.email) {
@@ -166,8 +129,8 @@ export const ProfilePage = () => {
                 {userId == id && (
                   <Button
                     variant="contained"
-                    startIcon={<button.startIcon />}
-                    onClick={onClickHandler}
+                    startIcon={<EditIcon />}
+                    onClick={(e) => setEditModal(true)}
                     sx={{
                       bgcolor: "blue.light",
                       color: "blue.contrastText",
@@ -180,8 +143,15 @@ export const ProfilePage = () => {
                       },
                     }}
                   >
-                    {button.text}
+                    Edit Profile
                   </Button>
+                )}
+                {editModal && (
+                  <EditProfileModal
+                    userInfo={userInfo}
+                    setUserInfo={setUserInfo}
+                    setModal={setEditModal}
+                  />
                 )}
                 {userId == id && (
                   <Button
@@ -229,7 +199,6 @@ export const ProfilePage = () => {
                   <ProfileLabel
                     text={name.username}
                     value={userInfo.username}
-                    setValue={setUserInfo}
                     disabled={true}
                   />
                 </Grid>
@@ -251,62 +220,28 @@ export const ProfilePage = () => {
                   <ProfileLabel
                     text={"Phone Number"}
                     value={userInfo.phoneNumber}
-                    disabled={isDisabled}
-                    setValue={(e) =>
-                      setUserInfo({
-                        ...userInfo,
-                        phoneNumber: e.target.value,
-                      })
-                    }
+                    disabled={true}
                   />
                 </Grid>
               </Grid>
               {userInfo.role == "SCHOOL" && (
                 <Grid item container direction="row" spacing={3}>
                   <Grid item xs={12} lg={6}>
-                    <Stack direction="column">
-                      <Typography variant="h8" fontWeight="bold" color="gray">
-                        Objective Type
-                      </Typography>
-                      <Select
-                        inputProps={{ readOnly: isDisabled }}
-                        value={userInfo.objectiveType}
-                        onChange={(e) =>
-                          setUserInfo({
-                            ...userInfo,
-                            objectiveType: e.target.value,
-                          })
-                        }
-                        color="secondary"
-                        sx={{
-                          mt: 0.5,
-                          input: {
-                            color: "black",
-                            fontWeight: 650,
-                          },
-                        }}
-                        MenuProps={{
-                          children: { bgcolor: "white.main" },
-                        }}
-                      >
-                        <MenuItem value={"EVENT"}>
-                          Participating Events
-                        </MenuItem>
-                        <MenuItem value={"HOURS"}>Working Hours</MenuItem>
-                      </Select>
-                    </Stack>
+                    <ProfileLabel
+                      text={"Objective Type"}
+                      value={
+                        userInfo.objectiveType == "HOURS"
+                          ? "Working Hours"
+                          : "Participating Events"
+                      }
+                      disabled={true}
+                    />
                   </Grid>
                   <Grid item xs={12} lg={6}>
                     <ProfileLabel
                       text={"Objective"}
                       value={userInfo.objective}
-                      disabled={isDisabled}
-                      setValue={(e) =>
-                        setUserInfo({
-                          ...userInfo,
-                          objective: e.target.value,
-                        })
-                      }
+                      disabled={true}
                     />
                   </Grid>
                 </Grid>
@@ -316,13 +251,7 @@ export const ProfilePage = () => {
                   text={"Bio"}
                   rows={5}
                   value={userInfo.bio ? userInfo.bio : "No bio"}
-                  disabled={isDisabled}
-                  setValue={(e) =>
-                    setUserInfo({
-                      ...userInfo,
-                      bio: e.target.value,
-                    })
-                  }
+                  disabled={true}
                 />
               </Grid>
             </Grid>

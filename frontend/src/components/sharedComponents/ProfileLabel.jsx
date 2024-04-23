@@ -1,7 +1,7 @@
 import { Typography, Stack, TextField } from "@mui/material";
 import React from "react";
 
-export const ProfileLabel = ({ text, value, setValue, rows, disabled }) => {
+export const ProfileLabel = ({ text, value, rows, disabled }) => {
   return (
     <Stack direction="column">
       <Typography variant="h8" fontWeight="bold" color="gray">
@@ -9,7 +9,6 @@ export const ProfileLabel = ({ text, value, setValue, rows, disabled }) => {
       </Typography>
       <TextField
         value={value}
-        onChange={(e) => setValue(e)}
         multiline
         rows={rows}
         inputProps={{ readOnly: disabled }}
