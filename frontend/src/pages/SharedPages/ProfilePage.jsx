@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import axiosInstance from "../../utils/axiosInstance.js";
 import { useSelector } from "react-redux";
+import { styled } from "@mui/material/styles";
+import getExtension from "../../utils/getExtension";
 
 import {
   Avatar,
@@ -20,11 +22,15 @@ import {
   Modal,
   Select,
   MenuItem,
+  Link,
 } from "@mui/material";
 import stringAvatar from "../../utils/stringAvatar.js";
 import defaultBanner from "../../../assets/Banner.png";
 import EditIcon from "@mui/icons-material/Edit";
 import LockResetIcon from "@mui/icons-material/LockReset";
+import PostAddIcon from "@mui/icons-material/PostAdd";
+import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
+import ErrorIcon from "@mui/icons-material/Error";
 import DefaultImage from "../../../assets/defaultMission.png";
 import { ProfileLabel } from "../../components/sharedComponents/ProfileLabel.jsx";
 import { ChangePasswordModal } from "../../components/sharedComponents/ChangePasswordModal.jsx";
@@ -47,6 +53,40 @@ const NameField = {
   },
 };
 
+const resumeButtonStyle = {
+  true: {
+    bgcolor: "blue.light",
+    color: "blue.contrastText",
+    px: 4,
+    py: 2,
+    fontSize: "16px",
+    borderRadius: 8,
+    ":hover": {
+      bgcolor: "blue.main",
+    },
+  },
+  false: {
+    bgcolor: "gray",
+    color: "blue.contrastText",
+    px: 4,
+    py: 2,
+    fontSize: "16px",
+    borderRadius: 8,
+  },
+};
+
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
+
 export const ProfilePage = () => {
   const userId = useSelector((state) => state.auth.id);
   let { id } = useParams();
@@ -54,6 +94,7 @@ export const ProfilePage = () => {
   const [editModal, setEditModal] = useState(false);
   const [lastEvents, setLastEvents] = useState([]);
   const [name, setName] = useState("");
+  const [resume, setResume] = useState("NO_FILE");
 
   const [userInfo, setUserInfo] = useState();
 
@@ -79,6 +120,31 @@ export const ProfilePage = () => {
       }
     }
   }, [userInfo]);
+
+  const addResume = (e) => {
+    //e.target.files[0])
+    const filename = e.target.files[0].name;
+    const extension = getExtension(filename);
+
+    if (extension != "pdf" && extension != "PDF") {
+      setResume("ERROR");
+      return;
+    }
+
+    let formSend = new FormData();
+    formSend.append("resumeUrl", e.target.files[0]);
+
+    axiosInstance
+      .post("/student/upload_resume", formSend)
+      .then((res) => {
+        setUserInfo((prev) => ({ ...prev, resumeUrl: res.data.url }));
+        setResume("SUCCESS");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setResume("ERROR");
+      });
+  };
 
   if (userInfo) {
     return (
@@ -275,6 +341,112 @@ export const ProfilePage = () => {
                 />
               </Grid>
             </Grid>
+
+            {userInfo.role == "Student" && (
+              <Grid item xs={12}>
+                <Stack direction="row" sx={{ mx: 3, mb: 1, mt: 1 }}>
+                  <Box sx={{ flexGrow: 1 }}>
+                    <Link
+                      disabled={!userInfo.resumeUrl}
+                      rel="noopener noreferrer"
+                      href={`${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
+                        userInfo.resumeUrl
+                      }`}
+                      target="_blank"
+                    >
+                      {userInfo.resumeUrl ? (
+                        <Button sx={resumeButtonStyle[true]}>See resume</Button>
+                      ) : (
+                        <Button disabled sx={resumeButtonStyle[false]}>
+                          No resume uploaded
+                        </Button>
+                      )}
+                    </Link>
+                  </Box>
+                  {userId == id && (
+                    <Box>
+                      {resume == "NO_FILE" ? (
+                        <Button
+                          component="label"
+                          variant="contained"
+                          sx={{
+                            bgcolor: "blue.light",
+                            color: "blue.contrastText",
+                            px: 4,
+                            py: 2,
+                            fontSize: "18px",
+                            borderRadius: 8,
+                            textTransform: "none",
+                            ":hover": {
+                              bgcolor: "blue.main",
+                            },
+                          }}
+                          startIcon={<PostAddIcon />}
+                        >
+                          Upload Resume
+                          <VisuallyHiddenInput
+                            type="file"
+                            onChange={addResume}
+                          />
+                        </Button>
+                      ) : resume == "SUCCESS" ? (
+                        <Button
+                          component="label"
+                          variant="contained"
+                          sx={{
+                            bgcolor: "green.light",
+                            color: "blue.contrastText",
+                            px: 4,
+                            py: 2,
+                            fontSize: "18px",
+                            borderRadius: 8,
+                            textTransform: "none",
+                            ":hover": {
+                              bgcolor: "green.main",
+                            },
+                          }}
+                          startIcon={<DoneOutlineIcon />}
+                        >
+                          Resume uploaded
+                          <VisuallyHiddenInput
+                            type="file"
+                            onChange={addResume}
+                          />
+                        </Button>
+                      ) : (
+                        <Button
+                          component="label"
+                          variant="contained"
+                          sx={{
+                            bgcolor: "red.light",
+                            color: "blue.contrastText",
+                            px: 4,
+                            py: 2,
+                            fontSize: "18px",
+                            borderRadius: 8,
+                            textTransform: "none",
+                            ":hover": {
+                              bgcolor: "red.main",
+                            },
+                          }}
+                          startIcon={<ErrorIcon />}
+                        >
+                          Try another file
+                          <VisuallyHiddenInput
+                            type="file"
+                            onChange={addResume}
+                          />
+                        </Button>
+                      )}
+                      <Typography sx={{ color: "gray", textAlign: "center" }}>
+                        Only .PDF files
+                      </Typography>
+                    </Box>
+                  )}
+                </Stack>
+              </Grid>
+            )}
+
             {userInfo.role == "Student" && (
               <Box>
                 <Typography variant="h6" fontWeight="bold" sx={{ pt: 2 }}>

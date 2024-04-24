@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { requireAuth } = require("../middlewares/requireAuth");
 const { requireStudent } = require("../middlewares/requireStudent");
+const { resumeUpload } = require("../middlewares/multerMiddleware");
 
 router.use(requireAuth);
 router.use(requireStudent);
@@ -10,6 +11,7 @@ router.use(requireStudent);
 const {
   createPersonalEvent,
   getCardStats,
+  uploadResume,
   getOngoingEvents,
   getRequestedEvents,
   getAcceptedEvents,
@@ -20,6 +22,7 @@ const {
 } = require("../controllers/studentController");
 
 router.post("/create_personal_event", createPersonalEvent);
+router.post("/upload_resume", resumeUpload.single("resumeUrl"), uploadResume);
 router.get("/card_stats", getCardStats);
 router.get("/ongoing_events", getOngoingEvents);
 router.get("/requested_events", getRequestedEvents);

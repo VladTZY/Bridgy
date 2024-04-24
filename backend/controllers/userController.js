@@ -205,6 +205,7 @@ const getProfileInfo = async (req, res) => {
         eventsCompleted: eventsCompleted,
         economicValue: economicValue,
         hoursWorked: hours,
+        resumeUrl: user.resumeUrl,
       };
       payload = userInfo;
     }
