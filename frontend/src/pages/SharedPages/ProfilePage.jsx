@@ -33,20 +33,17 @@ import { StatCard } from "../../components/studentComponents/StatCard.jsx";
 import { MissionCard } from "../../components/sharedComponents/MissionCard.jsx";
 
 const NameField = {
-  STUDENT: {
+  Student: {
     username: "Username",
   },
-  SCHOOL: {
+  School: {
     username: "Name of the school",
   },
-  ORGANIZATION: {
+  Organiztion: {
     username: "Organization name",
   },
-  ADMIN: {
+  Administrator: {
     username: "Username",
-  },
-  SUPER_ADMIN: {
-    useername: "Username",
   },
 };
 
@@ -56,21 +53,9 @@ export const ProfilePage = () => {
   const [passwordModal, setPasswordModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [lastEvents, setLastEvents] = useState([]);
+  const [name, setName] = useState("");
 
-  const [userInfo, setUserInfo] = useState({
-    username: "",
-    email: "",
-    phoneNumber: "",
-    role: "",
-    bio: "",
-    location: {
-      country: "",
-      city: "",
-    },
-    schoolName: "",
-    objective: null,
-    objectiveType: null,
-  });
+  const [userInfo, setUserInfo] = useState();
 
   useEffect(() => {
     axios
@@ -81,17 +66,21 @@ export const ProfilePage = () => {
   }, [id]);
 
   useEffect(() => {
-    axiosInstance
-      .get(`/student/finished_events`)
-      .then((res) => {
-        setLastEvents(res.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    if (userInfo) {
+      setName(NameField[userInfo.role]);
 
-  const name = NameField[userInfo.role];
+      if (userInfo.role == "Student") {
+        axiosInstance
+          .get(`/student/finished_events`)
+          .then((res) => {
+            setLastEvents(res.data);
+          })
+          .catch((error) => console.log(error));
+      }
+    }
+  }, [userInfo]);
 
-  if (userInfo.email) {
+  if (userInfo) {
     return (
       <Box
         sx={{
@@ -233,7 +222,7 @@ export const ProfilePage = () => {
                   />
                 </Grid>
               </Grid>
-              {userInfo.role == "SCHOOL" && (
+              {userInfo.role == "School" && (
                 <Grid item container direction="row" spacing={3}>
                   <Grid item xs={12} lg={6}>
                     <ProfileLabel
@@ -255,16 +244,25 @@ export const ProfilePage = () => {
                   </Grid>
                 </Grid>
               )}
-              {userInfo.role == "STUDENT" && (
-                <Grid item container direction="row" spacing={3}>
+              {userInfo.role == "Student" && (
+                <Grid item container direction="row" spacing={3} sx={{ my: 1 }}>
                   <Grid item xs={12} lg={4}>
-                    <StatCard title="Events completed" total={1000} />
+                    <StatCard
+                      title="Events completed"
+                      total={userInfo.eventsCompleted}
+                    />
                   </Grid>
                   <Grid item xs={12} lg={4}>
-                    <StatCard title="Charities Helped" total={200} />
+                    <StatCard
+                      title="Economic Value"
+                      total={`${userInfo.economicValue} $`}
+                    />
                   </Grid>
                   <Grid item xs={12} lg={4}>
-                    <StatCard title="Hours Worked" total={2000} />
+                    <StatCard
+                      title="Hours Worked"
+                      total={userInfo.hoursWorked}
+                    />
                   </Grid>
                 </Grid>
               )}
@@ -277,7 +275,7 @@ export const ProfilePage = () => {
                 />
               </Grid>
             </Grid>
-            {userInfo.role == "STUDENT" && (
+            {userInfo.role == "Student" && (
               <Box>
                 <Typography variant="h6" fontWeight="bold" sx={{ pt: 2 }}>
                   Last events attended
@@ -285,7 +283,7 @@ export const ProfilePage = () => {
                 <Grid container direction="row" spacing={2} sx={{ my: 2 }}>
                   {lastEvents.slice(0, 4).map((data) => {
                     return (
-                      <Grid item xs={12} md={6} lg={3} key={event.id}>
+                      <Grid item xs={12} md={6} lg={3} key={data.event.id}>
                         <MissionCard
                           id={data.event.id}
                           title={data.event.name}

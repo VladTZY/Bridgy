@@ -8,6 +8,8 @@ router.use(requireAuth);
 router.use(requireStudent);
 
 const {
+  createPersonalEvent,
+  getCardStats,
   getOngoingEvents,
   getRequestedEvents,
   getAcceptedEvents,
@@ -17,6 +19,8 @@ const {
   postFeedback,
 } = require("../controllers/studentController");
 
+router.post("/create_personal_event", createPersonalEvent);
+router.get("/card_stats", getCardStats);
 router.get("/ongoing_events", getOngoingEvents);
 router.get("/requested_events", getRequestedEvents);
 router.get("/accepted_events", getAcceptedEvents);

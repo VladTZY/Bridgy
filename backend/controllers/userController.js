@@ -5,6 +5,9 @@ const {
   LocationModel,
   UserToSchool,
 } = require("../database/sequelize");
+
+const { getStudentStats } = require("./studentController");
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
@@ -162,38 +165,47 @@ const getProfileInfo = async (req, res) => {
       location: userLocation,
     };
 
-    if (
-      user.role == "STUDENT" ||
-      user.role == "ADMIN" ||
-      user.role == "SUPER_ADMIN"
-    ) {
+    if (user.role == "ADMIN" || user.role == "SUPER_ADMIN") {
       const userInfo = {
         username: user.username,
         email: user.email,
         phoneNumber: user.phoneNumber,
-        role: user.role,
+        role: "Administrator",
         bio: user.bio,
         location: userLocation,
-        schoolName: "",
       };
 
-      if (user.role == "ADMIN" || user.role == "SUPER_ADMIN")
-        userInfo.role = "Administrator";
+      payload = userInfo;
+    }
 
-      if (user.role == "STUDENT") {
-        const school = await SchoolModel.findOne({
-          attributes: ["name"],
-          include: {
-            model: UserToSchool,
-            attributes: [],
-            where: {
-              userId: user.id,
-            },
+    if (user.role == "STUDENT") {
+      const school = await SchoolModel.findOne({
+        attributes: ["name"],
+        include: {
+          model: UserToSchool,
+          attributes: [],
+          where: {
+            userId: user.id,
           },
-        });
-        userInfo.schoolName = school.name;
-      }
+        },
+      });
 
+      const { eventsCompleted, economicValue, hours } = await getStudentStats(
+        user.id
+      );
+
+      const userInfo = {
+        username: user.username,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        role: "Student",
+        bio: user.bio,
+        location: userLocation,
+        schoolName: school.name,
+        eventsCompleted: eventsCompleted,
+        economicValue: economicValue,
+        hoursWorked: hours,
+      };
       payload = userInfo;
     }
 
@@ -218,7 +230,7 @@ const getProfileInfo = async (req, res) => {
 
       payload = {
         username: school.name,
-        role: "SCHOOL",
+        role: "School",
         email: school.email,
         phoneNumber: school.phoneNumber,
         bio: user.bio,
@@ -245,7 +257,7 @@ const getProfileInfo = async (req, res) => {
 
       payload = {
         username: organization.name,
-        role: "ORGANIZATION",
+        role: "Organization",
         email: organization.email,
         phoneNumber: organization.phoneNumber,
         bio: user.bio,

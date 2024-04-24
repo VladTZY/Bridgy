@@ -18,6 +18,7 @@ export const ProgressCard = ({
           {title}
         </Typography>
         <Typography variant="h6">{value}</Typography>
+        <Typography variant="h7">{description}</Typography>
       </div>
       <div className=" my-4 w-[30%] rounded-full flex relative items-center justify-center mr-4">
         <div
