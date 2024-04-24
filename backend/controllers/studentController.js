@@ -7,6 +7,7 @@ const {
   UserToPersonalEvent,
   UserToSchool,
   SchoolModel,
+  UserModel,
 } = require("../database/sequelize");
 const Sequelize = require("sequelize");
 const { createNotification } = require("./notificationController");
@@ -69,6 +70,26 @@ const getStudentStats = async (studentId) => {
     };
   } catch (error) {
     throw Error(error.message);
+  }
+};
+
+const uploadResume = async (req, res) => {
+  try {
+    if (!res.req.file) throw Error("Resume not uploaded");
+
+    resumeUrl = res.req.file.key;
+
+    const user = await UserModel.findByPk(req.user.id);
+    user.resumeUrl = resumeUrl;
+    await user.save();
+
+    res.status(200).json({
+      message: "success",
+      url: resumeUrl,
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json(error.message);
   }
 };
 
@@ -377,6 +398,7 @@ const postFeedback = async (req, res) => {
 
 module.exports = {
   getStudentStats,
+  uploadResume,
   createPersonalEvent,
   getCardStats,
   getOngoingEvents,
