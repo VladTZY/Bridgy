@@ -13,7 +13,7 @@ const style = {
   p: 4,
 };
 
-export const CreationModal = ({ id, setModal }) => {
+export const CreationModal = ({ id, setModal, title }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -32,7 +32,7 @@ export const CreationModal = ({ id, setModal }) => {
         <Box sx={{ ...style, width: 400 }}>
           {" "}
           <Typography fontWeight="bold" variant="h5">
-            Posting an opportunity
+            {title}
           </Typography>
           <Divider color="black" sx={{ mt: 2 }} />
           <Typography sx={{ mt: 2 }} variant="h6">
