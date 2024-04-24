@@ -26,6 +26,7 @@ export const BarCard = ({ id, title, description, location }) => {
           <Typography
             variant="h5"
             fontWeight="bold"
+            noWrap
             sx={{
               width: 1 / 3,
               letterSpacing: 1,

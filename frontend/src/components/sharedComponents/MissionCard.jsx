@@ -61,7 +61,12 @@ export const MissionCard = ({
         </Typography>
       </Box>
       <CardContent>
-        <Typography variant="h6" color="primary.contrastText" fontWeight="bold">
+        <Typography
+          variant="h6"
+          color="primary.contrastText"
+          fontWeight="bold"
+          noWrap
+        >
           {title}
         </Typography>
         <Typography

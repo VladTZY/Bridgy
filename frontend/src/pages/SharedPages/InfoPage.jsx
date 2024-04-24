@@ -26,6 +26,7 @@ import DateRangeIcon from "@mui/icons-material/DateRange";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import GroupIcon from "@mui/icons-material/Group";
+import CategoryIcon from "@mui/icons-material/Category";
 import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
 import Image from "mui-image";
 
@@ -51,6 +52,7 @@ export const InfoPage = () => {
     photoUrl: "",
     location: ("", ""),
     status: "",
+    category: "",
   });
   const [locationName, setLocationName] = useState("");
 
@@ -120,7 +122,7 @@ export const InfoPage = () => {
                     borderColor: "gray",
                     borderRadius: 4,
                     textAlign: "center",
-                    p: { lg: 1, xl: 3 },
+                    p: { lg: 1, xl: 2 },
                   }}
                 >
                   <Typography
@@ -147,7 +149,7 @@ export const InfoPage = () => {
                     borderColor: "gray",
                     borderRadius: 4,
                     textAlign: "center",
-                    p: { lg: 1, xl: 3 },
+                    p: { lg: 1, xl: 2 },
                   }}
                 >
                   <Typography
@@ -174,7 +176,7 @@ export const InfoPage = () => {
                     borderColor: "gray",
                     borderRadius: 4,
                     textAlign: "center",
-                    p: { lg: 1, xl: 3 },
+                    p: { lg: 1, xl: 2 },
                   }}
                 >
                   <Typography
@@ -201,7 +203,7 @@ export const InfoPage = () => {
                     borderColor: "gray",
                     borderRadius: 4,
                     textAlign: "center",
-                    p: { lg: 1, xl: 3 },
+                    p: { lg: 1, xl: 2 },
                   }}
                 >
                   <Typography
@@ -218,6 +220,33 @@ export const InfoPage = () => {
                       sx={{ color: "blue.main", mr: 1 }}
                     />
                     {event.capacity} places
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item>
+                <Box
+                  sx={{
+                    border: 1,
+                    borderColor: "gray",
+                    borderRadius: 4,
+                    textAlign: "center",
+                    p: { lg: 1, xl: 2 },
+                  }}
+                >
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: {
+                        lg: "26px",
+                        xl: "36px",
+                      },
+                    }}
+                  >
+                    <CategoryIcon
+                      fontSize="large"
+                      sx={{ color: "blue.main", mr: 1 }}
+                    />
+                    {event.category}
                   </Typography>
                 </Box>
               </Grid>
