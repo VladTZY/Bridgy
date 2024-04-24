@@ -55,10 +55,24 @@ const imageUpload = multer({
   },
 });
 
+const resumeUpload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: process.env.BUCKET_NAME,
+    acl: "public-read",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    key: function (req, file, cb) {
+      const uniqueSuffix = Date.now();
+      cb(null, "resumes/" + uniqueSuffix + path.extname(file.originalname));
+    },
+  }),
+  limits: { fileSize: 100000000 },
+});
+
 const tableUpload = multer({
   storage: tableStorage,
   limits: { fileSize: 100000000 },
   ///file filter
 });
 
-module.exports = { imageUpload, tableUpload };
+module.exports = { imageUpload, resumeUpload, tableUpload };
