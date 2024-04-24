@@ -23,6 +23,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import DomainAddIcon from "@mui/icons-material/DomainAdd";
 import AddchartIcon from "@mui/icons-material/Addchart";
+import EventRepeatIcon from "@mui/icons-material/EventRepeat";
 
 const drawerWidth = "15vw";
 
@@ -81,6 +82,11 @@ const buttonMapping = {
       text: "My Experiences",
       route: "/student/my_experiences",
       icon: FactCheckIcon,
+    },
+    {
+      text: "Add Personal Event",
+      route: "/student/add_personal_event",
+      icon: EventRepeatIcon,
     },
     {
       text: "Notifications",

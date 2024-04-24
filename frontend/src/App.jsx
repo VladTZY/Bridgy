@@ -18,6 +18,7 @@ import { CreateSchoolPage } from "./pages/AdminPages/CreateSchoolPage";
 import { MyExperiencesPage } from "./pages/StudentPages/MyExperiencesPage";
 import { OrganizationDashboardPage } from "./pages/OrganizationPages/OrganizationDashboardPage";
 import { NotificationsPage } from "./pages/SharedPages/NotificationsPage";
+import { AddPersonalEventPage } from "./pages/StudentPages/AddPersonalEvent";
 
 import NavBar from "./components/sharedComponents/NavBar";
 import SideBar from "./components/sharedComponents/SideBar";
@@ -83,6 +84,18 @@ function App() {
         element={
           role == "STUDENT" ? (
             <MyExperiencesPage />
+          ) : isLoggedIn ? (
+            <ErrorPage />
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
+      <Route
+        path="/student/add_personal_event"
+        element={
+          role == "STUDENT" ? (
+            <AddPersonalEventPage />
           ) : isLoggedIn ? (
             <ErrorPage />
           ) : (

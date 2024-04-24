@@ -12,7 +12,6 @@ import {
   Checkbox,
   FormControlLabel,
   Button,
-  Stack,
   FormControl,
   Select,
   MenuItem,
@@ -30,7 +29,6 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PublicIcon from "@mui/icons-material/Public";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import MapIcon from "@mui/icons-material/Map";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const locationsInfo = [
   {
@@ -94,21 +92,10 @@ const errorFields = [
   "country",
   "city",
   "address",
+  "feedback",
 ];
 
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
-
-export const PostOpportunitiesPage = () => {
+export const AddPersonalEventPage = () => {
   const [creationModal, setCreationModal] = useState(false);
   const [nav, setNav] = useState(null);
   const [formData, setFormData] = useState({
@@ -117,13 +104,12 @@ export const PostOpportunitiesPage = () => {
     description: "",
     category: "No category",
     isRemote: false,
-    file: null,
     hours: 0,
     datetime: dayjs(),
-    capacity: 0,
     country: "",
     city: "",
     address: "",
+    feedback: "",
   });
   const [formError, setFormError] = useState({
     name: false,
@@ -132,24 +118,15 @@ export const PostOpportunitiesPage = () => {
     category: false,
     hours: false,
     datetime: false,
-    capacity: false,
     country: false,
     city: false,
     address: false,
-  });
-  const [colors, setColors] = useState({
-    color: "blue.light",
-    hoverColor: "blue.main",
+    feedback: false,
   });
 
   const updateFormData = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
     setFormError({ ...formError, [e.target.id]: false });
-  };
-
-  const addFile = (e) => {
-    setFormData({ ...formData, file: e.target.files[0] });
-    setColors({ color: "green.light", hoverColor: "green.main" });
   };
 
   const handleSubmit = async () => {
@@ -183,14 +160,24 @@ export const PostOpportunitiesPage = () => {
     let formSend = new FormData();
 
     for (const key in formData)
-      if (key != "file" && key != "isRemote" && key != "datetime")
+      if (key != "isRemote" && key != "datetime")
         formSend.append(key, formData[key]);
     formSend.append("datetime", formData.datetime.$d);
     formSend.append("remote", formData.isRemote);
-    formSend.append("photoUrl", formData.file);
 
     axiosInstance
-      .post(`/organization/create_event`, formSend)
+      .post(`/student/create_personal_event`, {
+        name: formData.name,
+        description: formData.description,
+        supervisorContact: formData.supervisorContact,
+        feedback: formData.feedback,
+        hours: formData.hours,
+        remote: formData.isRemote,
+        datetime: formData.datetime,
+        country: formData.country,
+        city: formData.city,
+        address: formData.address,
+      })
       .then((res) => {
         setNav(res.data.id);
         setCreationModal(true);
@@ -213,7 +200,7 @@ export const PostOpportunitiesPage = () => {
             },
           }}
         >
-          Post Opportunity
+          Add Personal Event
         </Typography>
         <Box sx={{ mx: 2, mt: 3 }}>
           <Grid container direction="row" spacing={3}>
@@ -258,43 +245,39 @@ export const PostOpportunitiesPage = () => {
               </Box>
             </Grid>
 
-            <Grid item container xs={12} spacing={3} sx={{ mb: 2 }}>
-              <Grid item xs={12} lg={4}>
-                <FormControl fullWidth id="category">
-                  <InputLabel>Category</InputLabel>
-                  <Select
-                    value={formData.category}
-                    label="Category"
-                    onChange={(e) => {
-                      setFormData({
-                        ...formData,
-                        category: e.target.value,
-                      });
-                      setFormError({ ...formError, category: false });
-                    }}
-                  >
-                    {categories.map((category) => {
-                      return (
-                        <MenuItem id="category" key={category} value={category}>
-                          {category}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </FormControl>
-              </Grid>
+            <Grid item xs={12} sx={{ mb: 2 }}>
+              <MultilineInput
+                id="feedback"
+                name="Event Feedback"
+                value={formData.feedback}
+                error={formError.feedback}
+                updateFormData={updateFormData}
+              />
             </Grid>
 
             <Grid item xs={12} lg={4}>
-              <IconInput
-                id="capacity"
-                name="Number of Students"
-                value={formData.capacity}
-                error={formError.capacity}
-                type="number"
-                icon={<TimelapseIcon sx={{ color: "blue.main" }} />}
-                updateFormData={updateFormData}
-              />
+              <FormControl fullWidth id="category">
+                <InputLabel>Category</InputLabel>
+                <Select
+                  value={formData.category}
+                  label="Category"
+                  onChange={(e) => {
+                    setFormData({
+                      ...formData,
+                      category: e.target.value,
+                    });
+                    setFormError({ ...formError, category: false });
+                  }}
+                >
+                  {categories.map((category) => {
+                    return (
+                      <MenuItem id="category" key={category} value={category}>
+                        {category}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
             </Grid>
             <Grid item xs={12} lg={4}>
               <IconInput
@@ -355,56 +338,32 @@ export const PostOpportunitiesPage = () => {
             )}
           </Grid>
         </Box>
-        <Stack sx={{ mx: 2, mt: 4 }} direction={{ xs: "column", md: "row" }}>
-          <Box sx={{ flexGrow: 1 }}>
-            <Button
-              component="label"
-              variant="contained"
-              sx={{
-                bgcolor: colors.color,
-                color: "blue.contrastText",
-                px: 4,
-                py: 2,
-                fontSize: "18px",
-                borderRadius: 8,
-                textTransform: "none",
-                ":hover": {
-                  bgcolor: colors.hoverColor,
-                },
-              }}
-              startIcon={<CloudUploadIcon />}
-            >
-              Upload Cover Image*
-              <VisuallyHiddenInput type="file" onChange={addFile} />
-            </Button>
-          </Box>
-          <Box>
-            <Button
-              variant="contained"
-              sx={{
-                bgcolor: "blue.light",
-                color: "blue.contrastText",
-                px: 4,
-                py: 2,
-                fontSize: "18px",
-                borderRadius: 8,
-                textTransform: "none",
-                ":hover": {
-                  bgcolor: "blue.main",
-                },
-              }}
-              onClick={handleSubmit}
-            >
-              Create Opportunity
-            </Button>
-          </Box>
-        </Stack>
+        <Grid container sx={{ px: 2, mt: 4, justifyContent: "end" }}>
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "blue.light",
+              color: "blue.contrastText",
+              px: 4,
+              py: 2,
+              fontSize: "18px",
+              borderRadius: 8,
+              textTransform: "none",
+              ":hover": {
+                bgcolor: "blue.main",
+              },
+            }}
+            onClick={handleSubmit}
+          >
+            Add Event
+          </Button>
+        </Grid>
       </Box>
       {creationModal ? (
         <CreationModal
           id={nav}
           setModal={setCreationModal}
-          title={"Posting an opportunity"}
+          title={"Adding a personal event"}
         />
       ) : null}
     </Box>
