@@ -301,7 +301,7 @@ const kickStudent = async (req, res) => {
     });
 
     if (!userToEvent) throw Error("Student didn t apply");
-    if (userToEvent.status != "ACCEPTED")
+    if (userToEvent.status != "JOINED")
       throw Error("Student wasn't accepted in the first place");
 
     userToEvent.status = "REJECTED";

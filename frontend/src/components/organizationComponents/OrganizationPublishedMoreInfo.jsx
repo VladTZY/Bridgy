@@ -30,7 +30,13 @@ export const OrganizationPublishedMoreInfo = ({ eventId }) => {
         {" "}
         This event has not started yet!
       </Typography>
-      <StudentsTable students={acceptedStudents} title={"Accepted Students"} />
+      <StudentsTable
+        eventId={eventId}
+        students={acceptedStudents}
+        setAcceptedStudents={setAcceptedStudents}
+        title={"Accepted Students"}
+        withKick={true}
+      />
       <Box sx={{ mb: 4 }}></Box>
       <RequestsTable
         eventId={eventId}

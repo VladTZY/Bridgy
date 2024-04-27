@@ -9,6 +9,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import DoNotDisturbIcon from "@mui/icons-material/DoNotDisturb";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 const notificationsMapping = {
   ACCEPTED: {
@@ -19,6 +20,11 @@ const notificationsMapping = {
   REJECTED: {
     icon: DoNotDisturbIcon,
     secondary: "Try joining other similar events!",
+    color: "red.light",
+  },
+  KICKED: {
+    icon: RemoveCircleOutlineIcon,
+    secondary: "You can try to find a different event!",
     color: "red.light",
   },
   STUDENT_REQUESTED: {

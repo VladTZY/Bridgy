@@ -26,6 +26,7 @@ export const OrganizationFinishedMoreInfo = ({ eventId }) => {
       <StudentsTable
         title={"Students that showed up"}
         students={finishedStudents}
+        withKick={false}
       />
     </Box>
   );

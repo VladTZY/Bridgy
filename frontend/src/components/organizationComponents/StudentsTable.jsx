@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import axiosInstance from "../../utils/axiosInstance";
 import {
   TableContainer,
   TableRow,
@@ -12,7 +13,23 @@ import {
   Button,
 } from "@mui/material";
 
-export const StudentsTable = ({ title, students }) => {
+export const StudentsTable = ({
+  eventId,
+  title,
+  students,
+  setAcceptedStudents,
+  withKick,
+}) => {
+  const kickStudent = (id) => {
+    axiosInstance
+      .post(`/organization/kick_student?studentId=${id}&eventId=${eventId}`, {})
+      .then((res) => {
+        setAcceptedStudents(
+          students.filter((student) => student.user.id != id)
+        );
+      });
+  };
+
   return (
     <Box>
       <Typography sx={{ textAlign: "left", ml: 2, mb: 1 }} variant="h5">
@@ -45,12 +62,14 @@ export const StudentsTable = ({ title, students }) => {
                   Profile
                 </Typography>
               </TableCell>
-              <TableCell align="center">
-                {" "}
-                <Typography variant="h6" color="white.main">
-                  Kick
-                </Typography>
-              </TableCell>
+              {withKick && (
+                <TableCell align="center">
+                  {" "}
+                  <Typography variant="h6" color="white.main">
+                    Kick
+                  </Typography>
+                </TableCell>
+              )}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -79,20 +98,23 @@ export const StudentsTable = ({ title, students }) => {
                       View profile
                     </Link>
                   </TableCell>
-                  <TableCell align="center">
-                    <Button
-                      sx={{
-                        px: 3,
-                        borderRadius: 6,
-                        color: "white.main",
-                        bgcolor: "red.light",
-                        textTransform: "none",
-                        ":hover": { bgcolor: "red.main" },
-                      }}
-                    >
-                      <Typography variant="h7"> Kick</Typography>
-                    </Button>
-                  </TableCell>
+                  {withKick && (
+                    <TableCell align="center">
+                      <Button
+                        onClick={() => kickStudent(student.user.id)}
+                        sx={{
+                          px: 3,
+                          borderRadius: 6,
+                          color: "white.main",
+                          bgcolor: "red.light",
+                          textTransform: "none",
+                          ":hover": { bgcolor: "red.main" },
+                        }}
+                      >
+                        <Typography variant="h7"> Kick</Typography>
+                      </Button>
+                    </TableCell>
+                  )}
                 </TableRow>
               );
             })}

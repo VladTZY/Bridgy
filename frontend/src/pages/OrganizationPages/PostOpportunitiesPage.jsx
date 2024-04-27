@@ -293,7 +293,7 @@ export const PostOpportunitiesPage = () => {
               <Grid item xs={12} lg={4}>
                 <TextInput
                   id="videoUrl"
-                  name="Video URL*"
+                  name="Upload Video URL*"
                   value={formData.videoUrl}
                   updateFormData={updateUrl}
                 />

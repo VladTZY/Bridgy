@@ -90,8 +90,6 @@ export const InfoPage = () => {
       .catch((error) => console.log(error));
   };
 
-  console.log(event.videoUrl);
-
   return (
     <Box sx={{ width: 1, bgcolor: "background" }}>
       <Toolbar />
