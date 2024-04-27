@@ -37,6 +37,11 @@ module.exports = (sequelize) => {
     },
     photoUrl: {
       type: Sequelize.STRING,
+      defaultValue: "NO_FILE",
+    },
+    videoUrl: {
+      type: Sequelize.STRING,
+      defaultValue: "NO_VIDEO",
     },
     category: {
       type: Sequelize.STRING,

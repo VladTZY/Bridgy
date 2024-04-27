@@ -62,6 +62,9 @@ const createEvent = async (req, res) => {
     let photoUrl = "NO_FILE";
     if (res.req.file) photoUrl = res.req.file.key;
 
+    let videoUrl = "NO_VIDEO";
+    if (req.body.videoUrl) videoUrl = req.body.videoUrl;
+
     const event = await EventModel.create({
       name: name,
       supervisorContact: supervisorContact,
@@ -72,6 +75,7 @@ const createEvent = async (req, res) => {
       datetime: datetime,
       remote: remote,
       photoUrl: photoUrl,
+      videoUrl: videoUrl,
       status: "PUBLISHED",
       locationId: location.id,
       organizationId: organization.id,
