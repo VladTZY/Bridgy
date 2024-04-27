@@ -124,6 +124,7 @@ export const PostOpportunitiesPage = () => {
     country: "",
     city: "",
     address: "",
+    videoUrl: "",
   });
   const [formError, setFormError] = useState({
     name: false,
@@ -145,6 +146,10 @@ export const PostOpportunitiesPage = () => {
   const updateFormData = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
     setFormError({ ...formError, [e.target.id]: false });
+  };
+
+  const updateUrl = (e) => {
+    setFormData({ ...formData, videoUrl: e.target.value });
   };
 
   const addFile = (e) => {
@@ -188,6 +193,8 @@ export const PostOpportunitiesPage = () => {
     formSend.append("datetime", formData.datetime.$d);
     formSend.append("remote", formData.isRemote);
     formSend.append("photoUrl", formData.file);
+
+    console.log(formSend);
 
     axiosInstance
       .post(`/organization/create_event`, formSend)
@@ -282,6 +289,19 @@ export const PostOpportunitiesPage = () => {
                     })}
                   </Select>
                 </FormControl>
+              </Grid>
+              <Grid item xs={12} lg={4}>
+                <TextInput
+                  id="videoUrl"
+                  name="Video URL*"
+                  value={formData.videoUrl}
+                  updateFormData={updateUrl}
+                />
+              </Grid>
+              <Grid item xs={12} lg={4}>
+                <Typography color="gray" sx={{ textAlign: "center" }}>
+                  * marks optional fields
+                </Typography>
               </Grid>
             </Grid>
 

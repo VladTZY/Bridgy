@@ -53,6 +53,7 @@ export const InfoPage = () => {
     location: ("", ""),
     status: "",
     category: "",
+    videoUrl: "",
   });
   const [locationName, setLocationName] = useState("");
 
@@ -88,6 +89,8 @@ export const InfoPage = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  console.log(event.videoUrl);
 
   return (
     <Box sx={{ width: 1, bgcolor: "background" }}>
@@ -276,13 +279,16 @@ export const InfoPage = () => {
           >
             {event.description}
           </Typography>
-          <Box sx={{ m: 2 }}>
-            <ReactPlayer
-              playing={false}
-              url={"https://www.youtube.com/watch?v=L0SeE2OZD4s"}
-              muted={false}
-            />
-          </Box>
+          {event.videoUrl != "NO_VIDEO" && (
+            <Box sx={{ m: 2 }}>
+              <ReactPlayer
+                width="50%"
+                playing={false}
+                url={event.videoUrl}
+                muted={false}
+              />
+            </Box>
+          )}
           {isAdmin && (
             <Grid container sx={{ mt: 2, justifyContent: "end" }}>
               <Button
