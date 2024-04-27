@@ -30,7 +30,7 @@ import CategoryIcon from "@mui/icons-material/Category";
 import DefaultImage from "../../../Bridgy_Assets/Images/Missions/defaultMission.png";
 import Image from "mui-image";
 
-import { RequestsTable } from "../../components/organizationComponents/RequestsTable";
+import ReactPlayer from "react-player";
 
 import datetimeToStr from "../../utils/datetimeToStr";
 
@@ -276,6 +276,13 @@ export const InfoPage = () => {
           >
             {event.description}
           </Typography>
+          <Box sx={{ m: 2 }}>
+            <ReactPlayer
+              playing={false}
+              url={"https://www.youtube.com/watch?v=L0SeE2OZD4s"}
+              muted={false}
+            />
+          </Box>
           {isAdmin && (
             <Grid container sx={{ mt: 2, justifyContent: "end" }}>
               <Button
