@@ -3,7 +3,6 @@ import pic8 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/studenticon.png";
 import pic9 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/charityicon.png";
 import pic10 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/schoolicon.png";
 import pic12 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/stats.png";
-import pic14 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/heropicv1.jpg";
 import LandingPicture from "../../../Bridgy_Assets/Images/Webpage/LandingPicture.jpg";
 
 import { Navbar } from "../../components/Navbar";

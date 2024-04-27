@@ -219,7 +219,7 @@ export const InfoPage = () => {
                       fontSize="large"
                       sx={{ color: "blue.main", mr: 1 }}
                     />
-                    {event.capacity} places
+                    {event.capacity} openings
                   </Typography>
                 </Box>
               </Grid>
