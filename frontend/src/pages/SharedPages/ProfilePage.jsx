@@ -45,7 +45,7 @@ const NameField = {
   School: {
     username: "Name of the school",
   },
-  Organiztion: {
+  Organization: {
     username: "Organization name",
   },
   Administrator: {

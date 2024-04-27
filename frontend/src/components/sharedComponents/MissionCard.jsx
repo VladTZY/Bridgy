@@ -51,7 +51,7 @@ export const MissionCard = ({
           sx={{
             fontSize: {
               lg: "16px",
-              xl: "18px",
+              xl: "21px",
             },
           }}
         >
@@ -66,6 +66,12 @@ export const MissionCard = ({
           color="primary.contrastText"
           fontWeight="bold"
           noWrap
+          sx={{
+            fontSize: {
+              lg: "16px",
+              xl: "21px",
+            },
+          }}
         >
           {title}
         </Typography>
