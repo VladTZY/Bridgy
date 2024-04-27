@@ -53,7 +53,7 @@ const locationsInfo = [
 const categories = [
   "No category",
   "Advocay & Human Rights",
-  "Animlas",
+  "Animals",
   "Arts & Culture",
   "Board Development",
   "Children & Youth",
