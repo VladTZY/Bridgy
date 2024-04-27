@@ -15,6 +15,7 @@ const {
   getFinishedStudents,
   acceptStudent,
   rejectStudent,
+  kickStudent,
   checkStudent,
   finishEvent,
   hideEvent,
@@ -27,6 +28,7 @@ router.get("/joined_students", getJoinedStudents);
 router.get("/finished_students", getFinishedStudents);
 router.post("/confirm_student", acceptStudent);
 router.post("/reject_student", rejectStudent);
+router.post("/kick_student", kickStudent);
 router.post("/check_student", checkStudent);
 router.post("/finish_event", finishEvent);
 router.post("/hide_event", hideEvent);

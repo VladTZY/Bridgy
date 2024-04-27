@@ -62,6 +62,9 @@ const createEvent = async (req, res) => {
     let photoUrl = "NO_FILE";
     if (res.req.file) photoUrl = res.req.file.key;
 
+    let videoUrl = "NO_VIDEO";
+    if (req.body.videoUrl) videoUrl = req.body.videoUrl;
+
     const event = await EventModel.create({
       name: name,
       supervisorContact: supervisorContact,
@@ -72,6 +75,7 @@ const createEvent = async (req, res) => {
       datetime: datetime,
       remote: remote,
       photoUrl: photoUrl,
+      videoUrl: videoUrl,
       status: "PUBLISHED",
       locationId: location.id,
       organizationId: organization.id,
@@ -270,6 +274,53 @@ const rejectStudent = async (req, res) => {
   }
 };
 
+const kickStudent = async (req, res) => {
+  try {
+    const eventId = req.query.eventId;
+    const studentId = req.query.studentId;
+
+    if (!eventId) throw Error("Event id not specified");
+
+    if (!studentId) throw Error("Student id not specified");
+
+    const event = await EventModel.findOne({
+      where: {
+        id: eventId,
+      },
+      include: OrganizationModel,
+    });
+
+    if (event.organization.adminId != req.user.id)
+      throw Error("Not admin for this event");
+
+    const userToEvent = await UserToEvent.findOne({
+      where: {
+        userId: studentId,
+        eventId: eventId,
+      },
+    });
+
+    if (!userToEvent) throw Error("Student didn t apply");
+    if (userToEvent.status != "ACCEPTED")
+      throw Error("Student wasn't accepted in the first place");
+
+    userToEvent.status = "REJECTED";
+    await userToEvent.save();
+
+    createNotification(
+      studentId,
+      "KICKED",
+      `Sadly, you were kicked from the following event, ${event.name}`,
+      null,
+      event.id
+    );
+
+    res.status(200).json(userToEvent);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 const checkStudent = async (req, res) => {
   try {
     const eventId = req.query.eventId;
@@ -432,6 +483,7 @@ module.exports = {
   getJoinedStudents,
   acceptStudent,
   rejectStudent,
+  kickStudent,
   checkStudent,
   finishEvent,
   hideEvent,
