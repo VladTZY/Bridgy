@@ -4,6 +4,7 @@ import pic9 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/charityicon.png";
 import pic10 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/schoolicon.png";
 import pic12 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/stats.png";
 import pic14 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/heropicv1.jpg";
+import LandingPicture from "../../../Bridgy_Assets/Images/Webpage/LandingPicture.jpg";
 
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
@@ -20,7 +21,7 @@ export const LandingPage = () => {
           <div className="flex flex-col md:flex-row px-8 relative ">
             <img
               className=" md:w-[50%] rounded-2xl drop-shadow-2xl transition opacity-100 ease-in duration-900 transform hover:scale-[101%] duration-300 "
-              src={pic14}
+              src={LandingPicture}
               alt="charitieslove"
             />
             <div className="text-black pt-4 xl:pt-0 text-4xl md:text-6xl font-bold flex flex-col justify-center items-center text-center md:w-[50%]">
