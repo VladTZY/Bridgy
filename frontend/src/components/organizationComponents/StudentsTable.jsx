@@ -9,6 +9,7 @@ import {
   TableHead,
   Typography,
   Box,
+  Button,
 } from "@mui/material";
 
 export const StudentsTable = ({ title, students }) => {
@@ -44,6 +45,12 @@ export const StudentsTable = ({ title, students }) => {
                   Profile
                 </Typography>
               </TableCell>
+              <TableCell align="center">
+                {" "}
+                <Typography variant="h6" color="white.main">
+                  Kick
+                </Typography>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -71,6 +78,20 @@ export const StudentsTable = ({ title, students }) => {
                     >
                       View profile
                     </Link>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Button
+                      sx={{
+                        px: 3,
+                        borderRadius: 6,
+                        color: "white.main",
+                        bgcolor: "red.light",
+                        textTransform: "none",
+                        ":hover": { bgcolor: "red.main" },
+                      }}
+                    >
+                      <Typography variant="h7"> Kick</Typography>
+                    </Button>
                   </TableCell>
                 </TableRow>
               );

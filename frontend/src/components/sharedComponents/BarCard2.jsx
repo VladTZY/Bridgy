@@ -25,8 +25,8 @@ export const BarCard2 = ({ id, title, description, location, icon }) => {
               letterSpacing: 1,
               ml: 1,
               fontSize: {
-                lg: "21px",
-                xl: "26px",
+                lg: "16px",
+                xl: "21px",
               },
             }}
           >
