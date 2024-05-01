@@ -6,16 +6,15 @@ import {
   Toolbar,
   Grid,
   Stack,
-  Typography,
   Select,
   MenuItem,
   FormControl,
   InputLabel,
-  Backdrop,
-  CircularProgress,
+  Typography,
 } from "@mui/material";
 import { ProgressCard } from "../../components/sharedComponents/ProgressCard";
 import { StudentsTable } from "../../components/schoolComponents/StudentsTable";
+import { ObjectiveDash } from "../../components/schoolComponents/ObjectiveDash";
 
 export const SchoolDashboardPage = () => {
   const [tableData, setTableData] = useState([]);
@@ -81,8 +80,24 @@ export const SchoolDashboardPage = () => {
           </Grid>
         </Grid>
         <Box sx={{ mt: 4 }}>
+          <ObjectiveDash />
+        </Box>
+        <Box sx={{ mt: 4 }}>
           <Stack direction="row">
-            <Box sx={{ flexGrow: 1 }}></Box>
+            <Typography
+              variant="h4"
+              fontWeight="700"
+              sx={{
+                flexGrow: 1,
+                fontSize: {
+                  xs: "22px",
+                  lg: "26px",
+                  xl: "30px",
+                },
+              }}
+            >
+              Students
+            </Typography>
             <FormControl sx={{ minWidth: 120 }} size="small">
               <InputLabel>Grade</InputLabel>
               <Select
