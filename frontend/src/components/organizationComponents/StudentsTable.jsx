@@ -45,28 +45,24 @@ export const StudentsTable = ({
                 </Typography>
               </TableCell>
               <TableCell align="center">
-                {" "}
                 <Typography variant="h6" color="white.main">
                   Email
                 </Typography>
               </TableCell>
               <TableCell align="center">
-                {" "}
                 <Typography variant="h6" color="white.main">
                   Phone Number
                 </Typography>
               </TableCell>
               <TableCell align="center">
-                {" "}
                 <Typography variant="h6" color="white.main">
                   Profile
                 </Typography>
               </TableCell>
               {withKick && (
                 <TableCell align="center">
-                  {" "}
                   <Typography variant="h6" color="white.main">
-                    Kick
+                    Remove participant
                   </Typography>
                 </TableCell>
               )}
