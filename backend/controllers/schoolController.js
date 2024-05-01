@@ -317,9 +317,61 @@ const getStats = async (req, res) => {
   }
 };
 
+const getSchoolObjective = async (req, res) => {
+  try {
+    const school = await SchoolModel.findOne({
+      attributes: ["objectiveType", "objective"],
+      where: {
+        adminId: req.user.id,
+      },
+    });
+
+    res.status(200).json({
+      objectiveType: school.objectiveType,
+      objective: school.objective,
+    });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const setSchoolObjective = async (req, res) => {
+  try {
+    const { objectiveType, objective } = req.body;
+
+    if (!(objectiveType || objective)) throw Error("No update");
+
+    const school = await SchoolModel.findOne({
+      attributes: ["id", "objectiveType", "objective"],
+      where: {
+        adminId: req.user.id,
+      },
+    });
+
+    if (
+      objectiveType &&
+      (objectiveType == "HOURS" || objectiveType == "EVENTS")
+    )
+      school.objectiveType = objectiveType;
+
+    if (objective) school.objective = objective;
+
+    await school.save();
+
+    res.status(200).json({
+      objectiveType: school.objectiveType,
+      objective: school.objective,
+    });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 module.exports = {
   createOneStudent,
   getStudents,
   createMultipleStudents,
   getStats,
+  getSchoolObjective,
+  setSchoolObjective,
 };
