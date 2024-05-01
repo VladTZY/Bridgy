@@ -107,7 +107,7 @@ export const StudentsTable = ({
                           ":hover": { bgcolor: "red.main" },
                         }}
                       >
-                        <Typography variant="h7"> Kick</Typography>
+                        <Typography variant="h7"> Remove</Typography>
                       </Button>
                     </TableCell>
                   )}
