@@ -19,7 +19,6 @@ import { MyExperiencesPage } from "./pages/StudentPages/MyExperiencesPage";
 import { OrganizationDashboardPage } from "./pages/OrganizationPages/OrganizationDashboardPage";
 import { NotificationsPage } from "./pages/SharedPages/NotificationsPage";
 import { AddPersonalEventPage } from "./pages/StudentPages/AddPersonalEvent";
-import { PrivacyPolicyPage } from "./pages/SharedPages/PrivacyPolicyPage";
 
 import NavBar from "./components/sharedComponents/NavBar";
 import SideBar from "./components/sharedComponents/SideBar";
@@ -212,7 +211,6 @@ function App() {
         path="/opportunity/:id"
         element={isLoggedIn ? <InfoPage /> : <Navigate to="/login" />}
       />
-      <Route path="/privacy_policy" element={<PrivacyPolicyPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
