@@ -1,14 +1,20 @@
 import React from "react";
-import { Box, Stack, Typography, Link, Toolbar } from "@mui/material";
+import { Box, Stack, Typography, Toolbar } from "@mui/material";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="blue.contrastText">
-      {"Copyright © "}
-      <Link color="inherit">Bridgy, Inc.</Link> {new Date().getFullYear()}
-      {" | All rights reserved."}
-    </Typography>
+    <Box>
+      <Typography variant="body2" color="blue.contrastText">
+        {"Copyright © "}
+        Bridgy, Inc.{new Date().getFullYear()}
+        {" | All rights reserved."}
+      </Typography>
+      <Link to="/privacy_policy" className="text-white hover:underline">
+        Our Privacy Policy
+      </Link>
+    </Box>
   );
 }
 

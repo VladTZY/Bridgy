@@ -4,6 +4,8 @@ import twitter from "../../Bridgy_Assets/icon/twitter white.svg";
 import telg from "../../Bridgy_Assets/icon/telegram white.svg";
 import yt from "../../Bridgy_Assets/icon/youtube white.svg";
 
+import { Link } from "react-router-dom";
+
 export const Footer = () => {
   const scToHome = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -84,6 +86,15 @@ export const Footer = () => {
             <img className="w-[9vw] md:w-[2vw]" src={telg} alt="react logo" />
             <img className="w-[9vw] md:w-[2vw]" src={yt} alt="react logo" />
           </div>
+          <span className="text-white text-lg font-bold pb-4 pt-2">
+            {" "}
+            {"Copyright © "}
+            Bridgy, Inc.{new Date().getFullYear()}
+            {" | All rights reserved."}
+          </span>
+          <Link to="/privacy_policy" className="text-white underline text-xl">
+            Our Privacy Policy
+          </Link>
         </div>
       </div>
     </div>
