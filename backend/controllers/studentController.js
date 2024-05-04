@@ -10,6 +10,7 @@ const {
   UserModel,
 } = require("../database/sequelize");
 const Sequelize = require("sequelize");
+const computeStudentProgress = require("../utils/getStudentProgress");
 const { createNotification } = require("./notificationController");
 
 const { Op } = require("sequelize");
@@ -143,6 +144,16 @@ const getCardStats = async (req, res) => {
     );
 
     res.status(200).json(payload);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const getObjectiveProgress = async (req, res) => {
+  try {
+    const progress = await computeStudentProgress(req.user.id);
+
+    res.status(200).json({ progress: progress });
   } catch (error) {
     res.status(500).json(error.message);
   }
@@ -401,6 +412,7 @@ module.exports = {
   uploadResume,
   createPersonalEvent,
   getCardStats,
+  getObjectiveProgress,
   getOngoingEvents,
   getRequestedEvents,
   getAcceptedEvents,

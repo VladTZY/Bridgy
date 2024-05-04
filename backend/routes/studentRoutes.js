@@ -11,6 +11,7 @@ router.use(requireStudent);
 const {
   createPersonalEvent,
   getCardStats,
+  getObjectiveProgress,
   uploadResume,
   getOngoingEvents,
   getRequestedEvents,
@@ -24,6 +25,7 @@ const {
 router.post("/create_personal_event", createPersonalEvent);
 router.post("/upload_resume", resumeUpload.single("resumeUrl"), uploadResume);
 router.get("/card_stats", getCardStats);
+router.get("/progress", getObjectiveProgress);
 router.get("/ongoing_events", getOngoingEvents);
 router.get("/requested_events", getRequestedEvents);
 router.get("/accepted_events", getAcceptedEvents);

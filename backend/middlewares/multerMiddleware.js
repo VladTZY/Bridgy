@@ -2,7 +2,7 @@ const multer = require("multer");
 const path = require("path");
 const { S3Client } = require("@aws-sdk/client-s3");
 const multerS3 = require("multer-s3");
-const checkFileType = require("../misc/checkFileType");
+const checkFileType = require("../utils/checkFileType");
 
 const imageStorage = multer.diskStorage({
   destination: (req, file, cb) => {

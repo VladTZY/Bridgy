@@ -7,9 +7,10 @@ const {
   UserToSchool,
 } = require("../database/sequelize");
 const Sequelize = require("sequelize");
-const studentValidator = require("../misc/studentValidator");
-const readCSV = require("../misc/readCSV");
-const readXLSX = require("../misc/readXLSX");
+const studentValidator = require("../utils/studentValidator");
+const readCSV = require("../utils/readCSV");
+const readXLSX = require("../utils/readXLSX");
+const computeStudentProgress = require("../utils/getStudentProgress");
 const bcrypt = require("bcrypt");
 const path = require("path");
 
@@ -367,6 +368,20 @@ const setSchoolObjective = async (req, res) => {
   }
 };
 
+const getStudentProgress = async (req, res) => {
+  try {
+    const { studentId } = req.query;
+
+    if (!studentId) throw Error("No student id");
+
+    const progress = await computeStudentProgress(studentId);
+
+    res.status(200).json({ progress: progress });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 module.exports = {
   createOneStudent,
   getStudents,
@@ -374,4 +389,5 @@ module.exports = {
   getStats,
   getSchoolObjective,
   setSchoolObjective,
+  getStudentProgress,
 };
