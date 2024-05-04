@@ -73,6 +73,14 @@ export const AddStudentCard = () => {
       .then((res) => {
         console.log("Student create succesfully");
         setAddModal(true);
+        setStudent({
+          username: "",
+          email: "",
+          phoneNumber: "",
+          country: "",
+          city: "",
+          grade: 9,
+        });
       })
       .catch((error) => {
         console.log(error.response.data);
