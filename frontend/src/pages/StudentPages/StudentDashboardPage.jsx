@@ -57,10 +57,9 @@ export const StudentDashboardPage = () => {
           <Grid container direction="row" spacing={3} sx={{ mb: 3 }}>
             <Grid item xs={12} lg={4}>
               <ProgressCard
-                title="Objective"
+                title="Objective Progress"
                 value={`${cardsData.actualObjective} / ${cardsData.objective}`}
                 percentage={cardsData.objectivePercentage}
-                description={cardsData.objectiveType}
                 color="green"
               />
             </Grid>
