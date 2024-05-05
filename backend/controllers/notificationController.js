@@ -1,4 +1,5 @@
 const { NotificationModel } = require("../database/sequelize");
+const Sequelize = require("sequelize");
 
 const getNotifications = async (req, res) => {
   try {
@@ -8,6 +9,7 @@ const getNotifications = async (req, res) => {
       where: {
         userId: userId,
       },
+      order: [["createdAt", "DESC"]],
     });
 
     res.status(200).json(notifications);

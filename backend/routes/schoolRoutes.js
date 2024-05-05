@@ -16,6 +16,7 @@ const {
   getStats,
   getSchoolObjective,
   setSchoolObjective,
+  getStudentProgress,
 } = require("../controllers/schoolController");
 
 router.post("/create_one_student", createOneStudent);
@@ -28,5 +29,6 @@ router.get("/students", getStudents);
 router.get("/stats", getStats);
 router.get("/get_objective", getSchoolObjective);
 router.post("/set_objective", setSchoolObjective);
+router.get("/student_progress", getStudentProgress);
 
 module.exports = router;

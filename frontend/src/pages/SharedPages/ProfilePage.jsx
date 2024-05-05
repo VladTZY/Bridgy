@@ -89,6 +89,7 @@ const VisuallyHiddenInput = styled("input")({
 
 export const ProfilePage = () => {
   const userId = useSelector((state) => state.auth.id);
+  const role = useSelector((state) => state.auth.role);
   let { id } = useParams();
   const [passwordModal, setPasswordModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
@@ -98,23 +99,45 @@ export const ProfilePage = () => {
 
   const [userInfo, setUserInfo] = useState();
 
+  const [objectiveProgress, setObjectiveProgress] = useState();
+  const [gridDisplay, setGridDisplay] = useState({
+    xs: 12,
+    lg: 4,
+  });
+
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/user/profile/${id}`)
       .then((res) => {
         setUserInfo(res.data);
+        setName(NameField[res.data.role]);
       });
   }, [id]);
 
   useEffect(() => {
     if (userInfo) {
-      setName(NameField[userInfo.role]);
-
       if (userInfo.role == "Student") {
         axiosInstance
-          .get(`/student/finished_events`)
+          .get(`/student/finished_events?userId=${id}`)
           .then((res) => {
             setLastEvents(res.data);
+          })
+          .catch((error) => console.log(error));
+      }
+
+      if (userInfo.role == "Student" && role == "SCHOOL") {
+        axiosInstance
+          .get(
+            `${
+              import.meta.env.VITE_API_URL
+            }/school/student_progress?studentId=${id}`
+          )
+          .then((res) => {
+            setObjectiveProgress(res.data.progress);
+            setGridDisplay({
+              xs: 12,
+              lg: 3,
+            });
           })
           .catch((error) => console.log(error));
       }
@@ -312,24 +335,32 @@ export const ProfilePage = () => {
               )}
               {userInfo.role == "Student" && (
                 <Grid item container direction="row" spacing={3} sx={{ my: 1 }}>
-                  <Grid item xs={12} lg={4}>
+                  <Grid item xs={gridDisplay.xs} lg={gridDisplay.lg}>
                     <StatCard
                       title="Events completed"
                       total={userInfo.eventsCompleted}
                     />
                   </Grid>
-                  <Grid item xs={12} lg={4}>
+                  <Grid item xs={gridDisplay.xs} lg={gridDisplay.lg}>
                     <StatCard
                       title="Economic Value"
                       total={`${userInfo.economicValue} $`}
                     />
                   </Grid>
-                  <Grid item xs={12} lg={4}>
+                  <Grid item xs={gridDisplay.xs} lg={gridDisplay.lg}>
                     <StatCard
                       title="Hours Worked"
                       total={userInfo.hoursWorked}
                     />
                   </Grid>
+                  {objectiveProgress && (
+                    <Grid item xs={gridDisplay.xs} lg={gridDisplay.lg}>
+                      <StatCard
+                        title="Objective progress"
+                        total={`${objectiveProgress} %`}
+                      />
+                    </Grid>
+                  )}
                 </Grid>
               )}
               <Grid item xs={12}>

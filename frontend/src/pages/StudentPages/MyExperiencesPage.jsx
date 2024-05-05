@@ -1,5 +1,6 @@
 import axiosInstance from "../../utils/axiosInstance";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import {
   Box,
@@ -17,10 +18,11 @@ import DefaultImage from "../../../assets/defaultMission.png";
 
 export const MyExperiencesPage = () => {
   const [events, setEvents] = useState([]);
+  const userId = useSelector((state) => state.auth.id);
 
   useEffect(() => {
     axiosInstance
-      .get(`/student/finished_events`)
+      .get(`/student/finished_events?userId=${userId}`)
       .then((res) => {
         setEvents(res.data);
       })
@@ -101,7 +103,14 @@ export const MyExperiencesPage = () => {
             }
 
             return (
-              <Grid item container direction="row" spacing={2} key={index}>
+              <Grid
+                item
+                container
+                direction="row"
+                spacing={2}
+                key={index}
+                sx={{ mb: 3 }}
+              >
                 <Grid item xs={12} md={9}>
                   <FeedbackCard
                     id={data.event.id}

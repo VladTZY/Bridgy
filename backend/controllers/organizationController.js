@@ -310,7 +310,7 @@ const kickStudent = async (req, res) => {
     createNotification(
       studentId,
       "KICKED",
-      `Sadly, you were kicked from the following event, ${event.name}`,
+      `Sadly, you were removed from the following event, ${event.name}`,
       null,
       event.id
     );
