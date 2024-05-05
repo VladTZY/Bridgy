@@ -165,6 +165,7 @@ const getStudents = async (req, res) => {
 
     if (grade) {
       students = await UserModel.findAll({
+        raw: true,
         where: {
           role: "STUDENT",
         },
@@ -184,10 +185,6 @@ const getStudents = async (req, res) => {
               grade: grade,
             },
             attributes: [],
-          },
-          {
-            model: LocationModel,
-            attributes: { exclude: ["id"] },
           },
         ],
       });
@@ -212,12 +209,14 @@ const getStudents = async (req, res) => {
             },
             attributes: [],
           },
-          {
-            model: LocationModel,
-            attributes: { exclude: ["id"] },
-          },
         ],
       });
+    }
+
+    for (let i = 0; i < students.length; i++) {
+      students[i].objectiveProgress = await computeStudentProgress(
+        students[i].id
+      );
     }
 
     res.status(200).json(students);
