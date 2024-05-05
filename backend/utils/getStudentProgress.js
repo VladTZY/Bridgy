@@ -30,7 +30,7 @@ module.exports = async (studentId) => {
   let precentage = 0;
 
   if (objectiveType == "EVENTS") {
-    precentage = Math.floor((finishedEvents * 100) / objective);
+    precentage = Math.floor((finishedEvents.length * 100) / objective);
   } else if (objectiveType == "HOURS") {
     let hours = 0;
     for (let i = 0; i < finishedEvents.length; i++)
