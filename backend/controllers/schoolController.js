@@ -249,14 +249,15 @@ const getInDepthData = async (objectiveType, objective, students) => {
       hoursNow += event.event.hours;
     });
 
-    if (objectiveType == "EVENT") {
+    if (objectiveType == "EVENTS") {
       actualObjective += finishedEvents.length;
       if (finishedEvents.length >= objective) completedStudents++;
-    } else {
+    } else if (objectiveType == "HOURS") {
       actualObjective += hoursNow;
 
       if (hoursNow >= objective) completedStudents++;
-    }
+    } else throw Error("Incorect objective type");
+
     totalHours = totalHours + hoursNow;
   });
 
