@@ -374,6 +374,22 @@ const getStudentProgress = async (req, res) => {
 
     if (!studentId) throw Error("No student id");
 
+    const school = await SchoolModel.findOne({
+      attributes: ["id"],
+      where: {
+        adminId: req.user.id,
+      },
+    });
+
+    const isHisStudent = await UserToSchool.findAll({
+      where: {
+        userId: studentId,
+        schoolId: school.id,
+      },
+    });
+
+    if (!isHisStudent) throw Error("Student does not belong to this school");
+
     const progress = await computeStudentProgress(studentId);
 
     res.status(200).json({ progress: progress });

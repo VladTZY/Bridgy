@@ -16,7 +16,7 @@ axiosInstance.interceptors.response.use(
     const originalRequest = error.config;
 
     // if we have auth error
-    if (error.response.status == 401) {
+    if (error.response.status == 463) {
       // try to refresh the token
       await axios
         .post(

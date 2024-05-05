@@ -293,10 +293,14 @@ const getRequestedEvents = async (req, res) => {
 
 const getFinishedEvents = async (req, res) => {
   try {
+    const { userId } = req.query;
+
+    if (!userId) throw Error("User id not specified");
+
     const events = await UserToEvent.findAll({
       where: {
         status: "FINISHED",
-        userId: req.user.id,
+        userId: userId,
       },
       include: {
         model: EventModel,
