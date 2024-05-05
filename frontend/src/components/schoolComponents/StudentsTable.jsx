@@ -211,7 +211,7 @@ export function StudentsTable({ rows }) {
                       {row.phoneNumber}
                     </TableCell>
                     <TableCell align="left" sx={{ fontSize: "16px" }}>
-                      {row.objectiveProgress}
+                      {`${row.objectiveProgress}%`}
                     </TableCell>
                     <TableCell align="center" sx={{ fontSize: "16px" }}>
                       <Link to={`/profile/${row.id}`}>
