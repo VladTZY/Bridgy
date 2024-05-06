@@ -122,7 +122,32 @@ export const InfoPage = () => {
                     border: 1,
                     borderColor: "gray",
                     borderRadius: 4,
-                    textAlign: "center",
+                    p: { lg: 1, xl: 2 },
+                  }}
+                >
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: {
+                        lg: "26px",
+                        xl: "36px",
+                      },
+                    }}
+                  >
+                    <CategoryIcon
+                      fontSize="large"
+                      sx={{ color: "blue.main", mr: 1 }}
+                    />
+                    {event.category}
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item>
+                <Box
+                  sx={{
+                    border: 1,
+                    borderColor: "gray",
+                    borderRadius: 4,
                     p: { lg: 1, xl: 2 },
                   }}
                 >
@@ -149,7 +174,6 @@ export const InfoPage = () => {
                     border: 1,
                     borderColor: "gray",
                     borderRadius: 4,
-                    textAlign: "center",
                     p: { lg: 1, xl: 2 },
                   }}
                 >
@@ -176,7 +200,6 @@ export const InfoPage = () => {
                     border: 1,
                     borderColor: "gray",
                     borderRadius: 4,
-                    textAlign: "center",
                     p: { lg: 1, xl: 2 },
                   }}
                 >
@@ -203,7 +226,6 @@ export const InfoPage = () => {
                     border: 1,
                     borderColor: "gray",
                     borderRadius: 4,
-                    textAlign: "center",
                     p: { lg: 1, xl: 2 },
                   }}
                 >
@@ -224,47 +246,41 @@ export const InfoPage = () => {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item>
-                <Box
-                  sx={{
-                    border: 1,
-                    borderColor: "gray",
-                    borderRadius: 4,
-                    textAlign: "center",
-                    p: { lg: 1, xl: 2 },
-                  }}
-                >
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      fontSize: {
-                        lg: "26px",
-                        xl: "36px",
-                      },
-                    }}
-                  >
-                    <CategoryIcon
-                      fontSize="large"
-                      sx={{ color: "blue.main", mr: 1 }}
-                    />
-                    {event.category}
-                  </Typography>
-                </Box>
-              </Grid>
             </Grid>
           </Grid>
-          <Typography
+          <Grid
+            container
             sx={{
               mt: 4,
-              ml: 2,
-              fontSize: {
-                lg: "40px",
-                xl: "60px",
-              },
+              justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
-            {event.name}
-          </Typography>
+            <Grid item>
+              <Typography
+                sx={{
+                  fontSize: {
+                    lg: "40px",
+                    xl: "60px",
+                  },
+                }}
+              >
+                {event.name}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography
+                sx={{
+                  fontSize: {
+                    lg: "20px",
+                    xl: "30px",
+                  },
+                }}
+              >
+                Posted by: "organization name"
+              </Typography>
+            </Grid>
+          </Grid>
           <Typography
             color="text.secondary"
             sx={{
