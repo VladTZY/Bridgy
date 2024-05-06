@@ -165,6 +165,7 @@ const getStudents = async (req, res) => {
 
     if (grade) {
       students = await UserModel.findAll({
+        raw: true,
         where: {
           role: "STUDENT",
         },
@@ -184,10 +185,6 @@ const getStudents = async (req, res) => {
               grade: grade,
             },
             attributes: [],
-          },
-          {
-            model: LocationModel,
-            attributes: { exclude: ["id"] },
           },
         ],
       });
@@ -212,12 +209,14 @@ const getStudents = async (req, res) => {
             },
             attributes: [],
           },
-          {
-            model: LocationModel,
-            attributes: { exclude: ["id"] },
-          },
         ],
       });
+    }
+
+    for (let i = 0; i < students.length; i++) {
+      students[i].objectiveProgress = await computeStudentProgress(
+        students[i].id
+      );
     }
 
     res.status(200).json(students);
@@ -249,14 +248,15 @@ const getInDepthData = async (objectiveType, objective, students) => {
       hoursNow += event.event.hours;
     });
 
-    if (objectiveType == "EVENT") {
+    if (objectiveType == "EVENTS") {
       actualObjective += finishedEvents.length;
       if (finishedEvents.length >= objective) completedStudents++;
-    } else {
+    } else if (objectiveType == "HOURS") {
       actualObjective += hoursNow;
 
       if (hoursNow >= objective) completedStudents++;
-    }
+    } else throw Error("Incorect objective type");
+
     totalHours = totalHours + hoursNow;
   });
 

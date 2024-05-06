@@ -31,6 +31,9 @@ const getStudentStats = async (studentId) => {
         attributes: [],
         where: {
           userId: studentId,
+          status: {
+            [Op.or]: ["FINISHED", "JOINED", "MARKED"],
+          },
         },
       },
     });
@@ -49,7 +52,7 @@ const getStudentStats = async (studentId) => {
     for (let i = 0; i < events.length; i++) {
       hoursTotal = hoursTotal + events[i].hours;
 
-      if (events[i].status == "FINISHED") {
+      if (events[i].status == "FINISHED" || events[i].status == "MARKED") {
         eventsCompleted++;
         hours = hours + events[i].hours;
       }
@@ -60,7 +63,7 @@ const getStudentStats = async (studentId) => {
       hours = hours + personalEvents[i].hours;
     }
 
-    console.log(events.length + personalEvents.length);
+    //console.log(events.length + personalEvents.length);
 
     return {
       eventsTotal: events.length + personalEvents.length,
@@ -132,7 +135,7 @@ const getCardStats = async (req, res) => {
     if (payload.actualObjective > payload.objective)
       payload.objectivePercentage = 100;
     else
-      objectivePercentage = Math.floor(
+      payload.objectivePercentage = Math.floor(
         (100 * payload.actualObjective) / payload.objective
       );
 
