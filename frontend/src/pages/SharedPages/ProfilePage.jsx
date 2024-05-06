@@ -99,7 +99,7 @@ export const ProfilePage = () => {
 
   const [userInfo, setUserInfo] = useState();
 
-  const [objectiveProgress, setObjectiveProgress] = useState();
+  const [objectiveProgress, setObjectiveProgress] = useState(null);
   const [gridDisplay, setGridDisplay] = useState({
     xs: 12,
     lg: 4,
@@ -353,7 +353,7 @@ export const ProfilePage = () => {
                       total={userInfo.hoursWorked}
                     />
                   </Grid>
-                  {objectiveProgress && (
+                  {objectiveProgress != null && (
                     <Grid item xs={gridDisplay.xs} lg={gridDisplay.lg}>
                       <StatCard
                         title="Objective progress"
