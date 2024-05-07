@@ -6,6 +6,7 @@ import { Box, Typography, Button, Stack } from "@mui/material";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import axiosInstance from "../../utils/axiosInstance";
+import { MultipleStudentsModal } from "./MultipleStudentsModal";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -24,6 +25,11 @@ export const AddMultipleStudentsCard = () => {
   const [colors, setColors] = useState({
     color: "blue.light",
     hoverColor: "blue.main",
+  });
+  const [modal, setModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState({
+    title: "",
+    body: "",
   });
 
   const onDownload = () => {
@@ -47,7 +53,13 @@ export const AddMultipleStudentsCard = () => {
   };
 
   const submitTable = () => {
-    if (!file) console.log("error");
+    if (!file) {
+      setModal(true);
+      setModalMessage({
+        title: "Ops.. something went wrong",
+        body: "Please add a table",
+      });
+    }
 
     const formData = new FormData();
     formData.append("file", file);
@@ -61,9 +73,19 @@ export const AddMultipleStudentsCard = () => {
           color: "blue.light",
           hoverColor: "blue.main",
         });
+        setModal(true);
+        setModalMessage({
+          title: "Students created",
+          body: "You successfully created the students in the table",
+        });
       })
       .catch((error) => {
-        console.log("error from axio");
+        console.log(error);
+        setModal(true);
+        setModalMessage({
+          title: "Ops.. something went wrong",
+          body: error.response.data,
+        });
       });
   };
 
@@ -164,6 +186,13 @@ export const AddMultipleStudentsCard = () => {
           </Button>
         </Box>
       </Stack>
+      {modal && (
+        <MultipleStudentsModal
+          setModal={setModal}
+          title={modalMessage.title}
+          body={modalMessage.body}
+        />
+      )}
     </Stack>
   );
 };
