@@ -57,6 +57,11 @@ export const SchoolDashboardPage = () => {
               percentage={Math.round(
                 (stats.completedStudents / stats.numberOfStudents) * 100
               )}
+              percentageText={
+                Math.round(
+                  (stats.completedStudents / stats.numberOfStudents) * 100
+                ) + "%"
+              }
               color="green"
             />
           </Grid>
@@ -67,6 +72,11 @@ export const SchoolDashboardPage = () => {
               percentage={Math.round(
                 (stats.actualObjective / stats.totalObjective) * 100
               )}
+              percentageText={
+                Math.round(
+                  (stats.actualObjective / stats.totalObjective) * 100
+                ) + "%"
+              }
               color="orange"
             />
           </Grid>
@@ -75,6 +85,7 @@ export const SchoolDashboardPage = () => {
               title="Economic Impact"
               value={stats.totalEconomy + " $"}
               percentage="100"
+              percentageText={stats.totalEconomy + "$"}
               color="lightskyblue"
             />
           </Grid>

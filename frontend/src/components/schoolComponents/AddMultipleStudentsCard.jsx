@@ -28,8 +28,8 @@ export const AddMultipleStudentsCard = () => {
 
   const onDownload = () => {
     const link = document.createElement("a");
-    link.download = `BridgySampleTable.csv`;
-    link.href = "../../BridgySampleTable.csv";
+    link.download = `BridgySampleTable.xlsx`;
+    link.href = "../../BridgySampleTable.xlsx";
     link.click();
   };
 

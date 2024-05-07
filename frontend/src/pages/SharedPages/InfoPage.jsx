@@ -271,7 +271,7 @@ export const InfoPage = () => {
                 {event.name}
               </Typography>
             </Grid>
-            <Grid item>
+            <Grid item sx={{ display: "flex" }}>
               <Typography
                 sx={{
                   fontSize: {
@@ -287,8 +287,9 @@ export const InfoPage = () => {
                   fontSize: {
                     lg: "20px",
                     xl: "30px",
-                    fontWeight: 550,
                   },
+                  fontWeight: 550,
+                  ml: "6px",
                 }}
               >
                 {event.organization.name}

@@ -7,6 +7,7 @@ export const ProgressCard = ({
   title,
   value,
   percentage,
+  percentageText,
   description,
   color,
 }) => {
@@ -25,7 +26,7 @@ export const ProgressCard = ({
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center text-xl"
           style={{ color: color }}
         >
-          {percentage}%
+          {percentageText}
         </div>
         <div
           style={{
