@@ -52,7 +52,7 @@ export const SchoolDashboardPage = () => {
         <Grid container direction="row" spacing={3} sx={{ mb: 3 }}>
           <Grid item xs={12} lg={4}>
             <ProgressCard
-              title="Students status"
+              title="Class Progress"
               value={stats.completedStudents + " / " + stats.numberOfStudents}
               percentage={Math.round(
                 (stats.completedStudents / stats.numberOfStudents) * 100
@@ -62,7 +62,7 @@ export const SchoolDashboardPage = () => {
           </Grid>
           <Grid item xs={12} lg={4}>
             <ProgressCard
-              title="Objective status"
+              title="Objective Progress"
               value={stats.actualObjective + " / " + stats.totalObjective}
               percentage={Math.round(
                 (stats.actualObjective / stats.totalObjective) * 100
@@ -72,7 +72,7 @@ export const SchoolDashboardPage = () => {
           </Grid>
           <Grid item xs={12} lg={4}>
             <ProgressCard
-              title="Total Economy"
+              title="Economic Impact"
               value={stats.totalEconomy + " $"}
               percentage="100"
               color="lightskyblue"
