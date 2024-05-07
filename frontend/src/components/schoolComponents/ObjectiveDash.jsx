@@ -10,6 +10,7 @@ import {
   TextField,
   Button,
 } from "@mui/material";
+import { ObjectiveChangeModal } from "./ObjectiveChangeModal";
 
 export const ObjectiveDash = () => {
   const [unchangedObjective, setUnchangedObjective] = useState({
@@ -20,6 +21,8 @@ export const ObjectiveDash = () => {
     objectiveType: "",
     objective: 0,
   });
+  const [modal, setModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   useEffect(() => {
     axiosInstance
@@ -52,8 +55,13 @@ export const ObjectiveDash = () => {
           objectiveType: res.data.objectiveType,
           objective: res.data.objective,
         });
+        setModal(true);
+        setModalMessage("Objective set successfully");
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        setModal(true);
+        setModalMessage(error.message);
+      });
   };
 
   return (
@@ -138,6 +146,9 @@ export const ObjectiveDash = () => {
           </Box>
         )}
       </Box>
+      {modal && (
+        <ObjectiveChangeModal setModal={setModal} modalMessage={modalMessage} />
+      )}
     </Box>
   );
 };
