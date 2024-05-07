@@ -6,7 +6,7 @@ import pic12 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/stats.png";
 import LandingPicture from "../../../Bridgy_Assets/Images/Webpage/LandingPicture.jpg";
 
 import { Navbar } from "../../components/Navbar";
-import { Footer } from "../../components/Footer";
+import { Footer } from "../../components/landingComponents/Footer";
 export const LandingPage = () => {
   const scToAboutUs = () => {
     window.scrollTo({ top: 1000, behavior: "smooth" });
