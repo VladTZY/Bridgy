@@ -36,7 +36,19 @@ const getEventById = async (req, res) => {
     if (!id) throw Error("Id not specified");
 
     let event = await EventModel.findByPk(id, {
-      include: LocationModel,
+      attributes: {
+        exclude: ["createdAt", "updatedAt", "locationId", "organizationId"],
+      },
+      include: [
+        {
+          attributes: { exclude: ["id"] },
+          model: LocationModel,
+        },
+        {
+          attributes: ["name"],
+          model: OrganizationModel,
+        },
+      ],
     });
     event = JSON.stringify(event);
     event = JSON.parse(event);

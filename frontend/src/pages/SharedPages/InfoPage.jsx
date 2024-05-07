@@ -22,6 +22,7 @@ import { StudentFinishedMoreInfo } from "../../components/studentComponents/Stud
 import { StudentOngoingMoreInfo } from "../../components/studentComponents/StudentOngoingMoreInfo";
 import { StudentAcceptedMoreInfo } from "../../components/studentComponents/StudentAcceptedMoreInfo";
 import { StudentRequestedMoreInfo } from "../../components/studentComponents/StudentRequestedMoreInfo";
+import { BackdropPage } from "../../components/sharedComponents/Backdrop";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -89,6 +90,8 @@ export const InfoPage = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  if (!event.name) return <BackdropPage />;
 
   return (
     <Box sx={{ width: 1, bgcolor: "background" }}>
@@ -277,7 +280,18 @@ export const InfoPage = () => {
                   },
                 }}
               >
-                Posted by: "organization name"
+                Posted by:
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: {
+                    lg: "20px",
+                    xl: "30px",
+                    fontWeight: 550,
+                  },
+                }}
+              >
+                {event.organization.name}
               </Typography>
             </Grid>
           </Grid>
