@@ -32,6 +32,7 @@ const theme = createTheme({
       main: "#FF0000",
     },
     landing: "#F3F4F6",
+    card: "#E5E7EB",
   },
   typography: {
     fontFamily: ["Nunito"],

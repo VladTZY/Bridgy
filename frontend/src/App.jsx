@@ -20,6 +20,7 @@ import { OrganizationDashboardPage } from "./pages/OrganizationPages/Organizatio
 import { NotificationsPage } from "./pages/SharedPages/NotificationsPage";
 import { AddPersonalEventPage } from "./pages/StudentPages/AddPersonalEvent";
 import { MeetOurCharitiesPage } from "./pages/SharedPages/MeetOurCharitiesPage";
+import { HelpPage } from "./pages/SharedPages/HelpPage";
 
 import NavBar from "./components/sharedComponents/NavBar";
 import SideBar from "./components/sharedComponents/SideBar";
@@ -59,6 +60,10 @@ function App() {
       <Route
         path="/meet_our_charities"
         element={!isLoggedIn ? <MeetOurCharitiesPage /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/help"
+        element={!isLoggedIn ? <HelpPage /> : <Navigate to="/" />}
       />
       <Route
         path="/student/dashboard"
