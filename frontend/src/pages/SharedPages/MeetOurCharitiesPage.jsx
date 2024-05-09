@@ -9,9 +9,12 @@ const charities = [
   {
     name: "Pollyanna",
     type: "New York not-for-profit corporation",
-    mission:
+    url: "https://pollyannainc.org/",
+    title1: "Mission",
+    desc1:
       "Pollyanna advances systemic change by developing stronger communities.",
-    strategy:
+    title2: "Strategy",
+    desc2:
       "Pollyanna works with academic and other institutions to achieve their diversity, equity and inclusion goals. Through its unique conference models, discussion platforms, and racial literacy curricula, Pollyanna increases cultural competence.",
     banner: PolyannaBanner,
   },
@@ -45,8 +48,11 @@ export const MeetOurCharitiesPage = () => {
               <CharityCard
                 name={charity.name}
                 type={charity.type}
-                mission={charity.mission}
-                strategy={charity.strategy}
+                url={charity.url}
+                title1={charity.title1}
+                desc1={charity.desc1}
+                title2={charity.title2}
+                desc2={charity.desc2}
                 banner={charity.banner}
               />
             );
