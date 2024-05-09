@@ -38,13 +38,12 @@ export const NavBar = () => {
     >
       <Container maxWidth="4xl" disableGutters>
         <Toolbar disableGutters>
-          <Toolbar sx={{ flexGrow: 1, pl: 20 }} disableGutters>
+          <Toolbar sx={{ flexGrow: 1, pl: { xl: 20, lg: 10 } }} disableGutters>
             <img height="100%" src={Logo} />
             <Typography
               noWrap
               component="a"
               sx={{
-                mr: 2,
                 display: { xs: "none", md: "flex" },
                 fontWeight: "bold",
                 color: "inherit",
@@ -66,10 +65,14 @@ export const NavBar = () => {
                   textDecorationColor: "blue.main",
                   textDecorationThickness: ".2rem",
                   color: "blue.main",
+                  bgcolor: "inherit",
                 },
               }}
             >
-              <Typography variant="h5" fontWeight="medium">
+              <Typography
+                fontWeight="medium"
+                sx={{ fontSize: { xl: "23px", lg: "18px" } }}
+              >
                 Home
               </Typography>
             </Button>
@@ -84,10 +87,14 @@ export const NavBar = () => {
                   textDecorationColor: "blue.main",
                   textDecorationThickness: ".2rem",
                   color: "blue.main",
+                  bgcolor: "inherit",
                 },
               }}
             >
-              <Typography variant="h5" fontWeight="medium">
+              <Typography
+                fontWeight="medium"
+                sx={{ fontSize: { xl: "23px", lg: "18px" } }}
+              >
                 About Us
               </Typography>
             </Button>
@@ -106,7 +113,10 @@ export const NavBar = () => {
                 },
               }}
             >
-              <Typography variant="h5" fontWeight="medium">
+              <Typography
+                fontWeight="medium"
+                sx={{ fontSize: { xl: "23px", lg: "18px" } }}
+              >
                 Meet Our Charities
               </Typography>
             </Link>
@@ -120,10 +130,14 @@ export const NavBar = () => {
                   textDecorationColor: "blue.main",
                   textDecorationThickness: ".2rem",
                   color: "blue.main",
+                  bgcolor: "inherit",
                 },
               }}
             >
-              <Typography variant="h5" fontWeight="medium">
+              <Typography
+                fontWeight="medium"
+                sx={{ fontSize: { xl: "23px", lg: "18px" } }}
+              >
                 FAQ
               </Typography>
             </Button>
@@ -139,10 +153,14 @@ export const NavBar = () => {
                   textDecorationColor: "blue.main",
                   textDecorationThickness: ".2rem",
                   color: "blue.main",
+                  bgcolor: "inherit",
                 },
               }}
             >
-              <Typography variant="h5" fontWeight="medium">
+              <Typography
+                fontWeight="medium"
+                sx={{ fontSize: { xl: "23px", lg: "18px" } }}
+              >
                 Contact Us
               </Typography>
             </Link>

@@ -129,6 +129,7 @@ function Menu() {
                 textDecorationColor: "white.main",
                 textDecorationThickness: ".2rem",
                 color: "white.main",
+                bgcolor: "inherit",
               },
             }}
           >
@@ -153,6 +154,7 @@ function Menu() {
                 textDecorationColor: "white.main",
                 textDecorationThickness: ".2rem",
                 color: "white.main",
+                bgcolor: "inherit",
               },
             }}
           >
@@ -178,6 +180,7 @@ function Menu() {
                 textDecorationColor: "white.main",
                 textDecorationThickness: ".2rem",
                 color: "white.main",
+                bgcolor: "inherit",
               },
             }}
           >
@@ -201,6 +204,7 @@ function Menu() {
                 textDecorationColor: "white.main",
                 textDecorationThickness: ".2rem",
                 color: "white.main",
+                bgcolor: "inherit",
               },
             }}
           >
@@ -226,6 +230,7 @@ function Menu() {
                 textDecorationColor: "white.main",
                 textDecorationThickness: ".2rem",
                 color: "white.main",
+                bgcolor: "inherit",
               },
             }}
           >
