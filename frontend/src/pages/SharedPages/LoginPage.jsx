@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/authSlice";
 import { Link } from "react-router-dom";
-import { LoginModal } from "../../components/LoginModal";
 
 import LoginImage from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/Login.png";
-import { LoginNavbar } from "../../components/LoginNavbar";
+import { NavBar } from "../../components/landingComponents/NavBar";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -30,9 +29,9 @@ export const LoginPage = () => {
   };
 
   return (
-    <div>
-      <LoginNavbar />
-      <div className="flex flex-col lg:flex-row items-center justify-center w-[100vw] h-[90vh] ">
+    <div className="bg-gray-100">
+      <NavBar />
+      <div className="flex flex-col lg:flex-row items-center justify-center w-[100vw] h-[90vh]">
         <div className="flex flex-col w-[100%] lg:w-[50%] items-center justify-center">
           <h1 className="font-semibold text-4xl">Login</h1>
           <p className="mt-3 px-4 text-center">
