@@ -1,6 +1,7 @@
-import { Grid, Toolbar, Typography, Link } from "@mui/material";
+import { Grid, Toolbar, Typography, Link, Button } from "@mui/material";
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
 import Logo from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/SVG (1).svg";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function SocialMedia() {
   return (
@@ -105,63 +106,138 @@ function Info() {
 }
 
 function Menu() {
+  const scrollHome = () => {
+    if (location.pathname != "/") navigate("/");
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const scrollAbout = () => {
+    if (location.pathname != "/") navigate("/");
+    else window.scrollTo({ top: 3800, behavior: "smooth" });
+  };
   return (
     <Toolbar>
-      <Grid
-        container
-        direction="column"
-        sx={{ alignItems: "center" }}
-        spacing={2}
-      >
+      <Grid container direction="column" sx={{ alignItems: "center" }}>
         <Grid item>
-          <Typography
-            color="white.main"
-            fontSize="bold"
-            textAlign="center"
-            variant="h6"
+          <Button
+            onClick={scrollHome}
+            sx={{
+              textTransform: "none",
+              color: "white",
+              ":hover": {
+                textDecoration: "underline",
+                textDecorationColor: "white.main",
+                textDecorationThickness: ".2rem",
+                color: "white.main",
+              },
+            }}
           >
-            Home
-          </Typography>
+            <Typography
+              color="white.main"
+              fontSize="bold"
+              textAlign="center"
+              variant="h6"
+            >
+              Home
+            </Typography>
+          </Button>
         </Grid>
         <Grid item>
-          <Typography
-            color="white.main"
-            fontSize="bold"
-            textAlign="center"
-            variant="h6"
+          <Button
+            onClick={scrollAbout}
+            sx={{
+              textTransform: "none",
+              color: "white",
+              ":hover": {
+                textDecoration: "underline",
+                textDecorationColor: "white.main",
+                textDecorationThickness: ".2rem",
+                color: "white.main",
+              },
+            }}
           >
-            About Us
-          </Typography>
+            <Typography
+              color="white.main"
+              fontSize="bold"
+              textAlign="center"
+              variant="h6"
+            >
+              About Us
+            </Typography>
+          </Button>
         </Grid>
         <Grid item>
-          <Typography
-            color="white.main"
-            fontSize="bold"
-            textAlign="center"
-            variant="h6"
+          <Link
+            href="/meet_our_charities"
+            sx={{
+              textTransform: "none",
+              textDecoration: "none",
+              color: "white",
+              ":hover": {
+                textDecoration: "underline",
+                textDecorationColor: "white.main",
+                textDecorationThickness: ".2rem",
+                color: "white.main",
+              },
+            }}
           >
-            Meet Our Charities
-          </Typography>
+            <Typography
+              color="white.main"
+              fontSize="bold"
+              textAlign="center"
+              variant="h6"
+            >
+              Meet Our Charities
+            </Typography>
+          </Link>
         </Grid>
         <Grid item>
-          <Typography
-            color="white.main"
-            fontSize="bold"
-            textAlign="center"
-            variant="h6"
+          <Button
+            sx={{
+              textTransform: "none",
+              color: "white",
+              ":hover": {
+                textDecoration: "underline",
+                textDecorationColor: "white.main",
+                textDecorationThickness: ".2rem",
+                color: "white.main",
+              },
+            }}
           >
-            FAQ
-          </Typography>
+            <Typography
+              color="white.main"
+              fontSize="bold"
+              textAlign="center"
+              variant="h6"
+            >
+              FAQ
+            </Typography>
+          </Button>
         </Grid>
         <Grid item>
-          <Typography
-            color="white.main"
-            fontSize="bold"
-            textAlign="center"
-            variant="h6"
+          <Link
+            href="/help"
+            sx={{
+              textTransform: "none",
+              textDecoration: "none",
+              color: "white",
+              ":hover": {
+                textDecoration: "underline",
+                textDecorationColor: "white.main",
+                textDecorationThickness: ".2rem",
+                color: "white.main",
+              },
+            }}
           >
-            Contact Us
-          </Typography>
+            <Typography
+              color="white.main"
+              fontSize="bold"
+              textAlign="center"
+              variant="h6"
+            >
+              Contact Us
+            </Typography>
+          </Link>
         </Grid>
       </Grid>
     </Toolbar>
