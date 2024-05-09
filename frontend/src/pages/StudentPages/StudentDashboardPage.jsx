@@ -60,6 +60,7 @@ export const StudentDashboardPage = () => {
                 title="Objective Progress"
                 value={`${cardsData.actualObjective} / ${cardsData.objective}`}
                 percentage={cardsData.objectivePercentage}
+                percentageText={cardsData.objectivePercentage + "%"}
                 color="green"
               />
             </Grid>
@@ -68,6 +69,7 @@ export const StudentDashboardPage = () => {
                 title="Completed Events"
                 value={`${cardsData.eventsCompleted} / ${cardsData.eventsTotal}`}
                 percentage={cardsData.eventsPrecentage}
+                percentageText={cardsData.eventsPrecentage + "%"}
                 color="orange"
               />
             </Grid>
@@ -76,6 +78,7 @@ export const StudentDashboardPage = () => {
                 title="Completed hours"
                 value={`${cardsData.hoursCompleted} / ${cardsData.hoursTotal}`}
                 percentage={cardsData.hoursPrecentage}
+                percentageText={cardsData.hoursPrecentage + "%"}
                 color="lightskyblue"
               />
             </Grid>

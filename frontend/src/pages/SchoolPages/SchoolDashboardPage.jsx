@@ -49,7 +49,12 @@ export const SchoolDashboardPage = () => {
     <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
       <Toolbar />
       <Box sx={{ m: 4 }}>
-        <Grid container direction="row" spacing={3} sx={{ mb: 3 }}>
+        <Grid
+          container
+          direction="row"
+          spacing={3}
+          sx={{ mb: 3, display: "flex" }}
+        >
           <Grid item xs={12} lg={4}>
             <ProgressCard
               title="Class Progress"
