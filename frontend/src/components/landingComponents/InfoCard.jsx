@@ -4,7 +4,7 @@ export const InfoCard = ({ title, text, icon }) => {
   return (
     <Box
       sx={{
-        bgcolor: "card",
+        bgcolor: "landing",
         borderRadius: 6,
         p: 2,
       }}

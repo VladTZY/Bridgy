@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import LoginImage from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/Login.png";
 import { NavBar } from "../../components/landingComponents/NavBar";
+import { Toolbar } from "@mui/material";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -29,8 +30,9 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-white">
       <NavBar />
+      <Toolbar />
       <div className="flex flex-col lg:flex-row items-center justify-center w-[100vw] h-[90vh]">
         <div className="flex flex-col w-[100%] lg:w-[50%] items-center justify-center">
           <h1 className="font-semibold text-4xl">Login</h1>

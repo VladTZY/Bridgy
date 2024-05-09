@@ -22,10 +22,10 @@ const charities = [
 
 export const MeetOurCharitiesPage = () => {
   return (
-    <Box sx={{ width: 1, bgcolor: "landing" }}>
+    <Box sx={{ width: 1, bgcolor: "white.main" }}>
       <NavBar />
       <Toolbar />
-      <Box display="flex" sx={{ width: 1, bgcolor: "landing" }}>
+      <Box display="flex" sx={{ width: 1, bgcolor: "white.main" }}>
         <Box sx={{ m: 10 }}>
           {/*<Grid
           container

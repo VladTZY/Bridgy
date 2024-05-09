@@ -7,10 +7,10 @@ import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 
 export const HelpPage = () => {
   return (
-    <Box sx={{ width: 1, bgcolor: "landing" }}>
+    <Box sx={{ width: 1, bgcolor: "white.main" }}>
       <NavBar />
       <Toolbar />
-      <Box display="flex" sx={{ width: 1, bgcolor: "landing" }}>
+      <Box display="flex" sx={{ width: 1, bgcolor: "white.main" }}>
         <Box sx={{ m: 10 }}>
           <Typography textAlign="center" variant="h3" fontWeight="bold">
             Creating an account

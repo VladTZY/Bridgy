@@ -33,7 +33,7 @@ export const NavBar = () => {
       elevation={0}
       sx={{
         zIndex: (theme) => theme.zIndex.drawer + 1,
-        bgcolor: "landing",
+        bgcolor: "white.main",
       }}
     >
       <Container maxWidth="4xl" disableGutters>

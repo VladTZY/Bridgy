@@ -11,7 +11,14 @@ export const CharityCard = ({
   banner,
 }) => {
   return (
-    <Box sx={{ width: 1, bgcolor: "white.main", borderRadius: "30px" }}>
+    <Box
+      sx={{
+        width: 1,
+        bgcolor: "white.main",
+        borderRadius: "30px",
+        boxShadow: 10,
+      }}
+    >
       <Grid container sx={{ p: 5 }}>
         <Grid
           item
