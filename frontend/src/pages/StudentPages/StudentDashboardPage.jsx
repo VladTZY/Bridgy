@@ -59,7 +59,7 @@ export const StudentDashboardPage = () => {
               <ProgressCard
                 title="Objective Progress"
                 value={`${cardsData.actualObjective} / ${cardsData.objective}`}
-                percentage={cardsData.objectivePercentage}
+                percentage={cardsData.objectivePercentage + "%"}
                 color="green"
               />
             </Grid>
@@ -67,7 +67,7 @@ export const StudentDashboardPage = () => {
               <ProgressCard
                 title="Completed Events"
                 value={`${cardsData.eventsCompleted} / ${cardsData.eventsTotal}`}
-                percentage={cardsData.eventsPrecentage}
+                percentage={cardsData.eventsPrecentage + "%"}
                 color="orange"
               />
             </Grid>
@@ -75,7 +75,7 @@ export const StudentDashboardPage = () => {
               <ProgressCard
                 title="Completed hours"
                 value={`${cardsData.hoursCompleted} / ${cardsData.hoursTotal}`}
-                percentage={cardsData.hoursPrecentage}
+                percentage={cardsData.hoursPrecentage + "%"}
                 color="lightskyblue"
               />
             </Grid>
