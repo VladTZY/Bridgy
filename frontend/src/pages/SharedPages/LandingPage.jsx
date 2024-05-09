@@ -5,8 +5,8 @@ import pic10 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/schoolicon.png";
 import pic12 from "../../../Bridgy_Assets/LOGO BRIDGY/fav icon/stats.png";
 import LandingPicture from "../../../Bridgy_Assets/Images/Webpage/LandingPicture.jpg";
 
-import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/landingComponents/Footer";
+import { NavBar } from "../../components/landingComponents/NavBar";
 export const LandingPage = () => {
   const scToAboutUs = () => {
     window.scrollTo({ top: 1000, behavior: "smooth" });
@@ -14,7 +14,7 @@ export const LandingPage = () => {
 
   return (
     <div>
-      <Navbar />
+      <NavBar />
       <div className="flex flex-col items-center justify-center w-[100vw] bg-gray-100 pt-[10vh]  md:mt-0">
         <div className="flex flex-col w-[100vw]  md:h-[100vh] 2xl:h-[80vh] bg-gray-100 justify-center items-center">
           <div className="flex flex-col md:flex-row px-8 relative ">

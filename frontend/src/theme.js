@@ -31,6 +31,7 @@ const theme = createTheme({
       light: "#ef3038",
       main: "#FF0000",
     },
+    landing: "#F3F4F6",
   },
   typography: {
     fontFamily: ["Nunito"],

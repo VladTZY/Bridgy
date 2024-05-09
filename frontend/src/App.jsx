@@ -19,6 +19,7 @@ import { MyExperiencesPage } from "./pages/StudentPages/MyExperiencesPage";
 import { OrganizationDashboardPage } from "./pages/OrganizationPages/OrganizationDashboardPage";
 import { NotificationsPage } from "./pages/SharedPages/NotificationsPage";
 import { AddPersonalEventPage } from "./pages/StudentPages/AddPersonalEvent";
+import { MeetOurCharitiesPage } from "./pages/SharedPages/MeetOurCharitiesPage";
 
 import NavBar from "./components/sharedComponents/NavBar";
 import SideBar from "./components/sharedComponents/SideBar";
@@ -54,6 +55,10 @@ function App() {
       <Route
         path="/login"
         element={!isLoggedIn ? <LoginPage /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/meet_our_charities"
+        element={!isLoggedIn ? <MeetOurCharitiesPage /> : <Navigate to="/" />}
       />
       <Route
         path="/student/dashboard"
