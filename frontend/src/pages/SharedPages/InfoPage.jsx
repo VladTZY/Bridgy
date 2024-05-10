@@ -22,7 +22,7 @@ import { StudentFinishedMoreInfo } from "../../components/studentComponents/Stud
 import { StudentOngoingMoreInfo } from "../../components/studentComponents/StudentOngoingMoreInfo";
 import { StudentAcceptedMoreInfo } from "../../components/studentComponents/StudentAcceptedMoreInfo";
 import { StudentRequestedMoreInfo } from "../../components/studentComponents/StudentRequestedMoreInfo";
-import { BackdropPage } from "../../components/sharedComponents/Backdrop";
+import { BackdropPage } from "../../components/sharedComponents/BackdropPage";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";

@@ -43,6 +43,10 @@ EventModel.belongsTo(LocationModel);
 PersonalEventModel.belongsTo(LocationModel);
 UserModel.belongsTo(LocationModel);
 
+// EAGER LOAD LOCATION INTO SCHOOLS/ORG
+SchoolModel.belongsTo(LocationModel);
+OrganizationModel.belongsTo(LocationModel);
+
 // LINK SCHOOL ADMIN
 UserModel.hasOne(SchoolModel, { foreignKey: "adminId" });
 SchoolModel.belongsTo(UserModel, { foreignKey: "adminId" });

@@ -21,6 +21,7 @@ import { NotificationsPage } from "./pages/SharedPages/NotificationsPage";
 import { AddPersonalEventPage } from "./pages/StudentPages/AddPersonalEvent";
 import { MeetOurCharitiesPage } from "./pages/SharedPages/MeetOurCharitiesPage";
 import { HelpPage } from "./pages/SharedPages/HelpPage";
+import { AdminDashboardPage } from "./pages/AdminPages/AdminDashboardPage";
 
 import NavBar from "./components/sharedComponents/NavBar";
 import SideBar from "./components/sharedComponents/SideBar";
@@ -47,7 +48,7 @@ function App() {
               STUDENT: <Navigate to="/student/dashboard" />,
               ORGANIZATION: <Navigate to="/organization/dashboard" />,
               SCHOOL: <Navigate to="/school/dashboard" />,
-              ADMIN: <Navigate to="admin/create_school" />,
+              ADMIN: <Navigate to="admin/dashboard" />,
               SUPER_ADMIN: <Navigate to="super_admin/create_admin" />,
             }[role]
           )
@@ -166,6 +167,18 @@ function App() {
         element={
           role == "SCHOOL" ? (
             <AddStudentPage />
+          ) : isLoggedIn ? (
+            <ErrorPage />
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
+      <Route
+        path="/admin/dashboard"
+        element={
+          role == "ADMIN" || role == "SUPER_ADMIN" ? (
+            <AdminDashboardPage />
           ) : isLoggedIn ? (
             <ErrorPage />
           ) : (

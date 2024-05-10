@@ -96,6 +96,11 @@ const buttonMapping = {
   ],
   ADMIN: [
     {
+      text: "Dashboard",
+      route: "/admin/dashboard",
+      icon: DashboardIcon,
+    },
+    {
       text: "Create organization",
       route: "/admin/create_organization",
       icon: AddchartIcon,
@@ -107,6 +112,11 @@ const buttonMapping = {
     },
   ],
   SUPER_ADMIN: [
+    {
+      text: "Dashboard",
+      route: "/admin/dashboard",
+      icon: DashboardIcon,
+    },
     {
       text: "Create admin",
       route: "/super_admin/create_admin",

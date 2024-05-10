@@ -8,6 +8,42 @@ const {
 const validator = require("validator");
 const bcrypt = require("bcrypt");
 
+const getSchools = async (req, res) => {
+  try {
+    const schools = await SchoolModel.findAll({
+      attributes: ["name"],
+      include: [
+        {
+          model: UserModel,
+          attributes: ["id", "username", "email", "phoneNumber"],
+        },
+      ],
+    });
+
+    res.status(200).json(schools);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getOrganizations = async (req, res) => {
+  try {
+    const organizations = await OrganizationModel.findAll({
+      attributes: ["name"],
+      include: [
+        {
+          model: UserModel,
+          attributes: ["id", "username", "email", "phoneNumber"],
+        },
+      ],
+    });
+
+    res.status(200).json(organizations);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const createSchool = async (req, res) => {
   const {
     schoolName,
@@ -165,4 +201,9 @@ const createOrganization = async (req, res) => {
   }
 };
 
-module.exports = { createSchool, createOrganization };
+module.exports = {
+  getSchools,
+  getOrganizations,
+  createSchool,
+  createOrganization,
+};
