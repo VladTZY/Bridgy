@@ -53,3 +53,5 @@ CREATE PUBLIC/UPLOADS AND PUBLIC/TABLES
 - for organizations
 
 * STUDENT_REQUESTED - when a student registers for a mission
+
+Event Types: ORGANIZATION_EVENT / PERSONAL_EVENT

@@ -296,23 +296,63 @@ const getRequestedEvents = async (req, res) => {
 
 const getFinishedEvents = async (req, res) => {
   try {
-    const { userId } = req.query;
+    const { userId, eventType } = req.query;
 
     if (!userId) throw Error("User id not specified");
 
-    const events = await UserToEvent.findAll({
-      where: {
-        status: "FINISHED",
-        userId: userId,
-      },
-      include: {
-        model: EventModel,
+    let events = [];
+
+    if (eventType == "PERSONAL_EVENT") {
+      events = await UserToPersonalEvent.findAll({
+        attributes: ["id", "feedback"],
+        where: {
+          userId: userId,
+        },
+        include: {
+          model: PersonalEventModel,
+          attributes: [
+            "id",
+            "name",
+            "description",
+            "datetime",
+            "hours",
+            "remote",
+            "photoUrl",
+          ],
+          include: {
+            model: LocationModel,
+            attributes: { exclude: ["id"] },
+          },
+        },
+      });
+    } else {
+      events = await UserToEvent.findAll({
+        attributes: ["id", "feedback"],
         where: {
           status: "FINISHED",
+          userId: userId,
         },
-        include: LocationModel,
-      },
-    });
+        include: {
+          model: EventModel,
+          attributes: [
+            "id",
+            "name",
+            "description",
+            "datetime",
+            "hours",
+            "remote",
+            "photoUrl",
+          ],
+          where: {
+            status: "FINISHED",
+          },
+          include: {
+            model: LocationModel,
+            attributes: { exclude: ["id"] },
+          },
+        },
+      });
+    }
 
     res.status(200).json(events);
   } catch (error) {
