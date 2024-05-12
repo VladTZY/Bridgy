@@ -22,6 +22,7 @@ import { AddPersonalEventPage } from "./pages/StudentPages/AddPersonalEvent";
 import { MeetOurCharitiesPage } from "./pages/SharedPages/MeetOurCharitiesPage";
 import { HelpPage } from "./pages/SharedPages/HelpPage";
 import { AdminDashboardPage } from "./pages/AdminPages/AdminDashboardPage";
+import { FAQPage } from "./pages/SharedPages/FAQPage";
 
 import NavBar from "./components/sharedComponents/NavBar";
 import SideBar from "./components/sharedComponents/SideBar";
@@ -65,6 +66,10 @@ function App() {
       <Route
         path="/help"
         element={!isLoggedIn ? <HelpPage /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/faq"
+        element={!isLoggedIn ? <FAQPage /> : <Navigate to="/" />}
       />
       <Route
         path="/student/dashboard"

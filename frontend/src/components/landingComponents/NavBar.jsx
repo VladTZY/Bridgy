@@ -71,7 +71,7 @@ export const NavBar = () => {
             >
               <Typography
                 fontWeight="medium"
-                sx={{ fontSize: { xl: "23px", lg: "18px" } }}
+                sx={{ fontSize: { xl: "21px", lg: "18px" } }}
               >
                 Home
               </Typography>
@@ -93,7 +93,7 @@ export const NavBar = () => {
             >
               <Typography
                 fontWeight="medium"
-                sx={{ fontSize: { xl: "23px", lg: "18px" } }}
+                sx={{ fontSize: { xl: "21px", lg: "18px" } }}
               >
                 About Us
               </Typography>
@@ -115,14 +115,16 @@ export const NavBar = () => {
             >
               <Typography
                 fontWeight="medium"
-                sx={{ fontSize: { xl: "23px", lg: "18px" } }}
+                sx={{ fontSize: { xl: "21px", lg: "18px" } }}
               >
                 Meet Our Charities
               </Typography>
             </Link>
-            <Button
+            <Link
+              href="/faq"
               sx={{
                 textTransform: "none",
+                textDecoration: "none",
                 color: "inherit",
                 mr: 4,
                 ":hover": {
@@ -136,11 +138,11 @@ export const NavBar = () => {
             >
               <Typography
                 fontWeight="medium"
-                sx={{ fontSize: { xl: "23px", lg: "18px" } }}
+                sx={{ fontSize: { xl: "21px", lg: "18px" } }}
               >
                 FAQ
               </Typography>
-            </Button>
+            </Link>
             <Link
               href="/help"
               sx={{
@@ -159,7 +161,7 @@ export const NavBar = () => {
             >
               <Typography
                 fontWeight="medium"
-                sx={{ fontSize: { xl: "23px", lg: "18px" } }}
+                sx={{ fontSize: { xl: "21px", lg: "18px" } }}
               >
                 Contact Us
               </Typography>

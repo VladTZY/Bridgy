@@ -195,9 +195,11 @@ function Menu() {
           </Link>
         </Grid>
         <Grid item>
-          <Button
+          <Link
+            href="/faq"
             sx={{
               textTransform: "none",
+              textDecoration: "none",
               color: "white",
               ":hover": {
                 textDecoration: "underline",
@@ -216,7 +218,7 @@ function Menu() {
             >
               FAQ
             </Typography>
-          </Button>
+          </Link>
         </Grid>
         <Grid item>
           <Link
