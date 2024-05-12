@@ -10,24 +10,44 @@ import {
   MenuItem,
   FormControl,
   Grid,
+  ButtonGroup,
+  Button,
 } from "@mui/material";
 import { SearchBar } from "../../components/sharedComponents/SearchBar";
 import { MissionCard } from "../../components/sharedComponents/MissionCard";
 import { FeedbackCard } from "../../components/studentComponents/FeedbackCard";
+import { BackdropPage } from "../../components/sharedComponents/BackdropPage";
 import DefaultImage from "../../../assets/defaultMission.png";
 
+const buttonStyles = {
+  true: {
+    width: "100px",
+    bgcolor: "blue.light",
+    color: "blue.contrastText",
+  },
+  false: {
+    width: "100px",
+  },
+};
+
 export const MyExperiencesPage = () => {
+  const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState([]);
+  const [eventType, setEventType] = useState("PERSONAL_EVENT");
+  const [eventAlias, setEventAlias] = useState("personalEvent");
   const userId = useSelector((state) => state.auth.id);
 
   useEffect(() => {
     axiosInstance
-      .get(`/student/finished_events?userId=${userId}`)
+      .get(`/student/finished_events?userId=${userId}&eventType=${eventType}`)
       .then((res) => {
         setEvents(res.data);
+        setLoading(false);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [eventType]);
+
+  if (!events || loading) return <BackdropPage />;
 
   return (
     <Box sx={{ width: 1, minHeight: "95vh", bgcolor: "pageBackground" }}>
@@ -37,10 +57,33 @@ export const MyExperiencesPage = () => {
           <Box sx={{ flexGrow: 1 }}>
             <SearchBar />
           </Box>
-          <Box sx={{ width: { xs: 0, md: "150px" } }}>
+          <Box sx={{ display: "flex" }}>
+            <ButtonGroup>
+              <Button
+                sx={buttonStyles[eventType == "ORGANIZATION_EVENT"]}
+                onClick={() => {
+                  setLoading(true);
+                  setEventAlias("event");
+                  setEventType("ORGANIZATION_EVENT");
+                }}
+              >
+                Public
+              </Button>
+              <Button
+                sx={buttonStyles[eventType == "PERSONAL_EVENT"]}
+                onClick={() => {
+                  setLoading(true);
+                  setEventAlias("personalEvent");
+                  setEventType("PERSONAL_EVENT");
+                }}
+              >
+                Personal
+              </Button>
+            </ButtonGroup>
             <FormControl
               sx={{
-                width: 1,
+                width: "150px",
+                ml: 3,
                 display: {
                   xs: "none",
                   md: "flex",
@@ -75,26 +118,27 @@ export const MyExperiencesPage = () => {
                 >
                   <Grid item xs={12} md={3}>
                     <MissionCard
-                      id={data.event.id}
-                      title={data.event.name}
-                      description={data.event.description}
-                      datetime={data.event.datetime}
-                      location={data.event.location}
-                      duration={data.event.hours}
+                      id={data[eventAlias].id}
+                      title={data[eventAlias].name}
+                      description={data[eventAlias].description}
+                      datetime={data[eventAlias].datetime}
+                      location={data[eventAlias].location}
+                      duration={data[eventAlias].hours}
                       event_type={"opportunity"}
                       photoUrl={
-                        data.event.photoUrl == "NO_FILE"
+                        data[eventAlias].photoUrl == "NO_FILE" ||
+                        !data[eventAlias].photoUrl
                           ? DefaultImage
                           : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                              event.photoUrl
+                              data[eventAlias].photoUrl
                             }`
                       }
                     />
                   </Grid>
                   <Grid item xs={12} md={9}>
                     <FeedbackCard
-                      id={data.event.id}
-                      title={data.event.name}
+                      id={data.id}
+                      title={`Feedback - ${data[eventAlias].name}`}
                       feedback={data.feedback}
                     />
                   </Grid>
@@ -113,25 +157,26 @@ export const MyExperiencesPage = () => {
               >
                 <Grid item xs={12} md={9}>
                   <FeedbackCard
-                    id={data.event.id}
-                    title={data.event.name}
+                    id={data.id}
+                    title={`Feedback - ${data[eventAlias].name}`}
                     feedback={data.feedback}
                   />
                 </Grid>
                 <Grid item xs={12} md={3}>
                   <MissionCard
-                    id={data.event.id}
-                    title={data.event.name}
-                    description={data.event.description}
-                    time={data.event.time}
-                    location={data.event.location}
-                    duration={data.event.hours}
+                    id={data[eventAlias].id}
+                    title={data[eventAlias].name}
+                    description={data[eventAlias].description}
+                    datetime={data[eventAlias].datetime}
+                    location={data[eventAlias].location}
+                    duration={data[eventAlias].hours}
                     event_type={"opportunity"}
                     photoUrl={
-                      data.event.photoUrl == "NO_FILE"
+                      data[eventAlias].photoUrl == "NO_FILE" ||
+                      !data[eventAlias].photoUrl
                         ? DefaultImage
                         : `${import.meta.env.VITE_MISSIONS_BUCKET_URL}${
-                            data.event.photoUrl
+                            data[eventAlias].photoUrl
                           }`
                     }
                   />

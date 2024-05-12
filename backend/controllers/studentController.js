@@ -177,6 +177,7 @@ const createPersonalEvent = async (req, res) => {
       address,
     } = req.body;
     let { category } = req.body;
+    let photoUrl = "NO_FILE";
 
     if (!name || !description || !datetime || !supervisorContact || !hours)
       throw Error("All fields need to be filled");
@@ -203,6 +204,7 @@ const createPersonalEvent = async (req, res) => {
       hours: hours,
       category: category,
       remote: remote,
+      photoUrl: photoUrl,
       locationId: location.id,
     });
 
