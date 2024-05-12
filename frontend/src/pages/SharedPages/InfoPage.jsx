@@ -34,8 +34,11 @@ import Image from "mui-image";
 import ReactPlayer from "react-player";
 
 import datetimeToStr from "../../utils/datetimeToStr";
+import { ErrorPage } from "./ErrorPage";
 
 export const InfoPage = () => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   let history = useNavigate();
   const role = useSelector((state) => state.auth.role);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -78,8 +81,10 @@ export const InfoPage = () => {
           setLocationName(
             res.data.location.country + ", " + res.data.location.city
           );
+
+        setLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(error.response.data));
   }, [id, role]);
 
   const deleteMission = () => {
@@ -91,7 +96,10 @@ export const InfoPage = () => {
       .catch((error) => console.log(error));
   };
 
-  if (!event.name) return <BackdropPage />;
+  console.log(error);
+
+  if (error) return <ErrorPage />;
+  if (loading) return <BackdropPage />;
 
   return (
     <Box sx={{ width: 1, bgcolor: "background" }}>
