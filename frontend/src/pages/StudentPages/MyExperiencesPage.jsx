@@ -33,8 +33,8 @@ const buttonStyles = {
 export const MyExperiencesPage = () => {
   const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState([]);
-  const [eventType, setEventType] = useState("PERSONAL_EVENT");
-  const [eventAlias, setEventAlias] = useState("personalEvent");
+  const [eventType, setEventType] = useState("ORGANIZATION_EVENT");
+  const [eventAlias, setEventAlias] = useState("event");
   const userId = useSelector((state) => state.auth.id);
 
   useEffect(() => {
@@ -137,7 +137,7 @@ export const MyExperiencesPage = () => {
                   </Grid>
                   <Grid item xs={12} md={9}>
                     <FeedbackCard
-                      id={data.id}
+                      id={data[eventAlias].id}
                       title={`Feedback - ${data[eventAlias].name}`}
                       feedback={data.feedback}
                     />
@@ -157,7 +157,7 @@ export const MyExperiencesPage = () => {
               >
                 <Grid item xs={12} md={9}>
                   <FeedbackCard
-                    id={data.id}
+                    id={data[eventAlias].id}
                     title={`Feedback - ${data[eventAlias].name}`}
                     feedback={data.feedback}
                   />

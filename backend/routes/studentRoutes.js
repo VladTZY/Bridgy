@@ -34,6 +34,6 @@ router.get("/requested_events", getRequestedEvents);
 router.get("/accepted_events", getAcceptedEvents);
 router.post("/join_event/:id", joinEvent);
 router.get("/get_status", getStatusForEvent);
-router.post("/post_feedback/:id", postFeedback);
+router.post("/post_feedback/", postFeedback);
 
 module.exports = router;

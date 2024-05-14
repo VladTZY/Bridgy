@@ -8,7 +8,7 @@ export const FeedbackCard = ({ id, title, feedback }) => {
 
   const handleSave = () => {
     axiosInstance
-      .post(`/student/post_feedback/${id}`, { feedback: myFeedback })
+      .post(`/student/post_feedback`, { eventId: id, feedback: myFeedback })
       .catch((error) => console.log(error));
   };
 

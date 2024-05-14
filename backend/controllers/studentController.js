@@ -433,8 +433,11 @@ const getStatusForEvent = async (req, res) => {
 const postFeedback = async (req, res) => {
   try {
     const userId = req.user.id;
-    const eventId = req.params.id;
+    const eventId = req.body.eventId;
     const feedback = req.body.feedback;
+
+    console.log("EVENT ID:", eventId);
+    console.log("USER ID:", userId);
 
     const userToEvent = await UserToEvent.findOne({
       where: {
@@ -443,6 +446,8 @@ const postFeedback = async (req, res) => {
         status: "FINISHED",
       },
     });
+
+    console.log(userToEvent);
 
     if (!userToEvent)
       throw Error("This enrolment doesnt exist or isnt finished");
