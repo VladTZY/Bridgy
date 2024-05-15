@@ -35,7 +35,7 @@ export const HelpPage = () => {
               <InfoCard
                 title={"CHARITY"}
                 text={
-                  "Fill out the attached form (Bridgy - Charity Application) and we'll contact you within 24 hours."
+                  "Fill out the attached form (Charity Application) and we'll contact you within 24 hours."
                 }
               />
             </Grid>
@@ -43,7 +43,7 @@ export const HelpPage = () => {
               <InfoCard
                 title={"SCHOOL"}
                 text={
-                  "Fill out the attached form (Bridgy - School Application) and we'll contact you within 24 hours."
+                  "Fill out the attached form (School Application) and we'll contact you within 24 hours."
                 }
               />
             </Grid>
@@ -55,9 +55,9 @@ export const HelpPage = () => {
                 sx={{
                   bgcolor: "blue.light",
                   color: "blue.contrastText",
-                  px: 6,
-                  py: 2,
-                  fontSize: "24px",
+                  px: 4,
+                  my: 1,
+                  fontSize: "22px",
                   borderRadius: 10,
                   textTransform: "none",
                   ":hover": {
@@ -67,7 +67,7 @@ export const HelpPage = () => {
               >
                 <Link to="https://docs.google.com/forms/d/e/1FAIpQLSdJMVQWrKC9OBs9_Sepyr1CqXM9xfD-s08VWxjlGMK41FzVag/viewform?usp=sf_link">
                   {" "}
-                  Bridgy - Charity Application
+                  Charity Application
                 </Link>{" "}
               </Button>
             </Grid>
@@ -85,9 +85,9 @@ export const HelpPage = () => {
                 sx={{
                   bgcolor: "blue.light",
                   color: "blue.contrastText",
-                  px: 6,
-                  py: 2,
-                  fontSize: "24px",
+                  px: 4,
+                  my: 1,
+                  fontSize: "22px",
                   borderRadius: 10,
                   textTransform: "none",
                   ":hover": {
@@ -97,7 +97,7 @@ export const HelpPage = () => {
               >
                 <Link to="https://docs.google.com/forms/d/e/1FAIpQLSeVx_46yHysAXcUHRM9DCPGL2TnjxO9xTa4r86rkYuhcxX28w/viewform?usp=sf_link">
                   {" "}
-                  Bridgy - School Application
+                  School Application
                 </Link>{" "}
               </Button>
             </Grid>

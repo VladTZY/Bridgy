@@ -50,7 +50,7 @@ export const LandingPage = () => {
             <span>We solve three major problems</span>
           </div>
           <div className="flex flex-col md:flex-row w-[100%] bg-white pt-5 px-4 justify-center items-center md:px-6">
-            <div className="flex flex-col w-[100%]  bg-gray-100 rounded-2xl m-5 p-5 items-center justify-around h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+            <div className="flex flex-col w-[100%]  bg-gray-100 rounded-2xl m-5 p-5 items-center justify-around lg:h-[40vh] 2xl:h-[50vh]">
               <div className="text-3xl text-center font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 {" "}
                 ACCESS
@@ -63,7 +63,7 @@ export const LandingPage = () => {
                 students' interests and skills in less than 15 minutes
               </span>
             </div>
-            <div className="flex flex-col w-[100%] bg-gray-100 rounded-2xl m-5 p-5 items-center justify-around h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+            <div className="flex flex-col w-[100%] bg-gray-100 rounded-2xl m-5 p-5 items-center justify-around lg:h-[40vh] 2xl:h-[50vh]">
               <div className="text-3xl text-center font-extrabold animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 MANAGEMENT
               </div>
@@ -76,7 +76,7 @@ export const LandingPage = () => {
                 high school students
               </span>
             </div>
-            <div className="flex flex-col w-[100%]  bg-gray-100 rounded-2xl m-5 p-5 items-center justify-around h-[50vh] xl:h-[60vh] 2xl:h-[50vh]">
+            <div className="flex flex-col w-[100%]  bg-gray-100 rounded-2xl m-5 p-5 items-center justify-around lg:h-[40vh] 2xl:h-[50vh]">
               <div className="text-3xl font-extrabold text-center animate-pulse bg-gradient-to-r from-blue-500 via-blue-800 to-blue-300 bg-clip-text text-transparent">
                 {" "}
                 ADVISING
